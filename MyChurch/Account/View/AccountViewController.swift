@@ -2,7 +2,7 @@
 
 import UIKit
 
-class AccountViewController: MainViewController {
+class AccountViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

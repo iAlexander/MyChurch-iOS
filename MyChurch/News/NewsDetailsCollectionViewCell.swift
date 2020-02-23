@@ -41,7 +41,7 @@ class NewsDetailsCollectionViewCell: UICollectionViewCell {
         }
         
         if let text = data.text {
-            let clearedText = self.vm.remove(text)
+//            let clearedText = self.vm.remove(text)
             
 //            let result = text.replacingOccurrences(of: "(?i){gallery}\\s*{/gallery}", with: "", options: .regularExpression)
 //            do {
@@ -82,7 +82,7 @@ extension NewsDetailsCollectionViewCell: NewsDetailsDelegate {
             let string = element.data()
             self.textLabel.setAttributedText(string)
             
-            let textView = UITextView()
+//            let textView = UITextView()
 //            textView.setText
 //            let string =
         }

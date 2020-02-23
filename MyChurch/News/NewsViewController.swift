@@ -2,7 +2,7 @@
 
 import UIKit
 
-class NewsViewController: MainViewController {
+class NewsViewController: ViewController {
     
     lazy var vm = NewsViewModel(delegate: self)
     

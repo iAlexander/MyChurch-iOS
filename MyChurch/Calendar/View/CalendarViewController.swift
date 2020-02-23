@@ -2,7 +2,7 @@
 
 import UIKit
 
-class CalendarViewController: MainViewController, CalendarDelegate {
+class CalendarViewController: ViewController, CalendarDelegate {
     
 //    fileprivate weak var calendar: FSCalendar!
     
@@ -40,7 +40,7 @@ class CalendarViewController: MainViewController, CalendarDelegate {
 extension CalendarViewController {
     
     func didFinishFathingData() {
-        print(CalendarViewModel.calendar)
+        print(CalendarViewModel.calendar as Any)
     }
     
     func changeNavigationTitle(_ data: String) {

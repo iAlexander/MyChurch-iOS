@@ -10,7 +10,7 @@ protocol MainViewControllerDelegate {
     
 }
 
-class MainViewController: UIViewController, MainViewControllerDelegate {
+class ViewController: UIViewController, MainViewControllerDelegate {
     
     lazy var backBarButtonItem: UIBarButtonItem = {
         let icon = #imageLiteral(resourceName: "back-button").withRenderingMode(.alwaysOriginal)

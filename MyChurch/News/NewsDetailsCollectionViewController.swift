@@ -2,7 +2,7 @@
 
 import UIKit
 
-class NewsDetailsCollectionViewController: MainViewController {
+class NewsDetailsCollectionViewController: ViewController {
     
     convenience init(indexPath: IndexPath) {
         self.init()

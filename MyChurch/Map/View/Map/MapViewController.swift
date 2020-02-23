@@ -9,7 +9,7 @@ protocol SelectTempleDelegate: class {
     func selectTemple(indexPath: IndexPath)
 }
 
-class MapViewController: MainViewController {
+class MapViewController: ViewController {
     
     lazy var vm = MapViewModel(delegate: self)
     

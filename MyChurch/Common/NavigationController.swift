@@ -13,7 +13,7 @@ struct NavigationBarConfig {
 }
 
 protocol NavigationDelegate: class {
-    func openViewController(_ vc: MainViewController)
+    func openViewController(_ vc: ViewController)
     func setBackButtonTitle(_ text: String)
 }
 
@@ -60,7 +60,7 @@ class NavigationViewController: UINavigationController {
 
 extension NavigationViewController: NavigationDelegate {
     
-    func openViewController(_ vc: MainViewController) {
+    func openViewController(_ vc: ViewController) {
         self.pushViewController(vc, animated: true)
     }
     
@@ -71,7 +71,6 @@ extension NavigationViewController: NavigationDelegate {
         backItem.title = title
         
         self.navigationItem.backBarButtonItem = backItem
-        
     }
     
     func getImageFrom(gradientLayer:CAGradientLayer) -> UIImage? {

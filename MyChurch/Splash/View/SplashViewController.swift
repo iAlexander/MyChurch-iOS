@@ -2,12 +2,12 @@
 
 import UIKit
 
-class PrayerViewController: ViewController {
+class SplashViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Do any additional setup before loading the view.
     }
     
 }
