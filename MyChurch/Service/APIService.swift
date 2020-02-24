@@ -76,33 +76,7 @@ class APIService {
             }
         }
     }
-    
-    // MARK: - Calendar
-    func getCalendar(completion: @escaping (CalendarResponse) -> Void) {
-        let url = makeUrl(api: .stage, endPoint: .calendar)
-        let headers = ["Accept" : "application/json"]
         
-        callEndPoint(url, headers: headers) { (response) in
-            switch response {
-                case .success(let result):
-                    let json: String = result
-                    do {
-                        let data = try self.decoder.decode(CalendarResponse.self, from: Data(json.utf8))
-                        
-                        completion(data)
-                    } catch {
-                        print(error.localizedDescription)
-                }
-                case .failure(let error):
-                    print(">> response Error from failure")
-                    print(error)
-                default:
-                    print(">> response Error from default state")
-                    break
-            }
-        }
-    }
-    
     // MARK: - News
     func getNews(completion: @escaping (NewsResponse) -> Void) {
         let dict = ["culture" : "uk"]

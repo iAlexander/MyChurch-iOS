@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E90BB2403FB16005376D3 /* CalendarView.swift */; };
 		4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6223D994D900E5AB65 /* NewsViewModel.swift */; };
 		4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6423D99AF000E5AB65 /* ScrollView + StackView.swift */; };
 		4424DF6723D9A92600E5AB65 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6623D9A92600E5AB65 /* Image.swift */; };
@@ -45,17 +46,16 @@
 		44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */; };
 		44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5B23D4CBE600024B7C /* Repository.swift */; };
 		44DDFF5E23D4CC1A00024B7C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5D23D4CC1A00024B7C /* APIService.swift */; };
-		44FC0A09240171B6003A7E7E /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A08240171B6003A7E7E /* CalendarModel.swift */; };
 		44FC0A102401731A003A7E7E /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A0F2401731A003A7E7E /* NewsModel.swift */; };
 		44FC0A122401757C003A7E7E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A112401757C003A7E7E /* MapViewController.swift */; };
 		44FC0A18240175BE003A7E7E /* TempleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A17240175BE003A7E7E /* TempleCollectionViewController.swift */; };
 		44FC0A2324027566003A7E7E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A2224027566003A7E7E /* SplashViewController.swift */; };
 		44FC0A2A2402796D003A7E7E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A292402796D003A7E7E /* OnboardingViewController.swift */; };
-		44FD71DC23E066AF0067A737 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FD71DB23E066AF0067A737 /* CalendarViewModel.swift */; };
 		4BF25C54820980C31FFA5DFD /* libPods-MyChurch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 314075550757F62B33A2BC7E /* libPods-MyChurch.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		166E90BB2403FB16005376D3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		314075550757F62B33A2BC7E /* libPods-MyChurch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyChurch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B8948B07C3AEDD9C87ADB /* Pods-MyChurch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch.release.xcconfig"; path = "Target Support Files/Pods-MyChurch/Pods-MyChurch.release.xcconfig"; sourceTree = "<group>"; };
 		4424DF6223D994D900E5AB65 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
@@ -100,13 +100,11 @@
 		44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API + EndPoints.swift"; sourceTree = "<group>"; };
 		44DDFF5B23D4CBE600024B7C /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		44DDFF5D23D4CC1A00024B7C /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		44FC0A08240171B6003A7E7E /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		44FC0A0F2401731A003A7E7E /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		44FC0A112401757C003A7E7E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		44FC0A17240175BE003A7E7E /* TempleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TempleCollectionViewController.swift; path = MyChurch/Map/View/Map/TempleCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		44FC0A2224027566003A7E7E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		44FC0A292402796D003A7E7E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		44FD71DB23E066AF0067A737 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		471E3B8C5286604703987697 /* Pods-PCU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCU.debug.xcconfig"; path = "Target Support Files/Pods-PCU/Pods-PCU.debug.xcconfig"; sourceTree = "<group>"; };
 		CE97DA3DAEFE0D763968E1FC /* Pods-PCU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCU.release.xcconfig"; path = "Target Support Files/Pods-PCU/Pods-PCU.release.xcconfig"; sourceTree = "<group>"; };
 		ECE781CCA2CE73B231BA4F3E /* Pods-MyChurch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch.debug.xcconfig"; path = "Target Support Files/Pods-MyChurch/Pods-MyChurch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -201,9 +199,8 @@
 		4431560723D0A778004B5B59 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				44FC0A062401716F003A7E7E /* Model */,
-				44FC0A0524017160003A7E7E /* View */,
-				44FC0A0724017189003A7E7E /* ViewModel */,
+				4431AC4423D1CE8000081EC4 /* CalendarViewController.swift */,
+				166E90BB2403FB16005376D3 /* CalendarView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -318,30 +315,6 @@
 				443155FD23CF552B004B5B59 /* MapModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		44FC0A0524017160003A7E7E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4431AC4423D1CE8000081EC4 /* CalendarViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		44FC0A062401716F003A7E7E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				44FC0A08240171B6003A7E7E /* CalendarModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		44FC0A0724017189003A7E7E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				44FD71DB23E066AF0067A737 /* CalendarViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		44FC0A0C240172C5003A7E7E /* View */ = {
@@ -619,6 +592,7 @@
 				44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */,
 				44FC0A122401757C003A7E7E /* MapViewController.swift in Sources */,
 				4431562923D0AE19004B5B59 /* UIImage + UIImageView.swift in Sources */,
+				166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */,
 				4424DF6723D9A92600E5AB65 /* Image.swift in Sources */,
 				4431AC4523D1CE8000081EC4 /* CalendarViewController.swift in Sources */,
 				4431AC4723D1CE9400081EC4 /* NewsViewController.swift in Sources */,
@@ -627,12 +601,10 @@
 				4431562323D0AE19004B5B59 /* UIViewController.swift in Sources */,
 				445AC70723DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift in Sources */,
 				445AC70523DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift in Sources */,
-				44FC0A09240171B6003A7E7E /* CalendarModel.swift in Sources */,
 				4431562A23D0AE19004B5B59 /* UIDevice.swift in Sources */,
 				443155FE23CF552B004B5B59 /* MapModel.swift in Sources */,
 				4431AC4923D1CF8500081EC4 /* PrayerViewController.swift in Sources */,
 				445AC70923DF1CDC000A18E0 /* NewsDetailsViewModel.swift in Sources */,
-				44FD71DC23E066AF0067A737 /* CalendarViewModel.swift in Sources */,
 				44FC0A2A2402796D003A7E7E /* OnboardingViewController.swift in Sources */,
 				4431560D23D0A8AC004B5B59 /* TabBarController.swift in Sources */,
 				44FC0A18240175BE003A7E7E /* TempleCollectionViewController.swift in Sources */,

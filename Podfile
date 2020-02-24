@@ -7,6 +7,7 @@ target 'MyChurch' do
 	pod 'Alamofire', '< 5.0.0'
 	pod 'AlamofireImage', '< 4.0.0'
 	pod 'SwiftSoup'
-	pod 'FSCalendar'
+        pod 'Koyomi'
+  	pod 'PinLayout'
 
 end

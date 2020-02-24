@@ -117,12 +117,10 @@ class TabBarController: UITabBarController {
         
         // Do any additional setup after loading the view.
         self.tabBar.isTranslucent = false
-        
 //        let key = UserDefaults.Keys.userId.rawValue
 //        let isLoggedIn = UserDefaults.standard.string(forKey: key)
 //        self.tabBarType = isLoggedIn != nil ? .main : .authorization
-        self.tabBarType = .onboarding
-        
+        self.tabBarType = .main
         setupLayout()
     }
     

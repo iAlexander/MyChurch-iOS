@@ -53,9 +53,7 @@ class MapViewController: ViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Do any additional setup before appearing the view.
-        self.locationManager.startUpdatingLocation()
+         self.locationManager.startUpdatingLocation()
     }
     
     private func setupLayout() {
