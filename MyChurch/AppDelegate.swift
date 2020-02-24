@@ -5,15 +5,11 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let mapsAPIKey = "AIzaSyCM36DYyBE_sNKM31vH6qnbxwrZHYFomDc"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if self.mapsAPIKey.isEmpty {
-            fatalError("Please provide an API Key using mapsAPIKey")
-        } else {
-            GMSServices.provideAPIKey(self.mapsAPIKey)
-        }
+        let mapsAPIKey = "AIzaSyCM36DYyBE_sNKM31vH6qnbxwrZHYFomDc"
+        GMSServices.provideAPIKey(mapsAPIKey)
         
         let viewController = TabBarController()
         self.window = UIWindow(frame: UIScreen.main.bounds)

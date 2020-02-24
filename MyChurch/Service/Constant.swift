@@ -7,6 +7,7 @@ typealias TabBarData = (title: String, image: UIImage, selectedImage: UIImage)
 
 enum Stage {
     case authorization
+    case onboarding
     case main
 }
 

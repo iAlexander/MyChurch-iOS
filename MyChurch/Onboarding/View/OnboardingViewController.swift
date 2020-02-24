@@ -18,6 +18,7 @@ class OnboardingViewController: ViewController {
     }
     
     private func setupLayout() {
+        self.tabBarController?.tabBar.backgroundColor = .white
         
     }
 

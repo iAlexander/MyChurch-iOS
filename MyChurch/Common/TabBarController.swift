@@ -34,6 +34,12 @@ class TabBarController: UITabBarController {
                     self.viewControllers = [navigationController]
                     self.tabBar.isHidden = true
                 
+                case .onboarding:
+                    let onboardingViewController = OnboardingViewController()
+                    let navigationController = createNavigationController(onboardingViewController)
+                    self.viewControllers = [navigationController]
+                    self.tabBar.isHidden = true
+                
                 case .main:
                     let mapNavigationController: NavigationViewController = {
                         let vacationViewController = MapViewController()
@@ -115,7 +121,7 @@ class TabBarController: UITabBarController {
 //        let key = UserDefaults.Keys.userId.rawValue
 //        let isLoggedIn = UserDefaults.standard.string(forKey: key)
 //        self.tabBarType = isLoggedIn != nil ? .main : .authorization
-        self.tabBarType = .main
+        self.tabBarType = .onboarding
         
         setupLayout()
     }

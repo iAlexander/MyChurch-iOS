@@ -15,6 +15,7 @@ struct NavigationBarConfig {
 protocol NavigationDelegate: class {
     func openViewController(_ vc: ViewController)
     func setBackButtonTitle(_ text: String)
+    func setBackgroundColor(_ color: UIColor)
 }
 
 class NavigationViewController: UINavigationController {
@@ -44,7 +45,7 @@ class NavigationViewController: UINavigationController {
         gradient.endPoint = CGPoint(x: 0.75, y: 0.5)
         
         if let image = getImageFrom(gradientLayer: gradient) {
-            navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
+            self.navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
         }
         
         setupLayout()
@@ -71,6 +72,10 @@ extension NavigationViewController: NavigationDelegate {
         backItem.title = title
         
         self.navigationItem.backBarButtonItem = backItem
+    }
+    
+    func setBackgroundColor(_ color: UIColor) {
+        self.navigationBar.setBackgroundImage(nil, for: .default)
     }
     
     func getImageFrom(gradientLayer:CAGradientLayer) -> UIImage? {
