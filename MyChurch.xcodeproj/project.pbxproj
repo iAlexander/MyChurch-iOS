@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E90BB2403FB16005376D3 /* CalendarView.swift */; };
+		167AC7382405793B0044D620 /* CalendarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC7372405793B0044D620 /* CalendarTableCell.swift */; };
+		167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73924058DA20044D620 /* API_Zhekon.swift */; };
+		167AC73C24058E490044D620 /* ChutchObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73B24058E490044D620 /* ChutchObjects.swift */; };
 		4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6223D994D900E5AB65 /* NewsViewModel.swift */; };
 		4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6423D99AF000E5AB65 /* ScrollView + StackView.swift */; };
 		4424DF6723D9A92600E5AB65 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6623D9A92600E5AB65 /* Image.swift */; };
@@ -56,6 +59,9 @@
 
 /* Begin PBXFileReference section */
 		166E90BB2403FB16005376D3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		167AC7372405793B0044D620 /* CalendarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableCell.swift; sourceTree = "<group>"; };
+		167AC73924058DA20044D620 /* API_Zhekon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Zhekon.swift; sourceTree = "<group>"; };
+		167AC73B24058E490044D620 /* ChutchObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChutchObjects.swift; sourceTree = "<group>"; };
 		314075550757F62B33A2BC7E /* libPods-MyChurch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyChurch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B8948B07C3AEDD9C87ADB /* Pods-MyChurch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch.release.xcconfig"; path = "Target Support Files/Pods-MyChurch/Pods-MyChurch.release.xcconfig"; sourceTree = "<group>"; };
 		4424DF6223D994D900E5AB65 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
@@ -123,6 +129,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		167AC736240579110044D620 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				167AC7372405793B0044D620 /* CalendarTableCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		4424DF6823D9B01400E5AB65 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +213,7 @@
 		4431560723D0A778004B5B59 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				167AC736240579110044D620 /* Cell */,
 				4431AC4423D1CE8000081EC4 /* CalendarViewController.swift */,
 				166E90BB2403FB16005376D3 /* CalendarView.swift */,
 			);
@@ -242,6 +257,8 @@
 				44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */,
 				44DDFF5B23D4CBE600024B7C /* Repository.swift */,
 				44DDFF5D23D4CC1A00024B7C /* APIService.swift */,
+				167AC73924058DA20044D620 /* API_Zhekon.swift */,
+				167AC73B24058E490044D620 /* ChutchObjects.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -592,10 +609,13 @@
 				44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */,
 				44FC0A122401757C003A7E7E /* MapViewController.swift in Sources */,
 				4431562923D0AE19004B5B59 /* UIImage + UIImageView.swift in Sources */,
+				167AC73C24058E490044D620 /* ChutchObjects.swift in Sources */,
 				166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */,
 				4424DF6723D9A92600E5AB65 /* Image.swift in Sources */,
 				4431AC4523D1CE8000081EC4 /* CalendarViewController.swift in Sources */,
+				167AC7382405793B0044D620 /* CalendarTableCell.swift in Sources */,
 				4431AC4723D1CE9400081EC4 /* NewsViewController.swift in Sources */,
+				167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */,
 				442A1A8A23DB095100645ACC /* CGFloat.swift in Sources */,
 				44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */,
 				4431562323D0AE19004B5B59 /* UIViewController.swift in Sources */,
