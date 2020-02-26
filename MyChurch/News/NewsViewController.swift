@@ -69,17 +69,6 @@ extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewData
         let vc = NewsDetailsCollectionViewController(indexPath: indexPath)
             
         self.navigationController?.pushViewController(vc, animated: true)
-        
-//        if let data = self.vm.news?[indexPath.item] {
-//            let title = data.name ?? ""
-//            let text = data.text
-//            let imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTiA1ouFt1_F9hqE-8th9JlX6EXePvlG5yHfNu5c27jSu1wmL-V"
-//            let date = data.date
-//            let time = "14:00"
-//            let vc = NewsDetailsViewController(title: title, text: text, date: date, time: time, imageUrl: imageUrl)
-//
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
     }
     
     func didFinishFetchingData() {

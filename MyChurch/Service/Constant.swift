@@ -49,4 +49,36 @@ struct UserData {
             }
         }
     }
+    
+    static private var _defaultScreenIndex: Int?
+    static var defaultScreenIndex: Int {
+        get {
+            if let defaultScreenIndex = _defaultScreenIndex {
+                return defaultScreenIndex
+            } else {
+                return UserDefaults.standard.integer(forKey: UserDefaults.Keys.defaultScreenIndex.rawValue)
+            }
+        }
+        set {
+            _defaultScreenIndex = newValue
+            
+            UserDefaults.standard.set(newValue, forKey: UserDefaults.Keys.defaultScreenIndex.rawValue)
+        }
+    }
+    
+    static private var _isDefaultScreenChoosed: Bool?
+    static var isDefaultScreenChoosed: Bool {
+        get {
+            if let isDefaultScreenChoosed = _isDefaultScreenChoosed {
+                return isDefaultScreenChoosed
+            } else {
+                return UserDefaults.standard.bool(forKey: UserDefaults.Keys.isDefaultScreenChoosed.rawValue)
+            }
+        }
+        set {
+            _isDefaultScreenChoosed = newValue
+            
+            UserDefaults.standard.set(newValue, forKey: UserDefaults.Keys.isDefaultScreenChoosed.rawValue)
+        }
+    }
 }

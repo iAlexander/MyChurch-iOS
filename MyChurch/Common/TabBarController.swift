@@ -36,8 +36,7 @@ class TabBarController: UITabBarController {
                 
                 case .onboarding:
                     let onboardingViewController = OnboardingViewController()
-                    let navigationController = createNavigationController(onboardingViewController)
-                    self.viewControllers = [navigationController]
+                    self.viewControllers = [onboardingViewController]
                     self.tabBar.isHidden = true
                 
                 case .main:
@@ -93,7 +92,7 @@ class TabBarController: UITabBarController {
                     }()
                     
                     self.viewControllers = [mapNavigationController, calendarNavigationController, newsNavigationController, prayerNavigationController, accountNavigationController]
-                    self.selectedIndex = 2
+                    self.selectedIndex = UserData.defaultScreenIndex
                     self.tabBar.isHidden = false
             }
         }
@@ -121,7 +120,7 @@ class TabBarController: UITabBarController {
 //        let key = UserDefaults.Keys.userId.rawValue
 //        let isLoggedIn = UserDefaults.standard.string(forKey: key)
 //        self.tabBarType = isLoggedIn != nil ? .main : .authorization
-        self.tabBarType = .onboarding
+        self.tabBarType = UserData.isDefaultScreenChoosed ? .main : .onboarding
         
         setupLayout()
     }

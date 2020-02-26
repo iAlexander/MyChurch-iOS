@@ -40,13 +40,13 @@ class APIService {
             //            TabBarController.shared?.tabBarType = .authorization
         }
         
-        let localizationKey = Headers.language.rawValue
-        let localization = UserDefaults.Keys.language.rawValue
-        if let localizationValue = UserDefaults.standard.string(forKey: localization) {
-            dict[localizationKey] = localizationValue
-        } else {
-            //             TabBarController.shared?.tabBarType = .authorization
-        }
+//        let localizationKey = Headers.language.rawValue
+//        let localization = UserDefaults.Keys.language.rawValue
+//        if let localizationValue = UserDefaults.standard.string(forKey: localization) {
+//            dict[localizationKey] = localizationValue
+//        } else {
+//            //             TabBarController.shared?.tabBarType = .authorization
+//        }
         
         return dict
     }()
@@ -213,15 +213,15 @@ extension APIService: APIServiceDelegate {
                 }
             }
             
-            let localizationKey = Headers.language.rawValue
-            let localization = UserDefaults.Keys.language.rawValue
-            if let localizationValue = UserDefaults.standard.string(forKey: localization) {
-                dict[localizationKey] = localizationValue
-            } else {
-                if TabBarController.shared?.tabBarType == .main {
-                    TabBarController.shared?.tabBarType = .authorization
-                }
-            }
+//            let localizationKey = Headers.language.rawValue
+//            let localization = UserDefaults.Keys.language.rawValue
+//            if let localizationValue = UserDefaults.standard.string(forKey: localization) {
+//                dict[localizationKey] = localizationValue
+//            } else {
+//                if TabBarController.shared?.tabBarType == .main {
+//                    TabBarController.shared?.tabBarType = .authorization
+//                }
+//            }
             
             return dict
         }()
