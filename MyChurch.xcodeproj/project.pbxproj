@@ -11,6 +11,9 @@
 		167AC7382405793B0044D620 /* CalendarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC7372405793B0044D620 /* CalendarTableCell.swift */; };
 		167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73924058DA20044D620 /* API_Zhekon.swift */; };
 		167AC73C24058E490044D620 /* ChutchObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73B24058E490044D620 /* ChutchObjects.swift */; };
+		167AC73E2406B8FF0044D620 /* DetailHolidayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73D2406B8FF0044D620 /* DetailHolidayViewController.swift */; };
+		167AC7402406B9110044D620 /* DetailHolidayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73F2406B9110044D620 /* DetailHolidayView.swift */; };
+		167AC7422406BFC80044D620 /* HolidayImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC7412406BFC80044D620 /* HolidayImageCollectionCell.swift */; };
 		4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6223D994D900E5AB65 /* NewsViewModel.swift */; };
 		4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6423D99AF000E5AB65 /* ScrollView + StackView.swift */; };
 		4424DF6723D9A92600E5AB65 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6623D9A92600E5AB65 /* Image.swift */; };
@@ -62,6 +65,9 @@
 		167AC7372405793B0044D620 /* CalendarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableCell.swift; sourceTree = "<group>"; };
 		167AC73924058DA20044D620 /* API_Zhekon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Zhekon.swift; sourceTree = "<group>"; };
 		167AC73B24058E490044D620 /* ChutchObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChutchObjects.swift; sourceTree = "<group>"; };
+		167AC73D2406B8FF0044D620 /* DetailHolidayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHolidayViewController.swift; sourceTree = "<group>"; };
+		167AC73F2406B9110044D620 /* DetailHolidayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHolidayView.swift; sourceTree = "<group>"; };
+		167AC7412406BFC80044D620 /* HolidayImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayImageCollectionCell.swift; sourceTree = "<group>"; };
 		314075550757F62B33A2BC7E /* libPods-MyChurch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyChurch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B8948B07C3AEDD9C87ADB /* Pods-MyChurch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch.release.xcconfig"; path = "Target Support Files/Pods-MyChurch/Pods-MyChurch.release.xcconfig"; sourceTree = "<group>"; };
 		4424DF6223D994D900E5AB65 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				167AC7372405793B0044D620 /* CalendarTableCell.swift */,
+				167AC7412406BFC80044D620 /* HolidayImageCollectionCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -216,6 +223,8 @@
 				167AC736240579110044D620 /* Cell */,
 				4431AC4423D1CE8000081EC4 /* CalendarViewController.swift */,
 				166E90BB2403FB16005376D3 /* CalendarView.swift */,
+				167AC73D2406B8FF0044D620 /* DetailHolidayViewController.swift */,
+				167AC73F2406B9110044D620 /* DetailHolidayView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -618,6 +627,7 @@
 				167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */,
 				442A1A8A23DB095100645ACC /* CGFloat.swift in Sources */,
 				44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */,
+				167AC7402406B9110044D620 /* DetailHolidayView.swift in Sources */,
 				4431562323D0AE19004B5B59 /* UIViewController.swift in Sources */,
 				445AC70723DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift in Sources */,
 				445AC70523DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift in Sources */,
@@ -627,6 +637,7 @@
 				445AC70923DF1CDC000A18E0 /* NewsDetailsViewModel.swift in Sources */,
 				44FC0A2A2402796D003A7E7E /* OnboardingViewController.swift in Sources */,
 				4431560D23D0A8AC004B5B59 /* TabBarController.swift in Sources */,
+				167AC7422406BFC80044D620 /* HolidayImageCollectionCell.swift in Sources */,
 				44FC0A18240175BE003A7E7E /* TempleCollectionViewController.swift in Sources */,
 				443155E623CF368C004B5B59 /* AppDelegate.swift in Sources */,
 				44FC0A2324027566003A7E7E /* SplashViewController.swift in Sources */,
@@ -637,6 +648,7 @@
 				4431562623D0AE19004B5B59 /* NSLayout.swift in Sources */,
 				4431561423D0AAD3004B5B59 /* NavigationController.swift in Sources */,
 				442A068023D2C781004E98DB /* MapViewModel.swift in Sources */,
+				167AC73E2406B8FF0044D620 /* DetailHolidayViewController.swift in Sources */,
 				444CE79723D8ABD0004667B5 /* CardElement.swift in Sources */,
 				4431561223D0AA05004B5B59 /* Constant.swift in Sources */,
 				44DDFF5E23D4CC1A00024B7C /* APIService.swift in Sources */,

@@ -28,7 +28,9 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
                 for (index, item) in self.allHolidays.enumerated() {
                     self.allHolidays[index].date = item.date?.strstr(needle: "T", beforeNeedle: true) ?? ""
                 }
+                
                 self.mainView.holidayTableView.reloadData()
+                self.mainView.calendar.reloadData()
             case .partialSuccess( _): break
             case .failure(let error):
                 print(error)
@@ -50,6 +52,13 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         cell.selectionStyle = .none
         cell.holidayName.text = chooseHolidays[indexPath.row].name
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailHolidayViewController()
+        vc.titleText = mainView.choosedDay.text ?? ""
+        vc.holidayId = chooseHolidays[indexPath.row].id ?? 0
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -112,10 +121,35 @@ extension CalendarViewController {
 
 // MARK: - KoyomiDelegate -
 extension CalendarViewController: KoyomiDelegate {
+       
+    func koyomi(_ koyomi: Koyomi, currentDateString dateString: String) {
+        print(dateString)
+    }
+    
+  
+    
+    func koyomi(_ koyomi: Koyomi, fontForItemAt indexPath: IndexPath, date: Date) -> UIFont? {
+        let today = Date()
+    
+
+
+//        let dateStr = date.description.strstr(needle: " ", beforeNeedle: true) ?? ""
+//
+//            if item.date == dateStr {
+//                //koyomi.needPoint = true
+//                print(item)
+//            } else {
+//                print(item)
+//             //   koyomi.needPoint = false
+//            }
+//        }
+        return today == date ? UIFont(name:"FuturaStd-Bold", size:0) : nil
+    }
+    
     func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
         chooseHolidays.removeAll()
         var timeInterval = DateComponents()
-        timeInterval.hour = 2
+        timeInterval.hour = 3
         let dateNew = Calendar.current.date(byAdding: timeInterval, to: date!)!
         var dateStr = dateNew.description
         dateStr = String(dateStr.dropFirst(8))

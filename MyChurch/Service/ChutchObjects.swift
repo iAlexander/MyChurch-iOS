@@ -19,3 +19,22 @@ struct HolidaysData: Codable {
     let name: String?
     var date: String?
 }
+
+// MARK: работаю с объектом для взятия праздников
+struct HolidaysDetailData: Codable {
+    let data: HolidayData?
+}
+
+struct HolidayData: Codable {
+    let id: Int?
+    let dateOldStyle: String?
+    let dateNewStyle: String?
+    let name: String?
+    let describe: String?
+    let conceived: String?
+    let groupId: HolidayDataDetail?
+}
+
+struct HolidayDataDetail: Codable {
+    let name: String?
+}
