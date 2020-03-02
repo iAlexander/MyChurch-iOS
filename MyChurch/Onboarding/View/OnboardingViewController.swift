@@ -17,7 +17,28 @@ class OnboardingViewController: ViewController {
         OnboardingPage(image: UIImage(imageLiteralResourceName: "onb_script"), bgImage: UIImage(imageLiteralResourceName: "onb_bg_c"), description: "Молимося разом"),
         OnboardingPage(image: UIImage(imageLiteralResourceName: "onb_account"), bgImage: UIImage(imageLiteralResourceName: "onb_bg_b"), description: "Персоналізуємо \nінформацію для Вас")
     ]
-    var currentIndex = 0
+    var currentIndex = 0 {
+        willSet {
+            self.rightBarItem.tag = newValue
+            
+            self.rightFooterButton.tag = newValue
+            if self.rightFooterButton.tag == 4 {
+                self.rightFooterButton.setAttributedText("Розпочати")
+            } else {
+                self.rightFooterButton.setAttributedText("Далі")
+            }
+            
+            if newValue == self.selectedIndex {
+                UIView.animate(withDuration: 0.25) {
+                    self.rightBarItem.isOn = true
+                }
+            } else {
+                UIView.animate(withDuration: 0.25) {
+                    self.rightBarItem.isOn = false
+                }
+            }
+        }
+    }
     var selectedIndex = 0
     
     let leftBarItem = Label("Це стартовий екран", size: 17, fontWeight: .regular, numberOfLines: 1, color: .black)
@@ -123,8 +144,6 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
                 }
             }
         } else {
-            sender.tag += 1
-            
             if sender.tag == selectedIndex {
                 UIView.animate(withDuration: 0.25) {
                     self.rightBarItem.isOn = true
@@ -192,16 +211,6 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
             self.rightFooterButton.setAttributedText("Розпочати")
         } else {
             self.rightFooterButton.setAttributedText("Далі")
-        }
-        
-        if result == selectedIndex {
-            UIView.animate(withDuration: 0.25) {
-                self.rightBarItem.isOn = true
-            }
-        } else {
-            UIView.animate(withDuration: 0.25) {
-                self.rightBarItem.isOn = false
-            }
         }
         
         self.currentIndex = result
