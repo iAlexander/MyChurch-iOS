@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4418A407240FBB160090B2BC /* PrayerDetailsConllectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4418A406240FBB160090B2BC /* PrayerDetailsConllectionViewController.swift */; };
+		4418A409240FBE770090B2BC /* PrayerDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4418A408240FBE770090B2BC /* PrayerDetailsCollectionViewCell.swift */; };
 		4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6223D994D900E5AB65 /* NewsViewModel.swift */; };
 		4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6423D99AF000E5AB65 /* ScrollView + StackView.swift */; };
 		4424DF6723D9A92600E5AB65 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6623D9A92600E5AB65 /* Image.swift */; };
@@ -46,6 +48,9 @@
 		445AC70523DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC70423DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift */; };
 		445AC70723DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC70623DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift */; };
 		445AC70923DF1CDC000A18E0 /* NewsDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC70823DF1CDC000A18E0 /* NewsDetailsViewModel.swift */; };
+		44D7D3E0240D265300ABFF10 /* PrayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D3DF240D265300ABFF10 /* PrayerViewModel.swift */; };
+		44D7D3E2240D294700ABFF10 /* PrayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D3E1240D294700ABFF10 /* PrayerModel.swift */; };
+		44D7D3E4240D82CB00ABFF10 /* PrayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D3E3240D82CB00ABFF10 /* PrayerTableViewCell.swift */; };
 		44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */; };
 		44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5B23D4CBE600024B7C /* Repository.swift */; };
 		44DDFF5E23D4CC1A00024B7C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5D23D4CC1A00024B7C /* APIService.swift */; };
@@ -62,6 +67,8 @@
 /* Begin PBXFileReference section */
 		314075550757F62B33A2BC7E /* libPods-MyChurch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyChurch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B8948B07C3AEDD9C87ADB /* Pods-MyChurch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch.release.xcconfig"; path = "Target Support Files/Pods-MyChurch/Pods-MyChurch.release.xcconfig"; sourceTree = "<group>"; };
+		4418A406240FBB160090B2BC /* PrayerDetailsConllectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerDetailsConllectionViewController.swift; sourceTree = "<group>"; };
+		4418A408240FBE770090B2BC /* PrayerDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4424DF6223D994D900E5AB65 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		4424DF6423D99AF000E5AB65 /* ScrollView + StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView + StackView.swift"; sourceTree = "<group>"; };
 		4424DF6623D9A92600E5AB65 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -105,6 +112,9 @@
 		445AC70423DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsCollectionViewController.swift; sourceTree = "<group>"; };
 		445AC70623DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		445AC70823DF1CDC000A18E0 /* NewsDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewModel.swift; sourceTree = "<group>"; };
+		44D7D3DF240D265300ABFF10 /* PrayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerViewModel.swift; sourceTree = "<group>"; };
+		44D7D3E1240D294700ABFF10 /* PrayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerModel.swift; sourceTree = "<group>"; };
+		44D7D3E3240D82CB00ABFF10 /* PrayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTableViewCell.swift; sourceTree = "<group>"; };
 		44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API + EndPoints.swift"; sourceTree = "<group>"; };
 		44DDFF5B23D4CBE600024B7C /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		44DDFF5D23D4CC1A00024B7C /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -133,12 +143,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4424DF6823D9B01400E5AB65 /* TableView */ = {
+		4418A404240FB97E0090B2BC /* List */ = {
 			isa = PBXGroup;
 			children = (
-				4424DF6923D9B05800E5AB65 /* NewsTableViewCell.swift */,
+				4431AC4823D1CF8500081EC4 /* PrayerViewController.swift */,
+				44D7D3E3240D82CB00ABFF10 /* PrayerTableViewCell.swift */,
 			);
-			name = TableView;
+			path = List;
+			sourceTree = "<group>";
+		};
+		4418A405240FB9870090B2BC /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				4418A406240FBB160090B2BC /* PrayerDetailsConllectionViewController.swift */,
+				4418A408240FBE770090B2BC /* PrayerDetailsCollectionViewCell.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		4424DF6B23D9CC1400E5AB65 /* Detalis */ = {
@@ -155,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				4431AC4623D1CE9400081EC4 /* NewsViewController.swift */,
-				4424DF6823D9B01400E5AB65 /* TableView */,
+				4424DF6923D9B05800E5AB65 /* NewsTableViewCell.swift */,
 			);
 			name = List;
 			path = ..;
@@ -392,7 +412,8 @@
 		44FC0A1A24017605003A7E7E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4431AC4823D1CF8500081EC4 /* PrayerViewController.swift */,
+				4418A404240FB97E0090B2BC /* List */,
+				4418A405240FB9870090B2BC /* Details */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,6 +421,7 @@
 		44FC0A1B2401760E003A7E7E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				44D7D3DF240D265300ABFF10 /* PrayerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -407,6 +429,7 @@
 		44FC0A1C24017614003A7E7E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				44D7D3E1240D294700ABFF10 /* PrayerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -620,6 +643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D7D3E2240D294700ABFF10 /* PrayerModel.swift in Sources */,
 				44FC0A102401731A003A7E7E /* NewsModel.swift in Sources */,
 				443155F023CF368C004B5B59 /* PCU.xcdatamodeld in Sources */,
 				4431562723D0AE19004B5B59 /* String.swift in Sources */,
@@ -643,6 +667,7 @@
 				445AC70523DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift in Sources */,
 				44FC0A09240171B6003A7E7E /* CalendarModel.swift in Sources */,
 				4431562A23D0AE19004B5B59 /* UIDevice.swift in Sources */,
+				44D7D3E4240D82CB00ABFF10 /* PrayerTableViewCell.swift in Sources */,
 				443155FE23CF552B004B5B59 /* MapModel.swift in Sources */,
 				4431AC4923D1CF8500081EC4 /* PrayerViewController.swift in Sources */,
 				445AC70923DF1CDC000A18E0 /* NewsDetailsViewModel.swift in Sources */,
@@ -657,6 +682,7 @@
 				4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */,
 				4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */,
 				443B9EA92404FC6400FC75C8 /* UIButton.swift in Sources */,
+				4418A407240FBB160090B2BC /* PrayerDetailsConllectionViewController.swift in Sources */,
 				4431562623D0AE19004B5B59 /* NSLayout.swift in Sources */,
 				4431561423D0AAD3004B5B59 /* NavigationController.swift in Sources */,
 				442A068023D2C781004E98DB /* MapViewModel.swift in Sources */,
@@ -664,7 +690,9 @@
 				4431561223D0AA05004B5B59 /* Constant.swift in Sources */,
 				44DDFF5E23D4CC1A00024B7C /* APIService.swift in Sources */,
 				4431562823D0AE19004B5B59 /* UserDefaults.swift in Sources */,
+				44D7D3E0240D265300ABFF10 /* PrayerViewModel.swift in Sources */,
 				4431561823D0AB55004B5B59 /* MainViewController.swift in Sources */,
+				4418A409240FBE770090B2BC /* PrayerDetailsCollectionViewCell.swift in Sources */,
 				443B9EA72404F56200FC75C8 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

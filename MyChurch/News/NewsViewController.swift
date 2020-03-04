@@ -49,6 +49,41 @@ class NewsViewController: ViewController {
 
 extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    @objc private func openSearch(_ sender: UIButton!) {
+        print("openSearch")
+        // choose default screen (open onboarding)
+        let alert: UIAlertController = {
+            let alert = UIAlertController(title: "Скинути початковий екран", message: "Ви впевнені, що бажаєте повернутися до вибору початкового екрану?", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Так", style: .default) { (response) in
+                UserData.isDefaultScreenChoosed = false
+                
+                if let tabBarController = self.tabBarController as? TabBarController {
+                    UIView.animate(withDuration: 0.1) {
+                        tabBarController.tabBarType = .onboarding
+                    }
+                }
+            }
+            alert.addAction(action)
+            
+            let cancelAction = UIAlertAction(title: "Скасувати", style: .cancel) { (response) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(cancelAction)
+            
+            return alert
+        }()
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func openNotification(_ sender: UIButton!) {
+        print("openNotification")
+    }
+    
+    @objc func openDetails(_ sender: UIButton!) {
+        print("openNotification")
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return NewsViewModel.news?.count ?? 0
     }
@@ -75,19 +110,6 @@ extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewData
         if NewsViewModel.news != nil {
             self.tableView.reloadData()
         }
-    }
-    
-    
-    @objc private func openSearch(_ sender: UIButton!) {
-        print("openSearch")
-    }
-    
-    @objc func openNotification(_ sender: UIButton!) {
-        print("openNotification")
-    }
-    
-    @objc func openDetails(_ sender: UIButton!) {
-        print("openNotification")
     }
     
 }
