@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		165C28E6240FDD5800A8B685 /* ChurchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */; };
 		166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E90BB2403FB16005376D3 /* CalendarView.swift */; };
 		167AC7382405793B0044D620 /* CalendarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC7372405793B0044D620 /* CalendarTableCell.swift */; };
 		167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73924058DA20044D620 /* API_Zhekon.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchTableViewCell.swift; sourceTree = "<group>"; };
 		166E90BB2403FB16005376D3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		167AC7372405793B0044D620 /* CalendarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableCell.swift; sourceTree = "<group>"; };
 		167AC73924058DA20044D620 /* API_Zhekon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Zhekon.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 			children = (
 				44FC0A112401757C003A7E7E /* MapViewController.swift */,
 				44FC0A17240175BE003A7E7E /* TempleCollectionViewController.swift */,
+				165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 				443155F023CF368C004B5B59 /* PCU.xcdatamodeld in Sources */,
 				4431562723D0AE19004B5B59 /* String.swift in Sources */,
 				4431AC4B23D1CFB100081EC4 /* AccountViewController.swift in Sources */,
+				165C28E6240FDD5800A8B685 /* ChurchTableViewCell.swift in Sources */,
 				4431562423D0AE19004B5B59 /* DispatchQueueHelper.swift in Sources */,
 				4431562523D0AE19004B5B59 /* UIView.swift in Sources */,
 				442A068223D2C834004E98DB /* ViewModel.swift in Sources */,

@@ -130,9 +130,6 @@ extension CalendarViewController: KoyomiDelegate {
     
     func koyomi(_ koyomi: Koyomi, fontForItemAt indexPath: IndexPath, date: Date) -> UIFont? {
         let today = Date()
-    
-
-
 //        let dateStr = date.description.strstr(needle: " ", beforeNeedle: true) ?? ""
 //
 //            if item.date == dateStr {
