@@ -114,7 +114,7 @@ class OnboardingViewController: ViewController {
         super.viewDidAppear(animated)
         
         if !UserDefaults.standard.bool(forKey: UserDefaults.Keys.isPrivacyPolicy.rawValue) {
-            self.present(self.customAlert, animated: true, completion: nil)
+            self.present(self.customAlert, animated: false, completion: nil)
         }
     }
     
