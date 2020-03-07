@@ -13,17 +13,31 @@ class NewsViewController: ViewController {
         return tableView
     }()
     
+    let activityIndicatorView: UIActivityIndicatorView = {
+        var activityIndicatorView: UIActivityIndicatorView
+        
+        if #available(iOS 13.0, *) {
+            activityIndicatorView = UIActivityIndicatorView(style: .large)
+        } else {
+            // Fallback on earlier versions
+            activityIndicatorView = UIActivityIndicatorView()
+        }
+        
+        return activityIndicatorView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.view.addSubview(self.tableView)
+        self.view.addSubviews([self.tableView, self.activityIndicatorView])
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.reuseIdentifier)
         
-        self.vm.startFetchingData()
+        self.activityIndicatorView.startAnimating()
+        vm.startFetchingData()
         
         setupNavBar()
         setupLayout()
@@ -42,6 +56,7 @@ class NewsViewController: ViewController {
     }
     
     private func setupLayout() {
+        self.activityIndicatorView.anchor(centerY: self.view.centerYAnchor, centerX: self.view.centerXAnchor, size: CGSize(width: 75, height: 75))
         self.tableView.fillSuperview(padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }
     
@@ -107,6 +122,8 @@ extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewData
     }
     
     func didFinishFetchingData() {
+        self.activityIndicatorView.stopAnimating()
+        
         if NewsViewModel.news != nil {
             self.tableView.reloadData()
         }
