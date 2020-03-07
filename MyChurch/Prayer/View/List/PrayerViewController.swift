@@ -71,7 +71,6 @@ class PrayerViewController: ViewController {
         self.navigationItem.title = "Молитви"
         
         self.activityIndicatorView.startAnimating()
-        
         vm.startFetchingData()
         
         setupLayout()
