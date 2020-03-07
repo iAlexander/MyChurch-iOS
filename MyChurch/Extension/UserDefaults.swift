@@ -9,6 +9,7 @@ extension UserDefaults {
         case userId
         case defaultScreenIndex
         case isDefaultScreenChoosed
+        case isPrivacyPolicy
     }
     
     func isLoggedIn() -> Bool {

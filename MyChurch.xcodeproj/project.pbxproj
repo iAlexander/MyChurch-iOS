@@ -54,6 +54,7 @@
 		44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */; };
 		44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5B23D4CBE600024B7C /* Repository.swift */; };
 		44DDFF5E23D4CC1A00024B7C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5D23D4CC1A00024B7C /* APIService.swift */; };
+		44F9ACAB2413056C003F727A /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9ACAA2413056C003F727A /* ModalViewController.swift */; };
 		44FC0A09240171B6003A7E7E /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A08240171B6003A7E7E /* CalendarModel.swift */; };
 		44FC0A102401731A003A7E7E /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A0F2401731A003A7E7E /* NewsModel.swift */; };
 		44FC0A122401757C003A7E7E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A112401757C003A7E7E /* MapViewController.swift */; };
@@ -118,6 +119,7 @@
 		44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API + EndPoints.swift"; sourceTree = "<group>"; };
 		44DDFF5B23D4CBE600024B7C /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		44DDFF5D23D4CC1A00024B7C /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		44F9ACAA2413056C003F727A /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		44FC0A08240171B6003A7E7E /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		44FC0A0F2401731A003A7E7E /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		44FC0A112401757C003A7E7E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				4431561323D0AAD3004B5B59 /* NavigationController.swift */,
 				4431561723D0AB55004B5B59 /* MainViewController.swift */,
 				442A068123D2C834004E98DB /* ViewModel.swift */,
+				44F9ACAA2413056C003F727A /* ModalViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				44DDFF5E23D4CC1A00024B7C /* APIService.swift in Sources */,
 				4431562823D0AE19004B5B59 /* UserDefaults.swift in Sources */,
 				44D7D3E0240D265300ABFF10 /* PrayerViewModel.swift in Sources */,
+				44F9ACAB2413056C003F727A /* ModalViewController.swift in Sources */,
 				4431561823D0AB55004B5B59 /* MainViewController.swift in Sources */,
 				4418A409240FBE770090B2BC /* PrayerDetailsCollectionViewCell.swift in Sources */,
 				443B9EA72404F56200FC75C8 /* Button.swift in Sources */,

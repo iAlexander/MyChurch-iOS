@@ -1,10 +1,4 @@
-//
-//  OnboardingViewController.swift
-//  MyChurch
-//
-//  Created by Oleksandr Lohozinskyi on 23.02.2020.
-//  Copyright © 2020 Oleksandr Lohozinskyi. All rights reserved.
-//
+// Sasha Loghozinsky -- alogozinsky@gmail.com \ lohozinsky.o@d2.digital -- 2020
 
 import UIKit
 
@@ -84,6 +78,13 @@ class OnboardingViewController: ViewController {
         return button
     }()
     
+    lazy var customAlert: ModalViewController = {
+        let vc = ModalViewController(delegate: self)
+        vc.modalPresentationStyle = .overFullScreen
+        
+        return vc
+    }()
+    
     override func loadView() {
         super.loadView()
         
@@ -109,6 +110,14 @@ class OnboardingViewController: ViewController {
         setupLayout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !UserDefaults.standard.bool(forKey: UserDefaults.Keys.isPrivacyPolicy.rawValue) {
+            self.present(self.customAlert, animated: true, completion: nil)
+        }
+    }
+    
     private func setupLayout() {
         self.leftBarItem.anchor(top: self.view.topAnchor, leading: self.view.leadingAnchor, padding: UIEdgeInsets(top: 52, left: 16, bottom: 0, right: 16), size: CGSize(width: 0, height: 32))
         self.rightBarItem.anchor(top: self.view.topAnchor, leading: self.leftBarItem.trailingAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: 52, left: 16, bottom: 0, right: 16), size: CGSize(width: 0, height: 32))
@@ -121,7 +130,7 @@ class OnboardingViewController: ViewController {
 
 }
 
-extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ModalDelegate {
     
     // MARK: Handlers
     
@@ -169,6 +178,14 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
+    // MARK: ModalDelegate
+    
+    func dismiss() {
+        UserDefaults.standard.set(true, forKey: UserDefaults.Keys.isPrivacyPolicy.rawValue)
+        
+        self.customAlert.dismiss(animated: false)
+    }
+    
     // MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -185,14 +202,6 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        self.pageControl.currentPage = indexPath.item
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        self.pageControl.currentPage = indexPath.item
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
