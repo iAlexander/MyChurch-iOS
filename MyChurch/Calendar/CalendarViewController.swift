@@ -72,7 +72,6 @@ extension CalendarViewController {
         mainView.holidayTableView.dataSource = self
         mainView.holidayTableView.register(CalendarTableCell.self, forCellReuseIdentifier: reuseIdentifierTableView)
         mainView.holidayTableView.separatorColor = .clear
-        //   mainView.holidayTableView.isHidden = true
     }
     
     private func setupNavBar() {

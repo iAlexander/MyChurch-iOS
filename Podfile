@@ -9,5 +9,7 @@ target 'MyChurch' do
 	pod 'SwiftSoup'
         pod 'Koyomi'
   	pod 'PinLayout'
+  	pod 'MSPeekCollectionViewDelegateImplementation'
+        pod 'ANLoader'
 
 end

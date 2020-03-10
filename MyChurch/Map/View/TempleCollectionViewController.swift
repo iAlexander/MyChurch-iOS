@@ -1,11 +1,13 @@
 // Sasha Loghozinsky -- alogozinsky@gmail.com \ lohozinsky.o@d2.digital -- 2020
 
 import UIKit
+import MSPeekCollectionViewDelegateImplementation
 
 class TempleCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     weak var delegate: SelectTempleDelegate?
-    
+    var behavior: MSCollectionViewPeekingBehavior!
+
     var data: [Temple] = [] {
         didSet {
             print( self.data)
@@ -16,6 +18,8 @@ class TempleCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        behavior = MSCollectionViewPeekingBehavior(cellSpacing: 10)
+        collectionView.configureForPeekingBehavior(behavior: behavior)
         self.clearsSelectionOnViewWillAppear = true
         
         self.collectionView!.register(TempleCollectionViewCell.self, forCellWithReuseIdentifier: TempleCollectionViewCell.reuseIdentifier)
@@ -42,10 +46,10 @@ class TempleCollectionViewController: UICollectionViewController, UICollectionVi
         cell.configureWithData(data: data)
         
         cell.tapAction  = { (cell) in
-            print(collectionView.indexPath(for: cell)!.row)
+         //   print(collectionView.indexPath(for: cell)!.row)
             if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)) {
                 UIApplication.shared.openURL(URL(string:
-                    "comgooglemaps://" + "?daddr=\(Double(data.lt) ?? 0.0),\(Double(data.lg) ?? 0.0)&zoom=12&directionsmode=driving")!)
+                    "comgooglemaps://" + "?daddr=\(Double(data.lt) ?? 0.0),\(Double(data.lg) ?? 0.0)&zoom=12&directionsmode=walking")!)
             } else {
                 let alertController = UIAlertController(title: "Повiдомлення", message: "Встановiть будь ласка додаток 'Google Map'", preferredStyle: .alert)
                 let actionCancel = UIAlertAction(title: "закрити", style: .cancel) { (action:UIAlertAction) in
@@ -66,11 +70,20 @@ class TempleCollectionViewController: UICollectionViewController, UICollectionVi
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+       behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+    }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
         let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint)
-        self.delegate?.selectTemple(indexPath: visibleIndexPath!)
+        if visibleIndexPath != nil {
+            self.delegate?.selectTemple(indexPath: visibleIndexPath!)
+        } else {
+            return
+        }
     }
+
 }
 
 class TempleCollectionViewCell: UICollectionViewCell {
