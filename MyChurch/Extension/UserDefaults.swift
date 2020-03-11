@@ -6,9 +6,10 @@ extension UserDefaults {
 
     enum Keys: String {
         case token
-        case language
         case userId
-        case boardCardId
+        case defaultScreenIndex
+        case isDefaultScreenChoosed
+        case isPrivacyPolicy
     }
     
     func isLoggedIn() -> Bool {

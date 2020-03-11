@@ -40,13 +40,13 @@ class APIService {
             //            TabBarController.shared?.tabBarType = .authorization
         }
         
-        let localizationKey = Headers.language.rawValue
-        let localization = UserDefaults.Keys.language.rawValue
-        if let localizationValue = UserDefaults.standard.string(forKey: localization) {
-            dict[localizationKey] = localizationValue
-        } else {
-            //             TabBarController.shared?.tabBarType = .authorization
-        }
+//        let localizationKey = Headers.language.rawValue
+//        let localization = UserDefaults.Keys.language.rawValue
+//        if let localizationValue = UserDefaults.standard.string(forKey: localization) {
+//            dict[localizationKey] = localizationValue
+//        } else {
+//            //             TabBarController.shared?.tabBarType = .authorization
+//        }
         
         return dict
     }()
@@ -83,13 +83,43 @@ class APIService {
         let url = makeUrl(dict, api: .acp, endPoint: .news)
         let headers = ["Accept" : "application/json"]
         
-        
         callEndPoint(url, headers: headers) { (response) in
             switch response {
                 case .success(let result):
                     let json: String = result
                     do {
                         let data = try self.decoder.decode(NewsResponse.self, from: Data(json.utf8))
+                        
+                        completion(data)
+                    } catch {
+                        print(error.localizedDescription)
+                }
+                case .failure(let error):
+                    print(">> response Error from failure")
+                    print(error)
+                default:
+                    print(">> response Error from default state")
+                    break
+            }
+        }
+    }
+    
+    // MARK: - Prayer
+    func getPrayer(title: String?, type: String?, skip: Int, length: Int, completion: @escaping (PrayerResponse) -> Void) {
+        let strongTitle = title ?? ""
+        let strongType = type ?? ""
+        let strongSkip = String(skip)
+        let strongLength = String(length)
+        
+        let dict: [String : String] = ["title" : strongTitle, "type" : strongType, "skip" : strongSkip, "length" : strongLength]
+        let url = makeUrl(dict, api: .stage, endPoint: .prayer)
+        
+        callEndPoint(url, headers: headers) { (response) in
+            switch response {
+                case .success(let result):
+                    let json: String = result
+                    do {
+                        let data = try self.decoder.decode(PrayerResponse.self, from: Data(json.utf8))
                         
                         completion(data)
                     } catch {
@@ -187,15 +217,15 @@ extension APIService: APIServiceDelegate {
                 }
             }
             
-            let localizationKey = Headers.language.rawValue
-            let localization = UserDefaults.Keys.language.rawValue
-            if let localizationValue = UserDefaults.standard.string(forKey: localization) {
-                dict[localizationKey] = localizationValue
-            } else {
-                if TabBarController.shared?.tabBarType == .main {
-                    TabBarController.shared?.tabBarType = .authorization
-                }
-            }
+//            let localizationKey = Headers.language.rawValue
+//            let localization = UserDefaults.Keys.language.rawValue
+//            if let localizationValue = UserDefaults.standard.string(forKey: localization) {
+//                dict[localizationKey] = localizationValue
+//            } else {
+//                if TabBarController.shared?.tabBarType == .main {
+//                    TabBarController.shared?.tabBarType = .authorization
+//                }
+//            }
             
             return dict
         }()

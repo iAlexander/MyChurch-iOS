@@ -6,16 +6,30 @@ class Repository {
     
     static let shared = Repository()
     
-    // Temples
+    // MARK: - Temples
     func getTemples(lt: String, lg: String, completion: @escaping (TemplesData) -> Void) {
         APIService.shared.getTemples(lt: lt, lg: lg) { (response) in
             completion(response)
         }
     }
+
+    // MARK: - Calendar
+    func getCalendar(completion: @escaping (CalendarResponse) -> Void) {
+        APIService.shared.getCalendar() { (response) in
+            completion(response)
+        }
+    }
     
-    // News
+    // MARK: - News
     func getNews(completion: @escaping (NewsResponse) -> Void) {
         APIService.shared.getNews { (response) in
+            completion(response)
+        }
+    }
+    
+    // MARK: - Prayer
+    func getPrayer(title: String?, type: String?, skip: Int, length: Int, completion: @escaping (PrayerResponse) -> Void) {
+        APIService.shared.getPrayer(title: title, type: type, skip: skip, length: length) { (response) in
             completion(response)
         }
     }

@@ -48,6 +48,9 @@ class NavigationViewController: UINavigationController {
             self.navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
         }
         
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationBar.titleTextAttributes = textAttributes
+        
         setupLayout()
     }
     
