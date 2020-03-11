@@ -26,8 +26,10 @@ class DetailMapKathedralViewController: UIViewController, UICollectionViewDelega
         ConfigView()
         self.mainView.createRouteButton.addTarget(self, action: #selector(self.createRoutePressed), for: .touchUpInside)
         GetTempleData()
-        mainView.payTypeSegmentControll.addTarget(self, action: #selector(segmentedPressed), for: .valueChanged)
+        mainView.infoSegmentControll.addTarget(self, action: #selector(segmentedPressed), for: .valueChanged)
+        
     }
+    
     
     func GetTempleData() {
         getDetailTemple(id:templeInfo.id) { (result) in
@@ -65,9 +67,10 @@ class DetailMapKathedralViewController: UIViewController, UICollectionViewDelega
     
     // MARK: Work targets
     @objc func segmentedPressed() {
-        switch mainView.payTypeSegmentControll.selectedSegmentIndex
+        
+        switch mainView.infoSegmentControll.selectedSegmentIndex
         {
-        case 0: mainView.openNow.isHidden = false;mainView.pointText.isHidden = false; mainView.closeAtTop.isHidden = false;mainView.workScheduleText.isHidden = false;mainView.monFriday.isHidden = false;  mainView.markerImage.isHidden = false; mainView.adressText.isHidden = false;mainView.createRouteView.isHidden = false;mainView.templeHoliday.isHidden = false;mainView.fatherManName.isHidden = false; mainView.deanery.isHidden = false;mainView.telText.isHidden = false;mainView.templeHolidayApiText.isHidden = false;mainView.fatherManNameApiText.isHidden = false;mainView.deaneryApiText.isHidden = false;  mainView.telApiText.isHidden = false; mainView.eparhiyaCityName.text = "Чернiгiвська эпархiя"; mainView.layoutSubviews()
+        case 0: mainView.openNow.isHidden = false;mainView.pointText.isHidden = false; mainView.closeAtTop.isHidden = false;mainView.workScheduleText.isHidden = false;mainView.monFriday.isHidden = false;  mainView.markerImage.isHidden = false; mainView.adressText.isHidden = false;mainView.createRouteView.isHidden = false;mainView.templeHoliday.isHidden = false;mainView.fatherManName.isHidden = false; mainView.deanery.isHidden = false;mainView.telText.isHidden = false;mainView.templeHolidayApiText.isHidden = false;mainView.fatherManNameApiText.isHidden = false;mainView.deaneryApiText.isHidden = false;  mainView.telApiText.isHidden = false; mainView.eparhiyaCityName.text = self.templeData?.data?.dioceseType?.type; mainView.layoutSubviews()
         case 1: mainView.openNow.isHidden = true;   mainView.pointText.isHidden = true;
         mainView.closeAtTop.isHidden = true;  mainView.workScheduleText.isHidden = true;  mainView.monFriday.isHidden = true;  mainView.markerImage.isHidden = true;
         mainView.adressText.isHidden = true;   mainView.createRouteView.isHidden = true;  mainView.templeHoliday.isHidden = true;  mainView.fatherManName.isHidden = true;
@@ -87,7 +90,21 @@ class DetailMapKathedralViewController: UIViewController, UICollectionViewDelega
         mainView.imageCollectionView!.dataSource = self
         mainView.imageCollectionView!.showsHorizontalScrollIndicator = false
         mainView.imageCollectionView!.register(HolidayImageCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifierCollectionView)
-        mainView.payTypeSegmentControll.selectedSegmentIndex = 0
+        mainView.infoSegmentControll.selectedSegmentIndex = 0
+        if #available(iOS 13.0, *) {
+            mainView.infoSegmentControll.backgroundColor = .white
+            mainView.infoSegmentControll.selectedSegmentTintColor =  UIColor(red: 0.008, green: 0.529, blue: 0.918, alpha: 1)
+            mainView.infoSegmentControll.layer.borderColor = UIColor(red: 0.008, green: 0.529, blue: 0.918, alpha: 1).cgColor
+            mainView.infoSegmentControll.layer.borderWidth = 1
+            
+            let titleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor(red: 0.008, green: 0.529, blue: 0.918, alpha: 1)]
+            mainView.infoSegmentControll.setTitleTextAttributes(titleTextAttributes, for:.normal)
+            
+            let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            mainView.infoSegmentControll.setTitleTextAttributes(titleTextAttributes1, for:.selected)
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     //MARK: work with collectionView

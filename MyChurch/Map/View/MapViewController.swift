@@ -254,6 +254,7 @@ extension MapViewController: MapDelegate, SelectTempleDelegate {
     
     // MARK: - MapDelegate
     func didFinishFetchingData(_ data: [Temple]?) {
+        ANLoader.hide()
         if let data = data {
             self.allChurch = data.sorted(by: { $0.distance < ($1.distance)})
             for item in data {

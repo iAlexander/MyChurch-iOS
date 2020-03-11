@@ -9,11 +9,11 @@
 import UIKit
 
 class DetailMapKathedralView: UIView {
-  
+    
     let scrollView = UIScrollView()
     
     var imageCollectionView: UICollectionView!
-    var payTypeSegmentControll = UISegmentedControl()
+    var infoSegmentControll = UISegmentedControl()
     let churchTopName = UILabel()
     let eparhiyaCityName = UILabel()
     let openNow = UILabel()
@@ -34,7 +34,7 @@ class DetailMapKathedralView: UIView {
     let fatherManNameApiText = UILabel()
     let deaneryApiText = UILabel()
     let telApiText = UILabel()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -47,7 +47,7 @@ class DetailMapKathedralView: UIView {
     
     private func commonInit() {
         self.backgroundColor = .white
-      
+        
         self.addSubview(scrollView)
         scrollView.backgroundColor = .clear
         
@@ -60,12 +60,10 @@ class DetailMapKathedralView: UIView {
         imageCollectionView!.backgroundColor = .white
         scrollView.addSubview(imageCollectionView!)
         
-        scrollView.addSubview(payTypeSegmentControll)
-        payTypeSegmentControll.insertSegment(withTitle: "Контакти", at: 0, animated: true)
-        payTypeSegmentControll.insertSegment(withTitle: "Icторiя та опис" , at: 1, animated: true)
-        payTypeSegmentControll.layer.cornerRadius = 10
-        payTypeSegmentControll.tintColor = .blue
-        payTypeSegmentControll.backgroundColor = .white
+        scrollView.addSubview(infoSegmentControll)
+        infoSegmentControll.insertSegment(withTitle: "Контакти", at: 0, animated: true)
+        infoSegmentControll.insertSegment(withTitle: "Icторiя та опис" , at: 1, animated: true)
+        infoSegmentControll.layer.cornerRadius = 10
         
         churchTopName.textAlignment = .left
         churchTopName.numberOfLines = 0
@@ -82,38 +80,40 @@ class DetailMapKathedralView: UIView {
         openNow.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         openNow.text = "Зараз вiдчинено"
         openNow.textColor = UIColor(red: 0.153, green: 0.682, blue: 0.376, alpha: 1)
-          scrollView.addSubview(openNow)
+        scrollView.addSubview(openNow)
         
         pointText.text = "•"
         pointText.textAlignment = .center
         pointText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-          scrollView.addSubview(pointText)
+        scrollView.addSubview(pointText)
         
         closeAtTop.textAlignment = .left
         closeAtTop.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         closeAtTop.text = "Зачиняється 20-00"
         closeAtTop.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-          scrollView.addSubview(closeAtTop)
+        scrollView.addSubview(closeAtTop)
         
         workScheduleText.textAlignment = .left
         workScheduleText.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         workScheduleText.text = "Розклад богослужіння"
         workScheduleText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-          scrollView.addSubview(workScheduleText)
+        scrollView.addSubview(workScheduleText)
         
         monFriday.textAlignment = .left
-        monFriday.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        monFriday.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         monFriday.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-          scrollView.addSubview(monFriday)
+        monFriday.numberOfLines = 0
+        monFriday.sizeToFit()
+        scrollView.addSubview(monFriday)
         
         markerImage.image = UIImage(named: "detailMarker")
         markerImage.contentMode = .scaleAspectFit
-          scrollView.addSubview(markerImage)
+        scrollView.addSubview(markerImage)
         
         adressText.textAlignment = .left
         adressText.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         adressText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-          scrollView.addSubview(adressText)
+        scrollView.addSubview(adressText)
         
         scrollView.addSubview(createRouteView)
         createRouteView.layer.cornerRadius = 10
@@ -136,41 +136,41 @@ class DetailMapKathedralView: UIView {
         templeHoliday.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         templeHoliday.text = "Храмове свято:"
         templeHoliday.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-          scrollView.addSubview(templeHoliday)
+        scrollView.addSubview(templeHoliday)
         
         fatherManName.textAlignment = .left
         fatherManName.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         fatherManName.text = "Настоятель:"
         fatherManName.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-          scrollView.addSubview(fatherManName)
+        scrollView.addSubview(fatherManName)
         
         deanery.textAlignment = .left
         deanery.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         deanery.text = "Благочинний:"
         deanery.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-          scrollView.addSubview(deanery)
+        scrollView.addSubview(deanery)
         
-         telText.textAlignment = .left
-         telText.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-         telText.text = "Телефон:"
-         telText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-           scrollView.addSubview(telText)
+        telText.textAlignment = .left
+        telText.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        telText.text = "Телефон:"
+        telText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        scrollView.addSubview(telText)
         
         templeHolidayApiText.textAlignment = .right
         templeHolidayApiText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         templeHolidayApiText.text = "10 листопада"
         templeHolidayApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-          scrollView.addSubview(templeHolidayApiText)
+        scrollView.addSubview(templeHolidayApiText)
         
         fatherManNameApiText.textAlignment = .right
         fatherManNameApiText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         fatherManNameApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-          scrollView.addSubview(fatherManNameApiText)
+        scrollView.addSubview(fatherManNameApiText)
         
         deaneryApiText.textAlignment = .right
         deaneryApiText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         deaneryApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-          scrollView.addSubview(deaneryApiText)
+        scrollView.addSubview(deaneryApiText)
         
         telApiText.textAlignment = .right
         telApiText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
@@ -183,8 +183,8 @@ class DetailMapKathedralView: UIView {
         scrollView.pin.all()
         
         imageCollectionView.pin.top(15).left(15).height(240).right()
-        payTypeSegmentControll.pin.below(of: imageCollectionView).marginTop(10).horizontally(15).height(30)
-        churchTopName.pin.horizontally(15).height(50).below(of: payTypeSegmentControll).marginTop(10)
+        infoSegmentControll.pin.below(of: imageCollectionView).marginTop(10).horizontally(15).height(30)
+        churchTopName.pin.horizontally(15).height(50).below(of: infoSegmentControll).marginTop(10)
         eparhiyaCityName.pin.below(of: churchTopName).marginTop(20).horizontally(15).height(20)
         openNow.pin.left(15).below(of: eparhiyaCityName).marginTop(8).height(25).width((UIScreen.main.bounds.size.width / 2) - 40)
         pointText.pin.left(to:openNow.edge.right).top(to:openNow.edge.top).height(25).width(10)
@@ -196,12 +196,12 @@ class DetailMapKathedralView: UIView {
         createRouteView.pin.below(of: adressText).marginTop(25).horizontally(15).height(45)
         createRouteButton.pin.all()
         layerBlue.pin.all()
-    
+        
         templeHoliday.pin.below(of: createRouteView).marginTop(25).left(15).width(145).height(25)
         fatherManName.pin.below(of: templeHoliday).marginTop(5).left(15).width(115).height(25)
         deanery.pin.below(of: fatherManName).marginTop(5).left(15).width(125).height(25)
         telText.pin.below(of: deanery).marginTop(5).left(15).width(145).height(25)
-
+        
         templeHolidayApiText.pin.right(15).top(to:templeHoliday.edge.top).left(to:templeHoliday.edge.right).height(25)
         fatherManNameApiText.pin.right(15).top(to:fatherManName.edge.top).left(to:fatherManName.edge.right).height(25)
         deaneryApiText.pin.right(15).top(to:deanery.edge.top).left(to:deanery.edge.right).height(25)
