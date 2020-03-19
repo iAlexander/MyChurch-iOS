@@ -82,7 +82,7 @@ class TabBarController: UITabBarController {
                     }()
                     
                     let accountNavigationController: NavigationViewController = {
-                        let vacationViewController = PrayerViewController()
+                        let vacationViewController = RegistrationFirstPageViewController() 
                         let image = createImage(UIImage(named: "account"))
                         let selectedImage = createImage(UIImage(named: "account-tint"))
                         let data: TabBarData = (title: "Профіль", image: image, selectedImage: selectedImage)

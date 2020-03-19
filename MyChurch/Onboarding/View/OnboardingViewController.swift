@@ -81,7 +81,6 @@ class OnboardingViewController: ViewController {
     lazy var customAlert: ModalViewController = {
         let vc = ModalViewController(delegate: self)
         vc.modalPresentationStyle = .overFullScreen
-        
         return vc
     }()
     

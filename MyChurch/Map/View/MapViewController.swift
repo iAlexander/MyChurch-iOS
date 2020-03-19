@@ -80,7 +80,7 @@ class MapViewController: ViewController, UISearchBarDelegate {
     
     private func setupLayout() {
         self.templesColectionViewController.collectionView.backgroundColor = .clear
-        self.templesColectionViewController.collectionView.anchor(leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, size: CGSize(width: 0, height: 120))
+        self.templesColectionViewController.collectionView.anchor(leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor,padding: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0), size: CGSize(width: 0, height: 120))
     }
     
     func checkLayoutSearchController() {
@@ -184,7 +184,7 @@ extension MapViewController: GMSMapViewDelegate, CLLocationManagerDelegate {
         self.mapView.delegate = self
         self.view = self.mapView
         setMapCamera()
-        self.selfLocation = CLLocationCoordinate2D(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+        self.selfLocation = CLLocationCoordinate2D(latitude: (locationManager.location?.coordinate.latitude ?? 50.4546600), longitude: (locationManager.location?.coordinate.longitude ?? 30.5238000))
         getData()
         CATransaction.begin()
         let latitude = self.selfLocation.latitude

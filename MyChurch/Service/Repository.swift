@@ -14,11 +14,11 @@ class Repository {
     }
 
     // MARK: - Calendar
-    func getCalendar(completion: @escaping (CalendarResponse) -> Void) {
-        APIService.shared.getCalendar() { (response) in
-            completion(response)
-        }
-    }
+//    func getCalendar(completion: @escaping (CalendarResponse) -> Void) {
+//        APIService.shared.getCalendar() { (response) in
+//            completion(response)
+//        }
+//    }
     
     // MARK: - News
     func getNews(completion: @escaping (NewsResponse) -> Void) {

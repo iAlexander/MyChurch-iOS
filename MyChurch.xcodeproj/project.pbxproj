@@ -9,6 +9,22 @@
 /* Begin PBXBuildFile section */
 		1617BCAF2417F65000B63715 /* DetailMapKathedralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCAE2417F65000B63715 /* DetailMapKathedralViewController.swift */; };
 		1617BCB12417F65C00B63715 /* DetailMapKathedralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB02417F65C00B63715 /* DetailMapKathedralView.swift */; };
+		1617BCB32418F9D500B63715 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB22418F9D500B63715 /* OnboardingModel.swift */; };
+		1617BCB52418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB42418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift */; };
+		1617BCB72418FA3300B63715 /* PrayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB62418FA3300B63715 /* PrayerModel.swift */; };
+		1617BCBE2418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB92418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift */; };
+		1617BCBF2418FA4500B63715 /* PrayerDetailsConllectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCBA2418FA4500B63715 /* PrayerDetailsConllectionViewController.swift */; };
+		1617BCC02418FA4500B63715 /* PrayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCBC2418FA4500B63715 /* PrayerViewController.swift */; };
+		1617BCC12418FA4500B63715 /* PrayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCBD2418FA4500B63715 /* PrayerTableViewCell.swift */; };
+		1617BCC32418FA5E00B63715 /* PrayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCC22418FA5E00B63715 /* PrayerViewModel.swift */; };
+		1617BCC52418FB9900B63715 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCC42418FB9900B63715 /* Button.swift */; };
+		1617BCC72418FBB200B63715 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCC62418FBB200B63715 /* ModalViewController.swift */; };
+		161EE5A82423B83C0094B8E0 /* RegistrationFirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5A72423B83C0094B8E0 /* RegistrationFirstPageViewController.swift */; };
+		161EE5AA2423B84D0094B8E0 /* RegistrationFirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5A92423B84D0094B8E0 /* RegistrationFirstPageView.swift */; };
+		161EE5AD2423C1070094B8E0 /* RegistrationSecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5AC2423C1070094B8E0 /* RegistrationSecondPageViewController.swift */; };
+		161EE5AF2423C1200094B8E0 /* RegistrationSecondPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5AE2423C1200094B8E0 /* RegistrationSecondPageView.swift */; };
+		161EE5B12423C3570094B8E0 /* RegistrationThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5B02423C3570094B8E0 /* RegistrationThirdPageViewController.swift */; };
+		161EE5B32423C3690094B8E0 /* RegistrationThirdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5B22423C3690094B8E0 /* RegistrationThirdPageView.swift */; };
 		1643C5F62416B28200599D0D /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643C5F52416B28200599D0D /* DetailMapViewController.swift */; };
 		1643C5F82416B29500599D0D /* DetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643C5F72416B29500599D0D /* DetailMapView.swift */; };
 		165C28E6240FDD5800A8B685 /* ChurchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */; };
@@ -46,8 +62,6 @@
 		4431562A23D0AE19004B5B59 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431562123D0AE19004B5B59 /* UIDevice.swift */; };
 		4431AC4523D1CE8000081EC4 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431AC4423D1CE8000081EC4 /* CalendarViewController.swift */; };
 		4431AC4723D1CE9400081EC4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431AC4623D1CE9400081EC4 /* NewsViewController.swift */; };
-		4431AC4923D1CF8500081EC4 /* PrayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431AC4823D1CF8500081EC4 /* PrayerViewController.swift */; };
-		4431AC4B23D1CFB100081EC4 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431AC4A23D1CFB100081EC4 /* AccountViewController.swift */; };
 		444CE79723D8ABD0004667B5 /* CardElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444CE79623D8ABD0004667B5 /* CardElement.swift */; };
 		444CE79923D8ADEE004667B5 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444CE79823D8ADEE004667B5 /* Label.swift */; };
 		444CE79B23D8B2E7004667B5 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444CE79A23D8B2E7004667B5 /* UIColor.swift */; };
@@ -68,6 +82,22 @@
 /* Begin PBXFileReference section */
 		1617BCAE2417F65000B63715 /* DetailMapKathedralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapKathedralViewController.swift; sourceTree = "<group>"; };
 		1617BCB02417F65C00B63715 /* DetailMapKathedralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapKathedralView.swift; sourceTree = "<group>"; };
+		1617BCB22418F9D500B63715 /* OnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingModel.swift; path = MyChurch/Onboarding/Model/OnboardingModel.swift; sourceTree = SOURCE_ROOT; };
+		1617BCB42418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingScreenCollectionViewCell.swift; sourceTree = "<group>"; };
+		1617BCB62418FA3300B63715 /* PrayerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerModel.swift; sourceTree = "<group>"; };
+		1617BCB92418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		1617BCBA2418FA4500B63715 /* PrayerDetailsConllectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerDetailsConllectionViewController.swift; sourceTree = "<group>"; };
+		1617BCBC2418FA4500B63715 /* PrayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerViewController.swift; sourceTree = "<group>"; };
+		1617BCBD2418FA4500B63715 /* PrayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerTableViewCell.swift; sourceTree = "<group>"; };
+		1617BCC22418FA5E00B63715 /* PrayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerViewModel.swift; sourceTree = "<group>"; };
+		1617BCC42418FB9900B63715 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		1617BCC62418FBB200B63715 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		161EE5A72423B83C0094B8E0 /* RegistrationFirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFirstPageViewController.swift; sourceTree = "<group>"; };
+		161EE5A92423B84D0094B8E0 /* RegistrationFirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFirstPageView.swift; sourceTree = "<group>"; };
+		161EE5AC2423C1070094B8E0 /* RegistrationSecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSecondPageViewController.swift; sourceTree = "<group>"; };
+		161EE5AE2423C1200094B8E0 /* RegistrationSecondPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSecondPageView.swift; sourceTree = "<group>"; };
+		161EE5B02423C3570094B8E0 /* RegistrationThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationThirdPageViewController.swift; sourceTree = "<group>"; };
+		161EE5B22423C3690094B8E0 /* RegistrationThirdPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationThirdPageView.swift; sourceTree = "<group>"; };
 		1643C5F52416B28200599D0D /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
 		1643C5F72416B29500599D0D /* DetailMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapView.swift; sourceTree = "<group>"; };
 		165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchTableViewCell.swift; sourceTree = "<group>"; };
@@ -111,8 +141,6 @@
 		4431562123D0AE19004B5B59 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		4431AC4423D1CE8000081EC4 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		4431AC4623D1CE9400081EC4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		4431AC4823D1CF8500081EC4 /* PrayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerViewController.swift; sourceTree = "<group>"; };
-		4431AC4A23D1CFB100081EC4 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		444CE79623D8ABD0004667B5 /* CardElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardElement.swift; sourceTree = "<group>"; };
 		444CE79823D8ADEE004667B5 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		444CE79A23D8B2E7004667B5 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -152,6 +180,45 @@
 				1617BCB02417F65C00B63715 /* DetailMapKathedralView.swift */,
 			);
 			path = DetailMapKathedral;
+			sourceTree = "<group>";
+		};
+		1617BCB82418FA4500B63715 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				1617BCB92418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift */,
+				1617BCBA2418FA4500B63715 /* PrayerDetailsConllectionViewController.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		1617BCBB2418FA4500B63715 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				1617BCBC2418FA4500B63715 /* PrayerViewController.swift */,
+				1617BCBD2418FA4500B63715 /* PrayerTableViewCell.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		161EE5A62423B81B0094B8E0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				161EE5AB2423BE210094B8E0 /* Registration */,
+				161EE5A72423B83C0094B8E0 /* RegistrationFirstPageViewController.swift */,
+				161EE5A92423B84D0094B8E0 /* RegistrationFirstPageView.swift */,
+				161EE5AC2423C1070094B8E0 /* RegistrationSecondPageViewController.swift */,
+				161EE5AE2423C1200094B8E0 /* RegistrationSecondPageView.swift */,
+				161EE5B02423C3570094B8E0 /* RegistrationThirdPageViewController.swift */,
+				161EE5B22423C3690094B8E0 /* RegistrationThirdPageView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		161EE5AB2423BE210094B8E0 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		1643C5F42416B25800599D0D /* DetailMap */ = {
@@ -230,7 +297,7 @@
 				4431560723D0A778004B5B59 /* Calendar */,
 				4431560823D0A79A004B5B59 /* News */,
 				4431560B23D0A7E1004B5B59 /* Prayer */,
-				4431560A23D0A7AC004B5B59 /* Account */,
+				161EE5A62423B81B0094B8E0 /* Profile */,
 				444CE79523D8ABA7004667B5 /* Common */,
 				4431560E23D0A918004B5B59 /* Service */,
 				4431561923D0ADAD004B5B59 /* Extension */,
@@ -268,16 +335,6 @@
 				44FC0A0D240172E2003A7E7E /* ViewModel */,
 			);
 			path = News;
-			sourceTree = "<group>";
-		};
-		4431560A23D0A7AC004B5B59 /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				44FC0A1D24017647003A7E7E /* Model */,
-				44FC0A1F24017661003A7E7E /* View */,
-				44FC0A1E24017651003A7E7E /* ViewModel */,
-			);
-			path = Account;
 			sourceTree = "<group>";
 		};
 		4431560B23D0A7E1004B5B59 /* Prayer */ = {
@@ -336,8 +393,10 @@
 		444CE79523D8ABA7004667B5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1617BCC42418FB9900B63715 /* Button.swift */,
 				4424DF6423D99AF000E5AB65 /* ScrollView + StackView.swift */,
 				444CE79823D8ADEE004667B5 /* Label.swift */,
+				1617BCC62418FBB200B63715 /* ModalViewController.swift */,
 				4424DF6623D9A92600E5AB65 /* Image.swift */,
 				444CE79623D8ABD0004667B5 /* CardElement.swift */,
 				4431560C23D0A8AC004B5B59 /* TabBarController.swift */,
@@ -404,7 +463,8 @@
 		44FC0A1A24017605003A7E7E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4431AC4823D1CF8500081EC4 /* PrayerViewController.swift */,
+				1617BCB82418FA4500B63715 /* Details */,
+				1617BCBB2418FA4500B63715 /* List */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -412,6 +472,7 @@
 		44FC0A1B2401760E003A7E7E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1617BCC22418FA5E00B63715 /* PrayerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -419,30 +480,9 @@
 		44FC0A1C24017614003A7E7E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1617BCB62418FA3300B63715 /* PrayerModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		44FC0A1D24017647003A7E7E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		44FC0A1E24017651003A7E7E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		44FC0A1F24017661003A7E7E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4431AC4A23D1CFB100081EC4 /* AccountViewController.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		44FC0A20240274FB003A7E7E /* Splash */ = {
@@ -475,6 +515,7 @@
 			isa = PBXGroup;
 			children = (
 				44FC0A292402796D003A7E7E /* OnboardingViewController.swift */,
+				1617BCB42418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -489,6 +530,7 @@
 		44FC0A282402780B003A7E7E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1617BCB22418F9D500B63715 /* OnboardingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -630,24 +672,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1617BCB72418FA3300B63715 /* PrayerModel.swift in Sources */,
 				1643C5F82416B29500599D0D /* DetailMapView.swift in Sources */,
 				44FC0A102401731A003A7E7E /* NewsModel.swift in Sources */,
 				1617BCAF2417F65000B63715 /* DetailMapKathedralViewController.swift in Sources */,
+				161EE5AD2423C1070094B8E0 /* RegistrationSecondPageViewController.swift in Sources */,
 				443155F023CF368C004B5B59 /* PCU.xcdatamodeld in Sources */,
 				4431562723D0AE19004B5B59 /* String.swift in Sources */,
-				4431AC4B23D1CFB100081EC4 /* AccountViewController.swift in Sources */,
 				165C28E6240FDD5800A8B685 /* ChurchTableViewCell.swift in Sources */,
 				4431562423D0AE19004B5B59 /* DispatchQueueHelper.swift in Sources */,
 				4431562523D0AE19004B5B59 /* UIView.swift in Sources */,
+				1617BCB32418F9D500B63715 /* OnboardingModel.swift in Sources */,
 				442A068223D2C834004E98DB /* ViewModel.swift in Sources */,
 				444CE79923D8ADEE004667B5 /* Label.swift in Sources */,
 				44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */,
 				44FC0A122401757C003A7E7E /* MapViewController.swift in Sources */,
 				4431562923D0AE19004B5B59 /* UIImage + UIImageView.swift in Sources */,
 				167AC73C24058E490044D620 /* ChutchObjects.swift in Sources */,
+				1617BCC02418FA4500B63715 /* PrayerViewController.swift in Sources */,
 				166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */,
+				161EE5AA2423B84D0094B8E0 /* RegistrationFirstPageView.swift in Sources */,
+				161EE5AF2423C1200094B8E0 /* RegistrationSecondPageView.swift in Sources */,
 				4424DF6723D9A92600E5AB65 /* Image.swift in Sources */,
 				4431AC4523D1CE8000081EC4 /* CalendarViewController.swift in Sources */,
+				1617BCB52418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift in Sources */,
+				161EE5A82423B83C0094B8E0 /* RegistrationFirstPageViewController.swift in Sources */,
 				167AC7382405793B0044D620 /* CalendarTableCell.swift in Sources */,
 				1643C5F62416B28200599D0D /* DetailMapViewController.swift in Sources */,
 				4431AC4723D1CE9400081EC4 /* NewsViewController.swift in Sources */,
@@ -655,12 +704,12 @@
 				442A1A8A23DB095100645ACC /* CGFloat.swift in Sources */,
 				44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */,
 				167AC7402406B9110044D620 /* DetailHolidayView.swift in Sources */,
+				1617BCC12418FA4500B63715 /* PrayerTableViewCell.swift in Sources */,
 				4431562323D0AE19004B5B59 /* UIViewController.swift in Sources */,
 				445AC70723DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift in Sources */,
 				445AC70523DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift in Sources */,
 				4431562A23D0AE19004B5B59 /* UIDevice.swift in Sources */,
 				443155FE23CF552B004B5B59 /* MapModel.swift in Sources */,
-				4431AC4923D1CF8500081EC4 /* PrayerViewController.swift in Sources */,
 				445AC70923DF1CDC000A18E0 /* NewsDetailsViewModel.swift in Sources */,
 				44FC0A2A2402796D003A7E7E /* OnboardingViewController.swift in Sources */,
 				4431560D23D0A8AC004B5B59 /* TabBarController.swift in Sources */,
@@ -669,18 +718,25 @@
 				44FC0A18240175BE003A7E7E /* TempleCollectionViewController.swift in Sources */,
 				443155E623CF368C004B5B59 /* AppDelegate.swift in Sources */,
 				44FC0A2324027566003A7E7E /* SplashViewController.swift in Sources */,
+				1617BCC72418FBB200B63715 /* ModalViewController.swift in Sources */,
 				4424DF6A23D9B05800E5AB65 /* NewsTableViewCell.swift in Sources */,
 				444CE79B23D8B2E7004667B5 /* UIColor.swift in Sources */,
 				4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */,
 				4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */,
 				4431562623D0AE19004B5B59 /* NSLayout.swift in Sources */,
 				4431561423D0AAD3004B5B59 /* NavigationController.swift in Sources */,
+				1617BCBF2418FA4500B63715 /* PrayerDetailsConllectionViewController.swift in Sources */,
+				1617BCC32418FA5E00B63715 /* PrayerViewModel.swift in Sources */,
+				1617BCBE2418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift in Sources */,
 				442A068023D2C781004E98DB /* MapViewModel.swift in Sources */,
 				167AC73E2406B8FF0044D620 /* DetailHolidayViewController.swift in Sources */,
+				161EE5B32423C3690094B8E0 /* RegistrationThirdPageView.swift in Sources */,
 				444CE79723D8ABD0004667B5 /* CardElement.swift in Sources */,
+				1617BCC52418FB9900B63715 /* Button.swift in Sources */,
 				4431561223D0AA05004B5B59 /* Constant.swift in Sources */,
 				44DDFF5E23D4CC1A00024B7C /* APIService.swift in Sources */,
 				4431562823D0AE19004B5B59 /* UserDefaults.swift in Sources */,
+				161EE5B12423C3570094B8E0 /* RegistrationThirdPageViewController.swift in Sources */,
 				4431561823D0AB55004B5B59 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -816,7 +872,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73VJRTF9X7;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -824,7 +880,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.012;
+				MARKETING_VERSION = 0.013;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurch;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -841,7 +897,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73VJRTF9X7;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -849,7 +905,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.012;
+				MARKETING_VERSION = 0.013;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurch;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";
