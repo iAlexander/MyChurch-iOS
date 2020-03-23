@@ -25,6 +25,10 @@
 		161EE5AF2423C1200094B8E0 /* RegistrationSecondPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5AE2423C1200094B8E0 /* RegistrationSecondPageView.swift */; };
 		161EE5B12423C3570094B8E0 /* RegistrationThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5B02423C3570094B8E0 /* RegistrationThirdPageViewController.swift */; };
 		161EE5B32423C3690094B8E0 /* RegistrationThirdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5B22423C3690094B8E0 /* RegistrationThirdPageView.swift */; };
+		162FCF8F24266E0C008F58A7 /* RegistrationFourthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF8E24266E0C008F58A7 /* RegistrationFourthPageViewController.swift */; };
+		162FCF9124266E1D008F58A7 /* RegistrationFourthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */; };
+		162FCF93242690B3008F58A7 /* RegistrationFifthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF92242690B3008F58A7 /* RegistrationFifthPageViewController.swift */; };
+		162FCF95242690BF008F58A7 /* RegistrationFifthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF94242690BF008F58A7 /* RegistrationFifthPageView.swift */; };
 		1643C5F62416B28200599D0D /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643C5F52416B28200599D0D /* DetailMapViewController.swift */; };
 		1643C5F82416B29500599D0D /* DetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643C5F72416B29500599D0D /* DetailMapView.swift */; };
 		165C28E6240FDD5800A8B685 /* ChurchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */; };
@@ -98,6 +102,10 @@
 		161EE5AE2423C1200094B8E0 /* RegistrationSecondPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSecondPageView.swift; sourceTree = "<group>"; };
 		161EE5B02423C3570094B8E0 /* RegistrationThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationThirdPageViewController.swift; sourceTree = "<group>"; };
 		161EE5B22423C3690094B8E0 /* RegistrationThirdPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationThirdPageView.swift; sourceTree = "<group>"; };
+		162FCF8E24266E0C008F58A7 /* RegistrationFourthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFourthPageViewController.swift; sourceTree = "<group>"; };
+		162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFourthPageView.swift; sourceTree = "<group>"; };
+		162FCF92242690B3008F58A7 /* RegistrationFifthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFifthPageViewController.swift; sourceTree = "<group>"; };
+		162FCF94242690BF008F58A7 /* RegistrationFifthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFifthPageView.swift; sourceTree = "<group>"; };
 		1643C5F52416B28200599D0D /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
 		1643C5F72416B29500599D0D /* DetailMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapView.swift; sourceTree = "<group>"; };
 		165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchTableViewCell.swift; sourceTree = "<group>"; };
@@ -210,6 +218,10 @@
 				161EE5AE2423C1200094B8E0 /* RegistrationSecondPageView.swift */,
 				161EE5B02423C3570094B8E0 /* RegistrationThirdPageViewController.swift */,
 				161EE5B22423C3690094B8E0 /* RegistrationThirdPageView.swift */,
+				162FCF8E24266E0C008F58A7 /* RegistrationFourthPageViewController.swift */,
+				162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */,
+				162FCF92242690B3008F58A7 /* RegistrationFifthPageViewController.swift */,
+				162FCF94242690BF008F58A7 /* RegistrationFifthPageView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -693,6 +705,7 @@
 				166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */,
 				161EE5AA2423B84D0094B8E0 /* RegistrationFirstPageView.swift in Sources */,
 				161EE5AF2423C1200094B8E0 /* RegistrationSecondPageView.swift in Sources */,
+				162FCF8F24266E0C008F58A7 /* RegistrationFourthPageViewController.swift in Sources */,
 				4424DF6723D9A92600E5AB65 /* Image.swift in Sources */,
 				4431AC4523D1CE8000081EC4 /* CalendarViewController.swift in Sources */,
 				1617BCB52418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift in Sources */,
@@ -700,6 +713,7 @@
 				167AC7382405793B0044D620 /* CalendarTableCell.swift in Sources */,
 				1643C5F62416B28200599D0D /* DetailMapViewController.swift in Sources */,
 				4431AC4723D1CE9400081EC4 /* NewsViewController.swift in Sources */,
+				162FCF93242690B3008F58A7 /* RegistrationFifthPageViewController.swift in Sources */,
 				167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */,
 				442A1A8A23DB095100645ACC /* CGFloat.swift in Sources */,
 				44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */,
@@ -707,6 +721,7 @@
 				1617BCC12418FA4500B63715 /* PrayerTableViewCell.swift in Sources */,
 				4431562323D0AE19004B5B59 /* UIViewController.swift in Sources */,
 				445AC70723DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift in Sources */,
+				162FCF9124266E1D008F58A7 /* RegistrationFourthPageView.swift in Sources */,
 				445AC70523DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift in Sources */,
 				4431562A23D0AE19004B5B59 /* UIDevice.swift in Sources */,
 				443155FE23CF552B004B5B59 /* MapModel.swift in Sources */,
@@ -721,6 +736,7 @@
 				1617BCC72418FBB200B63715 /* ModalViewController.swift in Sources */,
 				4424DF6A23D9B05800E5AB65 /* NewsTableViewCell.swift in Sources */,
 				444CE79B23D8B2E7004667B5 /* UIColor.swift in Sources */,
+				162FCF95242690BF008F58A7 /* RegistrationFifthPageView.swift in Sources */,
 				4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */,
 				4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */,
 				4431562623D0AE19004B5B59 /* NSLayout.swift in Sources */,
