@@ -32,6 +32,13 @@
 		1643C5F62416B28200599D0D /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643C5F52416B28200599D0D /* DetailMapViewController.swift */; };
 		1643C5F82416B29500599D0D /* DetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643C5F72416B29500599D0D /* DetailMapView.swift */; };
 		165C28E6240FDD5800A8B685 /* ChurchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */; };
+		166B4819242B7070009D9945 /* BelieverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4818242B7070009D9945 /* BelieverViewController.swift */; };
+		166B481B242B707D009D9945 /* BelieverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B481A242B707D009D9945 /* BelieverView.swift */; };
+		166B481D242BC445009D9945 /* ChooseHramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B481C242BC445009D9945 /* ChooseHramViewController.swift */; };
+		166B481F242BC454009D9945 /* ChooseHramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B481E242BC454009D9945 /* ChooseHramView.swift */; };
+		166B4822242BD3C8009D9945 /* HramTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4821242BD3C8009D9945 /* HramTableViewCell.swift */; };
+		166B4824242D35DA009D9945 /* ChooseEparhiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4823242D35DA009D9945 /* ChooseEparhiesViewController.swift */; };
+		166B4826242D35E6009D9945 /* ChooseEparhiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4825242D35E6009D9945 /* ChooseEparhiesView.swift */; };
 		166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E90BB2403FB16005376D3 /* CalendarView.swift */; };
 		167AC7382405793B0044D620 /* CalendarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC7372405793B0044D620 /* CalendarTableCell.swift */; };
 		167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73924058DA20044D620 /* API_Zhekon.swift */; };
@@ -109,6 +116,13 @@
 		1643C5F52416B28200599D0D /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
 		1643C5F72416B29500599D0D /* DetailMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapView.swift; sourceTree = "<group>"; };
 		165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchTableViewCell.swift; sourceTree = "<group>"; };
+		166B4818242B7070009D9945 /* BelieverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelieverViewController.swift; sourceTree = "<group>"; };
+		166B481A242B707D009D9945 /* BelieverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelieverView.swift; sourceTree = "<group>"; };
+		166B481C242BC445009D9945 /* ChooseHramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseHramViewController.swift; sourceTree = "<group>"; };
+		166B481E242BC454009D9945 /* ChooseHramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseHramView.swift; sourceTree = "<group>"; };
+		166B4821242BD3C8009D9945 /* HramTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HramTableViewCell.swift; sourceTree = "<group>"; };
+		166B4823242D35DA009D9945 /* ChooseEparhiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEparhiesViewController.swift; sourceTree = "<group>"; };
+		166B4825242D35E6009D9945 /* ChooseEparhiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEparhiesView.swift; sourceTree = "<group>"; };
 		166E90BB2403FB16005376D3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		167AC7372405793B0044D620 /* CalendarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableCell.swift; sourceTree = "<group>"; };
 		167AC73924058DA20044D620 /* API_Zhekon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Zhekon.swift; sourceTree = "<group>"; };
@@ -211,7 +225,15 @@
 		161EE5A62423B81B0094B8E0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				166B4817242B7054009D9945 /* Believer */,
 				161EE5AB2423BE210094B8E0 /* Registration */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		161EE5AB2423BE210094B8E0 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
 				161EE5A72423B83C0094B8E0 /* RegistrationFirstPageViewController.swift */,
 				161EE5A92423B84D0094B8E0 /* RegistrationFirstPageView.swift */,
 				161EE5AC2423C1070094B8E0 /* RegistrationSecondPageViewController.swift */,
@@ -222,13 +244,6 @@
 				162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */,
 				162FCF92242690B3008F58A7 /* RegistrationFifthPageViewController.swift */,
 				162FCF94242690BF008F58A7 /* RegistrationFifthPageView.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		161EE5AB2423BE210094B8E0 /* Registration */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -241,6 +256,28 @@
 				1643C5F72416B29500599D0D /* DetailMapView.swift */,
 			);
 			path = DetailMap;
+			sourceTree = "<group>";
+		};
+		166B4817242B7054009D9945 /* Believer */ = {
+			isa = PBXGroup;
+			children = (
+				166B4820242BD3AB009D9945 /* Cells */,
+				166B4818242B7070009D9945 /* BelieverViewController.swift */,
+				166B481A242B707D009D9945 /* BelieverView.swift */,
+				166B481C242BC445009D9945 /* ChooseHramViewController.swift */,
+				166B481E242BC454009D9945 /* ChooseHramView.swift */,
+				166B4823242D35DA009D9945 /* ChooseEparhiesViewController.swift */,
+				166B4825242D35E6009D9945 /* ChooseEparhiesView.swift */,
+			);
+			path = Believer;
+			sourceTree = "<group>";
+		};
+		166B4820242BD3AB009D9945 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				166B4821242BD3C8009D9945 /* HramTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		167AC736240579110044D620 /* Cell */ = {
@@ -690,6 +727,7 @@
 				1617BCAF2417F65000B63715 /* DetailMapKathedralViewController.swift in Sources */,
 				161EE5AD2423C1070094B8E0 /* RegistrationSecondPageViewController.swift in Sources */,
 				443155F023CF368C004B5B59 /* PCU.xcdatamodeld in Sources */,
+				166B481B242B707D009D9945 /* BelieverView.swift in Sources */,
 				4431562723D0AE19004B5B59 /* String.swift in Sources */,
 				165C28E6240FDD5800A8B685 /* ChurchTableViewCell.swift in Sources */,
 				4431562423D0AE19004B5B59 /* DispatchQueueHelper.swift in Sources */,
@@ -697,10 +735,12 @@
 				1617BCB32418F9D500B63715 /* OnboardingModel.swift in Sources */,
 				442A068223D2C834004E98DB /* ViewModel.swift in Sources */,
 				444CE79923D8ADEE004667B5 /* Label.swift in Sources */,
+				166B4819242B7070009D9945 /* BelieverViewController.swift in Sources */,
 				44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */,
 				44FC0A122401757C003A7E7E /* MapViewController.swift in Sources */,
 				4431562923D0AE19004B5B59 /* UIImage + UIImageView.swift in Sources */,
 				167AC73C24058E490044D620 /* ChutchObjects.swift in Sources */,
+				166B4822242BD3C8009D9945 /* HramTableViewCell.swift in Sources */,
 				1617BCC02418FA4500B63715 /* PrayerViewController.swift in Sources */,
 				166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */,
 				161EE5AA2423B84D0094B8E0 /* RegistrationFirstPageView.swift in Sources */,
@@ -711,6 +751,7 @@
 				1617BCB52418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift in Sources */,
 				161EE5A82423B83C0094B8E0 /* RegistrationFirstPageViewController.swift in Sources */,
 				167AC7382405793B0044D620 /* CalendarTableCell.swift in Sources */,
+				166B4826242D35E6009D9945 /* ChooseEparhiesView.swift in Sources */,
 				1643C5F62416B28200599D0D /* DetailMapViewController.swift in Sources */,
 				4431AC4723D1CE9400081EC4 /* NewsViewController.swift in Sources */,
 				162FCF93242690B3008F58A7 /* RegistrationFifthPageViewController.swift in Sources */,
@@ -719,6 +760,7 @@
 				44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */,
 				167AC7402406B9110044D620 /* DetailHolidayView.swift in Sources */,
 				1617BCC12418FA4500B63715 /* PrayerTableViewCell.swift in Sources */,
+				166B4824242D35DA009D9945 /* ChooseEparhiesViewController.swift in Sources */,
 				4431562323D0AE19004B5B59 /* UIViewController.swift in Sources */,
 				445AC70723DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift in Sources */,
 				162FCF9124266E1D008F58A7 /* RegistrationFourthPageView.swift in Sources */,
@@ -726,6 +768,7 @@
 				4431562A23D0AE19004B5B59 /* UIDevice.swift in Sources */,
 				443155FE23CF552B004B5B59 /* MapModel.swift in Sources */,
 				445AC70923DF1CDC000A18E0 /* NewsDetailsViewModel.swift in Sources */,
+				166B481D242BC445009D9945 /* ChooseHramViewController.swift in Sources */,
 				44FC0A2A2402796D003A7E7E /* OnboardingViewController.swift in Sources */,
 				4431560D23D0A8AC004B5B59 /* TabBarController.swift in Sources */,
 				167AC7422406BFC80044D620 /* HolidayImageCollectionCell.swift in Sources */,
@@ -734,6 +777,7 @@
 				443155E623CF368C004B5B59 /* AppDelegate.swift in Sources */,
 				44FC0A2324027566003A7E7E /* SplashViewController.swift in Sources */,
 				1617BCC72418FBB200B63715 /* ModalViewController.swift in Sources */,
+				166B481F242BC454009D9945 /* ChooseHramView.swift in Sources */,
 				4424DF6A23D9B05800E5AB65 /* NewsTableViewCell.swift in Sources */,
 				444CE79B23D8B2E7004667B5 /* UIColor.swift in Sources */,
 				162FCF95242690BF008F58A7 /* RegistrationFifthPageView.swift in Sources */,

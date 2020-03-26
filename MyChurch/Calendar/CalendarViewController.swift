@@ -28,7 +28,6 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
                 for (index, item) in self.allHolidays.enumerated() {
                     self.allHolidays[index].date = item.date?.strstr(needle: "T", beforeNeedle: true) ?? ""
                 }
-                
                 self.mainView.holidayTableView.reloadData()
                 self.mainView.calendar.reloadData()
             case .partialSuccess( _): break

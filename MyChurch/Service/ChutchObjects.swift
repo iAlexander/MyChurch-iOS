@@ -80,6 +80,24 @@ struct WorkSchedule: Codable {
     let schedule: String?
 }
 
+// MARK: работаю с объектом для взятия всех храмов
+struct AllHrams: Codable {
+    let list: [HramInfo]?
+}
 
+struct HramInfo: Codable {
+    let id: Int?
+    let name: String?
+    let lt: Float?
+    let lg: Float?
+}
 
+// MARK: работаю с объектом для взятия всех храмов
+struct EparhiesData: Codable {
+    let list: [EparhiesList]?
+}
 
+struct EparhiesList: Codable {
+    let id: Int?
+    let name: String?
+}

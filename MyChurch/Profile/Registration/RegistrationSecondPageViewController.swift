@@ -15,13 +15,13 @@ class RegistrationSecondPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigView()
-        self.mainView.arhieriyButton.addTarget(self, action: #selector(openNumberPage), for: .touchUpInside)
-        self.mainView.believerButton.addTarget(self, action: #selector(openNumberPage), for: .touchUpInside)
-        self.mainView.clergyButton.addTarget(self, action: #selector(openNumberPage), for: .touchUpInside)
+        self.mainView.believerButton.addTarget(self, action: #selector(believerButtonPressed), for: .touchUpInside)
+        //   self.mainView.arhieriyButton.addTarget(self, action: #selector(openNumberPage), for: .touchUpInside)
+        //   self.mainView.clergyButton.addTarget(self, action: #selector(openNumberPage), for: .touchUpInside)
     }
     
-    @objc func openNumberPage() {
-        let vc = RegistrationThirdPageViewController()
+    @objc func believerButtonPressed() {
+        let vc = BelieverViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -30,5 +30,4 @@ class RegistrationSecondPageViewController: UIViewController {
         self.mainView.frame = self.view.bounds
         self.title = "Особистий кабінет"
     }
-    
 }
