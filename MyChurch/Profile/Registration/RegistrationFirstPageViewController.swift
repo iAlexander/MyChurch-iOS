@@ -25,8 +25,20 @@ class RegistrationFirstPageViewController: UIViewController {
     }
     
     @objc func personalAreaPressed() {
-        let vc = RegistrationSecondPageViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let data = UserDefaults.standard.value(forKey:"UserData") as? Data {
+            let userData = try? PropertyListDecoder().decode(UserDatas.self, from: data)
+            print(userData as Any)
+            if userData?.data?.firstName?.count ?? 0 > 0 &&  userData?.data?.lastName?.count ?? 0 > 0 {
+                let vc = GeneralPageProfileViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = LoginViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        } else {
+            let vc = LoginViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @objc func spiritualSupportPressed() {

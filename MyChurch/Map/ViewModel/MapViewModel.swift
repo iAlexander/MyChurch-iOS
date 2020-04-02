@@ -22,13 +22,12 @@ class MapViewModel: ViewModel {
     
     func startFetchingData(lt: String, lg: String) {
         ANLoader.activityBackgroundColor = UIColor(red: 0.004, green: 0.475, blue: 0.898, alpha: 1)
-            //    ANLoader.showLoading("Завантаження...", disableUI: true)
+           ANLoader.showLoading("Завантаження...", disableUI: true)
         DispatchQueue.global(qos: .background).async {
             Repository.shared.getTemples(lt: lt, lg: lg) { (response) in
-                MapViewModel.temples = response.data
-                
+                MapViewModel.temples = response.list
                 DispatchQueue.main.async {
-                    self.delegate?.didFinishFetchingData(response.data)
+                    self.delegate?.didFinishFetchingData(response.list)
                 }
             }
         }

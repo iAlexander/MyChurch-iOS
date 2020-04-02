@@ -181,7 +181,6 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func dismiss() {
         UserDefaults.standard.set(true, forKey: UserDefaults.Keys.isPrivacyPolicy.rawValue)
-        
         self.customAlert.dismiss(animated: false)
     }
     

@@ -10,8 +10,7 @@ class TempleCollectionViewController: UICollectionViewController, UICollectionVi
 
     var data: [Temple] = [] {
         didSet {
-            print( self.data)
-            self.data = self.data.sorted(by: { $0.distance < ($1.distance)})
+           // self.data = self.data.sorted(by: { $0.distance < ($1.distance)})
             self.collectionView.reloadData()
         }
     }
@@ -133,7 +132,7 @@ class TempleCollectionViewCell: UICollectionViewCell {
     
     private func setupData(data: Temple) {
         churchName.text = data.name
-        distance.text = "\(String(Int(data.distance))) км"
+        distance.text = "\(String(Int(data.distance ?? 0))) км"
     }
     
     private func setupShapes() {

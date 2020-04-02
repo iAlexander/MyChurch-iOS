@@ -158,7 +158,7 @@ class DetailMapKathedralView: UIView {
         
         templeHolidayApiText.textAlignment = .right
         templeHolidayApiText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        templeHolidayApiText.text = "10 листопада"
+       // templeHolidayApiText.text = "10 листопада"
         templeHolidayApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         scrollView.addSubview(templeHolidayApiText)
         
@@ -186,10 +186,12 @@ class DetailMapKathedralView: UIView {
         infoSegmentControll.pin.below(of: imageCollectionView).marginTop(10).horizontally(15).height(30)
         churchTopName.pin.horizontally(15).height(50).below(of: infoSegmentControll).marginTop(10)
         eparhiyaCityName.pin.below(of: churchTopName).marginTop(20).horizontally(15).height(20)
-        openNow.pin.left(15).below(of: eparhiyaCityName).marginTop(8).height(25).width((UIScreen.main.bounds.size.width / 2) - 40)
-        pointText.pin.left(to:openNow.edge.right).top(to:openNow.edge.top).height(25).width(10)
-        closeAtTop.pin.left(to:pointText.edge.right).top(to:pointText.edge.top).height(25).right().marginLeft(5)
-        workScheduleText.pin.below(of: closeAtTop).marginTop(15).left(15).right().height(25)
+//
+//        openNow.pin.left(15).below(of: eparhiyaCityName).marginTop(8).height(25).width((UIScreen.main.bounds.size.width / 2) - 40)
+//        pointText.pin.left(to:openNow.edge.right).top(to:openNow.edge.top).height(25).width(10)
+//        closeAtTop.pin.left(to:pointText.edge.right).top(to:pointText.edge.top).height(25).right().marginLeft(5)
+     
+        workScheduleText.pin.below(of: eparhiyaCityName).marginTop(5).left(15).right().height(25)
         monFriday.pin.below(of: workScheduleText).horizontally(15).height(25)
         markerImage.pin.left(15).below(of: monFriday).marginTop(20).height(20).width(15)
         adressText.pin.top(to:markerImage.edge.top).bottom(to:markerImage.edge.bottom).left(to:markerImage.edge.right).marginLeft(15).right()

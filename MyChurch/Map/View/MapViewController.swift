@@ -4,6 +4,7 @@ import UIKit
 import CoreLocation
 import GoogleMaps
 import ANLoader
+import MapKit
 
 // delegate for selecting temple on a map/templesColectionViewController
 protocol SelectTempleDelegate: class {
@@ -155,15 +156,18 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if allChurchFiltered[indexPath.row].type == "Кафедральний" {
-            let vc = DetailMapKathedralViewController()
-            vc.templeInfo = allChurchFiltered[indexPath.row]
-            self.navigationController?.pushViewController(vc, animated: true)
-        }else {
-            let vc = DetailMapViewController()
-            vc.templeInfo = allChurchFiltered[indexPath.row]
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        let vc = DetailMapViewController()
+        vc.templeInfo = allChurchFiltered[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+        //        if allChurchFiltered[indexPath.row].type == "Кафедральний" {
+        //            let vc = DetailMapKathedralViewController()
+        //            vc.templeInfo = allChurchFiltered[indexPath.row]
+        //            self.navigationController?.pushViewController(vc, animated: true)
+        //        }else {
+        //            let vc = DetailMapViewController()
+        //            vc.templeInfo = allChurchFiltered[indexPath.row]
+        //            self.navigationController?.pushViewController(vc, animated: true)
+        //        }
     }
 }
 
@@ -225,21 +229,20 @@ extension MapViewController: GMSMapViewDelegate, CLLocationManagerDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        ANLoader.showLoading()
         ANLoader.activityBackgroundColor = UIColor(red: 0.004, green: 0.475, blue: 0.898, alpha: 1)
         for position in self.allChurch {
-            if position.lt == marker.position.latitude.description && position.lg == marker.position.longitude.description {
-                if position.type == "Кафедральний" {
-                    let vc = DetailMapKathedralViewController()
-                    vc.templeInfo = position
-                    self.navigationController?.pushViewController(vc, animated: true)
-                    break
-                }else {
+            if position.lt.description == marker.position.latitude.description && position.lg.description == marker.position.longitude.description {
+//                if position.type == "Кафедральний" {
+//                    let vc = DetailMapKathedralViewController()
+//                    vc.templeInfo = position
+//                    self.navigationController?.pushViewController(vc, animated: true)
+//                    break
+//                }else {
                     let vc = DetailMapViewController()
                     vc.templeInfo = position
                     self.navigationController?.pushViewController(vc, animated: true)
                     break
-                }
+            //    }
             }
         }
     return true
@@ -256,16 +259,25 @@ extension MapViewController: MapDelegate, SelectTempleDelegate {
     func didFinishFetchingData(_ data: [Temple]?) {
         ANLoader.hide()
         if let data = data {
-            self.allChurch = data.sorted(by: { $0.distance < ($1.distance)})
+            
+            for (index, item) in data.enumerated() {
+                let endLocation = CLLocation(latitude: data[index].lt, longitude: data[index].lg)
+                let distance = (self.locationManager.location?.distance(from: endLocation))! / 1000
+                print(" \(String(format:"%.02f", distance)) KMs ")
+                let itemFullData = Temple(id: item.id, name: item.name, lt: item.lt, lg: item.lg
+                    , distance: distance)
+                self.allChurch.append(itemFullData)
+            }
+               self.allChurch = self.allChurch.sorted(by: { $0.distance! < ($1.distance!)})
             for item in data {
-                let position = CLLocationCoordinate2D(latitude: (Double(item.lt))!, longitude: Double(item.lg)!)
+                let position = CLLocationCoordinate2D(latitude: (Double(item.lt)), longitude: Double(item.lg))
                 let marker = GMSMarker(position: position)
                 marker.title = nil
                 marker.snippet = nil
                 marker.map = self.mapView
                 marker.icon = UIImage(named: "marker")
             }
-            self.templesColectionViewController.data = data
+            self.templesColectionViewController.data = self.allChurch
         }
     }
     
@@ -276,7 +288,6 @@ extension MapViewController: MapDelegate, SelectTempleDelegate {
             let latitude = Double(allChurch[indexPath.row].lt) ?? 0.0
             let longitude = Double(allChurch[indexPath.row].lg) ?? 0.0
             let coordinate = GMSCameraPosition(latitude: latitude, longitude: longitude, zoom: 16)
-            print(allChurch[indexPath.row].name)
             
             CATransaction.setValue(0.5, forKey: kCATransactionAnimationDuration)
             self.mapView.animate(to: coordinate)

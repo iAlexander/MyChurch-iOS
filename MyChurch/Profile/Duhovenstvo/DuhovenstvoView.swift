@@ -1,14 +1,14 @@
 //
-//  BelieverView.swift
+//  DuhovenstvoView.swift
 //  MyChurch
 //
-//  Created by Zhekon on 25.03.2020.
+//  Created by Zhekon on 31.03.2020.
 //  Copyright © 2020 Oleksandr Lohozinskyi. All rights reserved.
 //
 
 import UIKit
 
-class BelieverView: UIView {
+class DuhovenstvoView: UIView {
     
     let scrollView = UIScrollView()
     private let nameLabel = UILabel()
@@ -17,8 +17,13 @@ class BelieverView: UIView {
     private let serNameLabel = UILabel()
     let serNameTextField = UITextField()
     private let serNameGrayLine = UIView()
+    
     private let birthdayLabel = UILabel()
     let birthdayDate = UIDatePicker()
+    
+    private let tezoimenustvoLabel = UILabel()
+    let tezoimenustvoDate = UIDatePicker()
+    
     private let numberPhoneLabel = UILabel()
     let phoneTextField = UITextField()
     private let phoneGrayLine = UIView()
@@ -30,12 +35,7 @@ class BelieverView: UIView {
     private let statusBackView = UIView()
     let statusLabel = UILabel()
     private let arrowImage = UIImageView()
-    let believerButton = UIButton()
-    let believerLabel = UILabel()
-    let chlenParafRaduButton = UIButton()
-    let chlenParafRaduLabel = UILabel()
     let hramLabel = UILabel()
-    
     let chooseHramButton = UIButton()
     private let hramBackView = UIView()
     let hramLabelButton = UILabel()
@@ -85,7 +85,7 @@ class BelieverView: UIView {
         
         scrollView.addSubview(serNameTextField)
         serNameTextField.autocorrectionType = .no
-
+        
         scrollView.addSubview(serNameGrayLine)
         serNameGrayLine.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
         
@@ -98,6 +98,16 @@ class BelieverView: UIView {
         scrollView.addSubview(birthdayDate)
         birthdayDate.datePickerMode = .date
         birthdayDate.locale = Locale(identifier: "uk")
+        
+        scrollView.addSubview(tezoimenustvoLabel)
+        tezoimenustvoLabel.text = "День тезоіменитства"
+        tezoimenustvoLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        tezoimenustvoLabel.textAlignment = .left
+        tezoimenustvoLabel.textColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
+        
+        scrollView.addSubview(tezoimenustvoDate)
+        tezoimenustvoDate.datePickerMode = .date
+        tezoimenustvoDate.locale = Locale(identifier: "uk")
         
         scrollView.addSubview(numberPhoneLabel)
         numberPhoneLabel.text = "Номер телефону"
@@ -121,12 +131,12 @@ class BelieverView: UIView {
         scrollView.addSubview(emailTextField)
         emailTextField.placeholder = "Введiть email латиницею..."
         emailTextField.autocorrectionType = .no
-
+        
         scrollView.addSubview(emailGrayLine)
         emailGrayLine.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
         
         scrollView.addSubview(statusTextLabel)
-        statusTextLabel.text = "Статус"
+        statusTextLabel.text = "Сан"
         statusTextLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         statusTextLabel.textAlignment = .left
         statusTextLabel.textColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
@@ -136,14 +146,14 @@ class BelieverView: UIView {
         statusBackView.layer.cornerRadius = 10
         
         statusBackView.addSubview(statusLabel)
-        statusLabel.text = "Вірянин"
+        statusLabel.text = "Диякон"
         statusLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         statusLabel.textAlignment = .left
         statusLabel.textColor = .black
         
         statusBackView.addSubview(arrowImage)
-        arrowImage.image = UIImage(named: "downArrow")
-        arrowImage.contentMode = .scaleAspectFill
+        arrowImage.image = UIImage(named: "searchIcon")
+        arrowImage.contentMode = .scaleAspectFit
         
         statusBackView.addSubview(chooseStatusButton)
         
@@ -163,23 +173,7 @@ class BelieverView: UIView {
         
         hramBackView.addSubview(chooseHramButton)
         
-        scrollView.addSubview(believerButton)
-        believerButton.layer.backgroundColor = UIColor(red: 0.949, green: 0.976, blue: 0.996, alpha: 1).cgColor
         statusBackView.layer.cornerRadius = 10
-        
-        believerButton.addSubview(believerLabel)
-        believerLabel.text = "Вірянин"
-        believerLabel.textAlignment = .center
-        believerLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        
-        scrollView.addSubview(chlenParafRaduButton)
-        chlenParafRaduButton.layer.backgroundColor = UIColor(red: 0.949, green: 0.976, blue: 0.996, alpha: 1).cgColor
-        chlenParafRaduButton.layer.cornerRadius = 10
-        
-        chlenParafRaduButton.addSubview(chlenParafRaduLabel)
-        chlenParafRaduLabel.text = "Член парафіяльної ради"
-        chlenParafRaduLabel.textAlignment = .center
-        chlenParafRaduLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         
         scrollView.addSubview(hramLabel)
         hramLabel.text = "Храм"
@@ -230,9 +224,16 @@ class BelieverView: UIView {
         serNameLabel.pin.below(of: nameGrayLine).horizontally(15).height(20).marginTop(30)
         serNameTextField.pin.below(of: serNameLabel).marginTop(5).horizontally(15).height(20)
         serNameGrayLine.pin.below(of: serNameTextField).horizontally(15).height(1.5)
+        
+        
         birthdayLabel.pin.below(of: serNameGrayLine).horizontally(15).height(20).marginTop(30)
         birthdayDate.pin.below(of: birthdayLabel).marginTop(10).horizontally(0).height(175)
-        numberPhoneLabel.pin.below(of: birthdayDate).horizontally(15).height(20).marginTop(30)
+        
+        tezoimenustvoLabel.pin.below(of: birthdayDate).horizontally(15).height(20).marginTop(30)
+        tezoimenustvoDate.pin.below(of: tezoimenustvoLabel).marginTop(10).horizontally(0).height(175)
+        
+        
+        numberPhoneLabel.pin.below(of: tezoimenustvoDate).horizontally(15).height(20).marginTop(30)
         phoneTextField.pin.below(of: numberPhoneLabel).marginTop(5).horizontally(15).height(20)
         phoneGrayLine.pin.below(of: phoneTextField).horizontally(15).height(1.5)
         emailLabel.pin.below(of: phoneGrayLine).horizontally(15).height(20).marginTop(40)
@@ -243,12 +244,8 @@ class BelieverView: UIView {
         statusBackView.pin.below(of: statusTextLabel).marginTop(5).horizontally(15).height(50)
         chooseStatusButton.pin.all()
         statusLabel.pin.left(15).vertically(13).right(75)
-        arrowImage.pin.right(15).vertically(20).width(16)
+        arrowImage.pin.right(15).vertically(15).width(20)
         
-        believerButton.pin.below(of: statusBackView).horizontally(15).height(40).marginTop(5)
-        believerLabel.pin.all()
-        chlenParafRaduButton.pin.below(of: believerButton).marginTop(5).horizontally(15).height(40)
-        chlenParafRaduLabel.pin.all()
         hramLabel.pin.below(of: statusBackView).horizontally(15).height(20).marginTop(30)
         
         hramBackView.pin.below(of: hramLabel).marginTop(5).horizontally(15).height(50)
@@ -266,4 +263,5 @@ class BelieverView: UIView {
         saveLabel.pin.all()
         scrollView.contentSize = CGSize(width: currentWidth, height: saveButton.frame.maxY + 113)
     }
+    
 }

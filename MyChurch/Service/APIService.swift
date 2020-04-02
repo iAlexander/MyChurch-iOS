@@ -53,16 +53,15 @@ class APIService {
     
     // MARK: - Map
     func getTemples(lt: String, lg: String, completion: @escaping (TemplesData) -> Void) {
-        let dict = ["lt" : lt, "lg" : lg, "radius" : "1"]
-        let url = makeUrl(dict, api: .stage, endPoint: .temples)
-        
-        callEndPoint(url) { (response) in
+     //   let dict = ["lt" : lt, "lg" : lg, "radius" : "1"]
+      //  let url = makeUrl(dict, api: .stage, endPoint: .temples)
+          let url = "http://test.cerkva.asp-win.d2.digital/church/list-geo"
+        callEndPoint(url, method:.get) { (response) in
             switch response {
                 case .success(let result):
                     let json: String = result
                     do {
                         let data = try self.decoder.decode(TemplesData.self, from: Data(json.utf8))
-                        
                         completion(data)
                     } catch {
                         print(error.localizedDescription)

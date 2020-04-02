@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SendDataEparhiyaDelegate: class {
+    func eparhiyaName(name: String, eparhiyaId: Int)
+}
+
 class ChooseEparhiesViewController: UIViewController, UITableViewDelegate , UITableViewDataSource {
     
     let mainView = ChooseEparhiesView()
@@ -15,8 +19,8 @@ class ChooseEparhiesViewController: UIViewController, UITableViewDelegate , UITa
     private let reuseIdentifierTableView = "CellTableView"
     var allHrams = [EparhiesList]()
     var filteredAllHrams = [EparhiesList]()
-    weak var delegate: SendDataDelegate?
-    
+    weak var delegate: SendDataEparhiyaDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigView()
@@ -60,7 +64,7 @@ class ChooseEparhiesViewController: UIViewController, UITableViewDelegate , UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.hramName(name: filteredAllHrams[indexPath.row].name ?? "", isEparhiya: true)
+        delegate?.eparhiyaName(name: filteredAllHrams[indexPath.row].name ?? "", eparhiyaId: filteredAllHrams[indexPath.row].id ?? 0)
         self.navigationController?.popViewController(animated: true)
     }
     

@@ -10,7 +10,7 @@ import UIKit
 import ANLoader
 
 protocol SendDataDelegate: class {
-    func hramName(name: String, isEparhiya: Bool)
+    func hramName(name: String, hramId: Int)
 }
 
 class ChooseHramViewController: UIViewController, UITableViewDelegate , UITableViewDataSource {
@@ -67,7 +67,7 @@ class ChooseHramViewController: UIViewController, UITableViewDelegate , UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.hramName(name: filteredAllHrams[indexPath.row].name ?? "", isEparhiya: false)
+        delegate?.hramName(name: filteredAllHrams[indexPath.row].name ?? "", hramId: filteredAllHrams[indexPath.row].id ?? 0)
         self.navigationController?.popViewController(animated: true)
     }
     

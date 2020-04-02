@@ -1,15 +1,19 @@
 //
-//  BelieverViewController.swift
+//  ArhieriyViewController.swift
 //  MyChurch
 //
-//  Created by Zhekon on 25.03.2020.
+//  Created by Zhekon on 31.03.2020.
 //  Copyright © 2020 Oleksandr Lohozinskyi. All rights reserved.
 //
 
 import UIKit
 
-class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhiyaDelegate {
- 
+class ArhieriyViewController: UIViewController , SendDataDelegate, SendDataEparhiyaDelegate, SendDataSanDelegate {
+   
+    func sanType(name: String, eparhiyaId: Int) {
+        mainView.statusLabel.text = name
+    }
+    
     func hramName(name: String, hramId: Int) { //делегат, который возвращает храм и его айди
         mainView.hramLabelButton.text = name
         self.hramId = hramId
@@ -22,7 +26,7 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
         checkInfo()
     }
     
-    let mainView = BelieverView()
+    let mainView = ArhieriyView()
     var birthDate = Date()
     var member = String()
     var hramId = Int()
@@ -44,36 +48,31 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
         self.title = "Особистий кабінет"
-        self.mainView.believerButton.isHidden = true
-        self.mainView.chlenParafRaduButton.isHidden = true
         mainView.emailTextField.delegate = self
         mainView.birthdayDate.maximumDate = Date()
+        mainView.tezoimenustvoDate.maximumDate = Date()
         checkInfo()
     }
     
     func ConfigButtons() {
         self.mainView.chooseStatusButton.addTarget(self, action: #selector(statusPressed), for: .touchUpInside)
-        self.mainView.believerButton.addTarget(self, action: #selector(believerPressed), for: .touchUpInside)
-        self.mainView.chlenParafRaduButton.addTarget(self, action: #selector(chlenParafRaduButtonPressed), for: .touchUpInside)
         self.mainView.chooseHramButton.addTarget(self, action: #selector(chooseHramPressed), for: .touchUpInside)
         self.mainView.eparhiyaButton.addTarget(self, action: #selector(chooseEparhiyaPressed), for: .touchUpInside)
         self.mainView.saveButton.addTarget(self, action: #selector(savePressed), for: .touchUpInside)
         self.mainView.birthdayDate.addTarget(self, action: #selector(handler), for: .valueChanged)
+        self.mainView.tezoimenustvoDate.addTarget(self, action: #selector(handler), for: .valueChanged)
     }
     
     @objc func handler(sender: UIDatePicker) { //барабан даты
         var timeInterval = DateComponents()
         timeInterval.hour = 5
         print(Calendar.current.date(byAdding: timeInterval, to: mainView.birthdayDate.date)!)
+        print(Calendar.current.date(byAdding: timeInterval, to: mainView.tezoimenustvoDate.date)!)
     }
     
     @objc func savePressed() {
-        switch mainView.statusLabel.text {
-        case "Вірянин": self.member = "Parishioner"
-        case "Член парафіяльної ради": self.member = "Mpc"
-        default: break
-        }
-        registrationUser(name: mainView.nameTextField.text!, serName: mainView.serNameTextField.text!, birthday: mainView.birthdayDate.date.description, phone: mainView.phoneTextField.text!, email: mainView.emailTextField.text! , status: self.member, hram: self.hramId, eparhiya: self.eparhiyaId, angelday: "" ) { (result) in
+     self.member = "PriestPro"
+        registrationUser(name: mainView.nameTextField.text!, serName: mainView.serNameTextField.text!, birthday: mainView.birthdayDate.date.description, phone: mainView.phoneTextField.text!, email: mainView.emailTextField.text! , status: self.member, hram: self.hramId, eparhiya: self.eparhiyaId, angelday: mainView.tezoimenustvoDate.date.description ) { (result) in
             switch result {
             case .success(let data):
                 print(data)
@@ -103,23 +102,10 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
     }
     
     @objc func statusPressed() {
-        self.mainView.believerButton.isHidden = false
-        self.mainView.chlenParafRaduButton.isHidden = false
-        mainView.hramLabel.isHidden = true
-    }
-    
-    @objc func believerPressed() {
-        mainView.statusLabel.text = "Вірянин"
-        self.mainView.believerButton.isHidden = true
-        self.mainView.chlenParafRaduButton.isHidden = true
-        mainView.hramLabel.isHidden = false
-    }
-    
-    @objc func chlenParafRaduButtonPressed() {
-        mainView.statusLabel.text = "Член парафіяльної ради"
-        self.mainView.believerButton.isHidden = true
-        self.mainView.chlenParafRaduButton.isHidden = true
-        mainView.hramLabel.isHidden = false
+        let vc = ChooseSanViewController()
+        vc.delegate = self
+        vc.isPriest = false
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func checkInfo() { // чекаю кнопку при введенных данных
@@ -131,7 +117,7 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
     }
 }
 
-extension BelieverViewController: UITextFieldDelegate
+extension ArhieriyViewController: UITextFieldDelegate
 {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         checkInfo()

@@ -69,8 +69,6 @@ class RegistrationFirstPageView: UIView {
         personalAreaButton.layer.addSublayer(layerBlueThird)
         personalAreaButton.setTitle("Особистий кабiнет", for: .normal)
         addSubview(personalAreaButton)
-        
-
     }
     
     override func layoutSubviews() {

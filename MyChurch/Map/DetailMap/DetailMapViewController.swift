@@ -12,8 +12,8 @@ import ANLoader
 class DetailMapViewController: UIViewController {
     
     let mainView = DetailMapView()
-    var templeInfo = Temple(id: 0, name: "", distance: 0, lt: "", lg: "", type: "")
-    var templeData : TempleDetailData?
+    var templeInfo = Temple(id: 0, name: "", lt: 0, lg: 0)
+    var templeData : TempleData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +31,13 @@ class DetailMapViewController: UIViewController {
                 ANLoader.hide()
                 print(self.templeInfo)
                 self.mainView.churchTopName.text = data.data?.name
-                self.mainView.telApiText.text = data.data?.phone
+                //   self.mainView.telApiText.text = data.data?.phone
                 self.mainView.fatherManNameApiText.text = data.data?.bishop?.name
                 self.mainView.deaneryApiText.text = data.data?.presiding?.name
-                self.mainView.adressText.text = "\(data.data?.churchgeo?.locality ?? ""), \(data.data?.churchgeo?.street ?? "")"
-                self.mainView.monFriday.text = data.data?.workSchedule?.schedule ?? ""
-                self.mainView.eparhiyaCityName.text = data.data?.dioceseType?.type
+                self.mainView.adressText.text = "\(data.data?.locality ?? ""), \(data.data?.district ?? ""), \(data.data?.street ?? "")"
+                self.mainView.monFriday.text = data.data?.schedule ?? ""
+                self.mainView.eparhiyaCityName.text = data.data?.diocese?.name ?? ""
+                self.mainView.templeHolidayApiText.text = data.data?.galaDayTitle ?? ""
             case .partialSuccess( _): break
             case .failure(let error):
                 print(error)

@@ -5,14 +5,13 @@ import Foundation
 
 //MARK:-- Temples model
 struct TemplesData: Codable {
-    let data: [Temple]
+    let list: [Temple]
 }
 
 struct Temple: Codable, Equatable {
     let id: Int
     let name: String
-    let distance: Double
-    let lt: String
-    let lg: String
-    let type: String
+    let lt: Double
+    let lg: Double
+    var distance: Double?
 }

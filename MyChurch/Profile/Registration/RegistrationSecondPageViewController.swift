@@ -16,14 +16,24 @@ class RegistrationSecondPageViewController: UIViewController {
         super.viewDidLoad()
         ConfigView()
         self.mainView.believerButton.addTarget(self, action: #selector(believerButtonPressed), for: .touchUpInside)
-        //   self.mainView.arhieriyButton.addTarget(self, action: #selector(openNumberPage), for: .touchUpInside)
-        //   self.mainView.clergyButton.addTarget(self, action: #selector(openNumberPage), for: .touchUpInside)
+        self.mainView.arhieriyButton.addTarget(self, action: #selector(arhieriyButtonPressed), for: .touchUpInside)
+        self.mainView.clergyButton.addTarget(self, action: #selector(clergyButtonPressed), for: .touchUpInside)
     }
     
     @objc func believerButtonPressed() {
         let vc = BelieverViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func clergyButtonPressed() {
+          let vc = DuhovenstvoViewController()
+          self.navigationController?.pushViewController(vc, animated: true)
+      }
+    
+    @objc func arhieriyButtonPressed() {
+             let vc = ArhieriyViewController()
+             self.navigationController?.pushViewController(vc, animated: true)
+         }
     
     func ConfigView() {
         self.view.addSubview(mainView)

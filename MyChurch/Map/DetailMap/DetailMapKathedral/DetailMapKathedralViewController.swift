@@ -12,8 +12,8 @@ import ANLoader
 class DetailMapKathedralViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let mainView = DetailMapKathedralView()
-    var templeInfo = Temple(id: 0, name: "", distance: 0, lt: "", lg: "", type: "")
-    var templeData : TempleDetailData?
+    var templeInfo = Temple(id: 0, name: "", lt: 0, lg: 0)
+    var templeData : TempleData?
     private let reuseIdentifierCollectionView = "imageCell"
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -39,12 +39,13 @@ class DetailMapKathedralViewController: UIViewController, UICollectionViewDelega
                 ANLoader.hide()
                 print(self.templeInfo)
                 self.mainView.churchTopName.text = data.data?.name
-                self.mainView.telApiText.text = data.data?.phone
+                //   self.mainView.telApiText.text = data.data?.phone
                 self.mainView.fatherManNameApiText.text = data.data?.bishop?.name
                 self.mainView.deaneryApiText.text = data.data?.presiding?.name
-                self.mainView.adressText.text = "\(data.data?.churchgeo?.locality ?? ""), \(data.data?.churchgeo?.street ?? "")"
-                self.mainView.monFriday.text = data.data?.workSchedule?.schedule ?? ""
-                self.mainView.eparhiyaCityName.text = data.data?.dioceseType?.type
+                self.mainView.adressText.text = "\(data.data?.locality ?? ""), \(data.data?.district ?? ""), \(data.data?.street ?? "")"
+                self.mainView.monFriday.text = data.data?.schedule ?? ""
+                self.mainView.eparhiyaCityName.text = data.data?.diocese?.name ?? ""
+                self.mainView.templeHolidayApiText.text = data.data?.galaDayTitle ?? ""
             case .partialSuccess( _): break
             case .failure(let error):
                 print(error)
@@ -70,7 +71,7 @@ class DetailMapKathedralViewController: UIViewController, UICollectionViewDelega
         
         switch mainView.infoSegmentControll.selectedSegmentIndex
         {
-        case 0: mainView.openNow.isHidden = false;mainView.pointText.isHidden = false; mainView.closeAtTop.isHidden = false;mainView.workScheduleText.isHidden = false;mainView.monFriday.isHidden = false;  mainView.markerImage.isHidden = false; mainView.adressText.isHidden = false;mainView.createRouteView.isHidden = false;mainView.templeHoliday.isHidden = false;mainView.fatherManName.isHidden = false; mainView.deanery.isHidden = false;mainView.telText.isHidden = false;mainView.templeHolidayApiText.isHidden = false;mainView.fatherManNameApiText.isHidden = false;mainView.deaneryApiText.isHidden = false;  mainView.telApiText.isHidden = false; mainView.eparhiyaCityName.text = self.templeData?.data?.dioceseType?.type; mainView.layoutSubviews()
+        case 0: mainView.openNow.isHidden = false;mainView.pointText.isHidden = false; mainView.closeAtTop.isHidden = false;mainView.workScheduleText.isHidden = false;mainView.monFriday.isHidden = false;  mainView.markerImage.isHidden = false; mainView.adressText.isHidden = false;mainView.createRouteView.isHidden = false;mainView.templeHoliday.isHidden = false;mainView.fatherManName.isHidden = false; mainView.deanery.isHidden = false;mainView.telText.isHidden = false;mainView.templeHolidayApiText.isHidden = false;mainView.fatherManNameApiText.isHidden = false;mainView.deaneryApiText.isHidden = false;  mainView.telApiText.isHidden = false;mainView.layoutSubviews()  //mainView.eparhiyaCityName.text = self.templeData?.data?.dioceseType?.type;
         case 1: mainView.openNow.isHidden = true;   mainView.pointText.isHidden = true;
         mainView.closeAtTop.isHidden = true;  mainView.workScheduleText.isHidden = true;  mainView.monFriday.isHidden = true;  mainView.markerImage.isHidden = true;
         mainView.adressText.isHidden = true;   mainView.createRouteView.isHidden = true;  mainView.templeHoliday.isHidden = true;  mainView.fatherManName.isHidden = true;

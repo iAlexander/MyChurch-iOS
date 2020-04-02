@@ -19,6 +19,16 @@
 		1617BCC32418FA5E00B63715 /* PrayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCC22418FA5E00B63715 /* PrayerViewModel.swift */; };
 		1617BCC52418FB9900B63715 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCC42418FB9900B63715 /* Button.swift */; };
 		1617BCC72418FBB200B63715 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCC62418FBB200B63715 /* ModalViewController.swift */; };
+		161825372433881E00CFB99A /* DuhovenstvoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161825362433881E00CFB99A /* DuhovenstvoViewController.swift */; };
+		161825392433882A00CFB99A /* DuhovenstvoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161825382433882A00CFB99A /* DuhovenstvoView.swift */; };
+		1618253B24339B8A00CFB99A /* ChooseSanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618253A24339B8A00CFB99A /* ChooseSanViewController.swift */; };
+		1618253D24339B9B00CFB99A /* ChooseSanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618253C24339B9B00CFB99A /* ChooseSanView.swift */; };
+		161825402433AADE00CFB99A /* ArhieriyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618253F2433AADE00CFB99A /* ArhieriyViewController.swift */; };
+		161825422433AAF000CFB99A /* ArhieriyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161825412433AAF000CFB99A /* ArhieriyView.swift */; };
+		161825442434DC4400CFB99A /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161825432434DC4400CFB99A /* ChangeEmailViewController.swift */; };
+		161825462434DC5300CFB99A /* ChangeEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161825452434DC5300CFB99A /* ChangeEmailView.swift */; };
+		161825482434F08800CFB99A /* RemindPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161825472434F08800CFB99A /* RemindPassViewController.swift */; };
+		1618254A2434F09600CFB99A /* RemindPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161825492434F09600CFB99A /* RemindPassView.swift */; };
 		161EE5A82423B83C0094B8E0 /* RegistrationFirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5A72423B83C0094B8E0 /* RegistrationFirstPageViewController.swift */; };
 		161EE5AA2423B84D0094B8E0 /* RegistrationFirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5A92423B84D0094B8E0 /* RegistrationFirstPageView.swift */; };
 		161EE5AD2423C1070094B8E0 /* RegistrationSecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5AC2423C1070094B8E0 /* RegistrationSecondPageViewController.swift */; };
@@ -29,8 +39,14 @@
 		162FCF9124266E1D008F58A7 /* RegistrationFourthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */; };
 		162FCF93242690B3008F58A7 /* RegistrationFifthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF92242690B3008F58A7 /* RegistrationFifthPageViewController.swift */; };
 		162FCF95242690BF008F58A7 /* RegistrationFifthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF94242690BF008F58A7 /* RegistrationFifthPageView.swift */; };
+		163E3142242FA4020018B394 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E3141242FA4020018B394 /* LoginViewController.swift */; };
+		163E3144242FA4100018B394 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E3143242FA4100018B394 /* LoginView.swift */; };
+		163E3146243132190018B394 /* ChacngePasswordVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E3145243132190018B394 /* ChacngePasswordVIewController.swift */; };
+		163E3148243132270018B394 /* ChacngePasswordVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E3147243132270018B394 /* ChacngePasswordVIew.swift */; };
 		1643C5F62416B28200599D0D /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643C5F52416B28200599D0D /* DetailMapViewController.swift */; };
 		1643C5F82416B29500599D0D /* DetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643C5F72416B29500599D0D /* DetailMapView.swift */; };
+		1655941C242E404600C918D0 /* GeneralPageProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1655941B242E404600C918D0 /* GeneralPageProfileViewController.swift */; };
+		1655941E242E405200C918D0 /* GeneralPageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1655941D242E405200C918D0 /* GeneralPageProfileView.swift */; };
 		165C28E6240FDD5800A8B685 /* ChurchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */; };
 		166B4819242B7070009D9945 /* BelieverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4818242B7070009D9945 /* BelieverViewController.swift */; };
 		166B481B242B707D009D9945 /* BelieverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B481A242B707D009D9945 /* BelieverView.swift */; };
@@ -103,6 +119,16 @@
 		1617BCC22418FA5E00B63715 /* PrayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerViewModel.swift; sourceTree = "<group>"; };
 		1617BCC42418FB9900B63715 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1617BCC62418FBB200B63715 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		161825362433881E00CFB99A /* DuhovenstvoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuhovenstvoViewController.swift; sourceTree = "<group>"; };
+		161825382433882A00CFB99A /* DuhovenstvoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuhovenstvoView.swift; sourceTree = "<group>"; };
+		1618253A24339B8A00CFB99A /* ChooseSanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSanViewController.swift; sourceTree = "<group>"; };
+		1618253C24339B9B00CFB99A /* ChooseSanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSanView.swift; sourceTree = "<group>"; };
+		1618253F2433AADE00CFB99A /* ArhieriyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArhieriyViewController.swift; sourceTree = "<group>"; };
+		161825412433AAF000CFB99A /* ArhieriyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArhieriyView.swift; sourceTree = "<group>"; };
+		161825432434DC4400CFB99A /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
+		161825452434DC5300CFB99A /* ChangeEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailView.swift; sourceTree = "<group>"; };
+		161825472434F08800CFB99A /* RemindPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPassViewController.swift; sourceTree = "<group>"; };
+		161825492434F09600CFB99A /* RemindPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPassView.swift; sourceTree = "<group>"; };
 		161EE5A72423B83C0094B8E0 /* RegistrationFirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFirstPageViewController.swift; sourceTree = "<group>"; };
 		161EE5A92423B84D0094B8E0 /* RegistrationFirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFirstPageView.swift; sourceTree = "<group>"; };
 		161EE5AC2423C1070094B8E0 /* RegistrationSecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSecondPageViewController.swift; sourceTree = "<group>"; };
@@ -113,8 +139,14 @@
 		162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFourthPageView.swift; sourceTree = "<group>"; };
 		162FCF92242690B3008F58A7 /* RegistrationFifthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFifthPageViewController.swift; sourceTree = "<group>"; };
 		162FCF94242690BF008F58A7 /* RegistrationFifthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFifthPageView.swift; sourceTree = "<group>"; };
+		163E3141242FA4020018B394 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		163E3143242FA4100018B394 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		163E3145243132190018B394 /* ChacngePasswordVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChacngePasswordVIewController.swift; sourceTree = "<group>"; };
+		163E3147243132270018B394 /* ChacngePasswordVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChacngePasswordVIew.swift; sourceTree = "<group>"; };
 		1643C5F52416B28200599D0D /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
 		1643C5F72416B29500599D0D /* DetailMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapView.swift; sourceTree = "<group>"; };
+		1655941B242E404600C918D0 /* GeneralPageProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPageProfileViewController.swift; sourceTree = "<group>"; };
+		1655941D242E405200C918D0 /* GeneralPageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPageProfileView.swift; sourceTree = "<group>"; };
 		165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchTableViewCell.swift; sourceTree = "<group>"; };
 		166B4818242B7070009D9945 /* BelieverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelieverViewController.swift; sourceTree = "<group>"; };
 		166B481A242B707D009D9945 /* BelieverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelieverView.swift; sourceTree = "<group>"; };
@@ -222,9 +254,37 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		16182535243387F200CFB99A /* Duhovenstvo */ = {
+			isa = PBXGroup;
+			children = (
+				161825362433881E00CFB99A /* DuhovenstvoViewController.swift */,
+				161825382433882A00CFB99A /* DuhovenstvoView.swift */,
+			);
+			path = Duhovenstvo;
+			sourceTree = "<group>";
+		};
+		1618253E2433AAA600CFB99A /* Arhieriy */ = {
+			isa = PBXGroup;
+			children = (
+				1618253F2433AADE00CFB99A /* ArhieriyViewController.swift */,
+				161825412433AAF000CFB99A /* ArhieriyView.swift */,
+			);
+			path = Arhieriy;
+			sourceTree = "<group>";
+		};
 		161EE5A62423B81B0094B8E0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				163E3140242FA3E40018B394 /* Login */,
+				1655941A242E402700C918D0 /* General page */,
+				166B481C242BC445009D9945 /* ChooseHramViewController.swift */,
+				166B481E242BC454009D9945 /* ChooseHramView.swift */,
+				166B4823242D35DA009D9945 /* ChooseEparhiesViewController.swift */,
+				166B4825242D35E6009D9945 /* ChooseEparhiesView.swift */,
+				1618253A24339B8A00CFB99A /* ChooseSanViewController.swift */,
+				1618253C24339B9B00CFB99A /* ChooseSanView.swift */,
+				1618253E2433AAA600CFB99A /* Arhieriy */,
+				16182535243387F200CFB99A /* Duhovenstvo */,
 				166B4817242B7054009D9945 /* Believer */,
 				161EE5AB2423BE210094B8E0 /* Registration */,
 			);
@@ -248,6 +308,15 @@
 			path = Registration;
 			sourceTree = "<group>";
 		};
+		163E3140242FA3E40018B394 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				163E3141242FA4020018B394 /* LoginViewController.swift */,
+				163E3143242FA4100018B394 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		1643C5F42416B25800599D0D /* DetailMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,16 +327,27 @@
 			path = DetailMap;
 			sourceTree = "<group>";
 		};
+		1655941A242E402700C918D0 /* General page */ = {
+			isa = PBXGroup;
+			children = (
+				1655941B242E404600C918D0 /* GeneralPageProfileViewController.swift */,
+				1655941D242E405200C918D0 /* GeneralPageProfileView.swift */,
+				163E3145243132190018B394 /* ChacngePasswordVIewController.swift */,
+				163E3147243132270018B394 /* ChacngePasswordVIew.swift */,
+				161825432434DC4400CFB99A /* ChangeEmailViewController.swift */,
+				161825452434DC5300CFB99A /* ChangeEmailView.swift */,
+				161825472434F08800CFB99A /* RemindPassViewController.swift */,
+				161825492434F09600CFB99A /* RemindPassView.swift */,
+			);
+			path = "General page";
+			sourceTree = "<group>";
+		};
 		166B4817242B7054009D9945 /* Believer */ = {
 			isa = PBXGroup;
 			children = (
-				166B4820242BD3AB009D9945 /* Cells */,
 				166B4818242B7070009D9945 /* BelieverViewController.swift */,
 				166B481A242B707D009D9945 /* BelieverView.swift */,
-				166B481C242BC445009D9945 /* ChooseHramViewController.swift */,
-				166B481E242BC454009D9945 /* ChooseHramView.swift */,
-				166B4823242D35DA009D9945 /* ChooseEparhiesViewController.swift */,
-				166B4825242D35E6009D9945 /* ChooseEparhiesView.swift */,
+				166B4820242BD3AB009D9945 /* Cells */,
 			);
 			path = Believer;
 			sourceTree = "<group>";
@@ -728,6 +808,7 @@
 				161EE5AD2423C1070094B8E0 /* RegistrationSecondPageViewController.swift in Sources */,
 				443155F023CF368C004B5B59 /* PCU.xcdatamodeld in Sources */,
 				166B481B242B707D009D9945 /* BelieverView.swift in Sources */,
+				1655941E242E405200C918D0 /* GeneralPageProfileView.swift in Sources */,
 				4431562723D0AE19004B5B59 /* String.swift in Sources */,
 				165C28E6240FDD5800A8B685 /* ChurchTableViewCell.swift in Sources */,
 				4431562423D0AE19004B5B59 /* DispatchQueueHelper.swift in Sources */,
@@ -739,26 +820,32 @@
 				44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */,
 				44FC0A122401757C003A7E7E /* MapViewController.swift in Sources */,
 				4431562923D0AE19004B5B59 /* UIImage + UIImageView.swift in Sources */,
+				1655941C242E404600C918D0 /* GeneralPageProfileViewController.swift in Sources */,
 				167AC73C24058E490044D620 /* ChutchObjects.swift in Sources */,
 				166B4822242BD3C8009D9945 /* HramTableViewCell.swift in Sources */,
+				161825392433882A00CFB99A /* DuhovenstvoView.swift in Sources */,
 				1617BCC02418FA4500B63715 /* PrayerViewController.swift in Sources */,
 				166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */,
 				161EE5AA2423B84D0094B8E0 /* RegistrationFirstPageView.swift in Sources */,
 				161EE5AF2423C1200094B8E0 /* RegistrationSecondPageView.swift in Sources */,
+				161825402433AADE00CFB99A /* ArhieriyViewController.swift in Sources */,
 				162FCF8F24266E0C008F58A7 /* RegistrationFourthPageViewController.swift in Sources */,
 				4424DF6723D9A92600E5AB65 /* Image.swift in Sources */,
+				163E3142242FA4020018B394 /* LoginViewController.swift in Sources */,
 				4431AC4523D1CE8000081EC4 /* CalendarViewController.swift in Sources */,
 				1617BCB52418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift in Sources */,
 				161EE5A82423B83C0094B8E0 /* RegistrationFirstPageViewController.swift in Sources */,
 				167AC7382405793B0044D620 /* CalendarTableCell.swift in Sources */,
 				166B4826242D35E6009D9945 /* ChooseEparhiesView.swift in Sources */,
 				1643C5F62416B28200599D0D /* DetailMapViewController.swift in Sources */,
+				161825422433AAF000CFB99A /* ArhieriyView.swift in Sources */,
 				4431AC4723D1CE9400081EC4 /* NewsViewController.swift in Sources */,
 				162FCF93242690B3008F58A7 /* RegistrationFifthPageViewController.swift in Sources */,
 				167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */,
 				442A1A8A23DB095100645ACC /* CGFloat.swift in Sources */,
 				44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */,
 				167AC7402406B9110044D620 /* DetailHolidayView.swift in Sources */,
+				161825442434DC4400CFB99A /* ChangeEmailViewController.swift in Sources */,
 				1617BCC12418FA4500B63715 /* PrayerTableViewCell.swift in Sources */,
 				166B4824242D35DA009D9945 /* ChooseEparhiesViewController.swift in Sources */,
 				4431562323D0AE19004B5B59 /* UIViewController.swift in Sources */,
@@ -766,6 +853,8 @@
 				162FCF9124266E1D008F58A7 /* RegistrationFourthPageView.swift in Sources */,
 				445AC70523DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift in Sources */,
 				4431562A23D0AE19004B5B59 /* UIDevice.swift in Sources */,
+				163E3144242FA4100018B394 /* LoginView.swift in Sources */,
+				161825462434DC5300CFB99A /* ChangeEmailView.swift in Sources */,
 				443155FE23CF552B004B5B59 /* MapModel.swift in Sources */,
 				445AC70923DF1CDC000A18E0 /* NewsDetailsViewModel.swift in Sources */,
 				166B481D242BC445009D9945 /* ChooseHramViewController.swift in Sources */,
@@ -773,12 +862,18 @@
 				4431560D23D0A8AC004B5B59 /* TabBarController.swift in Sources */,
 				167AC7422406BFC80044D620 /* HolidayImageCollectionCell.swift in Sources */,
 				1617BCB12417F65C00B63715 /* DetailMapKathedralView.swift in Sources */,
+				163E3148243132270018B394 /* ChacngePasswordVIew.swift in Sources */,
 				44FC0A18240175BE003A7E7E /* TempleCollectionViewController.swift in Sources */,
+				163E3146243132190018B394 /* ChacngePasswordVIewController.swift in Sources */,
 				443155E623CF368C004B5B59 /* AppDelegate.swift in Sources */,
 				44FC0A2324027566003A7E7E /* SplashViewController.swift in Sources */,
 				1617BCC72418FBB200B63715 /* ModalViewController.swift in Sources */,
+				1618254A2434F09600CFB99A /* RemindPassView.swift in Sources */,
+				161825372433881E00CFB99A /* DuhovenstvoViewController.swift in Sources */,
+				1618253B24339B8A00CFB99A /* ChooseSanViewController.swift in Sources */,
 				166B481F242BC454009D9945 /* ChooseHramView.swift in Sources */,
 				4424DF6A23D9B05800E5AB65 /* NewsTableViewCell.swift in Sources */,
+				1618253D24339B9B00CFB99A /* ChooseSanView.swift in Sources */,
 				444CE79B23D8B2E7004667B5 /* UIColor.swift in Sources */,
 				162FCF95242690BF008F58A7 /* RegistrationFifthPageView.swift in Sources */,
 				4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */,
@@ -797,6 +892,7 @@
 				44DDFF5E23D4CC1A00024B7C /* APIService.swift in Sources */,
 				4431562823D0AE19004B5B59 /* UserDefaults.swift in Sources */,
 				161EE5B12423C3570094B8E0 /* RegistrationThirdPageViewController.swift in Sources */,
+				161825482434F08800CFB99A /* RemindPassViewController.swift in Sources */,
 				4431561823D0AB55004B5B59 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

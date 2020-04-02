@@ -133,23 +133,23 @@ class DetailMapView: UIView {
          telText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
          addSubview(telText)
         
-        templeHolidayApiText.textAlignment = .right
+        templeHolidayApiText.textAlignment = .center
         templeHolidayApiText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         templeHolidayApiText.text = "10 листопада"
         templeHolidayApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         addSubview(templeHolidayApiText)
         
-        fatherManNameApiText.textAlignment = .right
+        fatherManNameApiText.textAlignment = .center
         fatherManNameApiText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         fatherManNameApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         addSubview(fatherManNameApiText)
         
-        deaneryApiText.textAlignment = .right
+        deaneryApiText.textAlignment = .center
         deaneryApiText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         deaneryApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         addSubview(deaneryApiText)
         
-        telApiText.textAlignment = .right
+        telApiText.textAlignment = .center
         telApiText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         telApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         addSubview(telApiText)
@@ -160,10 +160,12 @@ class DetailMapView: UIView {
         super.layoutSubviews()
         churchTopName.pin.horizontally(15).top(20).height(50)
         eparhiyaCityName.pin.below(of: churchTopName).marginTop(20).horizontally(15).height(20)
-        openNow.pin.left(15).below(of: eparhiyaCityName).marginTop(8).height(25).width((UIScreen.main.bounds.size.width / 2) - 40)
-        pointText.pin.left(to:openNow.edge.right).top(to:openNow.edge.top).height(25).width(10)
-        closeAtTop.pin.left(to:pointText.edge.right).top(to:pointText.edge.top).height(25).right().marginLeft(5)
-        workScheduleText.pin.below(of: closeAtTop).marginTop(15).left(15).right().height(25)
+     
+//        openNow.pin.left(15).below(of: eparhiyaCityName).marginTop(8).height(25).width((UIScreen.main.bounds.size.width / 2) - 40)
+//        pointText.pin.left(to:openNow.edge.right).top(to:openNow.edge.top).height(25).width(10)
+//        closeAtTop.pin.left(to:pointText.edge.right).top(to:pointText.edge.top).height(25).right().marginLeft(5)
+      
+        workScheduleText.pin.below(of: eparhiyaCityName).marginTop(5).left(15).right().height(25)
         monFriday.pin.below(of: workScheduleText).horizontally(15).height(25)
         markerImage.pin.left(15).below(of: monFriday).marginTop(20).height(20).width(15)
         adressText.pin.top(to:markerImage.edge.top).bottom(to:markerImage.edge.bottom).left(to:markerImage.edge.right).marginLeft(15).right()
@@ -182,3 +184,7 @@ class DetailMapView: UIView {
         telApiText.pin.right(15).top(to:telText.edge.top).left(to:telText.edge.right).height(25)
     }
 }
+//
+//        openNow.pin.left(15).below(of: eparhiyaCityName).marginTop(8).height(25).width((UIScreen.main.bounds.size.width / 2) - 40)
+//        pointText.pin.left(to:openNow.edge.right).top(to:openNow.edge.top).height(25).width(10)
+//        closeAtTop.pin.left(to:pointText.edge.right).top(to:pointText.edge.top).height(25).right().marginLeft(5)
