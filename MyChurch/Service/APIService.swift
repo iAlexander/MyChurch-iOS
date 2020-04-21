@@ -8,6 +8,8 @@ typealias JsonDictionary = [String : Any]
 enum Headers: String {
     case authorization
     case language = "accept-language"
+    case contentType = "Content-Type"
+    case accept = "Accept"
 }
 
 enum Responses {
@@ -40,13 +42,11 @@ class APIService {
             //            TabBarController.shared?.tabBarType = .authorization
         }
         
-//        let localizationKey = Headers.language.rawValue
-//        let localization = UserDefaults.Keys.language.rawValue
-//        if let localizationValue = UserDefaults.standard.string(forKey: localization) {
-//            dict[localizationKey] = localizationValue
-//        } else {
-//            //             TabBarController.shared?.tabBarType = .authorization
-//        }
+        let contentTypeKey = Headers.contentType.rawValue
+        dict[contentTypeKey] = "application/json"
+        
+        let acceptKey = Headers.accept.rawValue
+        dict[acceptKey] = "application/json"
         
         return dict
     }()
@@ -80,7 +80,7 @@ class APIService {
     // MARK: - News
     func getNews(completion: @escaping (NewsResponse) -> Void) {
         let dict = ["culture" : "uk"]
-        let url = makeUrl(dict, api: .acp, endPoint: .news)
+        let url = makeUrl(dict, api: .stage, endPoint: .news)
         let headers = ["Accept" : "application/json"]
         
         callEndPoint(url, headers: headers) { (response) in
@@ -106,12 +106,37 @@ class APIService {
     
     // MARK: - Prayer
     func getPrayer(title: String?, type: String?, skip: Int, length: Int, completion: @escaping (PrayerResponse) -> Void) {
-        let strongTitle = title ?? ""
-        let strongType = type ?? ""
+//        let strongTitle = title ?? ""
+//        let strongType = type ?? ""
         let strongSkip = String(skip)
         let strongLength = String(length)
         
-        let dict: [String : String] = ["title" : strongTitle, "type" : strongType, "skip" : strongSkip, "length" : strongLength]
+        let dict: [String : String] = ["skip" : strongSkip, "length" : strongLength]
+        let url = makeUrl(dict, api: .stage, endPoint: .prayer)
+        
+        callEndPoint(url, headers: headers) { (response) in
+            switch response {
+                case .success(let result):
+                    let json: String = result
+                    do {
+                        let data = try self.decoder.decode(PrayerResponse.self, from: Data(json.utf8))
+                        
+                        completion(data)
+                    } catch {
+                        print(error.localizedDescription)
+                }
+                case .failure(let error):
+                    print(">> response Error from failure")
+                    print(error)
+                default:
+                    print(">> response Error from default state")
+                    break
+            }
+        }
+    }
+    
+    func getPrayer(completion: @escaping (PrayerResponse) -> Void) {
+        let dict: [String : String] = ["n" : "all"]
         let url = makeUrl(dict, api: .stage, endPoint: .prayer)
         
         callEndPoint(url, headers: headers) { (response) in

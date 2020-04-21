@@ -27,7 +27,7 @@ class NewsTableViewCell: UITableViewCell {
         
         self.addSubview(self.elevatedView)
         self.elevatedView.addSubviews([self.titleLabel, self.newsImageView, self.leftSubtitleLabel, self.centerSubtitleLabel, self.rightSubtitleLabel])
-        let apiUrl = API.acp.rawValue.correctPath()
+        let apiUrl = API.stage.rawValue.correctPath()
         let imageUrl: String = apiUrl + (data.image?.path ?? "") + "/" + (data.image?.name ?? "")
         self.newsImageView.imageFromServerURL(imageUrl, placeHolder: #imageLiteral(resourceName: "map-tint"))
         
@@ -35,9 +35,9 @@ class NewsTableViewCell: UITableViewCell {
             self.leftSubtitleLabel.setValue(date, size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)
         }
         
-//        if _ = data.notice {
-//            self.rightSubtitleLabel.setValue("Важливо!", size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .red, textAlignment: .right)
-//        }
+        //        if _ = data.notice {
+        //            self.rightSubtitleLabel.setValue("Важливо!", size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .red, textAlignment: .right)
+        //        }
         
         if let title = data.title {
             self.titleLabel.setValue(title, size: 16, fontWeight: .bold, numberOfLines: 3, color: .black)
@@ -82,7 +82,7 @@ class NewsTableViewCell: UITableViewCell {
         
         self.titleLabel.anchor(top: self.leftSubtitleLabel.bottomAnchor, leading: self.newsImageView.trailingAnchor, bottom: self.elevatedView.bottomAnchor, trailing: self.elevatedView.trailingAnchor, padding: UIEdgeInsets(top: 8, left: 16, bottom: 16, right: 16))
     }
-
+    
 }
 
 extension String {

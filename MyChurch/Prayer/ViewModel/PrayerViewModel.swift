@@ -18,8 +18,8 @@ class PrayerViewModel: ViewModel {
     
     func startFetchingData() {
         DispatchQueue.global(qos: .background).async {
-            Repository.shared.getPrayer(title: nil, type: nil, skip: 0, length: 100) { (response) in
-                if let data = response.data {
+            Repository.shared.getPrayer() { (response) in
+                if let data = response.data?.list {
                     PrayerViewModel.prayers = Dictionary(grouping: data, by: { ($0.type ?? "") })
                 }
                 

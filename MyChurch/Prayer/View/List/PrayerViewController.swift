@@ -34,6 +34,8 @@ class PrayerViewController: ViewController {
         return tableView
     }()
     
+    let playerView = Player()
+    
     let activityIndicatorView: UIActivityIndicatorView = {
         var activityIndicatorView: UIActivityIndicatorView
         
@@ -66,7 +68,7 @@ class PrayerViewController: ViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.view.addSubviews([self.segmentedControl, self.tableView, self.activityIndicatorView])
+        self.view.addSubviews([self.segmentedControl, self.tableView, self.activityIndicatorView, self.playerView])
         
         self.navigationItem.title = "Молитви"
         
@@ -76,6 +78,12 @@ class PrayerViewController: ViewController {
         setupLayout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.playerView.configure()
+    }
+    
     private func setupLayout() {
         self.activityIndicatorView.backgroundColor = .white
         
@@ -83,6 +91,7 @@ class PrayerViewController: ViewController {
         self.activityIndicatorView.anchor(centerY: self.view.centerYAnchor, centerX: self.view.centerXAnchor, size: CGSize(width: 75, height: 75))
         self.segmentedControl.anchor(top: self.view.topAnchor, leading: self.view.leadingAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16))
         self.tableView.anchor(top: self.segmentedControl.bottomAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0))
+        self.playerView.anchor(leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, size: CGSize(width: 0, height: 65))
     }
     
 }

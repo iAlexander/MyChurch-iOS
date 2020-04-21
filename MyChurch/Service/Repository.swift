@@ -34,4 +34,10 @@ class Repository {
         }
     }
     
+    func getPrayer(completion: @escaping (PrayerResponse) -> Void) {
+        APIService.shared.getPrayer() { (response) in
+            completion(response)
+        }
+    }
+    
 }

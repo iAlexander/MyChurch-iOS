@@ -13,6 +13,7 @@ class NewsDetailsCollectionViewController: ViewController {
     let collectionView: UICollectionViewController = {
         let collectionView = UICollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.collectionView.isPagingEnabled = true
+        collectionView.collectionView.isHidden = true
         
         return collectionView
     }()
@@ -25,7 +26,7 @@ class NewsDetailsCollectionViewController: ViewController {
         self.collectionView.collectionView.delegate = self
         self.collectionView.collectionView.dataSource = self
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,7 +50,8 @@ class NewsDetailsCollectionViewController: ViewController {
         super.viewDidAppear(animated)
         
         // Do any additional setup before appearing the view.
-        self.collectionView.collectionView.selectItem(at: self.currentIndexPath, animated: true, scrollPosition: .centeredHorizontally)
+        self.collectionView.collectionView.selectItem(at: self.currentIndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        self.collectionView.collectionView.isHidden = false
     }
     
     private func setupNavBar() {
@@ -64,11 +66,12 @@ class NewsDetailsCollectionViewController: ViewController {
     }
     
     private func setupLayout() {
+        self.view.backgroundColor = .white
         self.collectionView.collectionView.backgroundColor = .white
         
         self.collectionView.collectionView.fillSuperview()
     }
-
+    
 }
 
 extension NewsDetailsCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
