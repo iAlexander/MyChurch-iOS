@@ -44,6 +44,7 @@ struct UserData {
         set {
             if let userId = newValue {
                 _userId = newValue
+                
                 UserDefaults.standard.set(userId, forKey: UserDefaults.Keys.userId.rawValue)
             }
         }

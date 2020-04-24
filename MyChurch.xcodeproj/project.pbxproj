@@ -13,7 +13,7 @@
 		1617BCB52418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB42418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift */; };
 		1617BCB72418FA3300B63715 /* PrayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB62418FA3300B63715 /* PrayerModel.swift */; };
 		1617BCBE2418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB92418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift */; };
-		1617BCBF2418FA4500B63715 /* PrayerDetailsConllectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCBA2418FA4500B63715 /* PrayerDetailsConllectionViewController.swift */; };
+		1617BCBF2418FA4500B63715 /* PrayerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCBA2418FA4500B63715 /* PrayerDetailsViewController.swift */; };
 		1617BCC02418FA4500B63715 /* PrayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCBC2418FA4500B63715 /* PrayerViewController.swift */; };
 		1617BCC12418FA4500B63715 /* PrayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCBD2418FA4500B63715 /* PrayerTableViewCell.swift */; };
 		1617BCC32418FA5E00B63715 /* PrayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCC22418FA5E00B63715 /* PrayerViewModel.swift */; };
@@ -95,6 +95,8 @@
 		445AC70523DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC70423DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift */; };
 		445AC70723DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC70623DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift */; };
 		445AC70923DF1CDC000A18E0 /* NewsDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC70823DF1CDC000A18E0 /* NewsDetailsViewModel.swift */; };
+		44D3DE6B2453694300732BBA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D3DE6A2453694300732BBA /* PlayerViewController.swift */; };
+		44D3DE6D245369B300732BBA /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D3DE6C245369B300732BBA /* PlayerDetailsView.swift */; };
 		44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */; };
 		44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5B23D4CBE600024B7C /* Repository.swift */; };
 		44DDFF5E23D4CC1A00024B7C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5D23D4CC1A00024B7C /* APIService.swift */; };
@@ -113,7 +115,7 @@
 		1617BCB42418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		1617BCB62418FA3300B63715 /* PrayerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerModel.swift; sourceTree = "<group>"; };
 		1617BCB92418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
-		1617BCBA2418FA4500B63715 /* PrayerDetailsConllectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerDetailsConllectionViewController.swift; sourceTree = "<group>"; };
+		1617BCBA2418FA4500B63715 /* PrayerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerDetailsViewController.swift; sourceTree = "<group>"; };
 		1617BCBC2418FA4500B63715 /* PrayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerViewController.swift; sourceTree = "<group>"; };
 		1617BCBD2418FA4500B63715 /* PrayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerTableViewCell.swift; sourceTree = "<group>"; };
 		1617BCC22418FA5E00B63715 /* PrayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerViewModel.swift; sourceTree = "<group>"; };
@@ -201,6 +203,8 @@
 		445AC70423DEE4AB000A18E0 /* NewsDetailsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsCollectionViewController.swift; sourceTree = "<group>"; };
 		445AC70623DF05BA000A18E0 /* NewsDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		445AC70823DF1CDC000A18E0 /* NewsDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewModel.swift; sourceTree = "<group>"; };
+		44D3DE6A2453694300732BBA /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		44D3DE6C245369B300732BBA /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
 		44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API + EndPoints.swift"; sourceTree = "<group>"; };
 		44DDFF5B23D4CBE600024B7C /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		44DDFF5D23D4CC1A00024B7C /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -239,8 +243,9 @@
 		1617BCB82418FA4500B63715 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				1617BCBA2418FA4500B63715 /* PrayerDetailsViewController.swift */,
+				44D3DE6C245369B300732BBA /* PlayerDetailsView.swift */,
 				1617BCB92418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift */,
-				1617BCBA2418FA4500B63715 /* PrayerDetailsConllectionViewController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			children = (
 				1617BCBC2418FA4500B63715 /* PrayerViewController.swift */,
 				1617BCBD2418FA4500B63715 /* PrayerTableViewCell.swift */,
+				44D3DE6A2453694300732BBA /* PlayerViewController.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -369,14 +375,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		4424DF6823D9B01400E5AB65 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				4424DF6923D9B05800E5AB65 /* NewsTableViewCell.swift */,
-			);
-			name = TableView;
-			sourceTree = "<group>";
-		};
 		4424DF6B23D9CC1400E5AB65 /* Detalis */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,7 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				4431AC4623D1CE9400081EC4 /* NewsViewController.swift */,
-				4424DF6823D9B01400E5AB65 /* TableView */,
+				4424DF6923D9B05800E5AB65 /* NewsTableViewCell.swift */,
 			);
 			name = List;
 			path = ..;
@@ -592,8 +590,8 @@
 		44FC0A1A24017605003A7E7E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1617BCB82418FA4500B63715 /* Details */,
 				1617BCBB2418FA4500B63715 /* List */,
+				1617BCB82418FA4500B63715 /* Details */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -801,6 +799,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D3DE6D245369B300732BBA /* PlayerDetailsView.swift in Sources */,
 				1617BCB72418FA3300B63715 /* PrayerModel.swift in Sources */,
 				1643C5F82416B29500599D0D /* DetailMapView.swift in Sources */,
 				44FC0A102401731A003A7E7E /* NewsModel.swift in Sources */,
@@ -840,6 +839,7 @@
 				1643C5F62416B28200599D0D /* DetailMapViewController.swift in Sources */,
 				161825422433AAF000CFB99A /* ArhieriyView.swift in Sources */,
 				4431AC4723D1CE9400081EC4 /* NewsViewController.swift in Sources */,
+				44D3DE6B2453694300732BBA /* PlayerViewController.swift in Sources */,
 				162FCF93242690B3008F58A7 /* RegistrationFifthPageViewController.swift in Sources */,
 				167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */,
 				442A1A8A23DB095100645ACC /* CGFloat.swift in Sources */,
@@ -880,7 +880,7 @@
 				4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */,
 				4431562623D0AE19004B5B59 /* NSLayout.swift in Sources */,
 				4431561423D0AAD3004B5B59 /* NavigationController.swift in Sources */,
-				1617BCBF2418FA4500B63715 /* PrayerDetailsConllectionViewController.swift in Sources */,
+				1617BCBF2418FA4500B63715 /* PrayerDetailsViewController.swift in Sources */,
 				1617BCC32418FA5E00B63715 /* PrayerViewModel.swift in Sources */,
 				1617BCBE2418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift in Sources */,
 				442A068023D2C781004E98DB /* MapViewModel.swift in Sources */,

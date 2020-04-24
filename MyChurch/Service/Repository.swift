@@ -12,13 +12,13 @@ class Repository {
             completion(response)
         }
     }
-
+    
     // MARK: - Calendar
-//    func getCalendar(completion: @escaping (CalendarResponse) -> Void) {
-//        APIService.shared.getCalendar() { (response) in
-//            completion(response)
-//        }
-//    }
+    //    func getCalendar(completion: @escaping (CalendarResponse) -> Void) {
+    //        APIService.shared.getCalendar() { (response) in
+    //            completion(response)
+    //        }
+    //    }
     
     // MARK: - News
     func getNews(completion: @escaping (NewsResponse) -> Void) {
@@ -32,6 +32,17 @@ class Repository {
         APIService.shared.getPrayer(title: title, type: type, skip: skip, length: length) { (response) in
             completion(response)
         }
+    }
+    
+    func getPrayer(completion: @escaping (PrayerResponse) -> Void) {
+        APIService.shared.getPrayer() { (response) in
+            completion(response)
+        }
+    }
+    
+    func getAudioData(url: URL, completion: @escaping (Data) -> Void) {
+        let audio = try! Data(contentsOf: url)
+        completion(audio)
     }
     
 }

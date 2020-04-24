@@ -2,23 +2,22 @@
 
 import UIKit
 
-class PrayerDetailsConllectionViewController: ViewController {
+class NewsDetailsCollectionViewController: ViewController {
     
-    convenience init(data: [Prayer], indexPath: IndexPath) {
+    convenience init(indexPath: IndexPath) {
         self.init()
         
-        self.data = data
         self.currentIndexPath = indexPath
     }
     
     let collectionView: UICollectionViewController = {
         let collectionView = UICollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.collectionView.isPagingEnabled = true
+        collectionView.collectionView.isHidden = true
         
         return collectionView
     }()
     
-    var data: [Prayer] = []
     var currentIndexPath = IndexPath()
     
     override func loadView() {
@@ -33,7 +32,7 @@ class PrayerDetailsConllectionViewController: ViewController {
         
         // Do any additional setup after loading the view.
         self.collectionView.collectionView.showsHorizontalScrollIndicator = false
-        self.collectionView.collectionView.register(PrayerDetailsCollectionViewCell.self, forCellWithReuseIdentifier: PrayerDetailsCollectionViewCell.reuseIdentifier)
+        self.collectionView.collectionView.register(NewsDetailsCollectionViewCell.self, forCellWithReuseIdentifier: NewsDetailsCollectionViewCell.reuseIdentifier)
         
         if let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
@@ -51,7 +50,8 @@ class PrayerDetailsConllectionViewController: ViewController {
         super.viewDidAppear(animated)
         
         // Do any additional setup before appearing the view.
-        self.collectionView.collectionView.selectItem(at: self.currentIndexPath, animated: true, scrollPosition: .centeredHorizontally)
+        self.collectionView.collectionView.selectItem(at: self.currentIndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        self.collectionView.collectionView.isHidden = false
     }
     
     private func setupNavBar() {
@@ -66,6 +66,7 @@ class PrayerDetailsConllectionViewController: ViewController {
     }
     
     private func setupLayout() {
+        self.view.backgroundColor = .white
         self.collectionView.collectionView.backgroundColor = .white
         
         self.collectionView.collectionView.fillSuperview()
@@ -73,7 +74,7 @@ class PrayerDetailsConllectionViewController: ViewController {
     
 }
 
-extension PrayerDetailsConllectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension NewsDetailsCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: UICollectionViewDataSource
     
@@ -90,17 +91,16 @@ extension PrayerDetailsConllectionViewController: UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        print(data.count)
-        return self.data.count
+        return NewsViewModel.news!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PrayerDetailsCollectionViewCell.reuseIdentifier, for: indexPath) as? PrayerDetailsCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsDetailsCollectionViewCell.reuseIdentifier, for: indexPath) as? NewsDetailsCollectionViewCell else { return UICollectionViewCell() }
         
         // Configure the cell
-        let index = indexPath.item
-        let data = self.data[index]
-        cell.configureWithData(data: data)
+        if let data = NewsViewModel.news?[indexPath.item] {
+            cell.configureWithData(data: data)
+        }
         
         return cell
     }
