@@ -40,4 +40,9 @@ class Repository {
         }
     }
     
+    func getAudioData(url: URL, completion: @escaping (Data) -> Void) {
+        let audio = try! Data(contentsOf: url)
+        completion(audio)
+    }
+    
 }

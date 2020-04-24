@@ -26,6 +26,6 @@ struct Prayer: Codable {
 }
 
 struct FileData: Codable {
-    let name: String?
-    let path: String?
+    let name: String
+    let path: String
 }

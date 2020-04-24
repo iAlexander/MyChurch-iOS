@@ -2,7 +2,7 @@
 
 import UIKit
 
-class Player: UIView {
+class PlayerView: UIView {
     
     let visualEffectView: UIVisualEffectView = {
         let blur = UIBlurEffect(style: .light)
