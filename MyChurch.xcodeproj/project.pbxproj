@@ -47,6 +47,7 @@
 		1643C5F82416B29500599D0D /* DetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1643C5F72416B29500599D0D /* DetailMapView.swift */; };
 		1655941C242E404600C918D0 /* GeneralPageProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1655941B242E404600C918D0 /* GeneralPageProfileViewController.swift */; };
 		1655941E242E405200C918D0 /* GeneralPageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1655941D242E405200C918D0 /* GeneralPageProfileView.swift */; };
+		1656087224536AF5002015DB /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656087124536AF5002015DB /* PlayerViewController.swift */; };
 		165C28E6240FDD5800A8B685 /* ChurchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */; };
 		166B4819242B7070009D9945 /* BelieverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4818242B7070009D9945 /* BelieverViewController.swift */; };
 		166B481B242B707D009D9945 /* BelieverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B481A242B707D009D9945 /* BelieverView.swift */; };
@@ -96,7 +97,6 @@
 		444CE79923D8ADEE004667B5 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444CE79823D8ADEE004667B5 /* Label.swift */; };
 		444CE79B23D8B2E7004667B5 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444CE79A23D8B2E7004667B5 /* UIColor.swift */; };
 		446252CD244EC17F00AF6B74 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446252CC244EC17F00AF6B74 /* Player.swift */; };
-		446CE75F24314579002F184B /* CharityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446CE75E24314579002F184B /* CharityViewController.swift */; };
 		44A0905124498B4B00C69019 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A0905024498B4B00C69019 /* NewsModel.swift */; };
 		44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */; };
 		44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDFF5B23D4CBE600024B7C /* Repository.swift */; };
@@ -150,6 +150,7 @@
 		1643C5F72416B29500599D0D /* DetailMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapView.swift; sourceTree = "<group>"; };
 		1655941B242E404600C918D0 /* GeneralPageProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPageProfileViewController.swift; sourceTree = "<group>"; };
 		1655941D242E405200C918D0 /* GeneralPageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPageProfileView.swift; sourceTree = "<group>"; };
+		1656087124536AF5002015DB /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		165C28E5240FDD5800A8B685 /* ChurchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchTableViewCell.swift; sourceTree = "<group>"; };
 		166B4818242B7070009D9945 /* BelieverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelieverViewController.swift; sourceTree = "<group>"; };
 		166B481A242B707D009D9945 /* BelieverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelieverView.swift; sourceTree = "<group>"; };
@@ -205,7 +206,6 @@
 		444CE79823D8ADEE004667B5 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		444CE79A23D8B2E7004667B5 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		446252CC244EC17F00AF6B74 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		446CE75E24314579002F184B /* CharityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityViewController.swift; sourceTree = "<group>"; };
 		44A0905024498B4B00C69019 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		44DDFF5923D4CBC700024B7C /* API + EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API + EndPoints.swift"; sourceTree = "<group>"; };
 		44DDFF5B23D4CBE600024B7C /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -255,6 +255,7 @@
 			children = (
 				1617BCBC2418FA4500B63715 /* PrayerViewController.swift */,
 				1617BCBD2418FA4500B63715 /* PrayerTableViewCell.swift */,
+				1656087124536AF5002015DB /* PlayerViewController.swift */,
 				446252CC244EC17F00AF6B74 /* Player.swift */,
 			);
 			path = List;
@@ -572,7 +573,6 @@
 		44F494FF242BBA4F00A42658 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				446CE75E24314579002F184B /* CharityViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -871,12 +871,10 @@
 				166B4826242D35E6009D9945 /* ChooseEparhiesView.swift in Sources */,
 				1643C5F62416B28200599D0D /* DetailMapViewController.swift in Sources */,
 				161825422433AAF000CFB99A /* ArhieriyView.swift in Sources */,
-				4431AC4723D1CE9400081EC4 /* NewsViewController.swift in Sources */,
 				162FCF93242690B3008F58A7 /* RegistrationFifthPageViewController.swift in Sources */,
 				167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */,
 				442A1A8A23DB095100645ACC /* CGFloat.swift in Sources */,
 				4428D99024498E29006B1186 /* NewsDetailsViewModel.swift in Sources */,
-				446CE75F24314579002F184B /* CharityViewController.swift in Sources */,
 				44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */,
 				167AC7402406B9110044D620 /* DetailHolidayView.swift in Sources */,
 				161825442434DC4400CFB99A /* ChangeEmailViewController.swift in Sources */,
@@ -888,7 +886,6 @@
 				163E3144242FA4100018B394 /* LoginView.swift in Sources */,
 				161825462434DC5300CFB99A /* ChangeEmailView.swift in Sources */,
 				443155FE23CF552B004B5B59 /* MapModel.swift in Sources */,
-				445AC70923DF1CDC000A18E0 /* NewsDetailsViewModel.swift in Sources */,
 				166B481D242BC445009D9945 /* ChooseHramViewController.swift in Sources */,
 				44FC0A2A2402796D003A7E7E /* OnboardingViewController.swift in Sources */,
 				4431560D23D0A8AC004B5B59 /* TabBarController.swift in Sources */,
@@ -898,13 +895,13 @@
 				44FC0A18240175BE003A7E7E /* TempleCollectionViewController.swift in Sources */,
 				163E3146243132190018B394 /* ChacngePasswordVIewController.swift in Sources */,
 				443155E623CF368C004B5B59 /* AppDelegate.swift in Sources */,
+				1656087224536AF5002015DB /* PlayerViewController.swift in Sources */,
 				44FC0A2324027566003A7E7E /* SplashViewController.swift in Sources */,
 				1617BCC72418FBB200B63715 /* ModalViewController.swift in Sources */,
 				1618254A2434F09600CFB99A /* RemindPassView.swift in Sources */,
 				161825372433881E00CFB99A /* DuhovenstvoViewController.swift in Sources */,
 				1618253B24339B8A00CFB99A /* ChooseSanViewController.swift in Sources */,
 				166B481F242BC454009D9945 /* ChooseHramView.swift in Sources */,
-				4424DF6A23D9B05800E5AB65 /* NewsTableViewCell.swift in Sources */,
 				1618253D24339B9B00CFB99A /* ChooseSanView.swift in Sources */,
 				444CE79B23D8B2E7004667B5 /* UIColor.swift in Sources */,
 				162FCF95242690BF008F58A7 /* RegistrationFifthPageView.swift in Sources */,
