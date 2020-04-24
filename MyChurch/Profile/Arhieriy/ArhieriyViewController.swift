@@ -66,8 +66,6 @@ class ArhieriyViewController: UIViewController , SendDataDelegate, SendDataEparh
     @objc func handler(sender: UIDatePicker) { //барабан даты
         var timeInterval = DateComponents()
         timeInterval.hour = 5
-        print(Calendar.current.date(byAdding: timeInterval, to: mainView.birthdayDate.date)!)
-        print(Calendar.current.date(byAdding: timeInterval, to: mainView.tezoimenustvoDate.date)!)
     }
     
     @objc func savePressed() {

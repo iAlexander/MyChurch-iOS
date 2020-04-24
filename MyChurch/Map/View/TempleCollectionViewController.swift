@@ -50,11 +50,12 @@ class TempleCollectionViewController: UICollectionViewController, UICollectionVi
                 UIApplication.shared.openURL(URL(string:
                     "comgooglemaps://" + "?daddr=\(Double(data.lt) ?? 0.0),\(Double(data.lg) ?? 0.0)&zoom=12&directionsmode=walking")!)
             } else {
-                let alertController = UIAlertController(title: "Повiдомлення", message: "Встановiть будь ласка додаток 'Google Map'", preferredStyle: .alert)
-                let actionCancel = UIAlertAction(title: "закрити", style: .cancel) { (action:UIAlertAction) in
-                }
-                alertController.addAction(actionCancel)
-                self.present(alertController, animated: true, completion: nil)
+                let alert = UIAlertView()
+                alert.title = "Повiдомлення"
+                alert.message = "Встановiть будь ласка додаток 'Google Map"
+                alert.addButton(withTitle: "закрити")
+                alert.alertViewStyle = .default
+                alert.show()
             }
         }
         return cell

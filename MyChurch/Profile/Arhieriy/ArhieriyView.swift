@@ -64,6 +64,7 @@ class ArhieriyView: UIView {
         self.backgroundColor = .white
         
         addSubview(scrollView)
+        scrollView.keyboardDismissMode = .onDrag
         
         scrollView.addSubview(nameLabel)
         nameLabel.text = "Чернече ім’я"

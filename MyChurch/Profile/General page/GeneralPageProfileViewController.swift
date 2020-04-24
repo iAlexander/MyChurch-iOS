@@ -39,16 +39,16 @@ class GeneralPageProfileViewController: UIViewController {
     
     func showInfoWindows() {
         switch member {
-        case "Parishioner": let alert = UIAlertController(title: "Реєстрацiя успiшна", message: "Пароль від кабінету відправили на \n\(email)", preferredStyle: .alert)
+        case "Parishioner": let alert = UIAlertController(title: "Реєстрацiя успiшна", message: "Пароль від кабінету відправилено на \n\(email)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
-        case "Mpc": let alert = UIAlertController(title: "Реєстрацiя на модерацiï", message: "Пароль від кабінету відправили на\n\(email)\n\nПрофіль знаходиться на верифікації.\nМи перевіремо ваші дані найближчим часом, це може зайняти декілька днів", preferredStyle: .alert)
+        case "Mpc": let alert = UIAlertController(title: "Реєстрацiя на модерацiï", message: "Пароль від кабінету відправилено на\n\(email)\n\nПрофіль знаходиться на верифікації.\nМи перевіремо ваші дані найближчим часом, це може зайняти декілька днів", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
-        case "Priest": let alert = UIAlertController(title: "Реєстрацiя на модерацiï", message: "Пароль від кабінету відправили на\n\(email)\n\nПрофіль знаходиться на верифікації.\nМи перевіремо ваші дані найближчим часом, це може зайняти декілька днів", preferredStyle: .alert)
+        case "Priest": let alert = UIAlertController(title: "Реєстрацiя на модерацiï", message: "Пароль від кабінету відправилено на\n\(email)\n\nПрофіль знаходиться на верифікації.\nМи перевіремо ваші дані найближчим часом, це може зайняти декілька днів", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
-        case "PriestPro": let alert = UIAlertController(title: "Реєстрацiя на модерацiï", message: "Пароль від кабінету відправили на\n\(email)\n\nПрофіль знаходиться на верифікації.\nМи перевіремо ваші дані найближчим часом, це може зайняти декілька днів", preferredStyle: .alert)
+        case "PriestPro": let alert = UIAlertController(title: "Реєстрацiя на модерацiï", message: "Пароль від кабінету відправилено на\n\(email)\n\nПрофіль знаходиться на верифікації.\nМи перевіремо ваші дані найближчим часом, це може зайняти декілька днів", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
         default: break

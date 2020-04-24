@@ -69,14 +69,22 @@ class LoginViewController: UIViewController {
                 switch result {
                 case .success(let data):
                     print(data)
+                    UserDefaults.standard.set(data.data?.accessToken, forKey: "BarearToken")                        
                     getUserData() { (result) in
                         switch result {
                         case .success(let data):
                             ANLoader.hide()
                             self.userData = data
-                            UserDefaults.standard.set(try? PropertyListEncoder().encode(self.userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
+                            if data.data == nil {
+                                let alert = UIAlertController(title: "Помилка", message: "Неправильний логiн або пароль", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: nil))
+                                ANLoader.hide()
+                                self.present(alert, animated: true, completion: nil)
+                            } else {
+                                UserDefaults.standard.set(try? PropertyListEncoder().encode(self.userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
                             let vc = GeneralPageProfileViewController()
                             self.navigationController?.show(vc, sender: nil)
+                            }
                         case .partialSuccess( _):  ANLoader.hide(); self.errorAllert()
                         case .failure(let error):  ANLoader.hide(); self.errorAllert()
                         print(error)

@@ -262,7 +262,7 @@ extension MapViewController: MapDelegate, SelectTempleDelegate {
             
             for (index, item) in data.enumerated() {
                 let endLocation = CLLocation(latitude: data[index].lt, longitude: data[index].lg)
-                let distance = (self.locationManager.location?.distance(from: endLocation))! / 1000
+                let distance = (self.locationManager.location?.distance(from: endLocation) ?? 0) / 1000
                 print(" \(String(format:"%.02f", distance)) KMs ")
                 let itemFullData = Temple(id: item.id, name: item.name, lt: item.lt, lg: item.lg
                     , distance: distance)

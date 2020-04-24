@@ -64,7 +64,8 @@ class DuhovenstvoView: UIView {
         self.backgroundColor = .white
         
         addSubview(scrollView)
-        
+        scrollView.keyboardDismissMode = .onDrag
+
         scrollView.addSubview(nameLabel)
         nameLabel.text = "Ім’я"
         nameLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)

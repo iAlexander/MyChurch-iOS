@@ -11,6 +11,8 @@ import UIKit
 class ChangeEmailViewController: UIViewController {
     
     let mainView = ChangeEmailView()
+    var userUid = String()
+    var email = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,17 +20,19 @@ class ChangeEmailViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
         self.mainView.enterButton.addTarget(self, action: #selector(changeEmail), for: .touchUpInside)
+
     }
-    
+  
     @objc func changeEmail() {
         if  mainView.oldPassField.text?.count ?? 0 > 0 {
             changeEmailApi(newEmail: mainView.oldPassField.text! ) { (result) in
                 switch result {
                 case .success(let data):
                     print(data)
-                    let alert = UIAlertController(title: "Змiна email", message: "Email успішно змінено на новий", preferredStyle: .alert)
+                    self.email = self.mainView.oldPassField.text!
+                    self.userUid = data.data?.userUid ?? ""
+                    let alert = UIAlertController(title: "Змiна email", message: "Ваш email успiшно змiнено на новий", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: { (action: UIAlertAction!) in
-                        self.navigationController?.popViewController(animated: true)
                     }))
                     self.present(alert, animated: true, completion: nil)
                 case .partialSuccess( _): break
@@ -53,5 +57,4 @@ class ChangeEmailViewController: UIViewController {
         self.mainView.frame = self.view.bounds
         self.title = "Зміна email"
     }
-    
 }

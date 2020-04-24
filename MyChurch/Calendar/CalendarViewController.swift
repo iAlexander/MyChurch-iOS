@@ -24,9 +24,9 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         getHolidays() { (result) in
             switch result {
             case .success(let data):
-                self.allHolidays = data.data ?? [HolidaysData]()
+                self.allHolidays = data.data?.list ?? [HolidaysData]()
                 for (index, item) in self.allHolidays.enumerated() {
-                    self.allHolidays[index].date = item.date?.strstr(needle: "T", beforeNeedle: true) ?? ""
+                    self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
                 }
                 self.mainView.holidayTableView.reloadData()
                 self.mainView.calendar.reloadData()
@@ -56,7 +56,7 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailHolidayViewController()
         vc.titleText = mainView.choosedDay.text ?? ""
-        vc.holidayId = chooseHolidays[indexPath.row].id ?? 0
+        vc.detailHolidayInfo = chooseHolidays[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -156,7 +156,7 @@ extension CalendarViewController: KoyomiDelegate {
         let chooseDate = dateNew.description.strstr(needle: " ", beforeNeedle: true) ?? ""
         
         for item in self.allHolidays {
-            if item.date == chooseDate {
+            if item.dateNewStyle == chooseDate {
                 chooseHolidays.append(item)
             }
         }

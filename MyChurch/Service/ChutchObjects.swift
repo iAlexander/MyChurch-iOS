@@ -11,13 +11,28 @@ import UIKit
 
 // MARK: работаю с объектом для взятия праздников
 struct HolidaysAllData: Codable {
-    let data: [HolidaysData]?
+    let data: HolidaysListData?
+}
+
+struct HolidaysListData: Codable {
+    let list: [HolidaysData]?
 }
 
 struct HolidaysData: Codable {
     let id: Int?
+    let group: GroupData?
+    let dateOldStyle: String?
+    var dateNewStyle: String?
     let name: String?
-    var date: String?
+    let describe: String?
+    let conceived: String?
+    let priority: Int?
+}
+
+struct GroupData: Codable {
+    let id: Int?
+    let name: String?
+    
 }
 
 // MARK: работаю с объектом для взятия праздников
@@ -129,16 +144,25 @@ struct UserInfo: Codable {
 
 // MARK: работаю с объектом при изменении пароля
 struct ChangePass: Codable {
+    let ok: Bool?
+    let errors: [ErrorInfo]?
     let data: PassInfo?
 }
 
 struct PassInfo: Codable {
     let oldPassword: String?
     let newPassword: String?
+    let accessToken: String?
+}
+
+struct ErrorInfo: Codable {
+    let code: String?
+    let message: String?
 }
 
 // MARK: работаю с объектом при изменении email
 struct ChangeEmail: Codable {
+    let ok: Bool?
     let data: EmailInfo?
 }
 

@@ -14,63 +14,54 @@ class DetailHolidayViewController: UIViewController, UICollectionViewDelegate, U
     private let reuseIdentifierCollectionView = "imageCell"
     var titleText = String()
     var holidayId = Int()
-    var detailHolidayInfo: HolidayData?
+    var detailHolidayInfo: HolidaysData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigView()
-        getDetailHolidays(id: holidayId) { (result) in
-            switch result {
-            case .success(let data):
-                self.detailHolidayInfo = data.data
-                let clearTextString =  self.detailHolidayInfo?.describe?.slice(from: "<b>", to:  "</b>")
-                self.mainView.holidayTextView.text = "\(clearTextString ?? "")\n\(self.detailHolidayInfo?.conceived ?? "")"
-                self.mainView.holidayTopName.text = self.detailHolidayInfo?.name
-                self.mainView.holidayTopInfo.text = self.detailHolidayInfo?.groupId?.name
-                var dateTextAll = String()
-                var oldDate =  self.detailHolidayInfo?.dateOldStyle?.strstr(needle: "T", beforeNeedle: true)
-                oldDate = oldDate?.dropFirst(5).description
-                let dayFirst = oldDate?.strstr(needle: "-", beforeNeedle: false)
-                switch  oldDate?.prefix(2) {
-                case "01": dateTextAll = "\(dayFirst ?? "") ciчня"
-                case "02": dateTextAll = "\(dayFirst ?? "") лютого"
-                case "03": dateTextAll = "\(dayFirst ?? "") березня"
-                case "04": dateTextAll = "\(dayFirst ?? "") квiтня"
-                case "05": dateTextAll = "\(dayFirst ?? "") травня"
-                case "06": dateTextAll = "\(dayFirst ?? "") червня"
-                case "07": dateTextAll = "\(dayFirst ?? "") липня"
-                case "08": dateTextAll = "\(dayFirst ?? "") серпня"
-                case "09": dateTextAll = "\(dayFirst ?? "") вересня"
-                case "10": dateTextAll = "\(dayFirst ?? "") жовтня"
-                case "11": dateTextAll = "\(dayFirst ?? "") листопада"
-                case "12": dateTextAll = "\(dayFirst ?? "") грудня"
-                default: break
-                }
-                
-                var newDate = self.detailHolidayInfo?.dateNewStyle?.strstr(needle: "T", beforeNeedle: true)
-                newDate = newDate?.dropFirst(5).description
-                let daySecond = newDate?.strstr(needle: "-", beforeNeedle: false)
-                switch  newDate?.prefix(2) {
-                case "01": dateTextAll += "(\(daySecond ?? "") ciчня за старим календарем)"
-                case "02": dateTextAll += "(\(daySecond ?? "") лютого за старим календарем)"
-                case "03": dateTextAll += "(\(daySecond ?? "") березня за старим календарем)"
-                case "04": dateTextAll += "(\(daySecond ?? "") квiтня за старим календарем)"
-                case "05": dateTextAll += "(\(daySecond ?? "") травня за старим календарем)"
-                case "06": dateTextAll += "(\(daySecond ?? "") червня за старим календарем)"
-                case "07": dateTextAll += "(\(daySecond ?? "") липня за старим календарем)"
-                case "08": dateTextAll += "(\(daySecond ?? "") серпня за старим календарем)"
-                case "09": dateTextAll += "(\(daySecond ?? "") вересня за старим календарем)"
-                case "10": dateTextAll += "(\(daySecond ?? "") жовтня за старим календарем)"
-                case "11": dateTextAll += "(\(daySecond ?? "") листопада за старим календарем)"
-                case "12": dateTextAll += "(\(daySecond ?? "") грудня за старим календарем)"
-                default: break
-                }
-                self.mainView.holidayTopDate.text = dateTextAll
-            case .partialSuccess( _): break
-            case .failure(let error):
-                print(error)
-            }
+        let clearTextString =  self.detailHolidayInfo?.describe?.slice(from: "<b>", to:  "</b>")
+        self.mainView.holidayTextView.text = "\(clearTextString ?? "")\n\(self.detailHolidayInfo?.conceived ?? "")"
+        self.mainView.holidayTopName.text = self.detailHolidayInfo?.name
+        self.mainView.holidayTopInfo.text = self.detailHolidayInfo?.group?.name
+        var dateTextAll = String()
+        var oldDate =  self.detailHolidayInfo?.dateOldStyle?.strstr(needle: "T", beforeNeedle: true)
+        oldDate = oldDate?.dropFirst(5).description
+        let dayFirst = oldDate?.strstr(needle: "-", beforeNeedle: false)
+        switch  oldDate?.prefix(2) {
+        case "01": dateTextAll = "\(dayFirst ?? "") ciчня"
+        case "02": dateTextAll = "\(dayFirst ?? "") лютого"
+        case "03": dateTextAll = "\(dayFirst ?? "") березня"
+        case "04": dateTextAll = "\(dayFirst ?? "") квiтня"
+        case "05": dateTextAll = "\(dayFirst ?? "") травня"
+        case "06": dateTextAll = "\(dayFirst ?? "") червня"
+        case "07": dateTextAll = "\(dayFirst ?? "") липня"
+        case "08": dateTextAll = "\(dayFirst ?? "") серпня"
+        case "09": dateTextAll = "\(dayFirst ?? "") вересня"
+        case "10": dateTextAll = "\(dayFirst ?? "") жовтня"
+        case "11": dateTextAll = "\(dayFirst ?? "") листопада"
+        case "12": dateTextAll = "\(dayFirst ?? "") грудня"
+        default: break
         }
+        
+        var newDate = self.detailHolidayInfo?.dateNewStyle?.strstr(needle: "T", beforeNeedle: true)
+        newDate = newDate?.dropFirst(5).description
+        let daySecond = newDate?.strstr(needle: "-", beforeNeedle: false)
+        switch  newDate?.prefix(2) {
+        case "01": dateTextAll += "(\(daySecond ?? "") ciчня за старим календарем)"
+        case "02": dateTextAll += "(\(daySecond ?? "") лютого за старим календарем)"
+        case "03": dateTextAll += "(\(daySecond ?? "") березня за старим календарем)"
+        case "04": dateTextAll += "(\(daySecond ?? "") квiтня за старим календарем)"
+        case "05": dateTextAll += "(\(daySecond ?? "") травня за старим календарем)"
+        case "06": dateTextAll += "(\(daySecond ?? "") червня за старим календарем)"
+        case "07": dateTextAll += "(\(daySecond ?? "") липня за старим календарем)"
+        case "08": dateTextAll += "(\(daySecond ?? "") серпня за старим календарем)"
+        case "09": dateTextAll += "(\(daySecond ?? "") вересня за старим календарем)"
+        case "10": dateTextAll += "(\(daySecond ?? "") жовтня за старим календарем)"
+        case "11": dateTextAll += "(\(daySecond ?? "") листопада за старим календарем)"
+        case "12": dateTextAll += "(\(daySecond ?? "") грудня за старим календарем)"
+        default: break
+        }
+        self.mainView.holidayTopDate.text = dateTextAll
     }
     
     //MARK: work with collectionView

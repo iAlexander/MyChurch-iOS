@@ -17,10 +17,11 @@ enum NewResult<Value> {
 
 //MARK: 1) Запрос на взятие праздников для календаря
 func getHolidays(completion: ((NewResult<HolidaysAllData>) -> Void)?) {
-    let url = URL(string:"http://ec2-3-133-104-185.us-east-2.compute.amazonaws.com:8081/calendar")
+    let url = URL(string:"http://test.cerkva.asp-win.d2.digital/gala/?n=all")
     var request = URLRequest(url: url!)
     request.httpMethod = "GET"
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
     let session = URLSession.shared
     let task = session.dataTask(with: request) { (responseData, response, error) in
         DispatchQueue.main.async {
@@ -75,8 +76,6 @@ func getDetailTemple(id: Int, completion: ((NewResult<TempleData>) -> Void)?) {
     let url1 = URL(string: api)
     var request = URLRequest(url: url1!)
     request.httpMethod = "GET"
-  //  request.setValue("Bearer 00b26a24-0cc8-3d0a-993d-61641c4439dc", forHTTPHeaderField: "Authorization")
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
     let session = URLSession.shared
     let task = session.dataTask(with: request) { (responseData, response, error) in
@@ -193,6 +192,10 @@ func signUpUser(email: String, password: String, completion: ((NewResult<Registr
     let session = URLSession.shared
     let task = session.dataTask(with: request) { (responseData, response, error) in
         DispatchQueue.main.async {
+            if let httpResponse = response as? HTTPURLResponse {
+                print(httpResponse.statusCode)
+                print(String(decoding: responseData!, as: UTF8.self))
+            }
             if let error = error {
                 completion?(.failure(error))
             } else if let jsonData = responseData {
@@ -217,9 +220,15 @@ func getUserData(completion: ((NewResult<UserDatas>) -> Void)?) {
     request.httpMethod = "GET"
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "accept")
+    request.setValue("application/json", forHTTPHeaderField: "accept")
+    request.setValue("Bearer \(UserDefaults.standard.string(forKey: "BarearToken") ?? "")", forHTTPHeaderField: "Authorization")
     let session = URLSession.shared
     let task = session.dataTask(with: request) { (responseData, response, error) in
         DispatchQueue.main.async {
+            if let httpResponse = response as? HTTPURLResponse {
+                print(httpResponse.statusCode)
+                print(String(decoding: responseData!, as: UTF8.self))
+            }
             if let error = error {
                 completion?(.failure(error))
             } else if let jsonData = responseData {
@@ -236,12 +245,13 @@ func getUserData(completion: ((NewResult<UserDatas>) -> Void)?) {
     task.resume()
 }
 
-//MARK: 9) Запрос на логин
+//MARK: 9) Запрос на смену пароля
 func changePasswordApi(oldPass: String, newPassword: String, completion: ((NewResult<ChangePass>) -> Void)?) {
     let url = URL(string:"http://test.cerkva.asp-win.d2.digital/profile/change-password")
     var request = URLRequest(url: url!)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "accept")
+    request.setValue("Bearer \(UserDefaults.standard.string(forKey: "BarearToken") ?? "")", forHTTPHeaderField: "Authorization")
     request.httpMethod = "POST"
     let jsonDic = ["oldPassword": oldPass, "newPassword": newPassword]
     
@@ -251,6 +261,10 @@ func changePasswordApi(oldPass: String, newPassword: String, completion: ((NewRe
     let session = URLSession.shared
     let task = session.dataTask(with: request) { (responseData, response, error) in
         DispatchQueue.main.async {
+            if let httpResponse = response as? HTTPURLResponse {
+                print(httpResponse.statusCode)
+                print(String(decoding: responseData!, as: UTF8.self))
+            }
             if let error = error {
                 completion?(.failure(error))
             } else if let jsonData = responseData {
@@ -273,15 +287,20 @@ func changeEmailApi(newEmail: String, completion: ((NewResult<ChangeEmail>) -> V
     var request = URLRequest(url: url!)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "accept")
+    request.setValue("Bearer \(UserDefaults.standard.string(forKey: "BarearToken") ?? "")", forHTTPHeaderField: "Authorization")
     request.httpMethod = "POST"
     let jsonDic = ["newEmail": newEmail]
-    
     if let theJSONData = try? JSONSerialization.data(withJSONObject: jsonDic, options: []) {
         request.httpBody = theJSONData
     }
     let session = URLSession.shared
     let task = session.dataTask(with: request) { (responseData, response, error) in
         DispatchQueue.main.async {
+            if let httpResponse = response as? HTTPURLResponse {
+                print(httpResponse.statusCode)
+                print(String(decoding: responseData!, as: UTF8.self))
+            }
+            
             if let error = error {
                 completion?(.failure(error))
             } else if let jsonData = responseData {
@@ -306,6 +325,42 @@ func rememberPassApi(email: String, completion: ((NewResult<RememberPass>) -> Vo
     request.setValue("application/json", forHTTPHeaderField: "accept")
     request.httpMethod = "POST"
     let jsonDic = ["login": email]
+    
+    if let theJSONData = try? JSONSerialization.data(withJSONObject: jsonDic, options: []) {
+        request.httpBody = theJSONData
+    }
+    let session = URLSession.shared
+    let task = session.dataTask(with: request) { (responseData, response, error) in
+        DispatchQueue.main.async {
+            if let httpResponse = response as? HTTPURLResponse {
+                print(httpResponse.statusCode)
+                print(String(decoding: responseData!, as: UTF8.self))
+            }
+            if let error = error {
+                completion?(.failure(error))
+            } else if let jsonData = responseData {
+                let decoder = JSONDecoder()
+                do {
+                    let DeviceResponse = try decoder.decode(RememberPass.self, from: jsonData)
+                    completion?(.success(DeviceResponse))
+                } catch {
+                    completion?(.failure(error))
+                }
+            }
+        }
+    }
+    task.resume()
+}
+
+//MARK: 13) Запрос на восстановление email (часть 2 ) подтверждение кода
+func confimEmail(userUid: String, code: String, newEmail:String, completion: ((NewResult<RememberPass>) -> Void)?) {
+    let url = URL(string:"http://test.cerkva.asp-win.d2.digital/profile/confirm-change-email")
+    var request = URLRequest(url: url!)
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "accept")
+    request.setValue("Bearer \(UserDefaults.standard.string(forKey: "BarearToken") ?? "")", forHTTPHeaderField: "Authorization")
+    request.httpMethod = "POST"
+    let jsonDic = ["userUid": userUid, "code":code, "newEmail": newEmail]
     
     if let theJSONData = try? JSONSerialization.data(withJSONObject: jsonDic, options: []) {
         request.httpBody = theJSONData

@@ -15,7 +15,7 @@ class ChangeEmailView: UIView {
     let oldPassGrayLine = UIView()
     let enterButton = UIButton()
     private let enterBlueLayer = CAGradientLayer()
-    
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,6 +54,7 @@ class ChangeEmailView: UIView {
         enterButton.layer.addSublayer(enterBlueLayer)
         enterButton.setTitle("Змінити email", for: .normal)
         addSubview(enterButton)
+        
     }
     
     override func layoutSubviews() {
