@@ -18,9 +18,9 @@ class NewsDetailsViewModel: ViewModel {
     func remove(_ html: String) -> String {
         let result = html.replacingOccurrences(of:"(?i)\\{[^\\}]+\\}[^\\}]+\\}",with: "", options: .regularExpression, range: nil)
         
-//        let result =  html.replacingOccurrences(of:"\\{[^\\}]+\\}", with: "", options: .regularExpression, range: nil)
-
-//        let result = html.replacingOccurrences(of: "(?i){gallery\\b[^{]*}\\s*{/gallery}", with: "", options: .regularExpression)
+        //        let result =  html.replacingOccurrences(of:"\\{[^\\}]+\\}", with: "", options: .regularExpression, range: nil)
+        
+        //        let result = html.replacingOccurrences(of: "(?i){gallery\\b[^{]*}\\s*{/gallery}", with: "", options: .regularExpression)
         
         print("!!! remove at \(result)")
         

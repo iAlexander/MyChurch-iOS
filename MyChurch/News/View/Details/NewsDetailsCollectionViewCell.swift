@@ -24,7 +24,7 @@ class NewsDetailsCollectionViewCell: UICollectionViewCell {
         self.scrollView.addSubviews([self.postImageView, self.dateLabel, self.titleLabel, self.textLabel])
         
         if let image = data.image {
-            let apiUrl = API.acp.rawValue.correctPath()
+            let apiUrl = API.stage.rawValue.correctPath()
             let imageUrl: String = apiUrl + image.path + "/" + image.name
             self.postImageView.imageFromServerURL(imageUrl, placeHolder: nil)
         }
@@ -41,18 +41,18 @@ class NewsDetailsCollectionViewCell: UICollectionViewCell {
         }
         
         if let text = data.text {
-//            let clearedText = self.vm.remove(text)
+            //            let clearedText = self.vm.remove(text)
             
-//            let result = text.replacingOccurrences(of: "(?i){gallery}\\s*{/gallery}", with: "", options: .regularExpression)
-//            do {
-////                let regex =  "{[^}]+}"
-//                let regex =  "{[^}]+}"
-//                let expr = try NSRegularExpression(pattern: regex, options: [])
-//                let replacement = expr.stringByReplacingMatches(in: text, options: [], range: NSRange(), withTemplate: "")
-//                print(replacement)
-//            } catch {
-//                fatalError("Sasha i Alesha plohie programmisty")
-//            }
+            //            let result = text.replacingOccurrences(of: "(?i){gallery}\\s*{/gallery}", with: "", options: .regularExpression)
+            //            do {
+            ////                let regex =  "{[^}]+}"
+            //                let regex =  "{[^}]+}"
+            //                let expr = try NSRegularExpression(pattern: regex, options: [])
+            //                let replacement = expr.stringByReplacingMatches(in: text, options: [], range: NSRange(), withTemplate: "")
+            //                print(replacement)
+            //            } catch {
+            //                fatalError("Sasha i Alesha plohie programmisty")
+            //            }
             
             self.textLabel.setValue("", size: 16, fontWeight: .regular, numberOfLines: 0, color: .black)
             self.textLabel.attributedText = text.htmlToAttributedString
@@ -82,9 +82,9 @@ extension NewsDetailsCollectionViewCell: NewsDetailsDelegate {
             let string = element.data()
             self.textLabel.setAttributedText(string)
             
-//            let textView = UITextView()
-//            textView.setText
-//            let string =
+            //            let textView = UITextView()
+            //            textView.setText
+            //            let string =
         }
     }
     

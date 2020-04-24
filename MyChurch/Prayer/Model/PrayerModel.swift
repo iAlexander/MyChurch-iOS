@@ -9,13 +9,23 @@ enum PrayerType: String {
 
 //MARK:-- Prayer model
 struct PrayerResponse: Codable {
-    let data: [Prayer]?
+    let ok: Bool?
+    let data: PrayerList?
+}
+
+struct PrayerList: Codable {
+    let list: [Prayer]?
 }
 
 struct Prayer: Codable {
     let id: Int16?
     let title: String?
     let text: String?
-    let urlMP3: String?
+    let file: FileData?
     let type: String?
+}
+
+struct FileData: Codable {
+    let name: String
+    let path: String
 }

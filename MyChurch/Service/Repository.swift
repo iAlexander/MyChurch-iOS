@@ -34,4 +34,15 @@ class Repository {
         }
     }
     
+    func getPrayer(completion: @escaping (PrayerResponse) -> Void) {
+        APIService.shared.getPrayer() { (response) in
+            completion(response)
+        }
+    }
+    
+    func getAudioData(url: URL, completion: @escaping (Data) -> Void) {
+        let audio = try! Data(contentsOf: url)
+        completion(audio)
+    }
+    
 }
