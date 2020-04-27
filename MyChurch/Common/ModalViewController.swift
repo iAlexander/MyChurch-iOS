@@ -49,6 +49,7 @@ class ModalViewController: UIViewController {
         let attributedText = NSMutableAttributedString(string: "Політики конфіденційності", attributes: [custom.foregroundColor: UIColor(red: 0.004, green: 0.475, blue: 0.898, alpha: 1), custom.font: UIFont.systemFont(ofSize: 12, weight: .semibold), custom.paragraphStyle: NSMutableParagraphStyle()])
         button.setAttributedTitle(attributedText, for: .normal)
         button.contentHorizontalAlignment = .leading
+        button.addTarget(self, action: #selector(openPDF), for: .touchUpInside)
         
         return button
     }()
@@ -62,10 +63,10 @@ class ModalViewController: UIViewController {
     override func loadView() {
         super.loadView()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.view.addSubview(self.alertView)
         self.alertView.addSubviews([self.checkbox, self.textLabel, self.linkButton, self.button])
@@ -91,7 +92,7 @@ class ModalViewController: UIViewController {
         
         self.button.anchor(leading: self.alertView.leadingAnchor, bottom: self.alertView.bottomAnchor, trailing: self.alertView.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 22, bottom: 30, right: 22))
     }
-
+    
 }
 
 extension ModalViewController {
@@ -102,6 +103,12 @@ extension ModalViewController {
     
     @objc private func dismiss(_ sender: UIButton!) {
         self.delegate?.dismiss()
+    }
+    
+    @objc private func openPDF(_ sender: UIButton!) {
+        let urlString = "http://test.cerkva.asp-win.d2.digital/privacy-policy-my-church.pdf"
+        guard let url = URL(string: urlString) else { return }
+        UIApplication.shared.open(url)
     }
     
 }
