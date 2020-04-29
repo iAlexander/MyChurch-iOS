@@ -19,6 +19,13 @@ class RegistrationFourthPageViewController: UIViewController, UITextFieldDelegat
         mainView.sendCodeButton.addTarget(self, action: #selector(nextPagePressed), for: .touchUpInside)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+            self.title = "Особистий кабінет"
+           self.navigationController!.navigationBar.tintColor = .white
+           self.navigationController?.navigationBar.topItem?.title = ""
+       }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField {
         case  mainView.smsTextField:

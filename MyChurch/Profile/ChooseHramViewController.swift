@@ -34,6 +34,8 @@ class ChooseHramViewController: UIViewController, UITableViewDelegate , UITableV
         super.viewWillLayoutSubviews()
         self.searchController.searchBar.frame = CGRect(x: 15, y: 15, width: self.view.bounds.width - 30, height: 50)
         self.view.addSubview(searchController.searchBar)
+        self.navigationController!.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.topItem?.title = ""
     }
     
     func getData() {

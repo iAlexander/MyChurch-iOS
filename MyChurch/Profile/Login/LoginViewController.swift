@@ -24,13 +24,19 @@ class LoginViewController: UIViewController {
         self.mainView.remindPasswordButton.addTarget(self, action: #selector(remindPassPressed), for: .touchUpInside)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = "Особистий кабінет"
+        self.navigationController!.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.topItem?.title = ""
+    }
+    
     @objc func remindPassPressed() {
         if self.mainView.emailField.text?.count ?? 0 > 0 {
             ANLoader.showLoading()
             rememberPassApi(email: mainView.emailField.text! ) { (result) in
                 switch result {
                 case .success(let data):
-                    print(data)
                     if data.ok == true {
                         let alert = UIAlertController(title: "Нагати пароль", message: "Перевiрте вашу пошту \( self.mainView.emailField.text!)", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -68,7 +74,6 @@ class LoginViewController: UIViewController {
             signUpUser(email: mainView.emailField.text!, password: mainView.passwordField.text! ) { (result) in
                 switch result {
                 case .success(let data):
-                    print(data)
                     UserDefaults.standard.set(data.data?.accessToken, forKey: "BarearToken")                        
                     getUserData() { (result) in
                         switch result {
@@ -105,7 +110,6 @@ class LoginViewController: UIViewController {
     func ConfigView() {
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
-        self.title = "Особистий кабінет"
     }
     
     func errorAllert() {

@@ -18,6 +18,13 @@ class RegistrationThirdPageViewController: UIViewController, UITextFieldDelegate
         mainView.sendCodeButton.addTarget(self, action: #selector(nextPagePressed), for: .touchUpInside)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+            self.title = "Особистий кабінет"
+           self.navigationController!.navigationBar.tintColor = .white
+           self.navigationController?.navigationBar.topItem?.title = ""
+       }
+    
     @objc func nextPagePressed() {
         let vc = RegistrationFourthPageViewController()
         vc.phoneNumber = mainView.numberTextField.text ?? ""

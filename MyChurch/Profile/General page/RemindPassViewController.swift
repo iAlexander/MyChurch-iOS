@@ -27,7 +27,6 @@ class RemindPassViewController: UIViewController {
              rememberPassApi(email: mainView.oldPassField.text! ) { (result) in
                  switch result {
                  case .success(let data):
-                     print(data)
                      if data.ok == true {
                          let alert = UIAlertController(title: "Нагати пароль", message: "Перевiрте вашу пошту \( self.mainView.oldPassField.text!)", preferredStyle: .alert)
                          alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: { (action: UIAlertAction!) in

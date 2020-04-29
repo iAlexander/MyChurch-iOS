@@ -31,7 +31,6 @@ class ChacngePasswordVIewController: UIViewController {
             changePasswordApi(oldPass: mainView.oldPassField.text! , newPassword: mainView.newPassField.text!) { (result) in
                 switch result {
                 case .success(let data):
-                    print(data)
                     if data.ok == false {
                         UserDefaults.standard.set(data.data?.accessToken, forKey: "BarearToken")
                         changePasswordApi(oldPass: self.mainView.oldPassField.text! , newPassword: self.mainView.newPassField.text!) { (result) in

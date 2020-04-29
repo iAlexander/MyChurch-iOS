@@ -13,18 +13,23 @@ class GeneralPageProfileView: UIView {
     let topBackView = UIView()
     let peopleType = UILabel()
     let nameSername = UILabel()
-  
+    
     let changeEmail = UIButton()
     let changeEmailLabel = UILabel()
     let changeEmailGrayLine = UIView()
     let rightArrowEmail = UIImageView()
-
+    
     let changePassword = UIButton()
     let changePasswordGrayLine = UIView()
     let changePasswordLabel = UILabel()
     let rightArrowPassword = UIImageView()
-
+    
     let startScreenLabel = UILabel()
+    
+    private let startScreenView = UIView()
+    let startScreenButtonText = UILabel()
+    let startScreenButton = UIButton()
+    private let startScreenImage = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,7 +55,7 @@ class GeneralPageProfileView: UIView {
         topBackView.addSubview(nameSername)
         nameSername.font = UIFont.systemFont(ofSize: 22, weight: .regular)
         nameSername.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
-         
+        
         addSubview(changeEmail)
         
         changeEmail.addSubview(changeEmailLabel)
@@ -61,7 +66,7 @@ class GeneralPageProfileView: UIView {
         
         addSubview(changeEmailGrayLine)
         changeEmailGrayLine.backgroundColor =  UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
-         
+        
         changeEmail.addSubview(rightArrowEmail)
         rightArrowEmail.image = UIImage(named: "rightArrowBlue")
         rightArrowEmail.contentMode = .scaleAspectFit
@@ -70,7 +75,7 @@ class GeneralPageProfileView: UIView {
         
         addSubview(changePasswordGrayLine)
         changePasswordGrayLine.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
-         
+        
         changePassword.addSubview(changePasswordLabel)
         changePasswordLabel.text = "Зміна паролю"
         changePasswordLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
@@ -82,11 +87,27 @@ class GeneralPageProfileView: UIView {
         rightArrowPassword.contentMode = .scaleAspectFit
         
         addSubview(startScreenLabel)
-        //startScreenLabel.text = "Cтартовий екран"
+        startScreenLabel.text = "Cтартовий екран"
         startScreenLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         startScreenLabel.textColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
         startScreenLabel.textAlignment = .left
         
+        addSubview( startScreenView)
+        
+        startScreenView.layer.backgroundColor = UIColor(red: 0.949, green: 0.976, blue: 0.996, alpha: 1).cgColor
+        startScreenView.layer.cornerRadius = 10
+        
+        startScreenView.addSubview(startScreenButtonText)
+      
+        startScreenButtonText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        startScreenButtonText.textAlignment = .left
+        startScreenButtonText.textColor = .black
+        
+        startScreenView.addSubview(   startScreenImage)
+    //    startScreenImage.image = UIImage(named: "searchIcon")
+        startScreenImage.contentMode = .scaleAspectFill
+        
+        startScreenView.addSubview(startScreenButton)
     }
     
     override func layoutSubviews() {
@@ -103,9 +124,12 @@ class GeneralPageProfileView: UIView {
         changePasswordGrayLine.pin.below(of: changePassword).height(0.25).horizontally()
         changePasswordLabel.pin.top(35).horizontally(15).bottom(15)
         rightArrowPassword.pin.right(15).top(45).width(10).bottom(25)
-
+        
         startScreenLabel.pin.below(of: changePasswordGrayLine).marginTop(15).left(15).right().height(25)
         
-         
+        startScreenView.pin.below(of: startScreenLabel).marginTop(5).horizontally(15).height(50)
+        startScreenButton.pin.all()
+        startScreenButtonText.pin.left(15).vertically(13).right(75)
+        startScreenImage.pin.right(15).vertically(15).width(20)
     }
 }

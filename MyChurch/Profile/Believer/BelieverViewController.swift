@@ -36,6 +36,12 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
         view.addGestureRecognizer(tap)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+           self.navigationController!.navigationBar.tintColor = .white
+           self.navigationController?.navigationBar.topItem?.title = ""
+       }
+    
     @objc override func dismissKeyboard() {
         view.endEditing(true) //скрыть клаву по нажатию на экран
     }
@@ -76,7 +82,6 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
         registrationUser(name: mainView.nameTextField.text!, serName: mainView.serNameTextField.text!, birthday: mainView.birthdayDate.date.description, phone: mainView.phoneTextField.text!, email: mainView.emailTextField.text! , status: self.member, hram: self.hramId, eparhiya: self.eparhiyaId, angelday: "" ) { (result) in
             switch result {
             case .success(let data):
-                print(data)
                 let vc = GeneralPageProfileViewController()
                 vc.member = self.member
                 vc.email = self.mainView.emailTextField.text ?? ""

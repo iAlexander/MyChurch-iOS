@@ -21,12 +21,17 @@ struct HolidaysListData: Codable {
 struct HolidaysData: Codable {
     let id: Int?
     let group: GroupData?
+    let iconImage: ImageInfo?
     let dateOldStyle: String?
     var dateNewStyle: String?
     let name: String?
     let describe: String?
     let conceived: String?
     let priority: Int?
+}
+struct ImageInfo: Codable {
+    let name: String?
+    let path: String?
 }
 
 struct GroupData: Codable {

@@ -10,13 +10,14 @@ import UIKit
 
 class DetailHolidayView: UIView {
     
-    var imageCollectionView: UICollectionView!
+    var imageView = UIImageView()
     let goldenView = UIView()
     private let layerGolden = CAGradientLayer()
     let holidayTopName = UILabel()
     let holidayTopDate = UILabel()
     let holidayTopInfo = UILabel()
     let holidayTextView = UITextView()
+    var imageIsEmpty = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,9 +37,8 @@ class DetailHolidayView: UIView {
         imageLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         imageLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 60, height: 240)
         
-        imageCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: imageLayout)
-        imageCollectionView!.backgroundColor = .white
-        addSubview(imageCollectionView!)
+        addSubview(imageView)
+        imageView.layer.cornerRadius = 10
         
         addSubview(goldenView)
         layerGolden.colors = [
@@ -71,8 +71,12 @@ class DetailHolidayView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageCollectionView.pin.top(20).left(5).height(240).right()
-        goldenView.pin.below(of: imageCollectionView).marginTop(15).left(-22).width(35).height(80)
+        if !imageIsEmpty {
+            imageView.pin.top(20).left(5).height(240).right(5)
+            goldenView.pin.below(of: imageView).marginTop(15).left(-22).width(35).height(80)
+        } else {
+            goldenView.pin.top(20).left(-22).width(35).height(80)
+        }
         layerGolden.pin.all()
         holidayTopName.pin.top(to:goldenView.edge.top).left(to:goldenView.edge.right).marginLeft(15).right().height(30)
         holidayTopDate.pin.below(of: holidayTopName).marginTop(5).left(to:goldenView.edge.right).marginLeft(15).right().height(20)

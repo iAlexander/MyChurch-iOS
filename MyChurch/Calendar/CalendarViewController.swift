@@ -57,6 +57,9 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         let vc = DetailHolidayViewController()
         vc.titleText = mainView.choosedDay.text ?? ""
         vc.detailHolidayInfo = chooseHolidays[indexPath.row]
+        if !(chooseHolidays[indexPath.row].iconImage?.name?.isEmpty ?? true) {
+            vc.imageUrlString = "http://test.cerkva.asp-win.d2.digital/\(chooseHolidays[indexPath.row].iconImage?.path ?? "")/\(chooseHolidays[indexPath.row].iconImage?.name ?? "")"
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -128,16 +131,17 @@ extension CalendarViewController: KoyomiDelegate {
     
     func koyomi(_ koyomi: Koyomi, fontForItemAt indexPath: IndexPath, date: Date) -> UIFont? {
         let today = Date()
-//        let dateStr = date.description.strstr(needle: " ", beforeNeedle: true) ?? ""
-//
-//            if item.date == dateStr {
-//                //koyomi.needPoint = true
-//                print(item)
-//            } else {
-//                print(item)
-//             //   koyomi.needPoint = false
-//            }
-//        }
+        //        let dateStr = date.description.strstr(needle: " ", beforeNeedle: true) ?? ""
+        //
+        //            if item.date == dateStr {
+        //                //koyomi.needPoint = true
+        //                print(item)
+        //            } else {
+        //                print(item)
+        //             //   koyomi.needPoint = false
+        //            }
+        //        }
+        koyomi.select(date: today)
         return today == date ? UIFont(name:"FuturaStd-Bold", size:0) : nil
     }
     

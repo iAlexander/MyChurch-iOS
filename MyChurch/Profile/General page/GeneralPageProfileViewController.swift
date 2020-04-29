@@ -14,6 +14,20 @@ class GeneralPageProfileViewController: UIViewController {
     var member = String()
     var email = String()
     
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        switch UserData.defaultScreenIndex  {
+        case 0: self.mainView.startScreenButtonText.text = "Карта"
+        case 1: self.mainView.startScreenButtonText.text = "Календар"
+        case 2: self.mainView.startScreenButtonText.text = "Новини"
+        case 3: self.mainView.startScreenButtonText.text = "Молитви"
+        case 4: self.mainView.startScreenButtonText.text = "Особистий кабiнет"
+        default: break
+        }
+        self.mainView.layoutSubviews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigView()
@@ -25,6 +39,7 @@ class GeneralPageProfileViewController: UIViewController {
         }
         self.mainView.changePassword.addTarget(self, action: #selector(changePassword), for: .touchUpInside)
         self.mainView.changeEmail.addTarget(self, action: #selector(changeEmail), for: .touchUpInside)
+        self.mainView.startScreenButton.addTarget(self, action: #selector(chooseStartScreen), for: .touchUpInside)
     }
     
     @objc func changePassword() {
@@ -36,6 +51,12 @@ class GeneralPageProfileViewController: UIViewController {
          let vc = ChangeEmailViewController()
          self.navigationController?.pushViewController(vc, animated: true)
      }
+    
+    @objc func chooseStartScreen() {
+        let vc = ChooseStartScreenViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+     
     
     func showInfoWindows() {
         switch member {

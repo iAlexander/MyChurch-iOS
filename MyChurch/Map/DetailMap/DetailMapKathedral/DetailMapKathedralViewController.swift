@@ -27,7 +27,11 @@ class DetailMapKathedralViewController: UIViewController, UICollectionViewDelega
         self.mainView.createRouteButton.addTarget(self, action: #selector(self.createRoutePressed), for: .touchUpInside)
         GetTempleData()
         mainView.infoSegmentControll.addTarget(self, action: #selector(segmentedPressed), for: .valueChanged)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController!.navigationBar.tintColor = .white
     }
     
     
@@ -37,7 +41,6 @@ class DetailMapKathedralViewController: UIViewController, UICollectionViewDelega
             case .success(let data):
                 self.templeData = data
                 ANLoader.hide()
-                print(self.templeInfo)
                 self.mainView.churchTopName.text = data.data?.name
                 //   self.mainView.telApiText.text = data.data?.phone
                 self.mainView.fatherManNameApiText.text = data.data?.bishop?.name

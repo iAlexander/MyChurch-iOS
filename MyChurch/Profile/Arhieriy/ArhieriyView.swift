@@ -218,6 +218,14 @@ class ArhieriyView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let currentWidth = UIScreen.main.bounds.size.width
+        var bottomPadding: CGFloat = 0.0
+           if #available(iOS 11.0, *) {
+               let window = UIApplication.shared.keyWindow
+               bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
+               if bottomPadding > 0.0 {
+                   bottomPadding = 58.0
+               }
+           }
         scrollView.pin.all()
         nameLabel.pin.top(35).horizontally(15).height(20)
         nameTextField.pin.below(of: nameLabel).marginTop(5).horizontally(15).height(20)
@@ -260,7 +268,6 @@ class ArhieriyView: UIView {
         
         saveButton.pin.below(of: eparhiyaBackView).marginTop(35).horizontally().height(45)
         saveLabel.pin.all()
-        scrollView.contentSize = CGSize(width: currentWidth, height: saveButton.frame.maxY + 113)
+        scrollView.contentSize = CGSize(width: currentWidth, height: saveButton.frame.maxY + 113 + bottomPadding)
     }
-    
 }

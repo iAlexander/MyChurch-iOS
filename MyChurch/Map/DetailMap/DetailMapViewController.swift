@@ -20,7 +20,11 @@ class DetailMapViewController: UIViewController {
         ConfigView()
         self.mainView.createRouteButton.addTarget(self, action: #selector(self.createRoutePressed), for: .touchUpInside)
         GetTempleData()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController!.navigationBar.tintColor = .white
     }
     
     func GetTempleData() {
@@ -29,7 +33,6 @@ class DetailMapViewController: UIViewController {
             case .success(let data):
                 self.templeData = data
                 ANLoader.hide()
-                print(self.templeInfo)
                 self.mainView.churchTopName.text = data.data?.name
                 //   self.mainView.telApiText.text = data.data?.phone
                 self.mainView.fatherManNameApiText.text = data.data?.bishop?.name

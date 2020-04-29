@@ -8,18 +8,25 @@
 
 import UIKit
 
-class DetailHolidayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class DetailHolidayViewController: UIViewController {
     
     let mainView = DetailHolidayView()
     private let reuseIdentifierCollectionView = "imageCell"
     var titleText = String()
     var holidayId = Int()
     var detailHolidayInfo: HolidaysData?
+    var imageUrlString = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigView()
         let clearTextString =  self.detailHolidayInfo?.describe?.slice(from: "<b>", to:  "</b>")
+        if !imageUrlString.isEmpty {
+        let imageUrl = URL(string: imageUrlString)!
+        self.mainView.imageView.load(url: imageUrl)
+            mainView.imageIsEmpty = false
+            mainView.layoutSubviews()
+        }
         self.mainView.holidayTextView.text = "\(clearTextString ?? "")\n\(self.detailHolidayInfo?.conceived ?? "")"
         self.mainView.holidayTopName.text = self.detailHolidayInfo?.name
         self.mainView.holidayTopInfo.text = self.detailHolidayInfo?.group?.name
@@ -80,10 +87,8 @@ class DetailHolidayViewController: UIViewController, UICollectionViewDelegate, U
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
         self.title = titleText
-        mainView.imageCollectionView!.delegate = self
-        mainView.imageCollectionView!.dataSource = self
-        mainView.imageCollectionView!.showsHorizontalScrollIndicator = false
-        mainView.imageCollectionView!.register(HolidayImageCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifierCollectionView)
+       
+        self.navigationController!.navigationBar.tintColor = .white
     }
 }
 
@@ -92,6 +97,20 @@ extension String {
         return (range(of: from)?.upperBound).flatMap { substringFrom in
             (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
                 substring(with: substringFrom..<substringTo)
+            }
+        }
+    }
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
             }
         }
     }

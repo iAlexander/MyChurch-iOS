@@ -57,8 +57,21 @@ class MapViewController: ViewController, UISearchBarDelegate {
         churchTableView.tableFooterView = UIView()
         self.view.addSubview(searchController.searchBar)
         self.view.addSubview(churchTableView)
-        
+        self.title = "Карта"
         searchController.searchBar.showsCancelButton = false
+        
+        longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress))
+        longPressRecognizer.minimumPressDuration = 0.1
+        longPressRecognizer.delegate = self
+        mapView.addGestureRecognizer(longPressRecognizer)
+    }
+    
+    var longPressRecognizer = UILongPressGestureRecognizer()
+    
+    @objc func longPress(_ sender: UILongPressGestureRecognizer) {
+        if searchController.searchBar.text?.isEmpty ?? true {
+            searchController.searchBar.resignFirstResponder()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,7 +128,7 @@ class MapViewController: ViewController, UISearchBarDelegate {
         if #available(iOS 13.0, *) {
             searchController.searchBar.searchTextField.backgroundColor = .white
         }
-        searchController.searchBar.placeholder = " Search..."
+        searchController.searchBar.placeholder = " Пошук..."
         searchController.searchBar.setImage(UIImage(), for: .clear, state: .normal)
     }
     
@@ -263,7 +276,6 @@ extension MapViewController: MapDelegate, SelectTempleDelegate {
             for (index, item) in data.enumerated() {
                 let endLocation = CLLocation(latitude: data[index].lt, longitude: data[index].lg)
                 let distance = (self.locationManager.location?.distance(from: endLocation) ?? 0) / 1000
-                print(" \(String(format:"%.02f", distance)) KMs ")
                 let itemFullData = Temple(id: item.id, name: item.name, lt: item.lt, lg: item.lg
                     , distance: distance)
                 self.allChurch.append(itemFullData)
@@ -299,3 +311,10 @@ extension MapViewController: MapDelegate, SelectTempleDelegate {
 
 
 
+extension MapViewController : UIGestureRecognizerDelegate
+{
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool
+    {
+        return true
+    }
+}

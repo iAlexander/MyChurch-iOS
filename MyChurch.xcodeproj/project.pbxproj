@@ -70,6 +70,8 @@
 		16EBE52A2456CDCD0072BC82 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBE5212456CDCD0072BC82 /* MapViewController.swift */; };
 		16EBE52B2456CDCD0072BC82 /* ChurchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBE5222456CDCD0072BC82 /* ChurchTableViewCell.swift */; };
 		16EBE52C2456CDCD0072BC82 /* TempleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBE5232456CDCD0072BC82 /* TempleCollectionViewController.swift */; };
+		16FFC81A2459EE3900F67D6F /* ChooseStartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFC8192459EE3900F67D6F /* ChooseStartScreenViewController.swift */; };
+		16FFC81C2459EE4600F67D6F /* ChooseStartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFC81B2459EE4600F67D6F /* ChooseStartScreenView.swift */; };
 		4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6223D994D900E5AB65 /* NewsViewModel.swift */; };
 		4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6423D99AF000E5AB65 /* ScrollView + StackView.swift */; };
 		4424DF6723D9A92600E5AB65 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6623D9A92600E5AB65 /* Image.swift */; };
@@ -172,6 +174,8 @@
 		16EBE5212456CDCD0072BC82 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		16EBE5222456CDCD0072BC82 /* ChurchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchTableViewCell.swift; sourceTree = "<group>"; };
 		16EBE5232456CDCD0072BC82 /* TempleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempleCollectionViewController.swift; sourceTree = "<group>"; };
+		16FFC8192459EE3900F67D6F /* ChooseStartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStartScreenViewController.swift; sourceTree = "<group>"; };
+		16FFC81B2459EE4600F67D6F /* ChooseStartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStartScreenView.swift; sourceTree = "<group>"; };
 		314075550757F62B33A2BC7E /* libPods-MyChurch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyChurch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B8948B07C3AEDD9C87ADB /* Pods-MyChurch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch.release.xcconfig"; path = "Target Support Files/Pods-MyChurch/Pods-MyChurch.release.xcconfig"; sourceTree = "<group>"; };
 		4424DF6223D994D900E5AB65 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
@@ -325,6 +329,8 @@
 				161825452434DC5300CFB99A /* ChangeEmailView.swift */,
 				161825472434F08800CFB99A /* RemindPassViewController.swift */,
 				161825492434F09600CFB99A /* RemindPassView.swift */,
+				16FFC8192459EE3900F67D6F /* ChooseStartScreenViewController.swift */,
+				16FFC81B2459EE4600F67D6F /* ChooseStartScreenView.swift */,
 			);
 			path = "General page";
 			sourceTree = "<group>";
@@ -813,6 +819,7 @@
 				4431562423D0AE19004B5B59 /* DispatchQueueHelper.swift in Sources */,
 				4431562523D0AE19004B5B59 /* UIView.swift in Sources */,
 				1617BCB32418F9D500B63715 /* OnboardingModel.swift in Sources */,
+				16FFC81A2459EE3900F67D6F /* ChooseStartScreenViewController.swift in Sources */,
 				16EBE5122456CC760072BC82 /* NewsViewController.swift in Sources */,
 				442A068223D2C834004E98DB /* ViewModel.swift in Sources */,
 				16EBE5292456CDCD0072BC82 /* MapModel.swift in Sources */,
@@ -822,6 +829,7 @@
 				16EBE5242456CDCD0072BC82 /* MapViewModel.swift in Sources */,
 				4431562923D0AE19004B5B59 /* UIImage + UIImageView.swift in Sources */,
 				1655941C242E404600C918D0 /* GeneralPageProfileViewController.swift in Sources */,
+				16FFC81C2459EE4600F67D6F /* ChooseStartScreenView.swift in Sources */,
 				167AC73C24058E490044D620 /* ChutchObjects.swift in Sources */,
 				166B4822242BD3C8009D9945 /* HramTableViewCell.swift in Sources */,
 				161825392433882A00CFB99A /* DuhovenstvoView.swift in Sources */,
@@ -1028,7 +1036,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73VJRTF9X7;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -1036,7 +1044,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.016;
+				MARKETING_VERSION = 0.017;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurch;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1053,7 +1061,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73VJRTF9X7;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -1061,7 +1069,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.016;
+				MARKETING_VERSION = 0.017;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurch;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -203,10 +203,6 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        print("velocity = \(velocity)")
-        print("targetContentOffset pointee = \(targetContentOffset.pointee)")
-        
-        print("scrollView.contentSize.width = \(scrollView.contentSize.width)")
         let itemWidth = scrollView.contentSize.width / 5
         let inset = targetContentOffset.pointee.x
         let result = Int(5 - (scrollView.contentSize.width - inset) / itemWidth)
@@ -224,7 +220,6 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("scrollViewDidEndDragging")
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

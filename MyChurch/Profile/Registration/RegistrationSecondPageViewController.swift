@@ -20,6 +20,13 @@ class RegistrationSecondPageViewController: UIViewController {
         self.mainView.clergyButton.addTarget(self, action: #selector(clergyButtonPressed), for: .touchUpInside)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+            self.title = "Особистий кабінет"
+           self.navigationController!.navigationBar.tintColor = .white
+           self.navigationController?.navigationBar.topItem?.title = ""
+       }
+    
     @objc func believerButtonPressed() {
         let vc = BelieverViewController()
         self.navigationController?.pushViewController(vc, animated: true)

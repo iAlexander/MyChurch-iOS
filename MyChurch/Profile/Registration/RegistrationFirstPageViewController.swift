@@ -20,6 +20,13 @@ class RegistrationFirstPageViewController: UIViewController {
         self.mainView.spiritualSupportButton.addTarget(self, action: #selector(spiritualSupportPressed), for: .touchUpInside)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+            self.title = "Особистий кабінет"
+           self.navigationController!.navigationBar.tintColor = .white
+           self.navigationController?.navigationBar.topItem?.title = ""
+       }
+    
     @objc func charityPressed() {
         print("charityPressed")
     }
@@ -27,7 +34,6 @@ class RegistrationFirstPageViewController: UIViewController {
     @objc func personalAreaPressed() {
         if let data = UserDefaults.standard.value(forKey:"UserData") as? Data {
             let userData = try? PropertyListDecoder().decode(UserDatas.self, from: data)
-            print(userData as Any)
             if userData?.data?.firstName?.count ?? 0 > 0 &&  userData?.data?.lastName?.count ?? 0 > 0 {
                 let vc = GeneralPageProfileViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -48,6 +54,5 @@ class RegistrationFirstPageViewController: UIViewController {
     func ConfigView() {
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
-        self.title = "Особистий кабінет"
     }
 }

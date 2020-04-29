@@ -28,8 +28,13 @@ class ChooseSanViewController: UIViewController, UITableViewDelegate , UITableVi
             self.sanArray =   ["єпископ", "архiєпископ","митрополит"]
         }
         ConfigView()
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+           self.navigationController!.navigationBar.tintColor = .white
+           self.navigationController?.navigationBar.topItem?.title = ""
+       }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         sanArray.count
