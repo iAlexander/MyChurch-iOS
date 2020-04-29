@@ -61,8 +61,6 @@ class CalendarView: UIView {
         addSubview(choosedDay)
         choosedDay.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         choosedDay.textAlignment = .left
-        
-        
         addSubview(holidayTableView)
     }
     

@@ -11,12 +11,15 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
     private let reuseIdentifierTableView = "CalendarCellTableView"
     var allHolidays = [HolidaysData]()
     var chooseHolidays =  [HolidaysData]()
+    var timeInterval = DateComponents()
+    var dateNew = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
         getData()
         setupNavBar()
+
     }
     
     //MARK: Work with API
@@ -28,8 +31,10 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
                 for (index, item) in self.allHolidays.enumerated() {
                     self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
                 }
-                self.mainView.holidayTableView.reloadData()
+                self.mainView.calendar.select(date: Date())
                 self.mainView.calendar.reloadData()
+                //внизу код как по нажатию на ячейку календаря, чтоб сегодня сортирнуть дату и показать ее сразу
+                self.reloadTableView(date: Date())
             case .partialSuccess( _): break
             case .failure(let error):
                 print(error)
@@ -62,6 +67,25 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func reloadTableView(date: Date) {
+           self.timeInterval.hour = 3
+           dateNew = Calendar.current.date(byAdding: self.timeInterval, to: date)!
+           var dateStr = dateNew.description
+           dateStr = String(dateStr.dropFirst(8))
+           dateStr = dateStr.strstr(needle: " ", beforeNeedle: true) ?? ""
+           if dateStr.prefix(1) == "0" {
+               dateStr = String(dateStr.dropFirst(1))
+           }
+           self.mainView.choosedDay.text = "\(dateStr) \(self.chooseMonth)"
+           let chooseDate = dateNew.description.strstr(needle: " ", beforeNeedle: true) ?? ""
+           for item in self.allHolidays {
+               if item.dateNewStyle == chooseDate {
+                   self.chooseHolidays.append(item)
+               }
+           }
+           self.mainView.holidayTableView.reloadData()
+       }
 }
 
 extension CalendarViewController {
@@ -130,7 +154,6 @@ extension CalendarViewController: KoyomiDelegate {
   
     
     func koyomi(_ koyomi: Koyomi, fontForItemAt indexPath: IndexPath, date: Date) -> UIFont? {
-        let today = Date()
         //        let dateStr = date.description.strstr(needle: " ", beforeNeedle: true) ?? ""
         //
         //            if item.date == dateStr {
@@ -141,30 +164,15 @@ extension CalendarViewController: KoyomiDelegate {
         //             //   koyomi.needPoint = false
         //            }
         //        }
-        koyomi.select(date: today)
+
+        let today = Date()
+
         return today == date ? UIFont(name:"FuturaStd-Bold", size:0) : nil
     }
-    
+
     func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
         chooseHolidays.removeAll()
-        var timeInterval = DateComponents()
-        timeInterval.hour = 3
-        let dateNew = Calendar.current.date(byAdding: timeInterval, to: date!)!
-        var dateStr = dateNew.description
-        dateStr = String(dateStr.dropFirst(8))
-        dateStr = dateStr.strstr(needle: " ", beforeNeedle: true) ?? ""
-        if dateStr.prefix(1) == "0" {
-            dateStr = String(dateStr.dropFirst(1))
-        }
-        mainView.choosedDay.text = "\(dateStr) \(chooseMonth)"
-        let chooseDate = dateNew.description.strstr(needle: " ", beforeNeedle: true) ?? ""
-        
-        for item in self.allHolidays {
-            if item.dateNewStyle == chooseDate {
-                chooseHolidays.append(item)
-            }
-        }
-        mainView.holidayTableView.reloadData()
+        self.reloadTableView(date: date!)
     }
 }
 
