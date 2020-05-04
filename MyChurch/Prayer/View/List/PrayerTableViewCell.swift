@@ -54,6 +54,3 @@ class PrayerTableViewCell: UITableViewCell {
     
 }
 
-extension PrayerTableViewCell {
-    
-}

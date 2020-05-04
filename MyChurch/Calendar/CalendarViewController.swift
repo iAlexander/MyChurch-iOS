@@ -118,7 +118,7 @@ extension CalendarViewController {
         case "2":    self.navigationItem.title = "Лютий  \(mainView.calendar.currentDateString().strstr(needle: "/", beforeNeedle: false) ?? "")";chooseMonth = "Лютого"
         case "3":    self.navigationItem.title = "Березень \(mainView.calendar.currentDateString().strstr(needle: "/", beforeNeedle: false) ?? "")";chooseMonth = "Березеня"
         case "4":    self.navigationItem.title = "Квiтень \(mainView.calendar.currentDateString().strstr(needle: "/", beforeNeedle: false) ?? "")";chooseMonth = "Квiтня"
-        case "5":    self.navigationItem.title = "Травень \(mainView.calendar.currentDateString().strstr(needle: "/", beforeNeedle: false) ?? "")";chooseMonth = "Травеня"
+        case "5":    self.navigationItem.title = "Травень \(mainView.calendar.currentDateString().strstr(needle: "/", beforeNeedle: false) ?? "")";chooseMonth = "Травня"
         case "6":   self.navigationItem.title = "Червень \(mainView.calendar.currentDateString().strstr(needle: "/", beforeNeedle: false) ?? "")";chooseMonth = "Червня"
         case "7":   self.navigationItem.title = "Липень \(mainView.calendar.currentDateString().strstr(needle: "/", beforeNeedle: false) ?? "")";chooseMonth = "Липня"
         case "8":    self.navigationItem.title = "Серпень \(mainView.calendar.currentDateString().strstr(needle: "/", beforeNeedle: false) ?? "")";chooseMonth = "Серпня"
