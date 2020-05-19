@@ -72,8 +72,7 @@ class DuhovenstvoViewController: UIViewController, SendDataDelegate, SendDataEpa
     @objc func handler(sender: UIDatePicker) { //барабан даты
         var timeInterval = DateComponents()
         timeInterval.hour = 5
-        print(Calendar.current.date(byAdding: timeInterval, to: mainView.birthdayDate.date)!)
-        print(Calendar.current.date(byAdding: timeInterval, to: mainView.tezoimenustvoDate.date)!)
+        mainView.tezoimenustvoDate.minimumDate = mainView.birthdayDate.date
     }
     
     @objc func savePressed() {

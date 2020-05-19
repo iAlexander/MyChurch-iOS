@@ -19,6 +19,7 @@ class ChurchTableViewCell: UITableViewCell {
         self.backgroundColor = .white
         
         addSubview(invitedLabel)
+        invitedLabel.font =  UIFont.systemFont(ofSize: 10, weight: .regular)
         
         addSubview(searchIcon)
         searchIcon.image = UIImage(named: "searchIcon")

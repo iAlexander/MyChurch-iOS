@@ -70,7 +70,6 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
     @objc func handler(sender: UIDatePicker) { //барабан даты
         var timeInterval = DateComponents()
         timeInterval.hour = 5
-        print(Calendar.current.date(byAdding: timeInterval, to: mainView.birthdayDate.date)!)
     }
     
     @objc func savePressed() {

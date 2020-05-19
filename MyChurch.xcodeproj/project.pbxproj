@@ -57,6 +57,8 @@
 		167AC73E2406B8FF0044D620 /* DetailHolidayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73D2406B8FF0044D620 /* DetailHolidayViewController.swift */; };
 		167AC7402406B9110044D620 /* DetailHolidayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73F2406B9110044D620 /* DetailHolidayView.swift */; };
 		167AC7422406BFC80044D620 /* HolidayImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC7412406BFC80044D620 /* HolidayImageCollectionCell.swift */; };
+		167D66BA246EC99600330479 /* SupportPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D66B9246EC99600330479 /* SupportPageViewController.swift */; };
+		167D66BC246EC9A300330479 /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D66BB246EC9A300330479 /* SupportView.swift */; };
 		16EBE50D2456CC6E0072BC82 /* NewsDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBE50B2456CC6E0072BC82 /* NewsDetailsCollectionViewCell.swift */; };
 		16EBE50E2456CC6E0072BC82 /* NewsDetailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBE50C2456CC6E0072BC82 /* NewsDetailsCollectionViewController.swift */; };
 		16EBE5112456CC760072BC82 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBE50F2456CC750072BC82 /* NewsTableViewCell.swift */; };
@@ -161,6 +163,8 @@
 		167AC73D2406B8FF0044D620 /* DetailHolidayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHolidayViewController.swift; sourceTree = "<group>"; };
 		167AC73F2406B9110044D620 /* DetailHolidayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHolidayView.swift; sourceTree = "<group>"; };
 		167AC7412406BFC80044D620 /* HolidayImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayImageCollectionCell.swift; sourceTree = "<group>"; };
+		167D66B9246EC99600330479 /* SupportPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportPageViewController.swift; sourceTree = "<group>"; };
+		167D66BB246EC9A300330479 /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
 		16EBE50B2456CC6E0072BC82 /* NewsDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsDetailsCollectionViewCell.swift; path = View/Details/NewsDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		16EBE50C2456CC6E0072BC82 /* NewsDetailsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsDetailsCollectionViewController.swift; path = View/Details/NewsDetailsCollectionViewController.swift; sourceTree = "<group>"; };
 		16EBE50F2456CC750072BC82 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsTableViewCell.swift; path = View/List/NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 		161EE5A62423B81B0094B8E0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				167D66B8246EC97300330479 /* SupportPage */,
 				163E3140242FA3E40018B394 /* Login */,
 				1655941A242E402700C918D0 /* General page */,
 				166B481C242BC445009D9945 /* ChooseHramViewController.swift */,
@@ -360,6 +365,15 @@
 				167AC7412406BFC80044D620 /* HolidayImageCollectionCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		167D66B8246EC97300330479 /* SupportPage */ = {
+			isa = PBXGroup;
+			children = (
+				167D66B9246EC99600330479 /* SupportPageViewController.swift */,
+				167D66BB246EC9A300330479 /* SupportView.swift */,
+			);
+			path = SupportPage;
 			sourceTree = "<group>";
 		};
 		16EBE5152456CDCD0072BC82 /* Map */ = {
@@ -856,6 +870,7 @@
 				442A1A8A23DB095100645ACC /* CGFloat.swift in Sources */,
 				44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */,
 				167AC7402406B9110044D620 /* DetailHolidayView.swift in Sources */,
+				167D66BC246EC9A300330479 /* SupportView.swift in Sources */,
 				161825442434DC4400CFB99A /* ChangeEmailViewController.swift in Sources */,
 				1617BCC12418FA4500B63715 /* PrayerTableViewCell.swift in Sources */,
 				16EBE5262456CDCD0072BC82 /* DetailMapView.swift in Sources */,
@@ -882,6 +897,7 @@
 				166B481F242BC454009D9945 /* ChooseHramView.swift in Sources */,
 				1618253D24339B9B00CFB99A /* ChooseSanView.swift in Sources */,
 				444CE79B23D8B2E7004667B5 /* UIColor.swift in Sources */,
+				167D66BA246EC99600330479 /* SupportPageViewController.swift in Sources */,
 				162FCF95242690BF008F58A7 /* RegistrationFifthPageView.swift in Sources */,
 				4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */,
 				4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */,
@@ -1036,7 +1052,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73VJRTF9X7;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -1061,7 +1077,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73VJRTF9X7;
 				INFOPLIST_FILE = MyChurch/Info.plist;

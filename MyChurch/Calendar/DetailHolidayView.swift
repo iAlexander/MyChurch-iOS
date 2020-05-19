@@ -55,7 +55,8 @@ class DetailHolidayView: UIView {
         
         addSubview(holidayTopName)
         holidayTopName.textAlignment = .left
-        holidayTopName.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        holidayTopName.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        holidayTopName.numberOfLines = 0
         
         addSubview(holidayTopDate)
         holidayTopDate.textAlignment = .left
@@ -78,7 +79,7 @@ class DetailHolidayView: UIView {
             goldenView.pin.top(20).left(-22).width(35).height(80)
         }
         layerGolden.pin.all()
-        holidayTopName.pin.top(to:goldenView.edge.top).left(to:goldenView.edge.right).marginLeft(15).right().height(30)
+        holidayTopName.pin.top(to:goldenView.edge.top).left(to:goldenView.edge.right).marginLeft(15).right().height(50)
         holidayTopDate.pin.below(of: holidayTopName).marginTop(5).left(to:goldenView.edge.right).marginLeft(15).right().height(20)
         holidayTopInfo.pin.below(of: holidayTopDate).marginTop(5).left(to:goldenView.edge.right).marginLeft(15).right().height(20)
         holidayTextView.pin.below(of: holidayTopInfo).marginTop(10).horizontally(15).bottom(100)

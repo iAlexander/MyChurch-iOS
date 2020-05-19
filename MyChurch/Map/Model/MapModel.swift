@@ -14,4 +14,5 @@ struct Temple: Codable, Equatable {
     let lt: Double
     let lg: Double
     var distance: Double?
+    let locality: String?
 }

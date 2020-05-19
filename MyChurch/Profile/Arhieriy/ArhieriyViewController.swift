@@ -72,6 +72,7 @@ class ArhieriyViewController: UIViewController , SendDataDelegate, SendDataEparh
     @objc func handler(sender: UIDatePicker) { //барабан даты
         var timeInterval = DateComponents()
         timeInterval.hour = 5
+        mainView.tezoimenustvoDate.minimumDate = mainView.birthdayDate.date
     }
     
     @objc func savePressed() {

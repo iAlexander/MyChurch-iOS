@@ -12,7 +12,7 @@ import ANLoader
 class DetailMapKathedralViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let mainView = DetailMapKathedralView()
-    var templeInfo = Temple(id: 0, name: "", lt: 0, lg: 0)
+    var templeInfo = Temple(id: 0, name: "", lt: 0, lg: 0, locality: "")
     var templeData : TempleData?
     private let reuseIdentifierCollectionView = "imageCell"
 

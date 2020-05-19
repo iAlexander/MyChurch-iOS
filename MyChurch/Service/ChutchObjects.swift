@@ -68,7 +68,7 @@ struct TempleDetailData: Codable {
     let name: String?
     let galaDay: String?
     let galaDayTitle: String?
-    //   let phone: String?
+    let phone: String?
     let bishop: IdName?
     let priest: IdName?
     let presiding: IdName?

@@ -48,7 +48,8 @@ class RegistrationFirstPageViewController: UIViewController {
     }
     
     @objc func spiritualSupportPressed() {
-        print("spiritualSupportPressed")
+        let vc = SupportPageViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func ConfigView() {

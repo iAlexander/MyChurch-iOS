@@ -12,7 +12,7 @@ import ANLoader
 class DetailMapViewController: UIViewController {
     
     let mainView = DetailMapView()
-    var templeInfo = Temple(id: 0, name: "", lt: 0, lg: 0)
+    var templeInfo = Temple(id: 0, name: "", lt: 0, lg: 0, locality: "")
     var templeData : TempleData?
     
     override func viewDidLoad() {
@@ -34,13 +34,27 @@ class DetailMapViewController: UIViewController {
                 self.templeData = data
                 ANLoader.hide()
                 self.mainView.churchTopName.text = data.data?.name
-                //   self.mainView.telApiText.text = data.data?.phone
-                self.mainView.fatherManNameApiText.text = data.data?.bishop?.name
-                self.mainView.deaneryApiText.text = data.data?.presiding?.name
+                if data.data?.phone == nil {
+                    self.mainView.telApiText.isHidden = true
+                    self.mainView.telText.isHidden = true
+                } else {
+                self.mainView.telApiText.text = data.data?.phone
+                }
+                if data.data?.presiding?.name == "(вакантна)" {
+                    self.mainView.fatherManName.isHidden =  true
+                    self.mainView.fatherManNameNeedHidden = true
+                    self.mainView.layoutSubviews()
+                } else {
+                    self.mainView.fatherManNameApiText.text =  data.data?.presiding?.name
+                }
+                
+                self.mainView.deaneryApiText.text = data.data?.priest?.name
                 self.mainView.adressText.text = "\(data.data?.locality ?? ""), \(data.data?.district ?? ""), \(data.data?.street ?? "")"
                 self.mainView.monFriday.text = data.data?.schedule ?? ""
                 self.mainView.eparhiyaCityName.text = data.data?.diocese?.name ?? ""
+                
                 self.mainView.templeHolidayApiText.text = data.data?.galaDayTitle ?? ""
+                
             case .partialSuccess( _): break
             case .failure(let error):
                 print(error)

@@ -145,7 +145,7 @@ class MapViewController: ViewController, UISearchBarDelegate {
     
     func filterRowsForSearchedText(_ searchText: String) {
         self.allChurchFiltered = allChurch.filter({( model : Temple) -> Bool in
-            return model.name.lowercased().contains(searchText.lowercased())
+            return model.name.lowercased().contains(searchText.lowercased()) || model.locality!.lowercased().contains(searchText.lowercased())
         })
         if  self.allChurchFiltered.count <= 0 {
             self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: 50)
@@ -164,7 +164,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierTableView, for: indexPath) as! ChurchTableViewCell
-        cell.invitedLabel.text = self.allChurchFiltered[indexPath.row].name
+        cell.invitedLabel.text = "\(self.allChurchFiltered[indexPath.row].locality ?? ""), \(self.allChurchFiltered[indexPath.row].name)"
         return cell
     }
     
@@ -277,7 +277,7 @@ extension MapViewController: MapDelegate, SelectTempleDelegate {
                 let endLocation = CLLocation(latitude: data[index].lt, longitude: data[index].lg)
                 let distance = (self.locationManager.location?.distance(from: endLocation) ?? 0) / 1000
                 let itemFullData = Temple(id: item.id, name: item.name, lt: item.lt, lg: item.lg
-                    , distance: distance)
+                    , distance: distance, locality: item.locality ?? "")
                 self.allChurch.append(itemFullData)
             }
                self.allChurch = self.allChurch.sorted(by: { $0.distance! < ($1.distance!)})

@@ -17,6 +17,8 @@ class GeneralPageProfileViewController: UIViewController {
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        self.navigationController!.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.topItem?.title = ""
         switch UserData.defaultScreenIndex  {
         case 0: self.mainView.startScreenButtonText.text = "Карта"
         case 1: self.mainView.startScreenButtonText.text = "Календар"
@@ -79,7 +81,7 @@ class GeneralPageProfileViewController: UIViewController {
     func ConfigView() {
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
-        self.navigationItem.hidesBackButton = true
+        self.navigationItem.hidesBackButton = false
         self.title = "Особистий кабiнет"
     }
 }

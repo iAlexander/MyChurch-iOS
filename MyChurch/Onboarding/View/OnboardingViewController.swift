@@ -135,6 +135,8 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     
     @objc private func skip(_ sender: UIButton!) {
         if let tabBarController = self.tabBarController as? TabBarController {
+            UserData.defaultScreenIndex = 2
+            UserData.isDefaultScreenChoosed = true
             UIView.animate(withDuration: 0.1) {
                 tabBarController.tabBarType = .main
             }
@@ -146,7 +148,6 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
             if let tabBarController = self.tabBarController as? TabBarController {
                 UserData.defaultScreenIndex = self.selectedIndex
                 UserData.isDefaultScreenChoosed = true
-                
                 UIView.animate(withDuration: 0.1) {
                     tabBarController.tabBarType = .main
                 }

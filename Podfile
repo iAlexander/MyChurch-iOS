@@ -11,5 +11,7 @@ target 'MyChurch' do
   	pod 'PinLayout'
   	pod 'MSPeekCollectionViewDelegateImplementation'
         pod 'ANLoader'
+  	pod 'IQKeyboardManagerSwift'
+	pod 'VACalendar'
 
 end
