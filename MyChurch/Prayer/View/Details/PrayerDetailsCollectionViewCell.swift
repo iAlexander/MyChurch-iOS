@@ -18,11 +18,11 @@ class PrayerDetailsCollectionViewCell: UICollectionViewCell {
         self.scrollView.addSubviews([self.titleLabel, self.textLabel])
         
         if let title = data.title {
-            self.titleLabel.setValue(title, size: 16, fontWeight: .bold, numberOfLines: 0, color: .black)
+            self.titleLabel.setValue(title, size: 22, fontWeight: .bold, numberOfLines: 0, color: .black)
         }
         
         if let text = data.text {
-            self.textLabel.setValue(text, size: 16, fontWeight: .regular, numberOfLines: 0, color: .black)
+            self.textLabel.setValue(text, size: 20, fontWeight: .regular, numberOfLines: 0, color: .black)
         }
         
         setupLayout()

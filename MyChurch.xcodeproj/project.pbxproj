@@ -243,8 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				1617BCBA2418FA4500B63715 /* PrayerDetailsViewController.swift */,
-				44D3DE6C245369B300732BBA /* PlayerDetailsView.swift */,
 				1617BCB92418FA4500B63715 /* PrayerDetailsCollectionViewCell.swift */,
+				44D3DE6C245369B300732BBA /* PlayerDetailsView.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -435,8 +435,8 @@
 		4424DF6B23D9CC1400E5AB65 /* Detalis */ = {
 			isa = PBXGroup;
 			children = (
-				16EBE50B2456CC6E0072BC82 /* NewsDetailsCollectionViewCell.swift */,
 				16EBE50C2456CC6E0072BC82 /* NewsDetailsCollectionViewController.swift */,
+				16EBE50B2456CC6E0072BC82 /* NewsDetailsCollectionViewCell.swift */,
 			);
 			name = Detalis;
 			path = ..;
