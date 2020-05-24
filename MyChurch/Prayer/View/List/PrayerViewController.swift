@@ -146,7 +146,9 @@ extension PrayerViewController: PrayerDelegate, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Open prayer details
         let vc = PrayerDetailsCollectionViewController(indexPath: indexPath, data: self.data)
-        self.present(vc, animated: true)
+        DispatchQueue.main.async {
+            self.present(vc, animated: true)
+        }
         
         // Play audio
         //        let audioUrl = vm.makePath(data: data.file)

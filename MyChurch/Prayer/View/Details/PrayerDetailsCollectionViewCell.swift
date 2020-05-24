@@ -33,6 +33,6 @@ class PrayerDetailsCollectionViewCell: UICollectionViewCell {
         
         self.titleLabel.anchor(top: self.scrollView.topAnchor, leading: self.leadingAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
         
-        self.textLabel.anchor(top: self.titleLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.scrollView.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 24, left: 16, bottom: 16, right: 16))
+        self.textLabel.anchor(top: self.titleLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.scrollView.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 24, left: 16, bottom: 48, right: 16))
     }
 }
