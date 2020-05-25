@@ -69,7 +69,6 @@ class DetailMapView: UIView {
         
         closeAtTop.textAlignment = .left
         closeAtTop.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        closeAtTop.text = "Зачиняється 20-00"
         closeAtTop.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         addSubview(closeAtTop)
         

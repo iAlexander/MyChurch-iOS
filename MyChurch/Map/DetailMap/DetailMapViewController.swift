@@ -34,12 +34,55 @@ class DetailMapViewController: UIViewController {
                 self.templeData = data
                 ANLoader.hide()
                 self.mainView.churchTopName.text = data.data?.name
+                if data.data?.priest?.name == "(вакантна)" || data.data?.priest?.name == nil  {
+                    self.mainView.deaneryApiText.isHidden = true
+                    self.mainView.deanery.isHidden = true
+                } else {
+                    self.mainView.deaneryApiText.text = data.data?.priest?.name
+                }
+                
+                if  data.data?.galaDayTitle == "" {
+                    self.mainView.templeHolidayApiText.isHidden = true
+                    self.mainView.templeHoliday.isHidden = true
+                } else {
+                    var month = String()
+                    var dateStr = data.data?.galaDay?.description
+                    dateStr = String(dateStr!.dropFirst(8))
+                    dateStr = dateStr!.strstr(needle: "T", beforeNeedle: true) ?? ""
+                    if dateStr!.prefix(1) == "0" {
+                        dateStr = String(dateStr!.dropFirst(1))
+                    }
+                    month = String(data.data?.galaDay?.description.dropFirst(5) ?? "")
+                    month = month.strstr(needle: "-", beforeNeedle: true) ?? ""
+                    if month.prefix(1) == "0" {
+                        month = String(month.dropFirst(1))
+                    }
+                    
+                    switch month {
+                    case "1": month = "ciчня"
+                    case "2":month = "лютого"
+                    case "3":month = "березня"
+                    case "4":month = "квiтня"
+                    case "5":month = "травня"
+                    case "6":month = "червня"
+                    case "7":month = "липня"
+                    case "8":month = "серпня"
+                    case "9":month = "вересня"
+                    case "10":month = "жовтня"
+                    case "11":month = "листопада"
+                    case "12":month = "грудня"
+                    default:  break
+                    }
+                    self.mainView.templeHolidayApiText.text = "\(dateStr ?? "") \(month ?? "")"
+                }
+                
                 if data.data?.phone == nil {
                     self.mainView.telApiText.isHidden = true
                     self.mainView.telText.isHidden = true
                 } else {
-                self.mainView.telApiText.text = data.data?.phone
+                    self.mainView.telApiText.text = data.data?.phone
                 }
+                
                 if data.data?.presiding?.name == "(вакантна)" {
                     self.mainView.fatherManName.isHidden =  true
                     self.mainView.fatherManNameNeedHidden = true
@@ -48,12 +91,10 @@ class DetailMapViewController: UIViewController {
                     self.mainView.fatherManNameApiText.text =  data.data?.presiding?.name
                 }
                 
-                self.mainView.deaneryApiText.text = data.data?.priest?.name
                 self.mainView.adressText.text = "\(data.data?.locality ?? ""), \(data.data?.district ?? ""), \(data.data?.street ?? "")"
                 self.mainView.monFriday.text = data.data?.schedule ?? ""
                 self.mainView.eparhiyaCityName.text = data.data?.diocese?.name ?? ""
                 
-                self.mainView.templeHolidayApiText.text = data.data?.galaDayTitle ?? ""
                 
             case .partialSuccess( _): break
             case .failure(let error):
