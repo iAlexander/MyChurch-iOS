@@ -15,14 +15,12 @@ class NewsDetailsViewModel: ViewModel {
     
     weak var delegate: NewsDetailsDelegate?
     
-    func remove(_ html: String) -> String {
-        let result = html.replacingOccurrences(of:"(?i)\\{[^\\}]+\\}[^\\}]+\\}",with: "", options: .regularExpression, range: nil)
+    func format(_ html: String) -> String {
+        let result = html.replacingOccurrences(of: "<p style=\"line-height: 16.2px;\">", with: "<p style=\"font-size: 20;line-height: 16.2px;\">").replacingOccurrences(of: "<p>", with: "<p style=\"font-size: 20;line-height: 16.2px;\">").replacingOccurrences(of: "(?i)\\{[^\\}]+\\}[^\\}]+\\}",with: "", options: .regularExpression).replacingOccurrences(of: "(?i){gallery}\\s*{/gallery}", with: "", options: .regularExpression)
         
         //        let result =  html.replacingOccurrences(of:"\\{[^\\}]+\\}", with: "", options: .regularExpression, range: nil)
         
         //        let result = html.replacingOccurrences(of: "(?i){gallery\\b[^{]*}\\s*{/gallery}", with: "", options: .regularExpression)
-        
-        print("!!! remove at \(result)")
         
         return result
     }

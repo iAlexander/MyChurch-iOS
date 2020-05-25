@@ -32,30 +32,18 @@ class NewsDetailsCollectionViewCell: UICollectionViewCell {
         if let date = data.date {
             let formattedDate = date.formatDate(from: .unformatted, to: .dayMonthYearHoursMinutesShort)
             if let formattedDate = formattedDate {
-                self.dateLabel.setValue(formattedDate, size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)
+                self.dateLabel.setValue(formattedDate, size: 14, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)
             }
         }
         
         if let title = data.title {
-            self.titleLabel.setValue(title, size: 16, fontWeight: .bold, numberOfLines: 0, color: .black)
+            self.titleLabel.setValue(title, size: 22, fontWeight: .bold, numberOfLines: 0, color: .black)
         }
         
         if let text = data.text {
-            //            let clearedText = self.vm.remove(text)
-            
-            //            let result = text.replacingOccurrences(of: "(?i){gallery}\\s*{/gallery}", with: "", options: .regularExpression)
-            //            do {
-            ////                let regex =  "{[^}]+}"
-            //                let regex =  "{[^}]+}"
-            //                let expr = try NSRegularExpression(pattern: regex, options: [])
-            //                let replacement = expr.stringByReplacingMatches(in: text, options: [], range: NSRange(), withTemplate: "")
-            //                print(replacement)
-            //            } catch {
-            //                fatalError("Sasha i Alesha plohie programmisty")
-            //            }
-            
-            self.textLabel.setValue("", size: 16, fontWeight: .regular, numberOfLines: 0, color: .black)
-            self.textLabel.attributedText = text.htmlToAttributedString
+            let formattedText = self.vm.format(text)
+            self.textLabel.setValue("", size: 20, fontWeight: .regular, numberOfLines: 0, color: .black)
+            self.textLabel.attributedText = formattedText.htmlToAttributedString
         }
         
         setupLayout()
