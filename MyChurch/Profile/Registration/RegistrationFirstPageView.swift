@@ -43,7 +43,6 @@ class RegistrationFirstPageView: UIView {
         charityButton.setTitle("Благодiйнiсть", for: .normal)
         addSubview(charityButton)
         
-        
         layerBlueSecond.colors = [
             UIColor(red: 0.004, green: 0.475, blue: 0.898, alpha: 1).cgColor,
             UIColor(red: 0.004, green: 0.776, blue: 0.988, alpha: 1).cgColor

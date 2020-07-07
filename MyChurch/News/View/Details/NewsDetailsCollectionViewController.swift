@@ -29,7 +29,7 @@ class NewsDetailsCollectionViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+           super.notificationhBarButtonItem = UIBarButtonItem()
         // Do any additional setup after loading the view.
         self.collectionView.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.collectionView.register(NewsDetailsCollectionViewCell.self, forCellWithReuseIdentifier: NewsDetailsCollectionViewCell.reuseIdentifier)

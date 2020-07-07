@@ -155,13 +155,35 @@ func registrationUser(name: String, serName: String, birthday: String, phone: St
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "accept")
     request.httpMethod = "POST"
-    let jsonDic = ["firstName": name, "lastName": serName, "email": email, "phone": phone, "member": status, "church": hram, "diocese": eparhiya, "acceptAgreement": true, "angelday":angelday, "birthday": birthday ] as [String : Any]
+    var jsonDic = [String:Any]()
+    
+    if hram == 0 {
+        jsonDic = ["firstName": name, "lastName": serName, "email": email, "phone": phone, "member": status, "diocese": eparhiya, "acceptAgreement": true, "angelday":angelday, "birthday": birthday, "firebaseToken": UserDefaults.standard.value(forKey:"firToken") ?? "" ] as [String : Any]
+    }
+    
+    if eparhiya == 0 {
+        jsonDic = ["firstName": name, "lastName": serName, "email": email, "phone": phone, "member": status, "church": hram, "acceptAgreement": true, "angelday":angelday, "birthday": birthday, "firebaseToken": UserDefaults.standard.value(forKey:"firToken") ?? "" ] as [String : Any]
+    }
+    
+    if eparhiya == 0 && hram == 0 {
+        jsonDic = ["firstName": name, "lastName": serName, "email": email, "phone": phone, "member": status, "acceptAgreement": true, "angelday":angelday, "birthday": birthday, "firebaseToken": UserDefaults.standard.value(forKey:"firToken") ?? "" ] as [String : Any]
+    }
+    
+    if eparhiya != 0 && hram != 0 {
+        jsonDic = ["firstName": name, "lastName": serName, "email": email, "phone": phone, "member": status, "church": hram, "diocese": eparhiya, "acceptAgreement": true, "angelday":angelday, "birthday": birthday, "firebaseToken": UserDefaults.standard.value(forKey:"firToken") ?? "" ] as [String : Any]
+    }
+    
     if let theJSONData = try? JSONSerialization.data(withJSONObject: jsonDic, options: []) {
         request.httpBody = theJSONData
     }
     let session = URLSession.shared
     let task = session.dataTask(with: request) { (responseData, response, error) in
         DispatchQueue.main.async {
+            if let httpResponse = response as? HTTPURLResponse {
+                          print(httpResponse.statusCode)
+                          print(String(decoding: responseData!, as: UTF8.self))
+                
+                      }
             if let error = error {
                 completion?(.failure(error))
             } else if let jsonData = responseData {
@@ -388,7 +410,130 @@ func confimEmail(userUid: String, code: String, newEmail:String, completion: ((N
     task.resume()
 }
 
-//
+//MARK: 14) Запрос на взятие данных уведомлений с профиля
+func getUserAllNotification(completion: ((NewResult<UserNotifocation>) -> Void)?) {
+    let api = "http://test.cerkva.asp-win.d2.digital/notification/history"
+    let url1 = URL(string: api)
+    var request = URLRequest(url: url1!)
+    request.httpMethod = "GET"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "accept")
+    request.setValue("Bearer \(UserDefaults.standard.string(forKey: "BarearToken") ?? "")", forHTTPHeaderField: "Authorization")
+    let session = URLSession.shared
+    let task = session.dataTask(with: request) { (responseData, response, error) in
+        DispatchQueue.main.async {
+            if let error = error {
+                completion?(.failure(error))
+            } else if let jsonData = responseData {
+                let decoder = JSONDecoder()
+                do {
+                    let response = try decoder.decode(UserNotifocation.self, from: jsonData)
+                    completion?(.success(response))
+                } catch {
+                    completion?(.failure(error))
+                }
+            }
+        }
+    }
+    task.resume()
+}
+
+//MARK: 15) Запрос на взятие детальных данных уведомлений с профиля
+func getUserDetailNotification(notificationId : String, completion: ((NewResult<UserNotifocationDetail>) -> Void)?) {
+    let api = "http://test.cerkva.asp-win.d2.digital/notification/card/\(notificationId)"
+    let url1 = URL(string: api)
+    var request = URLRequest(url: url1!)
+    request.httpMethod = "GET"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "accept")
+    request.setValue("Bearer \(UserDefaults.standard.string(forKey: "BarearToken") ?? "")", forHTTPHeaderField: "Authorization")
+    let session = URLSession.shared
+    let task = session.dataTask(with: request) { (responseData, response, error) in
+        DispatchQueue.main.async {
+            if let error = error {
+                completion?(.failure(error))
+            } else if let jsonData = responseData {
+                let decoder = JSONDecoder()
+                do {
+                    let response = try decoder.decode(UserNotifocationDetail.self, from: jsonData)
+                    completion?(.success(response))
+                } catch {
+                    completion?(.failure(error))
+                }
+            }
+        }
+    }
+    task.resume()
+}
+
+//MARK: 16) Запрос на отправку пуш токена на логине
+func sendFirToken(completion: ((NewResult<FirTokenData>) -> Void)?) {
+    let url = URL(string:"http://test.cerkva.asp-win.d2.digital/account/token-update")
+    var request = URLRequest(url: url!)
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "accept")
+    request.httpMethod = "POST"
+    let jsonDic = ["firebaseToken": UserDefaults.standard.value(forKey:"firToken") ?? "" ] as [String : Any]
+    if let theJSONData = try? JSONSerialization.data(withJSONObject: jsonDic, options: []) {
+        request.httpBody = theJSONData
+    }
+    let session = URLSession.shared
+    let task = session.dataTask(with: request) { (responseData, response, error) in
+        DispatchQueue.main.async {
+            if let error = error {
+                completion?(.failure(error))
+            } else if let jsonData = responseData {
+                let decoder = JSONDecoder()
+                do {
+                    let DeviceResponse = try decoder.decode(FirTokenData.self, from: jsonData)
+                    completion?(.success(DeviceResponse))
+                } catch {
+                    completion?(.failure(error))
+                }
+            }
+        }
+    }
+    task.resume()
+}
+
+//MARK: 17) Запрос-отправка ликПей на бек
+func sendLikPayData(completion: ((NewResult<SendLiqPayData>) -> Void)?) {
+    var urlComponents = URLComponents()
+    urlComponents.scheme = "http"
+    urlComponents.host = "test.cerkva.asp-win.d2.digital"
+    urlComponents.path = "/api/pay/generate-liqpay-url"
+    urlComponents.queryItems = [URLQueryItem(name: "actionType", value: "paydonate"), URLQueryItem(name: "resultUrl", value: "https://wwww.google.com")]    
+    
+    guard let url = urlComponents.url else {
+        print("__error: Could not create URL from components")
+        return
+    }
+    var request = URLRequest(url: url)
+    request.httpMethod = "GET"
+    request.setValue("Bearer \(UserDefaults.standard.string(forKey: "BarearToken") ?? "")", forHTTPHeaderField: "Authorization")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "accept")
+
+    let session = URLSession.shared
+    let task = session.dataTask(with: request) { (responseData, response, error) in
+        DispatchQueue.main.async {
+            if let error = error {
+                completion?(.failure(error))
+            } else if let jsonData = responseData {
+                let decoder = JSONDecoder()
+                do {
+                    let clubAdsResponse = try decoder.decode(SendLiqPayData.self, from: jsonData)
+                    completion?(.success(clubAdsResponse))
+                } catch {
+                    completion?(.failure(error))
+                }
+            }
+        }
+    }
+    task.resume()
+}
+
+
 //if let httpResponse = response as? HTTPURLResponse {
 //    print(httpResponse.statusCode)
 //    print(String(decoding: responseData!, as: UTF8.self))

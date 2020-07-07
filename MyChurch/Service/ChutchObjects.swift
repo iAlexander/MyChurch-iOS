@@ -69,6 +69,7 @@ struct TempleDetailData: Codable {
     let galaDay: String?
     let galaDayTitle: String?
     let phone: String?
+    let history: String?
     let bishop: IdName?
     let priest: IdName?
     let presiding: IdName?
@@ -80,6 +81,20 @@ struct TempleDetailData: Codable {
     let district: String?
     let locality: String?
     let schedule: String?
+    let files: [Files]?
+}
+
+struct Files: Codable {
+    let file: File
+}
+struct File: Codable {
+    let id: Int?
+    let file: FileImage?
+}
+
+struct FileImage: Codable {
+    let name: String?
+    let path: String?
 }
 
 struct Churchgeo: Codable {
@@ -128,6 +143,7 @@ struct EparhiesList: Codable {
 
 // MARK: работаю с объектом при регистрации пользователя
 struct RegistrationData: Codable {
+    let ok: Bool?
     let data: AccessToken?
 }
 
@@ -179,4 +195,51 @@ struct EmailInfo: Codable {
 struct RememberPass: Codable {
     let version: String?
     let ok: Bool?
+}
+
+// MARK: работаю с объектом при взятии данных нотификаций
+struct UserNotifocation: Codable {
+    var data: UserNotificationList?
+}
+
+struct UserNotificationList: Codable {
+    var list: [UserNotificationArray]?
+    var accessToken: String?
+}
+
+struct UserNotificationArray: Codable {
+    var id: Int?
+    var title: String?
+    var read: Bool?
+    var createdAt: String?
+}
+
+// MARK: работаю с объектом при взятии детальных данных нотификаций
+struct UserNotifocationDetail: Codable {
+    var ok: Bool?
+    var data: UserDetailDataNotification?
+    var accessToken: String?
+}
+
+struct UserDetailDataNotification: Codable {
+    var id: Int?
+    var  title: String?
+    var text: String?
+    var createdAt: String?
+}
+
+// MARK: работаю с объектом при отправке токена
+struct FirTokenData: Codable {
+    let ok: Bool?
+}
+
+// MARK: работаю с объектом при отправке данных на ликПей
+struct SendLiqPayData: Codable {
+    let ok: Bool?
+    var data: PayData?
+}
+
+struct PayData: Codable {
+    let url: String?
+    let orderId: String?
 }

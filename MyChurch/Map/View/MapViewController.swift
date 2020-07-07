@@ -114,7 +114,7 @@ class MapViewController: ViewController, UISearchBarDelegate {
             self.view.layoutSubviews()
         }
     }
-   
+    
     func setupSearchController() {
         definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = false
@@ -122,7 +122,7 @@ class MapViewController: ViewController, UISearchBarDelegate {
         searchController.searchResultsUpdater = self
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.delegate = self
-
+        
         //        searchController.searchBar.layer.cornerRadius = 11
         //        searchController.searchBar.clipsToBounds = true
         if #available(iOS 13.0, *) {
@@ -137,10 +137,10 @@ class MapViewController: ViewController, UISearchBarDelegate {
             self.searchBarSearchButtonClicked(searchBar)
         }
     }
- 
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-           searchBar.resignFirstResponder()
-        }
+        searchBar.resignFirstResponder()
+    }
     
     
     func filterRowsForSearchedText(_ searchText: String) {
@@ -169,18 +169,24 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailMapViewController()
-        vc.templeInfo = allChurchFiltered[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
-        //        if allChurchFiltered[indexPath.row].type == "Кафедральний" {
-        //            let vc = DetailMapKathedralViewController()
-        //            vc.templeInfo = allChurchFiltered[indexPath.row]
-        //            self.navigationController?.pushViewController(vc, animated: true)
-        //        }else {
-        //            let vc = DetailMapViewController()
-        //            vc.templeInfo = allChurchFiltered[indexPath.row]
-        //            self.navigationController?.pushViewController(vc, animated: true)
-        //        }
+        getDetailTemple(id:allChurchFiltered[indexPath.row].id) { (result) in
+            switch result {
+            case .success(let data):
+                self.createFirebaseAnalytics(itemID: "id 1", itemName: "Экран карты", contentType: "Пользователь воспользовался поиском и переходит на детальный экран карт")
+                if data.data?.dioceseType?.id == 7 {
+                    let vc = DetailMapKathedralViewController()
+                    vc.templeInfo = self.allChurchFiltered[indexPath.row]
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    let vc = DetailMapViewController()
+                    vc.templeInfo = self.allChurchFiltered[indexPath.row]
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            case .partialSuccess( _): break
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
@@ -245,21 +251,28 @@ extension MapViewController: GMSMapViewDelegate, CLLocationManagerDelegate {
         ANLoader.activityBackgroundColor = UIColor(red: 0.004, green: 0.475, blue: 0.898, alpha: 1)
         for position in self.allChurch {
             if position.lt.description == marker.position.latitude.description && position.lg.description == marker.position.longitude.description {
-//                if position.type == "Кафедральний" {
-//                    let vc = DetailMapKathedralViewController()
-//                    vc.templeInfo = position
-//                    self.navigationController?.pushViewController(vc, animated: true)
-//                    break
-//                }else {
-                    let vc = DetailMapViewController()
-                    vc.templeInfo = position
-                    self.navigationController?.pushViewController(vc, animated: true)
-                    break
-            //    }
+                getDetailTemple(id:position.id) { (result) in
+                    switch result {
+                    case .success(let data):
+                        self.createFirebaseAnalytics(itemID: "id 1", itemName: "Экран карты", contentType: "Пользователь воспользовался поиском и переходит на детальный экран карт")
+                        if data.data?.dioceseType?.id == 7 {
+                            let vc = DetailMapKathedralViewController()
+                            vc.templeInfo = position
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            let vc = DetailMapViewController()
+                            vc.templeInfo = position
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    case .partialSuccess( _): break
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
             }
         }
-    return true
-}
+        return true
+    }
     
     //    // MARK: - CLLocationManagerDelegate
     //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -280,7 +293,7 @@ extension MapViewController: MapDelegate, SelectTempleDelegate {
                     , distance: distance, locality: item.locality ?? "")
                 self.allChurch.append(itemFullData)
             }
-               self.allChurch = self.allChurch.sorted(by: { $0.distance! < ($1.distance!)})
+            self.allChurch = self.allChurch.sorted(by: { $0.distance! < ($1.distance!)})
             for item in data {
                 let position = CLLocationCoordinate2D(latitude: (Double(item.lt)), longitude: Double(item.lg))
                 let marker = GMSMarker(position: position)

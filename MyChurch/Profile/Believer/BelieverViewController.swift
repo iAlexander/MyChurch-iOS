@@ -81,12 +81,19 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
         registrationUser(name: mainView.nameTextField.text!, serName: mainView.serNameTextField.text!, birthday: mainView.birthdayDate.date.description, phone: mainView.phoneTextField.text!, email: mainView.emailTextField.text! , status: self.member, hram: self.hramId, eparhiya: self.eparhiyaId, angelday: "" ) { (result) in
             switch result {
             case .success(let data):
+                if data.ok ?? false {
+                UserDefaults.standard.set(data.data?.accessToken, forKey: "BarearToken")
                 let vc = GeneralPageProfileViewController()
                 vc.member = self.member
                 vc.email = self.mainView.emailTextField.text ?? ""
-                let userData = UserDatas(data: UserInfo(firstName: self.mainView.nameTextField.text!, lastName: self.mainView.serNameTextField.text!, email: self.mainView.emailTextField.text!, phone: ""))
-                UserDefaults.standard.set(try? PropertyListEncoder().encode(userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
-                self.navigationController?.show(vc, sender: nil)
+                    let userData = UserDatas(data: UserInfo(firstName: self.mainView.nameTextField.text!, lastName: self.mainView.serNameTextField.text!, email: self.mainView.emailTextField.text!, phone: ""))
+                    UserDefaults.standard.set(try? PropertyListEncoder().encode(userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
+                    self.navigationController?.show(vc, sender: nil)
+                } else {
+                    let alert = UIAlertController(title: "Помилка", message: "Перевiрте данi реєстрацiï", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             case .partialSuccess( _): break
             case .failure(let error):
                 print(error)
@@ -126,8 +133,8 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
         mainView.hramLabel.isHidden = false
     }
     
-    func checkInfo() { // чекаю кнопку при введенных данных
-        if mainView.nameTextField.text?.count ?? 0 > 1 && mainView.serNameTextField.text?.count ?? 0 > 1 && mainView.phoneTextField.text?.count ?? 0 > 1 && mainView.emailTextField.text?.count ?? 0 > 1 && mainView.hramLabelButton.text != "Оберіть свій Храм" && mainView.eparhiyaLabel.text !=  "Оберіть свою єпархію" {
+    func checkInfo() { // чекаю кнопку при введенных данных && mainView.hramLabelButton.text != "Оберіть свій Храм" && mainView.eparhiyaLabel.text !=  "Оберіть свою єпархію"
+        if mainView.nameTextField.text?.count ?? 0 > 1 && mainView.serNameTextField.text?.count ?? 0 > 1 && mainView.phoneTextField.text?.count ?? 0 > 1 && mainView.emailTextField.text?.count ?? 0 > 1  {
             mainView.saveButton.isEnabled = true; mainView.saveButton.backgroundColor =  UIColor(red: 0.004, green: 0.475, blue: 0.898, alpha: 1)
         } else {
             mainView.saveButton.isEnabled = false; mainView.saveButton.backgroundColor = UIColor(red: 0.878, green: 0.878, blue: 0.878, alpha: 1)

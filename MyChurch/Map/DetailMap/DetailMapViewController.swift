@@ -40,7 +40,6 @@ class DetailMapViewController: UIViewController {
                 } else {
                     self.mainView.deaneryApiText.text = data.data?.priest?.name
                 }
-                
                 if  data.data?.galaDayTitle == "" {
                     self.mainView.templeHolidayApiText.isHidden = true
                     self.mainView.templeHoliday.isHidden = true
@@ -94,7 +93,6 @@ class DetailMapViewController: UIViewController {
                 self.mainView.adressText.text = "\(data.data?.locality ?? ""), \(data.data?.district ?? ""), \(data.data?.street ?? "")"
                 self.mainView.monFriday.text = data.data?.schedule ?? ""
                 self.mainView.eparhiyaCityName.text = data.data?.diocese?.name ?? ""
-                
                 
             case .partialSuccess( _): break
             case .failure(let error):

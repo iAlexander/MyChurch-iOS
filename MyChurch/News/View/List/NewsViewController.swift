@@ -28,7 +28,10 @@ class NewsViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        super.searchBarButtonItem = UIBarButtonItem()
+        if UserDefaults.standard.string(forKey: "BarearToken") == nil {
+            super.notificationhBarButtonItem = UIBarButtonItem()
+        }
         // Do any additional setup after loading the view.
         self.view.addSubviews([self.tableView, self.activityIndicatorView])
         
@@ -93,6 +96,8 @@ extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewData
     
     @objc func openNotification(_ sender: UIButton!) {
         print("openNotification")
+        let vc = NotificationViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func openDetails(_ sender: UIButton!) {

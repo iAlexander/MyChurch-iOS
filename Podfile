@@ -13,5 +13,7 @@ target 'MyChurch' do
         pod 'ANLoader'
   	pod 'IQKeyboardManagerSwift'
 	pod 'VACalendar'
+	pod 'Firebase/Analytics'
+	pod 'Firebase/Messaging'
 
 end

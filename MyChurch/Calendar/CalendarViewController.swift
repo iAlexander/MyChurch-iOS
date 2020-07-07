@@ -109,7 +109,7 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         if !(chooseHolidays[indexPath.row].iconImage?.name?.isEmpty ?? true) {
             vc.imageUrlString = "http://test.cerkva.asp-win.d2.digital/\(chooseHolidays[indexPath.row].iconImage?.path ?? "")/\(chooseHolidays[indexPath.row].iconImage?.name ?? "")"
         }
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     func reloadTableView(date: Date) {

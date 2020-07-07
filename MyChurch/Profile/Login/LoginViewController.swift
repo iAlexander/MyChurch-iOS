@@ -87,8 +87,17 @@ class LoginViewController: UIViewController {
                                 self.present(alert, animated: true, completion: nil)
                             } else {
                                 UserDefaults.standard.set(try? PropertyListEncoder().encode(self.userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
-                            let vc = GeneralPageProfileViewController()
-                            self.navigationController?.show(vc, sender: nil)
+                                sendFirToken() { (result) in
+                                    switch result {
+                                    case .success(let data):
+                                        print(data)
+                                    case .partialSuccess( _):  ANLoader.hide()
+                                    case .failure(let error):  ANLoader.hide()
+                                    print(error)
+                                    }
+                                }
+                                let vc = GeneralPageProfileViewController()
+                                self.navigationController?.show(vc, sender: nil)
                             }
                         case .partialSuccess( _):  ANLoader.hide(); self.errorAllert()
                         case .failure(let error):  ANLoader.hide(); self.errorAllert()

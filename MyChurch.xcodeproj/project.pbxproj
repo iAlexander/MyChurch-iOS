@@ -33,6 +33,9 @@
 		161EE5AF2423C1200094B8E0 /* RegistrationSecondPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5AE2423C1200094B8E0 /* RegistrationSecondPageView.swift */; };
 		161EE5B12423C3570094B8E0 /* RegistrationThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5B02423C3570094B8E0 /* RegistrationThirdPageViewController.swift */; };
 		161EE5B32423C3690094B8E0 /* RegistrationThirdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5B22423C3690094B8E0 /* RegistrationThirdPageView.swift */; };
+		162F4DAA247FBAF300E2587A /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162F4DA9247FBAF300E2587A /* NotificationDetailViewController.swift */; };
+		162F4DAC247FBB0500E2587A /* NotificationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162F4DAB247FBB0500E2587A /* NotificationDetailView.swift */; };
+		162F4DAE247FD23200E2587A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 162F4DAD247FD23200E2587A /* GoogleService-Info.plist */; };
 		162FCF8F24266E0C008F58A7 /* RegistrationFourthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF8E24266E0C008F58A7 /* RegistrationFourthPageViewController.swift */; };
 		162FCF9124266E1D008F58A7 /* RegistrationFourthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */; };
 		162FCF93242690B3008F58A7 /* RegistrationFifthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF92242690B3008F58A7 /* RegistrationFifthPageViewController.swift */; };
@@ -43,6 +46,9 @@
 		163E3148243132270018B394 /* ChacngePasswordVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E3147243132270018B394 /* ChacngePasswordVIew.swift */; };
 		1655941C242E404600C918D0 /* GeneralPageProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1655941B242E404600C918D0 /* GeneralPageProfileViewController.swift */; };
 		1655941E242E405200C918D0 /* GeneralPageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1655941D242E405200C918D0 /* GeneralPageProfileView.swift */; };
+		1656E39F247D57CF0072C3D8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656E39E247D57CF0072C3D8 /* NotificationViewController.swift */; };
+		1656E3A1247D57DF0072C3D8 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656E3A0247D57DF0072C3D8 /* NotificationView.swift */; };
+		1656E3A3247D59800072C3D8 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656E3A2247D59800072C3D8 /* NotificationCell.swift */; };
 		166B4819242B7070009D9945 /* BelieverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4818242B7070009D9945 /* BelieverViewController.swift */; };
 		166B481B242B707D009D9945 /* BelieverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B481A242B707D009D9945 /* BelieverView.swift */; };
 		166B481D242BC445009D9945 /* ChooseHramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B481C242BC445009D9945 /* ChooseHramViewController.swift */; };
@@ -72,6 +78,8 @@
 		16EBE52A2456CDCD0072BC82 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBE5212456CDCD0072BC82 /* MapViewController.swift */; };
 		16EBE52B2456CDCD0072BC82 /* ChurchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBE5222456CDCD0072BC82 /* ChurchTableViewCell.swift */; };
 		16EBE52C2456CDCD0072BC82 /* TempleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBE5232456CDCD0072BC82 /* TempleCollectionViewController.swift */; };
+		16F541FF2480FEFD00C15C18 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F541FE2480FEFD00C15C18 /* WebViewController.swift */; };
+		16F542012480FF0D00C15C18 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F542002480FF0D00C15C18 /* WebView.swift */; };
 		16FFC81A2459EE3900F67D6F /* ChooseStartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFC8192459EE3900F67D6F /* ChooseStartScreenViewController.swift */; };
 		16FFC81C2459EE4600F67D6F /* ChooseStartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFC81B2459EE4600F67D6F /* ChooseStartScreenView.swift */; };
 		4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424DF6223D994D900E5AB65 /* NewsViewModel.swift */; };
@@ -139,6 +147,10 @@
 		161EE5AE2423C1200094B8E0 /* RegistrationSecondPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSecondPageView.swift; sourceTree = "<group>"; };
 		161EE5B02423C3570094B8E0 /* RegistrationThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationThirdPageViewController.swift; sourceTree = "<group>"; };
 		161EE5B22423C3690094B8E0 /* RegistrationThirdPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationThirdPageView.swift; sourceTree = "<group>"; };
+		162F4DA9247FBAF300E2587A /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
+		162F4DAB247FBB0500E2587A /* NotificationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailView.swift; sourceTree = "<group>"; };
+		162F4DAD247FD23200E2587A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		162F4DAF247FD42D00E2587A /* Моя церква.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Моя церква.entitlements"; sourceTree = "<group>"; };
 		162FCF8E24266E0C008F58A7 /* RegistrationFourthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFourthPageViewController.swift; sourceTree = "<group>"; };
 		162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFourthPageView.swift; sourceTree = "<group>"; };
 		162FCF92242690B3008F58A7 /* RegistrationFifthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFifthPageViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +161,9 @@
 		163E3147243132270018B394 /* ChacngePasswordVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChacngePasswordVIew.swift; sourceTree = "<group>"; };
 		1655941B242E404600C918D0 /* GeneralPageProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPageProfileViewController.swift; sourceTree = "<group>"; };
 		1655941D242E405200C918D0 /* GeneralPageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPageProfileView.swift; sourceTree = "<group>"; };
+		1656E39E247D57CF0072C3D8 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		1656E3A0247D57DF0072C3D8 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		1656E3A2247D59800072C3D8 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		166B4818242B7070009D9945 /* BelieverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelieverViewController.swift; sourceTree = "<group>"; };
 		166B481A242B707D009D9945 /* BelieverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelieverView.swift; sourceTree = "<group>"; };
 		166B481C242BC445009D9945 /* ChooseHramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseHramViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +193,8 @@
 		16EBE5212456CDCD0072BC82 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		16EBE5222456CDCD0072BC82 /* ChurchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchTableViewCell.swift; sourceTree = "<group>"; };
 		16EBE5232456CDCD0072BC82 /* TempleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempleCollectionViewController.swift; sourceTree = "<group>"; };
+		16F541FE2480FEFD00C15C18 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		16F542002480FF0D00C15C18 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		16FFC8192459EE3900F67D6F /* ChooseStartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStartScreenViewController.swift; sourceTree = "<group>"; };
 		16FFC81B2459EE4600F67D6F /* ChooseStartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStartScreenView.swift; sourceTree = "<group>"; };
 		314075550757F62B33A2BC7E /* libPods-MyChurch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyChurch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,6 +297,7 @@
 		161EE5A62423B81B0094B8E0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				16F541FD2480FECF00C15C18 /* WebView */,
 				167D66B8246EC97300330479 /* SupportPage */,
 				163E3140242FA3E40018B394 /* Login */,
 				1655941A242E402700C918D0 /* General page */,
@@ -314,6 +332,15 @@
 			path = Registration;
 			sourceTree = "<group>";
 		};
+		162F4DA8247FBAB600E2587A /* NotificationDetail */ = {
+			isa = PBXGroup;
+			children = (
+				162F4DA9247FBAF300E2587A /* NotificationDetailViewController.swift */,
+				162F4DAB247FBB0500E2587A /* NotificationDetailView.swift */,
+			);
+			path = NotificationDetail;
+			sourceTree = "<group>";
+		};
 		163E3140242FA3E40018B394 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +365,17 @@
 				16FFC81B2459EE4600F67D6F /* ChooseStartScreenView.swift */,
 			);
 			path = "General page";
+			sourceTree = "<group>";
+		};
+		1656E39D247D57B90072C3D8 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				162F4DA8247FBAB600E2587A /* NotificationDetail */,
+				1656E39E247D57CF0072C3D8 /* NotificationViewController.swift */,
+				1656E3A0247D57DF0072C3D8 /* NotificationView.swift */,
+				1656E3A2247D59800072C3D8 /* NotificationCell.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		166B4817242B7054009D9945 /* Believer */ = {
@@ -432,6 +470,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		16F541FD2480FECF00C15C18 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				16F541FE2480FEFD00C15C18 /* WebViewController.swift */,
+				16F542002480FF0D00C15C18 /* WebView.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		4424DF6B23D9CC1400E5AB65 /* Detalis */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,7 +520,9 @@
 		443155E423CF368C004B5B59 /* MyChurch */ = {
 			isa = PBXGroup;
 			children = (
+				162F4DAF247FD42D00E2587A /* Моя церква.entitlements */,
 				443155F123CF368E004B5B59 /* Assets.xcassets */,
+				1656E39D247D57B90072C3D8 /* Notification */,
 				4431560F23D0A941004B5B59 /* Source */,
 				44FC0A20240274FB003A7E7E /* Splash */,
 				44FC0A24240277D7003A7E7E /* Onboarding */,
@@ -541,6 +590,7 @@
 				443155E523CF368C004B5B59 /* AppDelegate.swift */,
 				4431560223CF78F8004B5B59 /* PCU-Bridging-Header.h */,
 				443155F623CF368E004B5B59 /* Info.plist */,
+				162F4DAD247FD23200E2587A /* GoogleService-Info.plist */,
 				443155EE23CF368C004B5B59 /* PCU.xcdatamodeld */,
 				442A075723D3A018004E98DB /* Location.gpx */,
 			);
@@ -767,6 +817,7 @@
 			files = (
 				443155F523CF368E004B5B59 /* LaunchScreen.storyboard in Resources */,
 				443155F223CF368E004B5B59 /* Assets.xcassets in Resources */,
+				162F4DAE247FD23200E2587A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,19 +878,23 @@
 				443155F023CF368C004B5B59 /* PCU.xcdatamodeld in Sources */,
 				166B481B242B707D009D9945 /* BelieverView.swift in Sources */,
 				16EBE5112456CC760072BC82 /* NewsTableViewCell.swift in Sources */,
+				162F4DAA247FBAF300E2587A /* NotificationDetailViewController.swift in Sources */,
 				1655941E242E405200C918D0 /* GeneralPageProfileView.swift in Sources */,
 				16EBE5282456CDCD0072BC82 /* DetailMapKathedralView.swift in Sources */,
+				1656E39F247D57CF0072C3D8 /* NotificationViewController.swift in Sources */,
 				4431562723D0AE19004B5B59 /* String.swift in Sources */,
 				4431562423D0AE19004B5B59 /* DispatchQueueHelper.swift in Sources */,
 				4431562523D0AE19004B5B59 /* UIView.swift in Sources */,
 				1617BCB32418F9D500B63715 /* OnboardingModel.swift in Sources */,
 				16FFC81A2459EE3900F67D6F /* ChooseStartScreenViewController.swift in Sources */,
+				1656E3A3247D59800072C3D8 /* NotificationCell.swift in Sources */,
 				16EBE5122456CC760072BC82 /* NewsViewController.swift in Sources */,
 				442A068223D2C834004E98DB /* ViewModel.swift in Sources */,
 				16EBE5292456CDCD0072BC82 /* MapModel.swift in Sources */,
 				444CE79923D8ADEE004667B5 /* Label.swift in Sources */,
 				166B4819242B7070009D9945 /* BelieverViewController.swift in Sources */,
 				44DDFF5C23D4CBE600024B7C /* Repository.swift in Sources */,
+				1656E3A1247D57DF0072C3D8 /* NotificationView.swift in Sources */,
 				16EBE5242456CDCD0072BC82 /* MapViewModel.swift in Sources */,
 				4431562923D0AE19004B5B59 /* UIImage + UIImageView.swift in Sources */,
 				1655941C242E404600C918D0 /* GeneralPageProfileViewController.swift in Sources */,
@@ -848,6 +903,7 @@
 				166B4822242BD3C8009D9945 /* HramTableViewCell.swift in Sources */,
 				161825392433882A00CFB99A /* DuhovenstvoView.swift in Sources */,
 				1617BCC02418FA4500B63715 /* PrayerViewController.swift in Sources */,
+				16F542012480FF0D00C15C18 /* WebView.swift in Sources */,
 				166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */,
 				161EE5AA2423B84D0094B8E0 /* RegistrationFirstPageView.swift in Sources */,
 				161EE5AF2423C1200094B8E0 /* RegistrationSecondPageView.swift in Sources */,
@@ -883,6 +939,7 @@
 				445AC70923DF1CDC000A18E0 /* NewsDetailsViewModel.swift in Sources */,
 				166B481D242BC445009D9945 /* ChooseHramViewController.swift in Sources */,
 				44FC0A2A2402796D003A7E7E /* OnboardingViewController.swift in Sources */,
+				162F4DAC247FBB0500E2587A /* NotificationDetailView.swift in Sources */,
 				4431560D23D0A8AC004B5B59 /* TabBarController.swift in Sources */,
 				167AC7422406BFC80044D620 /* HolidayImageCollectionCell.swift in Sources */,
 				163E3148243132270018B394 /* ChacngePasswordVIew.swift in Sources */,
@@ -902,6 +959,7 @@
 				4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */,
 				4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */,
 				4431562623D0AE19004B5B59 /* NSLayout.swift in Sources */,
+				16F541FF2480FEFD00C15C18 /* WebViewController.swift in Sources */,
 				4431561423D0AAD3004B5B59 /* NavigationController.swift in Sources */,
 				1617BCBF2418FA4500B63715 /* PrayerDetailsViewController.swift in Sources */,
 				1617BCC32418FA5E00B63715 /* PrayerViewModel.swift in Sources */,
@@ -1050,9 +1108,10 @@
 			baseConfigurationReference = ECE781CCA2CE73B231BA4F3E /* Pods-MyChurch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73VJRTF9X7;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -1060,7 +1119,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.017;
+				MARKETING_VERSION = 0.019;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurch;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1075,9 +1134,10 @@
 			baseConfigurationReference = 3A7B8948B07C3AEDD9C87ADB /* Pods-MyChurch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73VJRTF9X7;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -1085,7 +1145,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.017;
+				MARKETING_VERSION = 0.019;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurch;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";
