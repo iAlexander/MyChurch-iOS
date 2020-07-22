@@ -2,6 +2,7 @@
 
 import UIKit
 import AVFoundation
+import SystemConfiguration
 
 class PrayerViewController: ViewController {
     
@@ -82,8 +83,18 @@ class PrayerViewController: ViewController {
         self.navigationItem.title = "Молитви"
         
         self.activityIndicatorView.startAnimating()
-        vm.startFetchingData()
         
+        if Reachability.isConnectedToNetwork() {
+            print("Internet Connection Available!")
+            vm.startFetchingData()
+        } else {
+            if let data = UserDefaults.standard.value(forKey:"UserPrayer") as? Data {
+                let userData = try? PropertyListDecoder().decode([Prayer].self, from: data)
+                self.data = userData!
+                self.activityIndicatorView.stopAnimating()
+                self.segmentedControl.isUserInteractionEnabled = true
+            }
+        }
         setupLayout()
     }
     
@@ -116,6 +127,7 @@ extension PrayerViewController: PrayerDelegate, UITableViewDelegate, UITableView
         
         if let data = PrayerViewModel.prayers?[PrayerType.morning.rawValue.uppercased()] {
             self.data = data
+         //   UserDefaults.standard.set(try? PropertyListEncoder().encode(data), forKey:"UserPrayer") //сохранил в юзердефолтс молитвы
         }
     }
     
@@ -168,22 +180,66 @@ extension PrayerViewController: PrayerDelegate, UITableViewDelegate, UITableView
     
     @objc private func indexChanged(_ sender: UISegmentedControl!) {
         switch sender.selectedSegmentIndex {
-            case 0:
-                if let data = PrayerViewModel.prayers?[PrayerType.morning.rawValue.uppercased()] {
-                    self.data = data
-                } else {
-                    // should handle empty segment
-                    self.data = []
+        case 0:
+            if let data = PrayerViewModel.prayers?[PrayerType.morning.rawValue.uppercased()] {
+                self.data = data
+            } else {
+                // should handle empty segment
+                self.data = []
+                if let data = UserDefaults.standard.value(forKey:"UserPrayer") as? Data {
+                    let userData = try? PropertyListDecoder().decode([Prayer].self, from: data)
+                    for i in userData! {
+                        if i.type == "РАНКОВІ" {
+                            self.data.append(i)
+                        }
+                    }
+                }
             }
-            case 1:
-                if let data = PrayerViewModel.prayers?[PrayerType.evening.rawValue.uppercased()] {
-                    self.data = data
-                } else {
-                    // shpuld handle empty segment
-                    self.data = []
+        case 1:
+            if let data = PrayerViewModel.prayers?[PrayerType.evening.rawValue.uppercased()] {
+                self.data = data
+            } else {
+                self.data = []
+                if let data = UserDefaults.standard.value(forKey:"UserPrayer") as? Data {
+                    let userData = try? PropertyListDecoder().decode([Prayer].self, from: data)
+                    for i in userData! {
+                        if i.type != "РАНКОВІ" {
+                            self.data.append(i)
+                        }
+                    }
+                }
             }
-            default: ()
+        default: ()
         }
     }
     
+}
+
+public class Reachability {
+
+    class func isConnectedToNetwork() -> Bool {
+
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+
+        return ret
+
+    }
 }

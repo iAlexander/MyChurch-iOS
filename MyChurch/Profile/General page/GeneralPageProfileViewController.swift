@@ -83,5 +83,11 @@ class GeneralPageProfileViewController: UIViewController {
         self.mainView.frame = self.view.bounds
         self.navigationItem.hidesBackButton = false
         self.title = "Особистий кабiнет"
+        mainView.exitButton.addTarget(self, action: #selector(exitPressed), for: .touchUpInside)
+    }
+    
+    @objc func exitPressed() {
+         UserDefaults.standard.set(nil, forKey:"UserData")
+        navigationController?.popViewController(animated: true)
     }
 }

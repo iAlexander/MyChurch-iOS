@@ -41,17 +41,15 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
             switch result {
             case .success(let data):
                 self.allHolidays = data.data?.list ?? [HolidaysData]()
+                UserDefaults.standard.set(try? PropertyListEncoder().encode(data), forKey:"UserCalendar") //сохранил в юзердефолтс календарь
                 var holidayDates = [String]()
-                
                 for (index, item) in self.allHolidays.enumerated() {
                     self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
                     if item.priority == nil {
                     holidayDates.append(item.dateNewStyle ?? "")
                     }
                 }
-                
                 for dateStr in holidayDates {
-                    
                     let dateFormatter = DateFormatter()
                     dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -65,10 +63,36 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
                 UserDefaults.standard.set(holidayDates, forKey: "AllHolidays")
                 //внизу код как по нажатию на ячейку календаря, чтоб сегодня сортирнуть дату и показать ее сразу
                 self.reloadTableView(date: Date())
-            case .partialSuccess( _): break
-            case .failure(let error):
-                print(error)
+            case .partialSuccess( _): self.offlane()
+            case .failure(let error): self.offlane()
             }
+        }
+    }
+    
+    func offlane() {
+        if let data = UserDefaults.standard.value(forKey:"UserCalendar") as? Data {
+            let userData = try? PropertyListDecoder().decode(HolidaysAllData.self, from: data)
+            self.allHolidays = userData?.data?.list ?? [HolidaysData]()
+            var holidayDates = [String]()
+            for (index, item) in self.allHolidays.enumerated() {
+                self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
+                if item.priority == nil {
+                    holidayDates.append(item.dateNewStyle ?? "")
+                }
+            }
+            for dateStr in holidayDates {
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                let date = dateFormatter.date(from:dateStr)!
+                self.timeInterval.hour = 3
+                let dateNew = Calendar.current.date(byAdding: self.timeInterval, to: date)!
+                self.datePointsArray.append((dateNew.addingTimeInterval(TimeInterval((0 * 0 * 0))), [VADaySupplementary.bottomDots([.red])]))
+            }
+            self.calendarView.setSupplementaries(self.datePointsArray)
+            UserDefaults.standard.set(holidayDates, forKey: "AllHolidays")
+            //внизу код как по нажатию на ячейку календаря, чтоб сегодня сортирнуть дату и показать ее сразу
+            self.reloadTableView(date: Date())
         }
     }
     
@@ -97,6 +121,17 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierTableView, for: indexPath) as! CalendarTableCell
+        switch chooseHolidays[indexPath.row].priority {
+        case 1: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#ffb600"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#ffb600")
+        case 2:  cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#e5e1t6"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#e5e1t6")
+        case 3: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#0075c9"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#0075c9")
+        case 4: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#bc2f2c"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#bc2f2c")
+        case 5: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#d9d8d6"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#d9d8d6")
+        case 7: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#db0032"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#db0032")
+        case 8: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#8331a7"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#8331a7")
+        case 9: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#212721"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#212721")
+        default: break
+        }
         cell.selectionStyle = .none
         cell.holidayName.text = chooseHolidays[indexPath.row].name
         return cell

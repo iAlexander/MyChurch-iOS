@@ -12,7 +12,7 @@ class CalendarTableCell: UITableViewCell {
     
     private let falseBack = UIView()
     private let backWhite = UIView()
-    private let goldenLine = UIView()
+    let goldenLine = UIView()
     private let layerGolden = CAGradientLayer()
     let holidayName = UILabel()
     let arrowImage = UIImageView()
@@ -44,7 +44,7 @@ class CalendarTableCell: UITableViewCell {
         layerGolden.startPoint = CGPoint(x: 0.25, y: 0.5)
         layerGolden.endPoint = CGPoint(x: 0.75, y: 0.5)
         layerGolden.position = goldenLine.center
-        goldenLine.layer.addSublayer(layerGolden)
+      //  goldenLine.layer.addSublayer(layerGolden)
         
         backWhite.addSubview(holidayName)
         holidayName.font = UIFont(name: "SFProText-Semibold", size: 13)
@@ -68,7 +68,7 @@ class CalendarTableCell: UITableViewCell {
         super.layoutSubviews()
         falseBack.pin.horizontally().vertically(7.5)
         backWhite.pin.left().right(0.5).top().bottom(0.5)
-        goldenLine.pin.left().vertically(5).width(2)
+        goldenLine.pin.left().vertically(5).width(4)
         layerGolden.pin.all()
         holidayName.pin.left(15).vertically(5).right(40)
         arrowImage.pin.right(15).vCenter().width(20).height(12)

@@ -31,6 +31,9 @@ class GeneralPageProfileView: UIView {
     let startScreenButton = UIButton()
     private let startScreenImage = UIImageView()
     
+    let exitButton = UIButton()
+    let bottomText = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -108,6 +111,15 @@ class GeneralPageProfileView: UIView {
         startScreenImage.contentMode = .scaleAspectFill
         
         startScreenView.addSubview(startScreenButton)
+        
+        addSubview(exitButton)
+        exitButton.setTitle("Вийти", for: .normal)
+        exitButton.setTitleColor(.red, for: .normal)
+        
+        addSubview(bottomText)
+        bottomText.textColor = .lightGray
+        bottomText.text = "Розроблено D2"
+        bottomText.font = UIFont.systemFont(ofSize: 13, weight: .regular)
     }
     
     override func layoutSubviews() {
@@ -131,5 +143,8 @@ class GeneralPageProfileView: UIView {
         startScreenButton.pin.all()
         startScreenButtonText.pin.left(15).vertically(13).right(75)
         startScreenImage.pin.right(15).vertically(15).width(20)
+        exitButton.pin.below(of: startScreenView).marginTop(15).left(15).width(65).height(20)
+        
+        bottomText.pin.bottom(135).right(10).height(20).width(105)
     }
 }

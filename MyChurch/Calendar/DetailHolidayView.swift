@@ -51,7 +51,7 @@ class DetailHolidayView: UIView {
         layerGolden.cornerRadius = 5
         layerGolden.position = goldenView.center
         goldenView.layer.cornerRadius = 5
-        goldenView.layer.addSublayer(layerGolden)
+      //  goldenView.layer.addSublayer(layerGolden)
         
         addSubview(holidayTopName)
         holidayTopName.textAlignment = .left

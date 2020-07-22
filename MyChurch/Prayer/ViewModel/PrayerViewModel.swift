@@ -25,7 +25,8 @@ class PrayerViewModel: ViewModel {
                 if let data = response.data?.list {
                     PrayerViewModel.prayers = Dictionary(grouping: data, by: { ($0.type ?? "") })
                 }
-                
+                UserDefaults.standard.set(try? PropertyListEncoder().encode(response.data?.list), forKey:"UserPrayer") //сохранил в юзердефолтс молитвы
+
                 DispatchQueue.main.async {
                     self.delegate?.didFinishFetchingData()
                 }

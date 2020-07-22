@@ -1111,15 +1111,15 @@
 				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 73VJRTF9X7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyChurch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.019;
+				MARKETING_VERSION = 0.020;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurch;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1137,15 +1137,15 @@
 				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 73VJRTF9X7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyChurch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.019;
+				MARKETING_VERSION = 0.020;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurch;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";
