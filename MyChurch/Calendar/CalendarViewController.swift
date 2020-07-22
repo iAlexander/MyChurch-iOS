@@ -98,7 +98,6 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLayoutSubviews() {
           super.viewDidLayoutSubviews()
-        
         if calendarView.frame == .zero {
               calendarView.frame = CGRect(
                   x: 0,
