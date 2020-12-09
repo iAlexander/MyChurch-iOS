@@ -13,8 +13,8 @@ class GeneralPageProfileViewController: UIViewController {
     let mainView = GeneralPageProfileView()
     var member = String()
     var email = String()
+    var church = String()
     
-  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController!.navigationBar.tintColor = .white
@@ -42,8 +42,14 @@ class GeneralPageProfileViewController: UIViewController {
         self.mainView.changePassword.addTarget(self, action: #selector(changePassword), for: .touchUpInside)
         self.mainView.changeEmail.addTarget(self, action: #selector(changeEmail), for: .touchUpInside)
         self.mainView.startScreenButton.addTarget(self, action: #selector(chooseStartScreen), for: .touchUpInside)
+        self.mainView.donateView.addTarget(self, action: #selector(donatePressed), for: .touchUpInside)
     }
     
+    @objc func donatePressed() {
+        let vc = RegularDonateViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+        
     @objc func changePassword() {
         let vc = ChacngePasswordVIewController()
         self.navigationController?.pushViewController(vc, animated: true)
@@ -88,6 +94,6 @@ class GeneralPageProfileViewController: UIViewController {
     
     @objc func exitPressed() {
          UserDefaults.standard.set(nil, forKey:"UserData")
-        navigationController?.popViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
 }

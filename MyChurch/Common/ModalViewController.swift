@@ -106,7 +106,7 @@ extension ModalViewController {
     }
     
     @objc private func openPDF(_ sender: UIButton!) {
-        let urlString = "http://test.cerkva.asp-win.d2.digital/privacy-policy-my-church.pdf"
+        let urlString = "https://mobile.pomisna.info/privacy-policy-my-church.pdf"
         guard let url = URL(string: urlString) else { return }
         UIApplication.shared.open(url)
     }

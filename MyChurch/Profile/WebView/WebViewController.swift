@@ -14,6 +14,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     let mainView = WebView()
     var liqPayUrl = String()
     let webView = WKWebView()
+    var userData = UserDatas()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,8 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         if let urlStr = navigationAction.request.url {
             print(urlStr)
             if urlStr.description == "https://wwww.google.com/" {
+                self.userData.data?.subscriptionStatus = "Subscribed"
+                UserDefaults.standard.set(try? PropertyListEncoder().encode(self.userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
                 let alert = UIAlertController(title: "Повiдомлення", message: "Дякуємо за ваш благодiйний внесок.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Закрити", style: .cancel, handler: { (action: UIAlertAction!) in
                     self.navigationController?.popViewController(animated: true)

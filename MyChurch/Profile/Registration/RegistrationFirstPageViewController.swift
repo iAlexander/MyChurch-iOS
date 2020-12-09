@@ -24,11 +24,10 @@ class RegistrationFirstPageViewController: UIViewController {
            super.viewWillAppear(animated)
             self.title = "Особистий кабінет"
            self.navigationController!.navigationBar.tintColor = .white
-           self.navigationController?.navigationBar.topItem?.title = ""
        }
     
     @objc func charityPressed() {
-        sendLikPayData() { (result) in
+        sendLikPayData(value: "paydonate") { (result) in
             switch result {
             case .success(let data):
                 if data.ok ?? false {

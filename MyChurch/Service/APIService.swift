@@ -54,6 +54,7 @@ class APIService {
     // MARK: - Map
     func getTemples(lt: String, lg: String, completion: @escaping (TemplesData) -> Void) {
         let url = "http://test.cerkva.asp-win.d2.digital/church/list-geo"
+//        let url = "https://mobile.pomisna.info/church/list-geo"
 
         callEndPoint(url) { (response) in
             switch response {

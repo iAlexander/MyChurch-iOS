@@ -1,7 +1,7 @@
 platform :ios, '11.2'
 
 target 'MyChurch' do
-
+use_frameworks!
 	pod 'GoogleMaps'
 	pod 'Google-Maps-iOS-Utils'
 	pod 'Alamofire', '< 5.0.0'
@@ -15,5 +15,5 @@ target 'MyChurch' do
 	pod 'VACalendar'
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Messaging'
-
+	pod 'Bagel', '~>  1.3.2'
 end

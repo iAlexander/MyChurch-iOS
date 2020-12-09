@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		160BD09824E3E92A004BAB2D /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD09724E3E92A004BAB2D /* HistoryCell.swift */; };
 		1617BCB32418F9D500B63715 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB22418F9D500B63715 /* OnboardingModel.swift */; };
 		1617BCB52418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB42418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift */; };
 		1617BCB72418FA3300B63715 /* PrayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BCB62418FA3300B63715 /* PrayerModel.swift */; };
@@ -35,7 +36,6 @@
 		161EE5B32423C3690094B8E0 /* RegistrationThirdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE5B22423C3690094B8E0 /* RegistrationThirdPageView.swift */; };
 		162F4DAA247FBAF300E2587A /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162F4DA9247FBAF300E2587A /* NotificationDetailViewController.swift */; };
 		162F4DAC247FBB0500E2587A /* NotificationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162F4DAB247FBB0500E2587A /* NotificationDetailView.swift */; };
-		162F4DAE247FD23200E2587A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 162F4DAD247FD23200E2587A /* GoogleService-Info.plist */; };
 		162FCF8F24266E0C008F58A7 /* RegistrationFourthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF8E24266E0C008F58A7 /* RegistrationFourthPageViewController.swift */; };
 		162FCF9124266E1D008F58A7 /* RegistrationFourthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */; };
 		162FCF93242690B3008F58A7 /* RegistrationFifthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162FCF92242690B3008F58A7 /* RegistrationFifthPageViewController.swift */; };
@@ -44,6 +44,7 @@
 		163E3144242FA4100018B394 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E3143242FA4100018B394 /* LoginView.swift */; };
 		163E3146243132190018B394 /* ChacngePasswordVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E3145243132190018B394 /* ChacngePasswordVIewController.swift */; };
 		163E3148243132270018B394 /* ChacngePasswordVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E3147243132270018B394 /* ChacngePasswordVIew.swift */; };
+		16470ACB24D95FEE003C102C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16470ACA24D95FEE003C102C /* GoogleService-Info.plist */; };
 		1655941C242E404600C918D0 /* GeneralPageProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1655941B242E404600C918D0 /* GeneralPageProfileViewController.swift */; };
 		1655941E242E405200C918D0 /* GeneralPageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1655941D242E405200C918D0 /* GeneralPageProfileView.swift */; };
 		1656E39F247D57CF0072C3D8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656E39E247D57CF0072C3D8 /* NotificationViewController.swift */; };
@@ -57,6 +58,8 @@
 		166B4824242D35DA009D9945 /* ChooseEparhiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4823242D35DA009D9945 /* ChooseEparhiesViewController.swift */; };
 		166B4826242D35E6009D9945 /* ChooseEparhiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4825242D35E6009D9945 /* ChooseEparhiesView.swift */; };
 		166E90BC2403FB16005376D3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E90BB2403FB16005376D3 /* CalendarView.swift */; };
+		167483EB24E16E33005E22D2 /* RegularDonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167483EA24E16E33005E22D2 /* RegularDonateViewController.swift */; };
+		167483ED24E16E40005E22D2 /* RegularDonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167483EC24E16E40005E22D2 /* RegularDonateView.swift */; };
 		167AC7382405793B0044D620 /* CalendarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC7372405793B0044D620 /* CalendarTableCell.swift */; };
 		167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73924058DA20044D620 /* API_Zhekon.swift */; };
 		167AC73C24058E490044D620 /* ChutchObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AC73B24058E490044D620 /* ChutchObjects.swift */; };
@@ -121,6 +124,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		160BD09724E3E92A004BAB2D /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		1617BCB22418F9D500B63715 /* OnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingModel.swift; path = MyChurch/Onboarding/Model/OnboardingModel.swift; sourceTree = SOURCE_ROOT; };
 		1617BCB42418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		1617BCB62418FA3300B63715 /* PrayerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerModel.swift; sourceTree = "<group>"; };
@@ -149,7 +153,6 @@
 		161EE5B22423C3690094B8E0 /* RegistrationThirdPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationThirdPageView.swift; sourceTree = "<group>"; };
 		162F4DA9247FBAF300E2587A /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
 		162F4DAB247FBB0500E2587A /* NotificationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailView.swift; sourceTree = "<group>"; };
-		162F4DAD247FD23200E2587A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		162F4DAF247FD42D00E2587A /* Моя церква.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Моя церква.entitlements"; sourceTree = "<group>"; };
 		162FCF8E24266E0C008F58A7 /* RegistrationFourthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFourthPageViewController.swift; sourceTree = "<group>"; };
 		162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFourthPageView.swift; sourceTree = "<group>"; };
@@ -159,6 +162,7 @@
 		163E3143242FA4100018B394 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		163E3145243132190018B394 /* ChacngePasswordVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChacngePasswordVIewController.swift; sourceTree = "<group>"; };
 		163E3147243132270018B394 /* ChacngePasswordVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChacngePasswordVIew.swift; sourceTree = "<group>"; };
+		16470ACA24D95FEE003C102C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1655941B242E404600C918D0 /* GeneralPageProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPageProfileViewController.swift; sourceTree = "<group>"; };
 		1655941D242E405200C918D0 /* GeneralPageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPageProfileView.swift; sourceTree = "<group>"; };
 		1656E39E247D57CF0072C3D8 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 		166B4823242D35DA009D9945 /* ChooseEparhiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEparhiesViewController.swift; sourceTree = "<group>"; };
 		166B4825242D35E6009D9945 /* ChooseEparhiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEparhiesView.swift; sourceTree = "<group>"; };
 		166E90BB2403FB16005376D3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		167483EA24E16E33005E22D2 /* RegularDonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularDonateViewController.swift; sourceTree = "<group>"; };
+		167483EC24E16E40005E22D2 /* RegularDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularDonateView.swift; sourceTree = "<group>"; };
 		167AC7372405793B0044D620 /* CalendarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableCell.swift; sourceTree = "<group>"; };
 		167AC73924058DA20044D620 /* API_Zhekon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Zhekon.swift; sourceTree = "<group>"; };
 		167AC73B24058E490044D620 /* ChutchObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChutchObjects.swift; sourceTree = "<group>"; };
@@ -297,6 +303,7 @@
 		161EE5A62423B81B0094B8E0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				167483E924E16E05005E22D2 /* DonateRegular */,
 				16F541FD2480FECF00C15C18 /* WebView */,
 				167D66B8246EC97300330479 /* SupportPage */,
 				163E3140242FA3E40018B394 /* Login */,
@@ -394,6 +401,16 @@
 				166B4821242BD3C8009D9945 /* HramTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		167483E924E16E05005E22D2 /* DonateRegular */ = {
+			isa = PBXGroup;
+			children = (
+				167483EA24E16E33005E22D2 /* RegularDonateViewController.swift */,
+				167483EC24E16E40005E22D2 /* RegularDonateView.swift */,
+				160BD09724E3E92A004BAB2D /* HistoryCell.swift */,
+			);
+			path = DonateRegular;
 			sourceTree = "<group>";
 		};
 		167AC736240579110044D620 /* Cell */ = {
@@ -589,8 +606,8 @@
 				443155F323CF368E004B5B59 /* LaunchScreen.storyboard */,
 				443155E523CF368C004B5B59 /* AppDelegate.swift */,
 				4431560223CF78F8004B5B59 /* PCU-Bridging-Header.h */,
+				16470ACA24D95FEE003C102C /* GoogleService-Info.plist */,
 				443155F623CF368E004B5B59 /* Info.plist */,
-				162F4DAD247FD23200E2587A /* GoogleService-Info.plist */,
 				443155EE23CF368C004B5B59 /* PCU.xcdatamodeld */,
 				442A075723D3A018004E98DB /* Location.gpx */,
 			);
@@ -817,7 +834,7 @@
 			files = (
 				443155F523CF368E004B5B59 /* LaunchScreen.storyboard in Resources */,
 				443155F223CF368E004B5B59 /* Assets.xcassets in Resources */,
-				162F4DAE247FD23200E2587A /* GoogleService-Info.plist in Resources */,
+				16470ACB24D95FEE003C102C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,7 +865,7 @@
 		};
 		F6C83C8BA420CB701029F533 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -900,6 +917,7 @@
 				1655941C242E404600C918D0 /* GeneralPageProfileViewController.swift in Sources */,
 				16FFC81C2459EE4600F67D6F /* ChooseStartScreenView.swift in Sources */,
 				167AC73C24058E490044D620 /* ChutchObjects.swift in Sources */,
+				167483ED24E16E40005E22D2 /* RegularDonateView.swift in Sources */,
 				166B4822242BD3C8009D9945 /* HramTableViewCell.swift in Sources */,
 				161825392433882A00CFB99A /* DuhovenstvoView.swift in Sources */,
 				1617BCC02418FA4500B63715 /* PrayerViewController.swift in Sources */,
@@ -947,6 +965,7 @@
 				443155E623CF368C004B5B59 /* AppDelegate.swift in Sources */,
 				44FC0A2324027566003A7E7E /* SplashViewController.swift in Sources */,
 				1617BCC72418FBB200B63715 /* ModalViewController.swift in Sources */,
+				160BD09824E3E92A004BAB2D /* HistoryCell.swift in Sources */,
 				1618254A2434F09600CFB99A /* RemindPassView.swift in Sources */,
 				161825372433881E00CFB99A /* DuhovenstvoViewController.swift in Sources */,
 				1618253B24339B8A00CFB99A /* ChooseSanViewController.swift in Sources */,
@@ -954,6 +973,7 @@
 				166B481F242BC454009D9945 /* ChooseHramView.swift in Sources */,
 				1618253D24339B9B00CFB99A /* ChooseSanView.swift in Sources */,
 				444CE79B23D8B2E7004667B5 /* UIColor.swift in Sources */,
+				167483EB24E16E33005E22D2 /* RegularDonateViewController.swift in Sources */,
 				167D66BA246EC99600330479 /* SupportPageViewController.swift in Sources */,
 				162FCF95242690BF008F58A7 /* RegistrationFifthPageView.swift in Sources */,
 				4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */,
@@ -1111,16 +1131,16 @@
 				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VZS9386469;
 				INFOPLIST_FILE = MyChurch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.020;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurch;
+				MARKETING_VERSION = 0.021;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurchD2;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyChurch/PCU-Bridging-Header.h";
@@ -1137,16 +1157,16 @@
 				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VZS9386469;
 				INFOPLIST_FILE = MyChurch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.020;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurch;
+				MARKETING_VERSION = 0.021;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurchD2;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyChurch/PCU-Bridging-Header.h";

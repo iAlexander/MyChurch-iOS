@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>456109909237-1sjv3l72l4jffgah6ka6dcbe7agrkb3d.apps.googleusercontent.com</string>
+	<string>456109909237-gvq3m0l1o2epetaf6uer9i8beb5dmv1g.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.456109909237-1sjv3l72l4jffgah6ka6dcbe7agrkb3d</string>
+	<string>com.googleusercontent.apps.456109909237-gvq3m0l1o2epetaf6uer9i8beb5dmv1g</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBISTDt1ettBKdPK9tW0jSyVlErGtu9TCg</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.alogozinsky.MyChurch</string>
+	<string>com.alogozinsky.MyChurchD2</string>
 	<key>PROJECT_ID</key>
 	<string>pcu-mobile</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:456109909237:ios:2b9cd1d9612e5d804f51bc</string>
+	<string>1:456109909237:ios:4154295fec69627c4f51bc</string>
 	<key>DATABASE_URL</key>
 	<string>https://pcu-mobile.firebaseio.com</string>
 </dict>

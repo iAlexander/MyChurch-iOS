@@ -83,7 +83,8 @@ class ArhieriyViewController: UIViewController , SendDataDelegate, SendDataEparh
                 let vc = GeneralPageProfileViewController()
                 vc.member = self.member
                 vc.email = self.mainView.emailTextField.text ?? ""
-                let userData = UserDatas(data: UserInfo(firstName: self.mainView.nameTextField.text!, lastName: self.mainView.serNameTextField.text!, email: self.mainView.emailTextField.text!, phone: ""))
+                vc.church = self.mainView.hramLabelButton.text ?? ""
+           let userData = UserDatas(data: UserInfo(firstName: self.mainView.nameTextField.text!, lastName: self.mainView.serNameTextField.text!, email: self.mainView.emailTextField.text!, phone: "", church: Church(name: self.mainView.eparhiyaLabel.text, locality: "")))
                 UserDefaults.standard.set(try? PropertyListEncoder().encode(userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
                 self.navigationController?.show(vc, sender: nil)
             case .partialSuccess( _): break

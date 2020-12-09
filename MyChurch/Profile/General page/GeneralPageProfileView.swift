@@ -34,6 +34,11 @@ class GeneralPageProfileView: UIView {
     let exitButton = UIButton()
     let bottomText = UILabel()
     
+    let donateView = UIButton()
+    let donateText = UILabel()
+    let regularText = UILabel()
+    let donateBottomLine = UIView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -120,6 +125,23 @@ class GeneralPageProfileView: UIView {
         bottomText.textColor = .lightGray
         bottomText.text = "Розроблено D2"
         bottomText.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        
+        addSubview(donateView)
+        donateView.addSubview(donateText)
+        donateText.text = "Благодiйний внесок"
+        donateText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        donateText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        donateText.textAlignment = .left
+        
+        donateView.addSubview(regularText)
+        regularText.text = "регулярнi платежi"
+         regularText.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+         regularText.textColor = UIColor(red: 0.529, green: 0.572, blue: 0.63, alpha: 1)
+         regularText.textAlignment = .left
+        
+        addSubview(donateBottomLine)
+        donateBottomLine.backgroundColor =  UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+
     }
     
     override func layoutSubviews() {
@@ -136,14 +158,19 @@ class GeneralPageProfileView: UIView {
         changePasswordGrayLine.pin.below(of: changePassword).height(0.25).horizontally()
         changePasswordLabel.pin.top(35).horizontally(15).bottom(15)
         rightArrowPassword.pin.right(15).top(45).width(10).bottom(25)
+                
+        donateView.pin.below(of: changePasswordGrayLine).marginTop(5).horizontally().height(85)
+        donateText.pin.top(15).horizontally(15).bottom(55)
+        regularText.pin.below(of: donateText).horizontally(15).height(15).marginTop(10)
+        donateBottomLine.pin.below(of: donateView).height(0.25).horizontally()
         
-        startScreenLabel.pin.below(of: changePasswordGrayLine).marginTop(15).left(15).right().height(25)
-        
+        startScreenLabel.pin.below(of: donateView).marginTop(15).left(15).right().height(25)
+
         startScreenView.pin.below(of: startScreenLabel).marginTop(5).horizontally(15).height(50)
         startScreenButton.pin.all()
         startScreenButtonText.pin.left(15).vertically(13).right(75)
         startScreenImage.pin.right(15).vertically(15).width(20)
-        exitButton.pin.below(of: startScreenView).marginTop(15).left(15).width(65).height(20)
+        exitButton.pin.below(of: startScreenView).marginTop(10).left(15).width(65).height(20)
         
         bottomText.pin.bottom(135).right(10).height(20).width(105)
     }

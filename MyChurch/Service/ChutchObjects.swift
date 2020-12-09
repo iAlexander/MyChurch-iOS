@@ -143,8 +143,10 @@ struct EparhiesList: Codable {
 
 // MARK: работаю с объектом при регистрации пользователя
 struct RegistrationData: Codable {
+    let version: String?
     let ok: Bool?
     let data: AccessToken?
+    let accessToken: String?
 }
 
 struct AccessToken: Codable {
@@ -161,6 +163,13 @@ struct UserInfo: Codable {
     var lastName: String?
     var email: String?
     var phone: String?
+    var church: Church?
+    var subscriptionStatus: String?
+}
+
+struct Church: Codable {
+    var name: String?
+    var locality: String?
 }
 
 // MARK: работаю с объектом при изменении пароля
@@ -236,10 +245,30 @@ struct FirTokenData: Codable {
 // MARK: работаю с объектом при отправке данных на ликПей
 struct SendLiqPayData: Codable {
     let ok: Bool?
+    let version: String?
     var data: PayData?
+    let errors: [ErrorInfo]?
 }
 
 struct PayData: Codable {
     let url: String?
     let orderId: String?
+}
+
+struct HistoryLiqPayData: Codable {
+    let version: String?
+    let ok: Bool?
+    let data: HistoryArrayLiqPayData?
+}
+
+struct HistoryArrayLiqPayData: Codable {
+    let list: [ListPay]?
+}
+
+struct ListPay : Codable {
+    let id : Int?
+    let status : String?
+    let amount : Decimal?
+    let time : String?
+    let orderId :String?
 }

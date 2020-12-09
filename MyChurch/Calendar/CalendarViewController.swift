@@ -141,7 +141,7 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         vc.titleText = mainView.choosedDay.text ?? ""
         vc.detailHolidayInfo = chooseHolidays[indexPath.row]
         if !(chooseHolidays[indexPath.row].iconImage?.name?.isEmpty ?? true) {
-            vc.imageUrlString = "http://test.cerkva.asp-win.d2.digital/\(chooseHolidays[indexPath.row].iconImage?.path ?? "")/\(chooseHolidays[indexPath.row].iconImage?.name ?? "")"
+            vc.imageUrlString = "https://mobile.pomisna.info/\(chooseHolidays[indexPath.row].iconImage?.path ?? "")/\(chooseHolidays[indexPath.row].iconImage?.name ?? "")"
         }
         self.navigationController?.pushViewController(vc, animated: false)
     }

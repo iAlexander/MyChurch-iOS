@@ -128,8 +128,8 @@ extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewData
     
     func didFinishFetchingData() {
         self.activityIndicatorView.stopAnimating()
-        
         if NewsViewModel.news != nil {
+            NewsViewModel.news = NewsViewModel.news?.reversed()
             self.tableView.reloadData()
         }
     }

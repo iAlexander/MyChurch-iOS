@@ -43,7 +43,7 @@ class DetailMapKathedralViewController: UIViewController, UICollectionViewDelega
             case .success(let data):
                 self.templeData = data
                 if data.data?.files?.count ?? 0 > 0 {
-                    self.imageUrlString = "http://test.cerkva.asp-win.d2.digital/\(data.data?.files?[0].file.file?.path ?? "")/\(data.data?.files?[0].file.file?.name ?? "")"
+                    self.imageUrlString = "https://mobile.pomisna.info/\(data.data?.files?[0].file.file?.path ?? "")/\(data.data?.files?[0].file.file?.name ?? "")"
                     let imageUrl = URL(string: self.imageUrlString)!
                     self.mainView.imageCollectionView.load(url: imageUrl)
                 } else {
