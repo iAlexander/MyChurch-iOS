@@ -9,7 +9,7 @@
 import UIKit
 import Koyomi
 import PinLayout
-
+import VACalendar
 
 class CalendarView: UIView {
     
@@ -63,12 +63,16 @@ class CalendarView: UIView {
         choosedDay.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         choosedDay.textAlignment = .left
         addSubview(holidayTableView)
+        holidayTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
      //   calendar.pin.horizontally(10).top(25).height(270)
-        choosedDay.pin.top(350).marginTop(35).left(20).width(200).height(25)
+//        choosedDay.pin.top(350).marginTop(35).left(20).width(200).height(25)
+        if let calendar = self.subviews.filter({$0 is VACalendarView}).first {
+            choosedDay.pin.below(of: calendar).marginTop(0).left(15).width(200).height(25)
+        }
         holidayTableView.pin.below(of: choosedDay).marginTop(15).horizontally(15).bottom()
     }
 }

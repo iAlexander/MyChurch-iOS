@@ -11,10 +11,31 @@ protocol SelectTempleDelegate: class {
     func selectTemple(indexPath: IndexPath)
 }
 
+class CustomSearchBar: UISearchBar {
+
+override func setShowsCancelButton(_ showsCancelButton: Bool, animated: Bool) {
+    super.setShowsCancelButton(false, animated: false)
+}}
+
+class CustomSearchController: UISearchController {
+
+lazy var _searchBar: CustomSearchBar = {
+    [unowned self] in
+    let customSearchBar = CustomSearchBar(frame: CGRect.zero)
+    return customSearchBar
+    }()
+
+override var searchBar: UISearchBar {
+    get {
+        return _searchBar
+    }
+}}
+
+
 class MapViewController: ViewController, UISearchBarDelegate {
     
     lazy var vm = MapViewModel(delegate: self)
-    let searchController = UISearchController(searchResultsController: nil)
+    let searchController = CustomSearchController(searchResultsController: nil)
     let churchTableView = UITableView()
     
     private let locationManager = CLLocationManager()
@@ -37,6 +58,7 @@ class MapViewController: ViewController, UISearchBarDelegate {
         super.loadView()
         self.locationManager.delegate = self
         self.templesColectionViewController.delegate = self
+        self.templesColectionViewController.collectionView.alpha = 0
     }
     
     override func viewDidLoad() {
@@ -58,12 +80,32 @@ class MapViewController: ViewController, UISearchBarDelegate {
         self.view.addSubview(searchController.searchBar)
         self.view.addSubview(churchTableView)
         self.title = "Карта"
-        searchController.searchBar.showsCancelButton = false
-        
         longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress))
         longPressRecognizer.minimumPressDuration = 0.1
         longPressRecognizer.delegate = self
         mapView.addGestureRecognizer(longPressRecognizer)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.allChurchFiltered.isEmpty {
+                self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: 50)
+            } else {
+                self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: Int(self.view.frame.height - keyboardSize.height))
+            }
+            self.view.layoutSubviews()
+          }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.allChurchFiltered.isEmpty {
+            self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: 50)
+        } else {
+            self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: Int(self.view.frame.height - 50))
+        }
+        self.view.layoutSubviews()
     }
     
     var longPressRecognizer = UILongPressGestureRecognizer()
@@ -77,19 +119,27 @@ class MapViewController: ViewController, UISearchBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.locationManager.startUpdatingLocation()
-        self.navigationController?.isNavigationBarHidden = true
-        checkLayoutSearchController()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        searchController.isActive = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        UIView.animate(withDuration: 0.3) {
+            self.templesColectionViewController.collectionView.alpha = 1
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        self.templesColectionViewController.collectionView.alpha = 0
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        checkLayoutSearchController()
+        searchController.searchBar.frame = CGRect(x: 10, y: 0, width: self.view.bounds.width - 20, height: 50)
+        searchController.searchBar.showsCancelButton = false
         churchTableView.tableHeaderView = searchController.searchBar
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        searchController.isActive = true
     }
     
     private func setupLayout() {
@@ -97,22 +147,21 @@ class MapViewController: ViewController, UISearchBarDelegate {
         self.templesColectionViewController.collectionView.anchor(leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor,padding: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0), size: CGSize(width: 0, height: 120))
     }
     
-    func checkLayoutSearchController() {
-        let navBarHeight = view.safeAreaInsets.top
-        if navBarHeight == 0 {
-            self.searchController.searchBar.frame = CGRect(x: 10, y: 0, width: self.view.bounds.width - 20, height: 50)
+    func checkLayoutSearchController(keyboardHeight: CGFloat) {
+//        let navBarHeight = view.safeAreaInsets.top
+//        if navBarHeight == 0 {
+//            self.searchController.searchBar.frame = CGRect(x: 10, y: 0, width: self.view.bounds.width - 20, height: 50)
+//            self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: 50)
+//        } else {
+//            self.searchController.searchBar.frame = CGRect(x: 10, y: 0, width: self.view.bounds.width - 20, height: 50)
+//            self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: 50)
+//        }
+        if self.allChurchFiltered.isEmpty {
             self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: 50)
         } else {
-            self.searchController.searchBar.frame = CGRect(x: 10, y: 0, width: self.view.bounds.width - 20, height: 50)
-            self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: 50)
+            self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: Int(self.view.frame.height - keyboardHeight))
         }
-        if  self.allChurchFiltered.count <= 0 {
-            self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: 50)
-            self.view.layoutSubviews()
-        } else {
-            self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: Int(self.view.bounds.height - 250))
-            self.view.layoutSubviews()
-        }
+        self.view.layoutSubviews()
     }
     
     func setupSearchController() {
@@ -122,7 +171,6 @@ class MapViewController: ViewController, UISearchBarDelegate {
         searchController.searchResultsUpdater = self
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.delegate = self
-        
         //        searchController.searchBar.layer.cornerRadius = 11
         //        searchController.searchBar.clipsToBounds = true
         if #available(iOS 13.0, *) {
@@ -147,13 +195,19 @@ class MapViewController: ViewController, UISearchBarDelegate {
         self.allChurchFiltered = allChurch.filter({( model : Temple) -> Bool in
             return model.name.lowercased().contains(searchText.lowercased()) || model.locality!.lowercased().contains(searchText.lowercased())
         })
-        if  self.allChurchFiltered.count <= 0 {
+        if self.allChurchFiltered.isEmpty {
             self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: 50)
         } else {
-            self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: Int(self.view.bounds.height - 250))
+            self.churchTableView.frame = CGRect(x: 0, y: 50, width: Int(self.view.bounds.width), height: Int(self.view.frame.height))
         }
         self.view.layoutSubviews()
         churchTableView.reloadData()
+    }
+    
+    private func presentNoInternetAlert() {
+        let vc = NoInternetAlert()
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -169,6 +223,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchController.searchBar.resignFirstResponder()
         getDetailTemple(id:allChurchFiltered[indexPath.row].id) { (result) in
             switch result {
             case .success(let data):
@@ -176,11 +231,15 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
                 if data.data?.dioceseType?.id == 7 {
                     let vc = DetailMapKathedralViewController()
                     vc.templeInfo = self.allChurchFiltered[indexPath.row]
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    DispatchQueue.main.async {
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 } else {
                     let vc = DetailMapViewController()
                     vc.templeInfo = self.allChurchFiltered[indexPath.row]
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    DispatchQueue.main.async {
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 }
             case .partialSuccess( _): break
             case .failure(let error):
@@ -241,6 +300,10 @@ extension MapViewController: GMSMapViewDelegate, CLLocationManagerDelegate {
         }
     }
     
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        self.getData()
+    }
+    
     private func getData() {
         let latitude = String(self.selfLocation.latitude)
         let longitude = String(self.selfLocation.longitude)
@@ -258,11 +321,15 @@ extension MapViewController: GMSMapViewDelegate, CLLocationManagerDelegate {
                         if data.data?.dioceseType?.id == 7 {
                             let vc = DetailMapKathedralViewController()
                             vc.templeInfo = position
-                            self.navigationController?.pushViewController(vc, animated: true)
+                            DispatchQueue.main.async {
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
                         } else {
                             let vc = DetailMapViewController()
                             vc.templeInfo = position
-                            self.navigationController?.pushViewController(vc, animated: true)
+                            DispatchQueue.main.async {
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
                         }
                     case .partialSuccess( _): break
                     case .failure(let error):
@@ -283,17 +350,20 @@ extension MapViewController: MapDelegate, SelectTempleDelegate {
     
     // MARK: - MapDelegate
     func didFinishFetchingData(_ data: [Temple]?) {
+        self.allChurch.removeAll()
         ANLoader.hide()
         if let data = data {
-            
             for (index, item) in data.enumerated() {
                 let endLocation = CLLocation(latitude: data[index].lt, longitude: data[index].lg)
-                let distance = (self.locationManager.location?.distance(from: endLocation) ?? 0) / 1000
+                var distance: Double?
+                if let location = self.locationManager.location {
+                    distance = location.distance(from: endLocation) / 1000
+                }
                 let itemFullData = Temple(id: item.id, name: item.name, lt: item.lt, lg: item.lg
                     , distance: distance, locality: item.locality ?? "")
                 self.allChurch.append(itemFullData)
             }
-            self.allChurch = self.allChurch.sorted(by: { $0.distance! < ($1.distance!)})
+            self.allChurch = self.allChurch.sorted(by: { $0.distance ?? 0 < ($1.distance ?? 0)})
             for item in data {
                 let position = CLLocationCoordinate2D(latitude: (Double(item.lt)), longitude: Double(item.lg))
                 let marker = GMSMarker(position: position)
@@ -303,6 +373,8 @@ extension MapViewController: MapDelegate, SelectTempleDelegate {
                 marker.icon = UIImage(named: "marker")
             }
             self.templesColectionViewController.data = self.allChurch
+        } else if UserDefaults.standard.bool(forKey: "NoInternetAlertWasPresented") == false {
+            self.presentNoInternetAlert()
         }
     }
     

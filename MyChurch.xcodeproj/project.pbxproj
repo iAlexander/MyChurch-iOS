@@ -121,6 +121,8 @@
 		44FC0A2324027566003A7E7E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A2224027566003A7E7E /* SplashViewController.swift */; };
 		44FC0A2A2402796D003A7E7E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A292402796D003A7E7E /* OnboardingViewController.swift */; };
 		4BF25C54820980C31FFA5DFD /* libPods-MyChurch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 314075550757F62B33A2BC7E /* libPods-MyChurch.a */; };
+		7698E9792588CB80001FDD90 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698E9782588CB80001FDD90 /* ImageCollectionViewCell.swift */; };
+		76FD906325892D7F003C5262 /* NoInternetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FD906225892D7F003C5262 /* NoInternetAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -245,6 +247,8 @@
 		44FC0A2224027566003A7E7E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		44FC0A292402796D003A7E7E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		471E3B8C5286604703987697 /* Pods-PCU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCU.debug.xcconfig"; path = "Target Support Files/Pods-PCU/Pods-PCU.debug.xcconfig"; sourceTree = "<group>"; };
+		7698E9782588CB80001FDD90 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		76FD906225892D7F003C5262 /* NoInternetAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetAlert.swift; sourceTree = "<group>"; };
 		CE97DA3DAEFE0D763968E1FC /* Pods-PCU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCU.release.xcconfig"; path = "Target Support Files/Pods-PCU/Pods-PCU.release.xcconfig"; sourceTree = "<group>"; };
 		ECE781CCA2CE73B231BA4F3E /* Pods-MyChurch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch.debug.xcconfig"; path = "Target Support Files/Pods-MyChurch/Pods-MyChurch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -483,6 +487,7 @@
 				16EBE5212456CDCD0072BC82 /* MapViewController.swift */,
 				16EBE5222456CDCD0072BC82 /* ChurchTableViewCell.swift */,
 				16EBE5232456CDCD0072BC82 /* TempleCollectionViewController.swift */,
+				7698E9782588CB80001FDD90 /* ImageCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -638,6 +643,7 @@
 				4424DF6423D99AF000E5AB65 /* ScrollView + StackView.swift */,
 				444CE79823D8ADEE004667B5 /* Label.swift */,
 				1617BCC62418FBB200B63715 /* ModalViewController.swift */,
+				76FD906225892D7F003C5262 /* NoInternetAlert.swift */,
 				4424DF6623D9A92600E5AB65 /* Image.swift */,
 				444CE79623D8ABD0004667B5 /* CardElement.swift */,
 				4431560C23D0A8AC004B5B59 /* TabBarController.swift */,
@@ -943,6 +949,7 @@
 				167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */,
 				442A1A8A23DB095100645ACC /* CGFloat.swift in Sources */,
 				44DDFF5A23D4CBC700024B7C /* API + EndPoints.swift in Sources */,
+				7698E9792588CB80001FDD90 /* ImageCollectionViewCell.swift in Sources */,
 				167AC7402406B9110044D620 /* DetailHolidayView.swift in Sources */,
 				167D66BC246EC9A300330479 /* SupportView.swift in Sources */,
 				161825442434DC4400CFB99A /* ChangeEmailViewController.swift in Sources */,
@@ -980,6 +987,7 @@
 				4424DF6323D994D900E5AB65 /* NewsViewModel.swift in Sources */,
 				4431562623D0AE19004B5B59 /* NSLayout.swift in Sources */,
 				16F541FF2480FEFD00C15C18 /* WebViewController.swift in Sources */,
+				76FD906325892D7F003C5262 /* NoInternetAlert.swift in Sources */,
 				4431561423D0AAD3004B5B59 /* NavigationController.swift in Sources */,
 				1617BCBF2418FA4500B63715 /* PrayerDetailsViewController.swift in Sources */,
 				1617BCC32418FA5E00B63715 /* PrayerViewModel.swift in Sources */,
@@ -1131,7 +1139,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VZS9386469;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -1157,7 +1165,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VZS9386469;
 				INFOPLIST_FILE = MyChurch/Info.plist;

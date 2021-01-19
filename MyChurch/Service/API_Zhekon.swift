@@ -502,8 +502,10 @@ func sendFirToken(completion: ((NewResult<FirTokenData>) -> Void)?) {
 //MARK: 17) Запрос-отправка ликПей на бек
 func sendLikPayData(value: String, completion: ((NewResult<SendLiqPayData>) -> Void)?) {
     var urlComponents = URLComponents()
-    urlComponents.scheme = "https"
-    urlComponents.host = "mobile.pomisna.info"
+//    urlComponents.scheme = "https"
+//    urlComponents.host = "mobile.pomisna.info"
+    urlComponents.scheme = "http"
+    urlComponents.host = "test.cerkva.asp-win.d2.digital"
     urlComponents.path = "/api/pay/generate-liqpay-url"
     urlComponents.queryItems = [URLQueryItem(name: "actionType", value: value), URLQueryItem(name: "resultUrl", value: "https://wwww.google.com")]
     

@@ -16,11 +16,10 @@ class PrayerDetailsCollectionViewController: UIViewController {
     
     let collectionViewController: UICollectionViewController = {
         let collectionViewController = UICollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        collectionViewController.collectionView.isHidden = true
         collectionViewController.collectionView.isPagingEnabled = true
         collectionViewController.collectionView.showsHorizontalScrollIndicator = false
-        collectionViewController.collectionView.contentInset = UIEdgeInsets(top: 56, left: 0, bottom: 16, right: 0)
-        
+        collectionViewController.collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        collectionViewController.collectionView.alpha = 0
         return collectionViewController
     }()
     
@@ -53,19 +52,10 @@ class PrayerDetailsCollectionViewController: UIViewController {
         return button
     }()
     
-    let titleLabel = Label()
-    let textLabel = Label()
-    
-    override func loadView() {
-        super.loadView()
-        
-        self.collectionViewController.collectionView.delegate = self
-        self.collectionViewController.collectionView.dataSource = self
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.collectionViewController.collectionView.delegate = self
+        self.collectionViewController.collectionView.dataSource = self
         // Do any additional setup after loading the view.
         self.collectionViewController.collectionView.register(PrayerDetailsCollectionViewCell.self, forCellWithReuseIdentifier: PrayerDetailsCollectionViewCell.reuseIdentifier)
         
@@ -81,30 +71,33 @@ class PrayerDetailsCollectionViewController: UIViewController {
             self.view.addSubviews([self.collectionViewController.collectionView, self.dismissLabel, self.dismissButton, self.activityIndicatorView])
         }
         
-        self.activityIndicatorView.startAnimating()
-        
+        self.activityIndicatorView.startAnimating()        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         setupLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         // Do any additional setup before appearing the view.
         if let indexPath = self.currentIndexPath {
-            self.collectionViewController.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+            if let rect = self.collectionViewController.collectionView.layoutAttributesForItem(at: indexPath)?.frame {
+                DispatchQueue.main.async {
+                    self.collectionViewController.collectionView.scrollRectToVisible(rect, animated: false)
+                }
+            }
             self.activityIndicatorView.stopAnimating()
-            self.collectionViewController.collectionView.isHidden = false
+            UIView.animate(withDuration: 0.5) {
+                self.collectionViewController.collectionView.alpha = 1
+            }
             self.currentIndexPath = nil
         }
     }
     
     private func setupLayout() {
         self.view.backgroundColor = .white
-        self.collectionViewController.collectionView.backgroundColor = .white
-        self.collectionViewController.collectionView.anchor(top: self.dismissButton.bottomAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: 24, left: 0, bottom: 0, right: 0))
-        
-//        self.scrollView.fillSuperview()
-//
         if #available(iOS 13.0, *) {
             self.dismissButton.anchor(top: self.view.topAnchor, padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 16))
         } else {
@@ -114,6 +107,9 @@ class PrayerDetailsCollectionViewController: UIViewController {
         }
         self.dismissButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.activityIndicatorView.anchor(centerY: self.view.centerYAnchor, centerX: self.view.centerXAnchor)
+        self.collectionViewController.collectionView.backgroundColor = .white
+//        self.collectionViewController.collectionView.anchor(top: self.dismissButton.bottomAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: .zero)
+        self.collectionViewController.collectionView.pin.below(of: self.dismissButton).marginTop(0).horizontally().bottom()
     }
     
 }
@@ -123,7 +119,7 @@ extension PrayerDetailsCollectionViewController: UICollectionViewDelegate, UICol
     // MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: view.frame.width, height: view.frame.height)
+        let size = CGSize(width: collectionViewController.collectionView.bounds.size.width, height: collectionViewController.collectionView.bounds.size.height)
         return size
     }
     
@@ -144,7 +140,7 @@ extension PrayerDetailsCollectionViewController: UICollectionViewDelegate, UICol
         // Configure the cell
         let data = self.data[indexPath.item]
         cell.configureWithData(data: data)
-        
+        cell.layoutIfNeeded()
         return cell
     }
     

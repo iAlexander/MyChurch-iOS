@@ -10,13 +10,14 @@ import UIKit
 
 class DetailHolidayView: UIView {
     
+    var scroll = UIScrollView()
     var imageView = UIImageView()
     let goldenView = UIView()
     private let layerGolden = CAGradientLayer()
     let holidayTopName = UILabel()
     let holidayTopDate = UILabel()
     let holidayTopInfo = UILabel()
-    let holidayTextView = UITextView()
+    let holidayTextLabel = UILabel()
     var imageIsEmpty = true
     
     override init(frame: CGRect) {
@@ -37,10 +38,14 @@ class DetailHolidayView: UIView {
         imageLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         imageLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 60, height: 240)
         
-        addSubview(imageView)
-        imageView.layer.cornerRadius = 10
+        addSubview(scroll)
         
-        addSubview(goldenView)
+        scroll.addSubview(imageView)
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 8
+        
+        scroll.addSubview(goldenView)
         layerGolden.colors = [
             UIColor(red: 0.95, green: 0.745, blue: 0.218, alpha: 1).cgColor,
             UIColor(red: 0.938, green: 0.838, blue: 0.313, alpha: 1).cgColor
@@ -53,35 +58,42 @@ class DetailHolidayView: UIView {
         goldenView.layer.cornerRadius = 5
       //  goldenView.layer.addSublayer(layerGolden)
         
-        addSubview(holidayTopName)
+        scroll.addSubview(holidayTopName)
         holidayTopName.textAlignment = .left
-        holidayTopName.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        holidayTopName.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         holidayTopName.numberOfLines = 0
         
-        addSubview(holidayTopDate)
+        scroll.addSubview(holidayTopDate)
         holidayTopDate.textAlignment = .left
-        holidayTopDate.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        holidayTopDate.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         
-        addSubview(holidayTopInfo)
+        scroll.addSubview(holidayTopInfo)
         holidayTopInfo.textAlignment = .left
-        holidayTopInfo.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        holidayTopInfo.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        holidayTopInfo.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
-        addSubview(holidayTextView)
-        holidayTextView.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        scroll.addSubview(holidayTextLabel)
+        holidayTextLabel.numberOfLines = 0
+        holidayTextLabel.lineBreakMode = .byWordWrapping
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        scroll.pin.all()
         if !imageIsEmpty {
-            imageView.pin.top(20).left(5).height(240).right(5)
-            goldenView.pin.below(of: imageView).marginTop(15).left(-22).width(35).height(80)
+            imageView.pin.top(20).left(15).height(240).right(15)
+            goldenView.pin.below(of: imageView).marginTop(15).left(-20).width(35)
         } else {
-            goldenView.pin.top(20).left(-22).width(35).height(80)
+            goldenView.pin.top(20).left(-20).width(35)
         }
         layerGolden.pin.all()
-        holidayTopName.pin.top(to:goldenView.edge.top).left(to:goldenView.edge.right).marginLeft(15).right().height(50)
+        holidayTopName.pin.top(to:goldenView.edge.top).left(to:goldenView.edge.right).marginLeft(15).right(15).sizeToFit(.widthFlexible)
         holidayTopDate.pin.below(of: holidayTopName).marginTop(5).left(to:goldenView.edge.right).marginLeft(15).right().height(20)
         holidayTopInfo.pin.below(of: holidayTopDate).marginTop(5).left(to:goldenView.edge.right).marginLeft(15).right().height(20)
-        holidayTextView.pin.below(of: holidayTopInfo).marginTop(10).horizontally(15).bottom(100)
+        holidayTextLabel.numberOfLines = 0
+        holidayTextLabel.pin.below(of: holidayTopInfo).marginTop(10).horizontally(15).sizeToFit(.widthFlexible)
+        let goldenViewHeight = holidayTopName.frame.size.height + holidayTopDate.frame.size.height + holidayTopInfo.frame.size.height + 10
+        goldenView.pin.height(goldenViewHeight)
+        scroll.contentSize = CGSize(width: self.frame.size.width, height: holidayTextLabel.frame.maxY + 15)
     }
 }

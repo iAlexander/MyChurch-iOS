@@ -52,7 +52,7 @@ class APIService {
     }()
     
     // MARK: - Map
-    func getTemples(lt: String, lg: String, completion: @escaping (TemplesData) -> Void) {
+    func getTemples(lt: String, lg: String, completion: @escaping (TemplesData?) -> Void) {
         let url = "http://test.cerkva.asp-win.d2.digital/church/list-geo"
 //        let url = "https://mobile.pomisna.info/church/list-geo"
 
@@ -66,39 +66,45 @@ class APIService {
                         completion(data)
                     } catch {
                         print(error.localizedDescription)
+                        completion(nil)
                 }
                 case .failure(let error):
                     print(">> response Error from failure")
                     print(error)
+                    completion(nil)
                 default:
                     print(">> response Error from default state")
+                    completion(nil)
                     break
             }
         }
     }
     
     // MARK: - News
-    func getNews(completion: @escaping (NewsResponse) -> Void) {
-        let dict = ["culture" : "uk"]
+    func getNews(completion: @escaping (NewsResponse?) -> Void) {
+        let dict = [
+            "culture" : "uk",
+            "n" : "100",
+            "sort" : "Date-desc"
+        ]
         let url = makeUrl(dict, api: .stage, endPoint: .news)
         let headers = ["Accept" : "application/json"]
-        
+
         callEndPoint(url, headers: headers) { (response) in
             switch response {
                 case .success(let result):
                     let json: String = result
                     do {
                         let data = try self.decoder.decode(NewsResponse.self, from: Data(json.utf8))
-                        
                         completion(data)
                     } catch {
                         print(error.localizedDescription)
+                        completion(nil)
                 }
                 case .failure(let error):
-                    print(">> response Error from failure")
                     print(error)
+                    completion(nil)
                 default:
-                    print(">> response Error from default state")
                     break
             }
         }
@@ -218,7 +224,7 @@ extension APIService: APIServiceDelegate {
                 print(">> with params: \(params)")
                 print(">> and header: \(headers)")
                 request(url, method: method, parameters: params, headers: headers).responseString { (response) in
-                    print(">> Response: \(response)")
+//                    print(">> Response: \(response)")
                     self.serializeResponse(response: response, completion: completion)
                     self.sessionManager.removeValue(forKey: url)
                     

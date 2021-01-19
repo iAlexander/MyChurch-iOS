@@ -28,6 +28,8 @@ struct HolidaysData: Codable {
     let describe: String?
     let conceived: String?
     let priority: Int?
+    var fasting: Int?
+    var color: String?
 }
 struct ImageInfo: Codable {
     let name: String?

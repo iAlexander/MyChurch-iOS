@@ -22,17 +22,20 @@ class PrayerDetailsCollectionViewCell: UICollectionViewCell {
         }
         
         if let text = data.text {
-            self.textLabel.setValue(text, size: 20, fontWeight: .regular, numberOfLines: 0, color: .black)
+            self.textLabel.setValue(text, size: 18, lineHeight: 1.26, fontWeight: .regular, numberOfLines: 0, color: .black)
         }
         
+//        setupLayout()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         setupLayout()
     }
     
     private func setupLayout() {
         self.scrollView.fillSuperview()
-        
         self.titleLabel.anchor(top: self.scrollView.topAnchor, leading: self.leadingAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
-        
         self.textLabel.anchor(top: self.titleLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.scrollView.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 24, left: 16, bottom: 48, right: 16))
     }
 }

@@ -56,7 +56,6 @@ class TabBarController: UITabBarController {
                         let selectedImage = createImage(UIImage(named: "calendar-tint"))
                         let data: TabBarData = (title: "Календар", image: image, selectedImage: selectedImage)
                         let navigationController = createNavigationController(vacationViewController, data: data)
-                        
                         return navigationController
                     }()
                     

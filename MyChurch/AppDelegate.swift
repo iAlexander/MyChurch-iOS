@@ -12,7 +12,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         let mapsAPIKey = "AIzaSyCM36DYyBE_sNKM31vH6qnbxwrZHYFomDc"
         FirebaseApp.configure()
-        
+        if !Reachability.isConnectedToNetwork() {
+            UserDefaults.standard.setValue(false, forKey: "NoInternetAlertWasPresented")
+        }
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]

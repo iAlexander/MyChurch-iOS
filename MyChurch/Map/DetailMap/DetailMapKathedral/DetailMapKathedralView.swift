@@ -12,7 +12,8 @@ class DetailMapKathedralView: UIView {
     
     let scrollView = UIScrollView()
     
-    var imageCollectionView = UIImageView()
+    let imageCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    let layout = UICollectionViewFlowLayout()
     var infoSegmentControll = UISegmentedControl()
     let churchTopName = UILabel()
     let eparhiyaCityName = UILabel()
@@ -20,7 +21,7 @@ class DetailMapKathedralView: UIView {
     let pointText = UILabel()
     let closeAtTop = UILabel()
     let workScheduleText = UILabel()
-    let hramHistory = UITextView()
+    let hramHistory = UILabel()
     let monFriday = UILabel()
     let markerImage = UIImageView()
     let adressText = UILabel()
@@ -52,27 +53,30 @@ class DetailMapKathedralView: UIView {
         
         self.addSubview(scrollView)
         scrollView.backgroundColor = .clear
-        
-        let imageLayout = UICollectionViewFlowLayout.init()
-        imageLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
-        imageLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        imageLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 60, height: 240)
+        scrollView.alpha = 0
       
         scrollView.addSubview(imageCollectionView)
+        imageCollectionView.backgroundColor = .clear
+        imageCollectionView.showsHorizontalScrollIndicator = false
+        imageCollectionView.layer.masksToBounds = false
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 8
+        imageCollectionView.setCollectionViewLayout(layout, animated: true)
         
         scrollView.addSubview(infoSegmentControll)
         infoSegmentControll.insertSegment(withTitle: "Контакти", at: 0, animated: true)
         infoSegmentControll.insertSegment(withTitle: "Icторiя та опис" , at: 1, animated: true)
         infoSegmentControll.layer.cornerRadius = 10
         
+        scrollView.addSubview(churchTopName)
         churchTopName.textAlignment = .left
         churchTopName.numberOfLines = 0
-        churchTopName.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        scrollView.addSubview(churchTopName)
+        churchTopName.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         
         eparhiyaCityName.textAlignment = .left
         eparhiyaCityName.numberOfLines = 0
-        eparhiyaCityName.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        eparhiyaCityName.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         eparhiyaCityName.textColor = UIColor(red: 0.31, green: 0.31, blue: 0.31, alpha: 1)
         scrollView.addSubview(eparhiyaCityName)
         
@@ -99,17 +103,15 @@ class DetailMapKathedralView: UIView {
         scrollView.addSubview(workScheduleText)
         
         hramHistory.textAlignment = .left
-        hramHistory.isEditable = false
-        hramHistory.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        hramHistory.text = "Розклад богослужіння"
+        hramHistory.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         hramHistory.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        hramHistory.numberOfLines = 0
         scrollView.addSubview(hramHistory)
         
         monFriday.textAlignment = .left
-        monFriday.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        monFriday.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         monFriday.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         monFriday.numberOfLines = 0
-        monFriday.sizeToFit()
         scrollView.addSubview(monFriday)
         
         markerImage.image = UIImage(named: "detailMarker")
@@ -162,25 +164,25 @@ class DetailMapKathedralView: UIView {
         telText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         scrollView.addSubview(telText)
         
-        templeHolidayApiText.textAlignment = .center
+        templeHolidayApiText.textAlignment = .right
         templeHolidayApiText.numberOfLines = 0
         templeHolidayApiText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         templeHolidayApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         scrollView.addSubview(templeHolidayApiText)
         
-        fatherManNameApiText.textAlignment = .center
+        fatherManNameApiText.textAlignment = .right
         fatherManNameApiText.numberOfLines = 0
-        fatherManNameApiText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        fatherManNameApiText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         fatherManNameApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         scrollView.addSubview(fatherManNameApiText)
         
-        deaneryApiText.textAlignment = .center
+        deaneryApiText.textAlignment = .right
         deaneryApiText.numberOfLines = 0
-        deaneryApiText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        deaneryApiText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         deaneryApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         scrollView.addSubview(deaneryApiText)
         
-        telApiText.textAlignment = .center
+        telApiText.textAlignment = .right
         telApiText.numberOfLines = 0
         telApiText.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         telApiText.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
@@ -191,42 +193,38 @@ class DetailMapKathedralView: UIView {
         super.layoutSubviews()
         scrollView.pin.all()
         if !emptyImage {
-            imageCollectionView.pin.top(15).left(15).height(240).right(15)
+            imageCollectionView.pin.top(15).height(240).horizontally()
             infoSegmentControll.pin.below(of: imageCollectionView).marginTop(10).horizontally(15).height(30)
         } else {
             infoSegmentControll.pin.top(15).horizontally(15).height(30)
         }
-        churchTopName.pin.horizontally(15).height(50).below(of: infoSegmentControll).marginTop(10)
-        eparhiyaCityName.pin.below(of: churchTopName).marginTop(10).horizontally(15).height(20)
+        churchTopName.pin.below(of: infoSegmentControll).marginTop(10).horizontally(15).sizeToFit(.widthFlexible)
+        eparhiyaCityName.pin.below(of: churchTopName).marginTop(20).horizontally(15).sizeToFit(.widthFlexible)
         //
 //        openNow.pin.left(15).below(of: eparhiyaCityName).marginTop(8).height(25).width((UIScreen.main.bounds.size.width / 2) - 40)
 //        pointText.pin.left(to:openNow.edge.right).top(to:openNow.edge.top).height(25).width(10)
 //        closeAtTop.pin.left(to:pointText.edge.right).top(to:pointText.edge.top).height(25).right().marginLeft(5)
      
         workScheduleText.pin.below(of: eparhiyaCityName).marginTop(5).left(15).right().height(25)
-        hramHistory.pin.below(of: eparhiyaCityName).marginTop(5).left(15).right().bottom()
-        monFriday.pin.below(of: workScheduleText).horizontally(15).height(40)
+        hramHistory.pin.below(of: eparhiyaCityName).marginTop(20).horizontally(15).sizeToFit(.widthFlexible)
+        monFriday.pin.below(of: workScheduleText).horizontally(15).sizeToFit(.widthFlexible)
         markerImage.pin.left(15).below(of: monFriday).marginTop(15).height(20).width(15)
-        adressText.pin.top(to:markerImage.edge.top).bottom(to:markerImage.edge.bottom).left(to:markerImage.edge.right).marginLeft(15).right()
+        adressText.pin.right(of: markerImage, aligned: .center).marginLeft(13).right(15).sizeToFit(.widthFlexible)
         createRouteView.pin.below(of: adressText).marginTop(25).horizontally(15).height(45)
         createRouteButton.pin.all()
         layerBlue.pin.all()
-        
-        templeHoliday.pin.below(of: createRouteView).marginTop(25).left(15).width(145).height(25)
-        fatherManName.pin.below(of: templeHoliday).marginTop(40).left(15).width(115).height(25)
-        deanery.pin.below(of: fatherManName).marginTop(40).left(15).width(125).height(25)
-        telText.pin.below(of: deanery).marginTop(40).left(15).width(145).height(25)
-        
-        templeHolidayApiText.pin.right(15).top(to:templeHoliday.edge.top).left(to:templeHoliday.edge.right).height(50).marginTop(-10)
-        fatherManNameApiText.pin.right(15).top(to:fatherManName.edge.top).left(to:fatherManName.edge.right).height(50).marginTop(-10)
-        deaneryApiText.pin.right(15).top(to:deanery.edge.top).left(to:deanery.edge.right).height(50).marginTop(-10)
-        telApiText.pin.right(15).top(to:telText.edge.top).left(to:telText.edge.right).height(50).marginTop(-10)
-        
-        scrollView.pin.horizontally().top().bottom(to:telApiText.edge.bottom)
-        if !emptyImage {
-        scrollView.contentSize = CGSize(width:  UIScreen.main.bounds.size.width, height: telApiText.frame.maxY + 275)
+        templeHoliday.pin.below(of: createRouteView).marginTop(25).left(15).sizeToFit(.widthFlexible)
+        templeHolidayApiText.pin.below(of: createRouteView).marginTop(25).after(of: templeHoliday).marginLeft(15).right(15).sizeToFit(.width)
+        fatherManName.pin.below(of: templeHolidayApiText).marginTop(10).left(15).sizeToFit(.widthFlexible)
+        fatherManNameApiText.pin.below(of: templeHolidayApiText).marginTop(10).after(of: fatherManName).marginLeft(15).right(15).sizeToFit(.width)
+        deanery.pin.below(of: fatherManNameApiText.frame.height == 0 ? templeHolidayApiText : fatherManNameApiText).marginTop(10).left(15).sizeToFit(.widthFlexible)
+        deaneryApiText.pin.below(of: fatherManNameApiText.frame.height == 0 ? templeHolidayApiText : fatherManNameApiText).marginTop(10).after(of: fatherManName).marginLeft(15).right(15).sizeToFit(.width)
+        telText.pin.below(of: deaneryApiText.frame.height == 0 ? fatherManNameApiText : deaneryApiText).marginTop(10).left(15).sizeToFit(.widthFlexible)
+        telApiText.pin.below(of: deaneryApiText.frame.height == 0 ? fatherManNameApiText : deaneryApiText).marginTop(10).after(of: fatherManName).marginLeft(15).right(15).sizeToFit(.width)
+        if self.hramHistory.isHidden {
+            scrollView.contentSize = CGSize(width:  UIScreen.main.bounds.size.width, height: telApiText.frame.maxY + 15)
         } else {
-            scrollView.contentSize = CGSize(width:  UIScreen.main.bounds.size.width, height: telApiText.frame.maxY + 100)
+            scrollView.contentSize = CGSize(width:  UIScreen.main.bounds.size.width, height: hramHistory.frame.maxY + 15)
         }
     }
 }

@@ -47,7 +47,7 @@ class CalendarTableCell: UITableViewCell {
       //  goldenLine.layer.addSublayer(layerGolden)
         
         backWhite.addSubview(holidayName)
-        holidayName.font = UIFont(name: "SFProText-Semibold", size: 13)
+        holidayName.font = .systemFont(ofSize: 16, weight: .semibold)
         holidayName.numberOfLines = 0
         holidayName.textAlignment = .left
         

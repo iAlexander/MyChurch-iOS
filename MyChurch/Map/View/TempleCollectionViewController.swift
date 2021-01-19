@@ -133,7 +133,14 @@ class TempleCollectionViewCell: UICollectionViewCell {
     
     private func setupData(data: Temple) {
         churchName.text = data.name
-        distance.text = "\(String(Int(data.distance ?? 0))) км"
+        if let distanceValue = data.distance {
+            distance.text = "Відстань · \(String(format: "%.1f", distanceValue)) км"
+        } else {
+            distance.text = "Відстань · 0 км"
+            createRouteView.layer.sublayers?.filter({$0 is CAGradientLayer}).forEach({$0.removeFromSuperlayer()})
+            createRouteView.backgroundColor = UIColor(red: 0.878, green: 0.878, blue: 0.878, alpha: 1)
+            createRouteButton.isEnabled = false
+        }
     }
     
     private func setupShapes() {

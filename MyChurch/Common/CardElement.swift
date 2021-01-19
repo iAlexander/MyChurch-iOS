@@ -21,8 +21,9 @@ class CardElement: UIView {
     func setValue(title: String, imageUrl: String = "", leftSubtitle: String = "", centerSubtitle: String = "", rightSubtitle: String = "") {
         self.addSubview(self.contentView)
         self.contentView.addSubviews([self.titleLabel, self.imageView, self.leftSubtitleLabel, self.centerSubtitleLabel, self.rightSubtitleLabel])
-        
-        self.imageView.imageFromServerURL(imageUrl, placeHolder: #imageLiteral(resourceName: "map-tint"))
+        if let url = URL(string: imageUrl) {
+            self.imageView.load(url: url)
+        }
         
         
         self.leftSubtitleLabel.setValue(leftSubtitle, size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)

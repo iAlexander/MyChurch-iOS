@@ -27,39 +27,41 @@ extension UIImage {
     
 }
 
-let imageCache = NSCache<NSString, UIImage>()
+fileprivate let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImageView {
-    
-    func imageFromServerURL(_ URLString: String, placeHolder: UIImage?) {
-        self.image = nil
-        
-        if let cachedImage = imageCache.object(forKey: NSString(string: URLString)) {
-            self.image = cachedImage
-            return
-        }
-        
-        if let url = URL(string: URLString) {
-            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                
-                //print("RESPONSE FROM API: \(response)")
-                if error != nil {
-                    DispatchQueue.main.async {
-                        self.image = placeHolder
-                    }
-                    return
-                }
-                
+
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            if let cachedImage = imageCache.object(forKey: NSString(string: url.absoluteString)) {
                 DispatchQueue.main.async {
-                    if let data = data {
-                        if let downloadedImage = UIImage(data: data) {
-                            imageCache.setObject(downloadedImage, forKey: NSString(string: URLString))
-                            self.image = downloadedImage
+                    self.image = cachedImage
+                }
+                return
+            }
+            var activityIndicator: UIActivityIndicatorView?
+            DispatchQueue.main.async {
+                activityIndicator = UIActivityIndicatorView(style: .gray)
+                if let activityIndicator = activityIndicator {
+                    self.addSubview(activityIndicator)
+                    activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+                    activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+                    activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+                    activityIndicator.startAnimating()
+                }
+            }
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        if let activityIndicator = activityIndicator {
+                            activityIndicator.stopAnimating()
                         }
+                        imageCache.setObject(image, forKey: NSString(string: url.absoluteString))
+                        self.image = image
                     }
                 }
-            }).resume()
+            }
         }
     }
-    
 }

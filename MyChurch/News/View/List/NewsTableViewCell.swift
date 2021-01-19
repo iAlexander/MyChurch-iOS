@@ -29,8 +29,9 @@ class NewsTableViewCell: UITableViewCell {
         self.elevatedView.addSubviews([self.titleLabel, self.newsImageView, self.leftSubtitleLabel, self.centerSubtitleLabel, self.rightSubtitleLabel])
         let apiUrl = API.stage.rawValue.correctPath()
         let imageUrl: String = apiUrl + (data.image?.path ?? "") + "/" + (data.image?.name ?? "")
-        self.newsImageView.imageFromServerURL(imageUrl, placeHolder: #imageLiteral(resourceName: "map-tint"))
-        
+        if let url = URL(string: imageUrl) {
+            self.newsImageView.load(url: url)
+        }
         if let date = data.date?.formatDate(from: .unformatted, to: .dayMonthYearHoursMinutesShort) {
             self.leftSubtitleLabel.setValue(date, size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)
         }
@@ -50,8 +51,9 @@ class NewsTableViewCell: UITableViewCell {
     func confgireWithData(title: String, imageUrl: String = "", leftSubtitle: String = "", centerSubtitle: String = "", rightSubtitle: String = "") {
         self.addSubview(self.elevatedView)
         self.elevatedView.addSubviews([self.titleLabel, self.newsImageView, self.leftSubtitleLabel, self.centerSubtitleLabel, self.rightSubtitleLabel])
-        
-        self.newsImageView.imageFromServerURL(imageUrl, placeHolder: #imageLiteral(resourceName: "map-tint"))
+        if let url = URL(string: imageUrl) {
+            self.newsImageView.load(url: url)
+        }
         
         if let date = leftSubtitle.formatDate(from: .unformatted, to: .dayMonthYearHoursMinutesShort) {
             self.leftSubtitleLabel.setValue(date, size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)
@@ -81,6 +83,11 @@ class NewsTableViewCell: UITableViewCell {
         self.rightSubtitleLabel.anchor(top: self.elevatedView.topAnchor, leading: self.centerSubtitleLabel.trailingAnchor, trailing: self.elevatedView.trailingAnchor, padding: UIEdgeInsets(top: 16, left: 8, bottom: 0, right: 16), size: CGSize(width: 0, height: 17))
         
         self.titleLabel.anchor(top: self.leftSubtitleLabel.bottomAnchor, leading: self.newsImageView.trailingAnchor, bottom: self.elevatedView.bottomAnchor, trailing: self.elevatedView.trailingAnchor, padding: UIEdgeInsets(top: 8, left: 16, bottom: 16, right: 16))
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.newsImageView.image = nil
     }
     
 }

@@ -7,7 +7,7 @@ class Repository {
     static let shared = Repository()
     
     // MARK: - Temples
-    func getTemples(lt: String, lg: String, completion: @escaping (TemplesData) -> Void) {
+    func getTemples(lt: String, lg: String, completion: @escaping (TemplesData?) -> Void) {
         APIService.shared.getTemples(lt: lt, lg: lg) { (response) in
             completion(response)
         }
@@ -21,7 +21,7 @@ class Repository {
     //    }
     
     // MARK: - News
-    func getNews(completion: @escaping (NewsResponse) -> Void) {
+    func getNews(completion: @escaping (NewsResponse?) -> Void) {
         APIService.shared.getNews { (response) in
             completion(response)
         }

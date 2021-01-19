@@ -48,14 +48,7 @@ class PrayerViewController: ViewController {
     
     let activityIndicatorView: UIActivityIndicatorView = {
         var activityIndicatorView: UIActivityIndicatorView
-        
-        if #available(iOS 13.0, *) {
-            activityIndicatorView = UIActivityIndicatorView(style: .large)
-        } else {
-            // Fallback on earlier versions
-            activityIndicatorView = UIActivityIndicatorView()
-        }
-        
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
         return activityIndicatorView
     }()
     

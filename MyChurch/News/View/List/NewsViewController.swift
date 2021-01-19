@@ -9,20 +9,15 @@ class NewsViewController: ViewController {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
-        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(updateNews), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         return tableView
     }()
     
     let activityIndicatorView: UIActivityIndicatorView = {
         var activityIndicatorView: UIActivityIndicatorView
-        
-        if #available(iOS 13.0, *) {
-            activityIndicatorView = UIActivityIndicatorView(style: .large)
-        } else {
-            // Fallback on earlier versions
-            activityIndicatorView = UIActivityIndicatorView()
-        }
-        
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
         return activityIndicatorView
     }()
     
@@ -38,12 +33,15 @@ class NewsViewController: ViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.reuseIdentifier)
-        
-        self.activityIndicatorView.startAnimating()
-        vm.startFetchingData()
-        
         setupNavBar()
         setupLayout()
+        self.activityIndicatorView.startAnimating()
+        vm.startFetchingData()
+    }
+    
+    @objc private func updateNews() {
+        tableView.refreshControl?.beginRefreshing()
+        vm.startFetchingData()
     }
     
     private func setupNavBar() {
@@ -129,8 +127,14 @@ extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewData
     func didFinishFetchingData() {
         self.activityIndicatorView.stopAnimating()
         if NewsViewModel.news != nil {
-            NewsViewModel.news = NewsViewModel.news?.reversed()
+            self.tableView.refreshControl?.endRefreshing()
             self.tableView.reloadData()
+        } else if UserDefaults.standard.bool(forKey: "NoInternetAlertWasPresented") == false {
+            let vc = NoInternetAlert()
+            vc.modalPresentationStyle = .overFullScreen
+            DispatchQueue.main.async {
+                self.present(vc, animated: true, completion: nil)
+            }
         }
     }
     

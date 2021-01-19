@@ -16,7 +16,7 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
     var dateNew = Date()
     var weekDaysView = VAWeekDaysView()
     var monthNumber = Int()
-    var datePointsArray =  [(Date, [VADaySupplementary])]()
+//    var datePointsArray =  [(Date, [VADaySupplementary])]()
 
     let defaultCalendar: Calendar = {
         var calendar = Calendar.current
@@ -42,25 +42,26 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
             case .success(let data):
                 self.allHolidays = data.data?.list ?? [HolidaysData]()
                 UserDefaults.standard.set(try? PropertyListEncoder().encode(data), forKey:"UserCalendar") //сохранил в юзердефолтс календарь
-                var holidayDates = [String]()
-                for (index, item) in self.allHolidays.enumerated() {
-                    self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
-                    if item.priority == nil {
-                    holidayDates.append(item.dateNewStyle ?? "")
-                    }
-                }
-                for dateStr in holidayDates {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-                    let date = dateFormatter.date(from:dateStr)!
-                    self.timeInterval.hour = 3
-                    let dateNew = Calendar.current.date(byAdding: self.timeInterval, to: date)!
-                    self.datePointsArray.append((dateNew.addingTimeInterval(TimeInterval((0 * 0 * 0))), [VADaySupplementary.bottomDots([.red])]))
-                }
+                self.setDotsOnCalendar(item: self.allHolidays)
+//                var holidayDates = [String]()
+//                for (index, item) in self.allHolidays.enumerated() {
+//                    self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
+//                    if item.priority == nil {
+//                    holidayDates.append(item.dateNewStyle ?? "")
+//                    }
+//                }
+//                for dateStr in holidayDates {
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+//                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+//                    let date = dateFormatter.date(from:dateStr)!
+//                    self.timeInterval.hour = 3
+//                    let dateNew = Calendar.current.date(byAdding: self.timeInterval, to: date)!
+//                    self.datePointsArray.append((dateNew.addingTimeInterval(TimeInterval((0 * 0 * 0))), [VADaySupplementary.bottomDots([.red])]))
+//                }
                 
-                self.calendarView.setSupplementaries(self.datePointsArray)
-                UserDefaults.standard.set(holidayDates, forKey: "AllHolidays")
+//                self.calendarView.setSupplementaries(self.datePointsArray)
+//                UserDefaults.standard.set(holidayDates, forKey: "AllHolidays")
                 //внизу код как по нажатию на ячейку календаря, чтоб сегодня сортирнуть дату и показать ее сразу
                 self.reloadTableView(date: Date())
             case .partialSuccess( _): self.offlane()
@@ -73,27 +74,78 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         if let data = UserDefaults.standard.value(forKey:"UserCalendar") as? Data {
             let userData = try? PropertyListDecoder().decode(HolidaysAllData.self, from: data)
             self.allHolidays = userData?.data?.list ?? [HolidaysData]()
-            var holidayDates = [String]()
-            for (index, item) in self.allHolidays.enumerated() {
-                self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
-                if item.priority == nil {
-                    holidayDates.append(item.dateNewStyle ?? "")
-                }
-            }
-            for dateStr in holidayDates {
-                let dateFormatter = DateFormatter()
-                dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-                let date = dateFormatter.date(from:dateStr)!
-                self.timeInterval.hour = 3
-                let dateNew = Calendar.current.date(byAdding: self.timeInterval, to: date)!
-                self.datePointsArray.append((dateNew.addingTimeInterval(TimeInterval((0 * 0 * 0))), [VADaySupplementary.bottomDots([.red])]))
-            }
-            self.calendarView.setSupplementaries(self.datePointsArray)
-            UserDefaults.standard.set(holidayDates, forKey: "AllHolidays")
+            self.setDotsOnCalendar(item: self.allHolidays)
+//            var holidayDates = [String]()
+//            for (index, item) in self.allHolidays.enumerated() {
+//                self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
+//                if item.priority == nil {
+//                    holidayDates.append(item.dateNewStyle ?? "")
+//                }
+//            }
+//            for dateStr in holidayDates {
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+//                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+//                let date = dateFormatter.date(from:dateStr)!
+//                self.timeInterval.hour = 3
+//                let dateNew = Calendar.current.date(byAdding: self.timeInterval, to: date)!
+//                self.datePointsArray.append((dateNew.addingTimeInterval(TimeInterval((0 * 0 * 0))), [VADaySupplementary.bottomDots([.red])]))
+//            }
+//            self.calendarView.setSupplementaries(self.datePointsArray)
+//            UserDefaults.standard.set(holidayDates, forKey: "AllHolidays")
             //внизу код как по нажатию на ячейку календаря, чтоб сегодня сортирнуть дату и показать ее сразу
             self.reloadTableView(date: Date())
         }
+    }
+    
+    private func setDotsOnCalendar(item: [HolidaysData]) {
+        var redDotsDates = [String]()
+        var violetDotsDates = [String]()
+        var blackDotsDates = [String]()
+        var datePointsArray =  [(Date, [VADaySupplementary])]()
+        for (index, item) in self.allHolidays.enumerated() {
+            self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
+            switch item.group?.name {
+            case "Червоний на 12 великих свят +- ще 10 свят", "Богородичні свята":
+                violetDotsDates.append(item.dateNewStyle ?? "")
+            case "Cуб та нд Великого посту":
+                redDotsDates.append(item.dateNewStyle ?? "")
+            case "Пн-пт Великого посту":
+                blackDotsDates.append(item.dateNewStyle ?? "")
+            default:
+                ()
+            }
+        }
+        for dateStr in redDotsDates {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            let date = dateFormatter.date(from:dateStr)!
+            self.timeInterval.hour = 3
+            let dateNew = Calendar.current.date(byAdding: self.timeInterval, to: date)!
+            datePointsArray.append((dateNew.addingTimeInterval(TimeInterval((0 * 0 * 0))), [VADaySupplementary.bottomDots([UIColor(hexString: "#db0032")])]))
+        }
+        for dateStr in violetDotsDates {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            let date = dateFormatter.date(from:dateStr)!
+            self.timeInterval.hour = 3
+            let dateNew = Calendar.current.date(byAdding: self.timeInterval, to: date)!
+            datePointsArray.append((dateNew.addingTimeInterval(TimeInterval((0 * 0 * 0))), [VADaySupplementary.bottomDots([UIColor(hexString: "#8331a7")])]))
+        }
+        for dateStr in blackDotsDates {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            let date = dateFormatter.date(from:dateStr)!
+            self.timeInterval.hour = 3
+            let dateNew = Calendar.current.date(byAdding: self.timeInterval, to: date)!
+            datePointsArray.append((dateNew.addingTimeInterval(TimeInterval((0 * 0 * 0))), [VADaySupplementary.bottomDots([UIColor(hexString: "#212721")])]))
+        }
+        let holidayDates = redDotsDates + violetDotsDates + blackDotsDates
+        UserDefaults.standard.set(holidayDates, forKey: "AllHolidays")
+        self.calendarView.setSupplementaries(datePointsArray)
     }
     
     override func viewDidLayoutSubviews() {
@@ -120,16 +172,9 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierTableView, for: indexPath) as! CalendarTableCell
-        switch chooseHolidays[indexPath.row].priority {
-        case 1: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#ffb600"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#ffb600")
-        case 2:  cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#e5e1t6"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#e5e1t6")
-        case 3: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#0075c9"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#0075c9")
-        case 4: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#bc2f2c"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#bc2f2c")
-        case 5: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#d9d8d6"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#d9d8d6")
-        case 7: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#db0032"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#db0032")
-        case 8: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#8331a7"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#8331a7")
-        case 9: cell.goldenLine.backgroundColor = hexStringToUIColor(hex: "#212721"); cell.arrowImage.tintColor = hexStringToUIColor(hex: "#212721")
-        default: break
+        if let color = chooseHolidays[indexPath.row].color {
+            cell.goldenLine.backgroundColor = UIColor(hexString: color)
+            cell.arrowImage.tintColor = UIColor(hexString: color)
         }
         cell.selectionStyle = .none
         cell.holidayName.text = chooseHolidays[indexPath.row].name
@@ -141,7 +186,8 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         vc.titleText = mainView.choosedDay.text ?? ""
         vc.detailHolidayInfo = chooseHolidays[indexPath.row]
         if !(chooseHolidays[indexPath.row].iconImage?.name?.isEmpty ?? true) {
-            vc.imageUrlString = "https://mobile.pomisna.info/\(chooseHolidays[indexPath.row].iconImage?.path ?? "")/\(chooseHolidays[indexPath.row].iconImage?.name ?? "")"
+            //            vc.imageUrlString = "https://mobile.pomisna.info/\(chooseHolidays[indexPath.row].iconImage?.path ?? "")/\(chooseHolidays[indexPath.row].iconImage?.name ?? "")"
+            vc.imageUrlString = "http://test.cerkva.asp-win.d2.digital/\(chooseHolidays[indexPath.row].iconImage?.path ?? "")/\(chooseHolidays[indexPath.row].iconImage?.name ?? "")"
         }
         self.navigationController?.pushViewController(vc, animated: false)
     }
@@ -169,7 +215,10 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
 extension CalendarViewController {
     func configView() {
         self.view.addSubview(mainView)
-        self.mainView.frame = self.view.bounds
+        let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+        let safeAreaBottom: CGFloat = window?.safeAreaInsets.bottom ?? 0.0
+        let safeAreaTop: CGFloat = window?.safeAreaInsets.top ?? 0.0
+        self.mainView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.frame.height - safeAreaTop - safeAreaBottom - 90)
        // mainView.calendar.calendarDelegate = self
         mainView.holidayTableView.delegate = self
         mainView.holidayTableView.dataSource = self
@@ -190,10 +239,10 @@ extension CalendarViewController {
         
         let appereance = VAWeekDaysViewAppearance(symbolsType: .short, weekDayTextColor: .black, separatorBackgroundColor: UIColor.clear, calendar: defaultCalendar)
         weekDaysView.appearance = appereance
-        calendarView.setSupplementaries(self.datePointsArray)
-        weekDaysView.frame = CGRect(x: 0, y: 0, width:  view.frame.width, height: 50)
-        view.addSubview(weekDaysView)
-        view.addSubview(calendarView)
+//        calendarView.setSupplementaries(self.datePointsArray)
+        weekDaysView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        mainView.addSubview(weekDaysView)
+        mainView.addSubview(calendarView)
         let date = Date()
         writeDateStr(date: date)
     }
@@ -304,7 +353,7 @@ extension CalendarViewController: VADayViewAppearanceDelegate {
     func textBackgroundColor(for state: VADayState) -> UIColor {
         switch state {
         case .selected:
-            return .red
+            return UIColor(red: 0.004, green: 0.478, blue: 0.898, alpha: 0.9)
         default:
             return .clear
         }

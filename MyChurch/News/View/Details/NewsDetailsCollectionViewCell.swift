@@ -26,7 +26,9 @@ class NewsDetailsCollectionViewCell: UICollectionViewCell {
         if let image = data.image {
             let apiUrl = API.stage.rawValue.correctPath()
             let imageUrl: String = apiUrl + image.path + "/" + image.name
-            self.postImageView.imageFromServerURL(imageUrl, placeHolder: nil)
+            if let url = URL(string: imageUrl) {
+                self.postImageView.load(url: url)
+            }
         }
         
         if let date = data.date {

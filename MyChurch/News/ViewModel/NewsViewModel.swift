@@ -19,8 +19,9 @@ class NewsViewModel: ViewModel {
     func startFetchingData() {
         DispatchQueue.global(qos: .background).async {
             Repository.shared.getNews() { (response) in
-                NewsViewModel.news = response.data.list
-                
+                if let response = response {
+                    NewsViewModel.news = response.data.list
+                }
                 DispatchQueue.main.async {
                     self.delegate?.didFinishFetchingData()
                 }

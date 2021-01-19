@@ -17,30 +17,24 @@ class DetailMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ConfigView()
         self.mainView.createRouteButton.addTarget(self, action: #selector(self.createRoutePressed), for: .touchUpInside)
         GetTempleData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController!.navigationBar.tintColor = .white
+        ConfigView()
     }
     
     func GetTempleData() {
         getDetailTemple(id:templeInfo.id) { (result) in
+            ANLoader.hide()
             switch result {
             case .success(let data):
                 self.templeData = data
-                ANLoader.hide()
-                self.mainView.churchTopName.text = data.data?.name
-                if data.data?.priest?.name == "(вакантна)" || data.data?.priest?.name == nil  {
-                    self.mainView.deaneryApiText.isHidden = true
-                    self.mainView.deanery.isHidden = true
-                } else {
-                    self.mainView.deaneryApiText.text = data.data?.priest?.name
-                }
-                if  data.data?.galaDayTitle == "" {
+                if data.data?.galaDayTitle == "" || data.data?.galaDayTitle == nil {
                     self.mainView.templeHolidayApiText.isHidden = true
                     self.mainView.templeHoliday.isHidden = true
                 } else {
@@ -74,26 +68,43 @@ class DetailMapViewController: UIViewController {
                     }
                     self.mainView.templeHolidayApiText.text = "\(dateStr ?? "") \(month ?? "")"
                 }
-                
-                if data.data?.phone == nil {
+                if data.data?.phone == "" || data.data?.phone == nil {
                     self.mainView.telApiText.isHidden = true
                     self.mainView.telText.isHidden = true
                 } else {
                     self.mainView.telApiText.text = data.data?.phone
                 }
-                
-                if data.data?.presiding?.name == "(вакантна)" {
-                    self.mainView.fatherManName.isHidden =  true
-                    self.mainView.fatherManNameNeedHidden = true
-                    self.mainView.layoutSubviews()
+                if data.data?.presiding?.name == "" || data.data?.presiding?.name == nil || data.data?.presiding?.name == "(вакантна)" {
+                    self.mainView.fatherManNameApiText.isHidden = true
+                    self.mainView.fatherManName.isHidden = true
                 } else {
-                    self.mainView.fatherManNameApiText.text =  data.data?.presiding?.name
+                    self.mainView.fatherManNameApiText.text = data.data?.presiding?.name
                 }
                 
-                self.mainView.adressText.text = "\(data.data?.locality ?? ""), \(data.data?.district ?? ""), \(data.data?.street ?? "")"
+                if data.data?.priest?.name == "" || data.data?.priest?.name == nil || data.data?.priest?.name == "(вакантна)" {
+                    self.mainView.deaneryApiText.isHidden = true
+                    self.mainView.deanery.isHidden = true
+                } else {
+                    self.mainView.deaneryApiText.text = data.data?.priest?.name
+                }
+                self.mainView.churchTopName.text = data.data?.name
+                var addressText = ""
+                if let locality = data.data?.locality {
+                    addressText.append(locality)
+                }
+                if let district = data.data?.district {
+                    addressText.append(", " + district)
+                }
+                if let street = data.data?.street {
+                    addressText.append(", " + street)
+                }
+                self.mainView.adressText.text = addressText
                 self.mainView.monFriday.text = data.data?.schedule ?? ""
-                self.mainView.eparhiyaCityName.text = data.data?.diocese?.name ?? ""
-                
+                self.mainView.eparhiyaCityName.text =  data.data?.diocese?.name ?? ""
+                self.mainView.setNeedsLayout()
+                UIView.animate(withDuration: 0.4) {
+                    self.mainView.scrollView.alpha = 1
+                }
             case .partialSuccess( _): break
             case .failure(let error):
                 print(error)
@@ -114,15 +125,8 @@ class DetailMapViewController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
     func ConfigView() {
-        self.view.addSubview(mainView)
-        self.mainView.frame = self.view.bounds
-        self.navigationController?.isNavigationBarHidden = false
+        self.view = mainView
         self.title = "Храм"
     }
 }

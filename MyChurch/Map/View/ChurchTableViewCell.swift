@@ -20,6 +20,8 @@ class ChurchTableViewCell: UITableViewCell {
         
         addSubview(invitedLabel)
         invitedLabel.font =  UIFont.systemFont(ofSize: 10, weight: .regular)
+        invitedLabel.numberOfLines = 1
+        invitedLabel.lineBreakMode = .byTruncatingTail
         
         addSubview(searchIcon)
         searchIcon.image = UIImage(named: "searchIcon")
@@ -43,7 +45,6 @@ class ChurchTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         searchIcon.pin.left(10).height(17.5).width(17.5).vCenter()
-        invitedLabel.pin.vCenter().left(32.5).sizeToFit().right(5)
-
+        invitedLabel.pin.left(32.5).vCenter().maxWidth(self.frame.width - 33).sizeToFit()
     }
 }

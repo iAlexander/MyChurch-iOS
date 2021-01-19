@@ -20,16 +20,24 @@ class DetailHolidayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigView()
-        let clearTextString =  self.detailHolidayInfo?.describe?.slice(from: "<b>", to:  "</b>")
+        let data = Data(self.detailHolidayInfo!.describe!.utf8)
+        if let attributedString = try? NSMutableAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil), let conceived = self.detailHolidayInfo?.conceived {
+            attributedString.append(NSAttributedString(string: "\n\(conceived)"))
+            let font = UIFont.systemFont(ofSize: 18, weight: .regular)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.26
+            attributedString.addAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.paragraphStyle: paragraphStyle], range: NSMakeRange(0, attributedString.length))
+            self.mainView.holidayTextLabel.attributedText = attributedString
+        }
+        
         if !imageUrlString.isEmpty {
         let imageUrl = URL(string: imageUrlString)!
         self.mainView.imageView.load(url: imageUrl)
             mainView.imageIsEmpty = false
             mainView.layoutSubviews()
         }
-        self.mainView.holidayTextView.text = "\(clearTextString ?? "")\n\(self.detailHolidayInfo?.conceived ?? "")"
         self.mainView.holidayTopName.text = self.detailHolidayInfo?.name
-        self.mainView.holidayTopInfo.text = self.detailHolidayInfo?.group?.name
+        self.mainView.holidayTopInfo.text = self.detailHolidayInfo?.fasting == 1 ? "Пiсний день" : "Посту немає"
         var dateTextAll = String()
         
         var newDate = self.detailHolidayInfo?.dateNewStyle
@@ -55,34 +63,24 @@ class DetailHolidayViewController: UIViewController {
         oldDate = oldDate?.dropFirst(5).description
         let dayFirst = oldDate?.strstr(needle: "-", beforeNeedle: false)
         switch  oldDate?.prefix(2) {
-        case "01": dateTextAll += "(\(dayFirst ?? "") ciчня за старим календарем)"
-        case "02": dateTextAll += "(\(dayFirst ?? "") лютого за старим календарем)"
-        case "03": dateTextAll += "(\(dayFirst ?? "") березня за старим календарем)"
-        case "04": dateTextAll += "(\(dayFirst ?? "") квiтня за старим календарем)"
-        case "05": dateTextAll += "(\(dayFirst ?? "") травня за старим календарем)"
-        case "06": dateTextAll += "(\(dayFirst ?? "") червня за старим календарем)"
-        case "07": dateTextAll += "(\(dayFirst ?? "") липня за старим календарем)"
-        case "08": dateTextAll += "(\(dayFirst ?? "") серпня за старим календарем)"
-        case "09": dateTextAll += "(\(dayFirst ?? "") вересня за старим календарем)"
-        case "10": dateTextAll += "(\(dayFirst ?? "") жовтня за старим календарем)"
-        case "11": dateTextAll += "(\(dayFirst ?? "") листопада за старим календарем)"
-        case "12": dateTextAll += "(\(dayFirst ?? "") грудня за старим календарем)"
+        case "01": dateTextAll += " (\(dayFirst ?? "") ciчня за старим календарем)"
+        case "02": dateTextAll += " (\(dayFirst ?? "") лютого за старим календарем)"
+        case "03": dateTextAll += " (\(dayFirst ?? "") березня за старим календарем)"
+        case "04": dateTextAll += " (\(dayFirst ?? "") квiтня за старим календарем)"
+        case "05": dateTextAll += " (\(dayFirst ?? "") травня за старим календарем)"
+        case "06": dateTextAll += " (\(dayFirst ?? "") червня за старим календарем)"
+        case "07": dateTextAll += " (\(dayFirst ?? "") липня за старим календарем)"
+        case "08": dateTextAll += " (\(dayFirst ?? "") серпня за старим календарем)"
+        case "09": dateTextAll += " (\(dayFirst ?? "") вересня за старим календарем)"
+        case "10": dateTextAll += " (\(dayFirst ?? "") жовтня за старим календарем)"
+        case "11": dateTextAll += " (\(dayFirst ?? "") листопада за старим календарем)"
+        case "12": dateTextAll += " (\(dayFirst ?? "") грудня за старим календарем)"
         default: break
         }
         self.mainView.holidayTopDate.text = dateTextAll
-        
-        switch detailHolidayInfo?.priority {
-        case 1: mainView.goldenView.backgroundColor = hexStringToUIColor(hex: "#ffb600")
-        case 2: mainView.goldenView.backgroundColor = hexStringToUIColor(hex: "#e5e1t6")
-        case 3:mainView.goldenView.backgroundColor = hexStringToUIColor(hex: "#0075c9")
-        case 4:mainView.goldenView.backgroundColor = hexStringToUIColor(hex: "#bc2f2c")
-        case 5:mainView.goldenView.backgroundColor = hexStringToUIColor(hex: "#d9d8d6")
-        case 7:mainView.goldenView.backgroundColor = hexStringToUIColor(hex: "#db0032")
-        case 8:mainView.goldenView.backgroundColor = hexStringToUIColor(hex: "#8331a7")
-        case 9:mainView.goldenView.backgroundColor = hexStringToUIColor(hex: "#212721")
-        default: break
+        if let color = detailHolidayInfo?.color {
+            mainView.goldenView.backgroundColor = UIColor(hexString: color)
         }
-        
     }
     
     //MARK: work with collectionView
@@ -98,8 +96,9 @@ class DetailHolidayViewController: UIViewController {
     }
     
     func ConfigView() {
-        self.view.addSubview(mainView)
-        self.mainView.frame = self.view.bounds
+//        self.view.addSubview(mainView)
+//        self.mainView.frame = self.view.bounds
+        self.view = mainView
         self.title = titleText
        
         self.navigationController!.navigationBar.tintColor = .white
@@ -116,38 +115,22 @@ extension String {
     }
 }
 
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
+extension UIColor {
+    convenience init(hexString: String) {
+        let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int = UInt64()
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
+        switch hex.count {
+        case 3: // RGB (12-bit)
+            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+        case 6: // RGB (24-bit)
+            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        case 8: // ARGB (32-bit)
+            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+        default:
+            (a, r, g, b) = (255, 0, 0, 0)
         }
+        self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
-}
-
-func hexStringToUIColor (hex:String) -> UIColor {
-    var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-    if (cString.hasPrefix("#")) {
-        cString.remove(at: cString.startIndex)
-    }
-
-    if ((cString.count) != 6) {
-        return UIColor.gray
-    }
-
-    var rgbValue:UInt64 = 0
-    Scanner(string: cString).scanHexInt64(&rgbValue)
-
-    return UIColor(
-        red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-        green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-        blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-        alpha: CGFloat(1.0)
-    )
 }
