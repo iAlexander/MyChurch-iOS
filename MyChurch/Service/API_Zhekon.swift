@@ -17,7 +17,7 @@ enum NewResult<Value> {
 
 //MARK: 1) Запрос на взятие праздников для календаря
 func getHolidays(completion: ((NewResult<HolidaysAllData>) -> Void)?) {
-    let url = URL(string:"http://test.cerkva.asp-win.d2.digital/gala/?n=all")
+    let url = URL(string:"https://mobile.pomisna.info/gala/?n=all")
     var request = URLRequest(url: url!)
     request.httpMethod = "GET"
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -43,7 +43,7 @@ func getHolidays(completion: ((NewResult<HolidaysAllData>) -> Void)?) {
 
 //MARK: 2) Запрос на взятие детального праздника
 func getDetailHolidays(id: Int, completion: ((NewResult<HolidaysDetailData>) -> Void)?) {
-    let api = "http://test.cerkva.asp-win.d2.digital"
+    let api = "https://mobile.pomisna.info"
     let endpoint = "/calendar/id?id=\(id)"
     let url1 = URL(string: api + endpoint)
     
@@ -72,7 +72,7 @@ func getDetailHolidays(id: Int, completion: ((NewResult<HolidaysDetailData>) -> 
 
 //MARK: 3) Запрос на взятие детального храма
 func getDetailTemple(id: Int, completion: ((NewResult<TempleData>) -> Void)?) {
-    let api = "http://test.cerkva.asp-win.d2.digital/church/card/\(id)"
+    let api = "https://mobile.pomisna.info/church/card/\(id)"
     let url1 = URL(string: api)
     var request = URLRequest(url: url1!)
     request.httpMethod = "GET"
@@ -98,7 +98,7 @@ func getDetailTemple(id: Int, completion: ((NewResult<TempleData>) -> Void)?) {
 
 //MARK: 4) Запрос на взятие всех храмов
 func getAllHrams( completion: ((NewResult<AllHrams>) -> Void)?) {
-    let api = "http://test.cerkva.asp-win.d2.digital/church/list-geo"
+    let api = "https://mobile.pomisna.info/church/list-geo"
     let url1 = URL(string: api)
     var request = URLRequest(url: url1!)
     request.httpMethod = "GET"
@@ -124,7 +124,7 @@ func getAllHrams( completion: ((NewResult<AllHrams>) -> Void)?) {
 
 //MARK: 5) Запрос на взятие всех епархий
 func getAllEparhies(completion: ((NewResult<EparhiesData>) -> Void)?) {
-    let api = "http://test.cerkva.asp-win.d2.digital/church/diocese/?n=100"
+    let api = "https://mobile.pomisna.info/church/diocese/?n=100"
     let url1 = URL(string: api)
     var request = URLRequest(url: url1!)
     request.httpMethod = "GET"
@@ -150,8 +150,8 @@ func getAllEparhies(completion: ((NewResult<EparhiesData>) -> Void)?) {
 
 //MARK: 6) Запрос на регистрацию
 func registrationUser(name: String, serName: String, birthday: String, phone: String, email: String, status: String, hram: Int, eparhiya: Int, angelday: String, completion: ((NewResult<RegistrationData>) -> Void)?) {
-   let url = URL(string:"http://test.cerkva.asp-win.d2.digital/register")
-    //let url = URL(string:"https://mobile.pomisna.info/register")
+//   let url = URL(string:"http://test.cerkva.asp-win.d2.digital/register")
+    let url = URL(string:"https://mobile.pomisna.info/register")
     var request = URLRequest(url: url!)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "accept")
@@ -203,8 +203,8 @@ func registrationUser(name: String, serName: String, birthday: String, phone: St
 
 //MARK: 7) Запрос на логин
 func signUpUser(email: String, password: String, completion: ((NewResult<RegistrationData>) -> Void)?) {
-   let url = URL(string:"http://test.cerkva.asp-win.d2.digital/account/login")
-  //  let url = URL(string:"https://mobile.pomisna.info/account/login")
+//   let url = URL(string:"http://test.cerkva.asp-win.d2.digital/account/login")
+    let url = URL(string:"https://mobile.pomisna.info/account/login")
     var request = URLRequest(url: url!)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "accept")
@@ -238,8 +238,8 @@ func signUpUser(email: String, password: String, completion: ((NewResult<Registr
 
 //MARK: 8) Запрос на взятие данных профиля
 func getUserData(completion: ((NewResult<UserDatas>) -> Void)?) {
-    let api = "http://test.cerkva.asp-win.d2.digital/account/profile"
-   // let api = "https://mobile.pomisna.info/account/profile"
+//    let api = "http://test.cerkva.asp-win.d2.digital/account/profile"
+    let api = "https://mobile.pomisna.info/account/profile"
     let url1 = URL(string: api)
     var request = URLRequest(url: url1!)
     request.httpMethod = "GET"
@@ -502,10 +502,10 @@ func sendFirToken(completion: ((NewResult<FirTokenData>) -> Void)?) {
 //MARK: 17) Запрос-отправка ликПей на бек
 func sendLikPayData(value: String, completion: ((NewResult<SendLiqPayData>) -> Void)?) {
     var urlComponents = URLComponents()
-//    urlComponents.scheme = "https"
-//    urlComponents.host = "mobile.pomisna.info"
-    urlComponents.scheme = "http"
-    urlComponents.host = "test.cerkva.asp-win.d2.digital"
+    urlComponents.scheme = "https"
+    urlComponents.host = "mobile.pomisna.info"
+//    urlComponents.scheme = "http"
+//    urlComponents.host = "test.cerkva.asp-win.d2.digital"
     urlComponents.path = "/api/pay/generate-liqpay-url"
     urlComponents.queryItems = [URLQueryItem(name: "actionType", value: value), URLQueryItem(name: "resultUrl", value: "https://wwww.google.com")]
     
@@ -541,8 +541,10 @@ func sendLikPayData(value: String, completion: ((NewResult<SendLiqPayData>) -> V
 //MARK: 18) Запрос-отправка ликПей подписка на бек
 func sendLikPayDataSubscribe(value: String, amount: String, completion: ((NewResult<SendLiqPayData>) -> Void)?) {
     var urlComponents = URLComponents()
-    urlComponents.scheme = "http" //"https"
-    urlComponents.host = "test.cerkva.asp-win.d2.digital"// "mobile.pomisna.info"
+    urlComponents.scheme = "https"
+    urlComponents.host = "mobile.pomisna.info"
+//    urlComponents.scheme = "http" //"https"
+//    urlComponents.host = "test.cerkva.asp-win.d2.digital"// "mobile.pomisna.info"
     urlComponents.path = "/api/pay/generate-liqpay-url"
     urlComponents.queryItems = [URLQueryItem(name: "actionType", value: "subscribe"), URLQueryItem(name: "resultUrl", value: "https://wwww.google.com"), URLQueryItem(name: "amount", value: amount)]
     
@@ -582,8 +584,10 @@ func sendLikPayDataSubscribe(value: String, amount: String, completion: ((NewRes
 //MARK: 19) Запрос-отправка на отписку
 func deSubscribe(completion: ((NewResult<SendLiqPayData>) -> Void)?) {
     var urlComponents = URLComponents()
-    urlComponents.scheme = "http" //"https"
-    urlComponents.host = "test.cerkva.asp-win.d2.digital"// "mobile.pomisna.info"
+    urlComponents.scheme = "https"
+    urlComponents.host = "mobile.pomisna.info"
+//    urlComponents.scheme = "http" //"https"
+//    urlComponents.host = "test.cerkva.asp-win.d2.digital"// "mobile.pomisna.info"
     urlComponents.path = "/api/pay/unsubscribe-liqpay"
    // urlComponents.queryItems = [URLQueryItem(name: "actionType", value: "subscribe"), URLQueryItem(name: "resultUrl", value: "https://wwww.google.com"), URLQueryItem(name: "amount", value: amount)]
     guard let url = urlComponents.url else {
@@ -623,8 +627,10 @@ func deSubscribe(completion: ((NewResult<SendLiqPayData>) -> Void)?) {
 //MARK: 20) Запрос  ликПей  история
 func getHistoryLiqPay(completion: ((NewResult<HistoryLiqPayData>) -> Void)?) {
     var urlComponents = URLComponents()
-    urlComponents.scheme = "http" //"https"
-    urlComponents.host = "test.cerkva.asp-win.d2.digital"// "mobile.pomisna.info"
+    urlComponents.scheme = "https"
+    urlComponents.host = "mobile.pomisna.info"
+//    urlComponents.scheme = "http" //"https"
+//    urlComponents.host = "test.cerkva.asp-win.d2.digital"// "mobile.pomisna.info"
     urlComponents.path = "/api/pay/history-liqpay"
     urlComponents.queryItems = [URLQueryItem(name: "n", value: "20")]
     

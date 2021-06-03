@@ -94,7 +94,6 @@
 		443155F023CF368C004B5B59 /* PCU.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 443155EE23CF368C004B5B59 /* PCU.xcdatamodeld */; };
 		443155F223CF368E004B5B59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 443155F123CF368E004B5B59 /* Assets.xcassets */; };
 		443155F523CF368E004B5B59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443155F323CF368E004B5B59 /* LaunchScreen.storyboard */; };
-		4431560423D063D5004B5B59 /* libGoogle-Maps-iOS-Utils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4431560323D063D5004B5B59 /* libGoogle-Maps-iOS-Utils.a */; };
 		4431560D23D0A8AC004B5B59 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431560C23D0A8AC004B5B59 /* TabBarController.swift */; };
 		4431561223D0AA05004B5B59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431561123D0AA05004B5B59 /* Constant.swift */; };
 		4431561423D0AAD3004B5B59 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431561323D0AAD3004B5B59 /* NavigationController.swift */; };
@@ -120,12 +119,13 @@
 		44FC0A102401731A003A7E7E /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A0F2401731A003A7E7E /* NewsModel.swift */; };
 		44FC0A2324027566003A7E7E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A2224027566003A7E7E /* SplashViewController.swift */; };
 		44FC0A2A2402796D003A7E7E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A292402796D003A7E7E /* OnboardingViewController.swift */; };
-		4BF25C54820980C31FFA5DFD /* libPods-MyChurch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 314075550757F62B33A2BC7E /* libPods-MyChurch.a */; };
 		7698E9792588CB80001FDD90 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698E9782588CB80001FDD90 /* ImageCollectionViewCell.swift */; };
 		76FD906325892D7F003C5262 /* NoInternetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FD906225892D7F003C5262 /* NoInternetAlert.swift */; };
+		B85528CD814907A80667207D /* Pods_MyChurch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE83D4F5BBF1797AA230F75 /* Pods_MyChurch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EE83D4F5BBF1797AA230F75 /* Pods_MyChurch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChurch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		160BD09724E3E92A004BAB2D /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		1617BCB22418F9D500B63715 /* OnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingModel.swift; path = MyChurch/Onboarding/Model/OnboardingModel.swift; sourceTree = SOURCE_ROOT; };
 		1617BCB42418FA0400B63715 /* OnboardingScreenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingScreenCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -205,7 +205,6 @@
 		16F542002480FF0D00C15C18 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		16FFC8192459EE3900F67D6F /* ChooseStartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStartScreenViewController.swift; sourceTree = "<group>"; };
 		16FFC81B2459EE4600F67D6F /* ChooseStartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStartScreenView.swift; sourceTree = "<group>"; };
-		314075550757F62B33A2BC7E /* libPods-MyChurch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyChurch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B8948B07C3AEDD9C87ADB /* Pods-MyChurch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch.release.xcconfig"; path = "Target Support Files/Pods-MyChurch/Pods-MyChurch.release.xcconfig"; sourceTree = "<group>"; };
 		4424DF6223D994D900E5AB65 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		4424DF6423D99AF000E5AB65 /* ScrollView + StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView + StackView.swift"; sourceTree = "<group>"; };
@@ -258,8 +257,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4431560423D063D5004B5B59 /* libGoogle-Maps-iOS-Utils.a in Frameworks */,
-				4BF25C54820980C31FFA5DFD /* libPods-MyChurch.a in Frameworks */,
+				B85528CD814907A80667207D /* Pods_MyChurch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,7 +757,7 @@
 			isa = PBXGroup;
 			children = (
 				4431560323D063D5004B5B59 /* libGoogle-Maps-iOS-Utils.a */,
-				314075550757F62B33A2BC7E /* libPods-MyChurch.a */,
+				0EE83D4F5BBF1797AA230F75 /* Pods_MyChurch.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -787,6 +785,7 @@
 				443155DF23CF368B004B5B59 /* Frameworks */,
 				443155E023CF368B004B5B59 /* Resources */,
 				F6C83C8BA420CB701029F533 /* [CP] Copy Pods Resources */,
+				6E56226601F50247EF2BAF62 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -847,6 +846,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6E56226601F50247EF2BAF62 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyChurch/Pods-MyChurch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyChurch/Pods-MyChurch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyChurch/Pods-MyChurch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A871B346AD2AC7D14A719A80 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1139,7 +1155,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VZS9386469;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -1165,7 +1181,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VZS9386469;
 				INFOPLIST_FILE = MyChurch/Info.plist;

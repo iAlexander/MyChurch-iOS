@@ -236,7 +236,7 @@ class DetailMapKathedralViewController: UIViewController, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
-        let urlString = "http://test.cerkva.asp-win.d2.digital/\(templeData?.data?.files?[indexPath.row].file.file?.path ?? "")/\(templeData?.data?.files?[indexPath.row].file.file?.name ?? "")"
+        let urlString = "https://mobile.pomisna.info/\(templeData?.data?.files?[indexPath.row].file.file?.path ?? "")/\(templeData?.data?.files?[indexPath.row].file.file?.name ?? "")"
         if let imageUrl = URL(string: urlString) {
             cell.image.load(url: imageUrl)
         }

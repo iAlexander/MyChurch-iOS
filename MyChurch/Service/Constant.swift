@@ -91,7 +91,7 @@ extension UIViewController {
                                    AnalyticsParameterItemCategory: contentType, // передавать нейм
                                    AnalyticsParameterContentType: contentType])
         let screenClass = classForCoder.description()
-        Analytics.setScreenName(itemName, screenClass: screenClass)
+//        Analytics.setScreenName(itemName, screenClass: screenClass)
 
         Analytics.logEvent(AnalyticsEventSelectContent, parameters:
             [AnalyticsParameterItemID: itemID,

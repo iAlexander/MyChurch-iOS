@@ -27,12 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             application.registerUserNotificationSettings(settings)
         }
         
-        InstanceID.instanceID().instanceID { (result, error) in
+        Messaging.messaging().token { token, error in
             if let error = error {
                 print("Error fetching remote instance ID: \(error)")
-            } else if let result = result {
-                print("Remote instance ID token: \(result.token)")
-                UserDefaults.standard.set(result.token, forKey: "firToken")
+            } else if let token = token {
+                print("Remote instance ID token: \(token)")
+                UserDefaults.standard.set(token, forKey: "firToken")
             }
         }
         
@@ -52,8 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("Firebase registration token: \(fcmToken)")
+        guard let fcmToken = fcmToken else { return }
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
     }

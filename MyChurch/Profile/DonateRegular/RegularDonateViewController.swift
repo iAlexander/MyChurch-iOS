@@ -56,8 +56,7 @@ class RegularDonateViewController: UIViewController, UITextFieldDelegate, UITabl
     }
     
     func сonfigView() {
-        self.view.addSubview(mainView)
-        self.mainView.frame = self.view.bounds
+        self.view = mainView
         self.title = "Благодiйний внесок"
         mainView.personInfoButton.addTarget(self, action: #selector(showPressed), for: .touchUpInside)
         mainView.moneyField.delegate = self

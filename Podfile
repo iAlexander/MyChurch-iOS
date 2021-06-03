@@ -1,4 +1,4 @@
-platform :ios, '11.2'
+platform :ios, '12.0'
 
 target 'MyChurch' do
 use_frameworks!

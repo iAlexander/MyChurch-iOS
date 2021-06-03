@@ -20,8 +20,7 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
 
     let defaultCalendar: Calendar = {
         var calendar = Calendar.current
-        calendar.firstWeekday = 0
-        calendar.timeZone = TimeZone(secondsFromGMT: 1000)!
+        calendar.locale = Locale(identifier: "uk_UA")
         return calendar
     }()
     
@@ -106,12 +105,8 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         for (index, item) in self.allHolidays.enumerated() {
             self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
             switch item.group?.name {
-            case "Червоний на 12 великих свят +- ще 10 свят", "Богородичні свята":
-                violetDotsDates.append(item.dateNewStyle ?? "")
-            case "Cуб та нд Великого посту":
+            case "Червоний на 12 великих свят +- ще 10 свят", "Cуб та нд Великого посту", "Пн-пт Великого посту":
                 redDotsDates.append(item.dateNewStyle ?? "")
-            case "Пн-пт Великого посту":
-                blackDotsDates.append(item.dateNewStyle ?? "")
             default:
                 ()
             }
@@ -186,8 +181,7 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         vc.titleText = mainView.choosedDay.text ?? ""
         vc.detailHolidayInfo = chooseHolidays[indexPath.row]
         if !(chooseHolidays[indexPath.row].iconImage?.name?.isEmpty ?? true) {
-            //            vc.imageUrlString = "https://mobile.pomisna.info/\(chooseHolidays[indexPath.row].iconImage?.path ?? "")/\(chooseHolidays[indexPath.row].iconImage?.name ?? "")"
-            vc.imageUrlString = "http://test.cerkva.asp-win.d2.digital/\(chooseHolidays[indexPath.row].iconImage?.path ?? "")/\(chooseHolidays[indexPath.row].iconImage?.name ?? "")"
+            vc.imageUrlString = "https://mobile.pomisna.info/\(chooseHolidays[indexPath.row].iconImage?.path ?? "")/\(chooseHolidays[indexPath.row].iconImage?.name ?? "")"
         }
         self.navigationController?.pushViewController(vc, animated: false)
     }
@@ -237,10 +231,17 @@ extension CalendarViewController {
         calendarView.scrollDirection = .horizontal
         calendarView.isScrollEnabled = false
         
-        let appereance = VAWeekDaysViewAppearance(symbolsType: .short, weekDayTextColor: .black, separatorBackgroundColor: UIColor.clear, calendar: defaultCalendar)
+        let appereance = VAWeekDaysViewAppearance(symbolsType: .short, weekDayTextColor: .black, weekDayTextFont: .systemFont(ofSize: 17, weight: .semibold), leftInset: 10, rightInset: 10, separatorBackgroundColor: .clear, calendar: defaultCalendar)
         weekDaysView.appearance = appereance
 //        calendarView.setSupplementaries(self.datePointsArray)
         weekDaysView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        weekDaysView.subviews.forEach { view in
+            if let label = view as? UILabel {
+                if let text = label.text {
+                    label.text = text.capitalizingFirstLetter()
+                }
+            }
+        }
         mainView.addSubview(weekDaysView)
         mainView.addSubview(calendarView)
         let date = Date()
