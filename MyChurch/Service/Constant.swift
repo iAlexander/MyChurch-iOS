@@ -2,6 +2,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAnalytics
 
 typealias TabBarData = (title: String, image: UIImage, selectedImage: UIImage)
 

@@ -105,8 +105,12 @@ class CalendarViewController: ViewController, UITableViewDelegate, UITableViewDa
         for (index, item) in self.allHolidays.enumerated() {
             self.allHolidays[index].dateNewStyle = item.dateNewStyle?.strstr(needle: "T", beforeNeedle: true) ?? ""
             switch item.group?.name {
-            case "Червоний на 12 великих свят +- ще 10 свят", "Cуб та нд Великого посту", "Пн-пт Великого посту":
+            case "Червоний на 12 великих свят +- ще 10 свят":
                 redDotsDates.append(item.dateNewStyle ?? "")
+            case "Cуб та нд Великого посту":
+                violetDotsDates.append(item.dateNewStyle ?? "")
+            case "Пн-пт Великого посту":
+                blackDotsDates.append(item.dateNewStyle ?? "")
             default:
                 ()
             }

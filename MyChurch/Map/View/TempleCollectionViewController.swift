@@ -177,7 +177,7 @@ class TempleCollectionViewCell: UICollectionViewCell {
         layerBlue.pin.all()
         
         createRouteView.addSubview(createRouteButton)
-        createRouteButton.setTitle("Прокласти маршрут", for: .normal)
+        createRouteButton.setTitle("Дорога до храму", for: .normal)
         createRouteButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         createRouteButton.pin.all()
         

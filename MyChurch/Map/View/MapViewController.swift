@@ -51,7 +51,12 @@ class MapViewController: ViewController, UISearchBarDelegate {
         }
     }
     
-    var selfLocation = CLLocationCoordinate2D()
+    var selfLocation = CLLocationCoordinate2D() {
+        didSet {
+            UserDefaults.standard.setValue(Float(selfLocation.latitude), forKey: "lastLatitude")
+            UserDefaults.standard.setValue(Float(selfLocation.longitude), forKey: "lastlongitude")
+        }
+    }
     let templesColectionViewController = TempleCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     
     override func loadView() {
@@ -64,7 +69,6 @@ class MapViewController: ViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchController()
-        
         getLocation()
         configureMap()
         
@@ -176,7 +180,7 @@ class MapViewController: ViewController, UISearchBarDelegate {
         if #available(iOS 13.0, *) {
             searchController.searchBar.searchTextField.backgroundColor = .white
         }
-        searchController.searchBar.placeholder = " Пошук..."
+        searchController.searchBar.placeholder = "Знайти храм"
         searchController.searchBar.setImage(UIImage(), for: .clear, state: .normal)
     }
     

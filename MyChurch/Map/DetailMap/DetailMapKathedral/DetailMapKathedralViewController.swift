@@ -104,7 +104,7 @@ class DetailMapKathedralViewController: UIViewController, UICollectionViewDelega
                     let textFont: UIFont = .systemFont(ofSize: 18, weight: .regular)
                     let paragraphStyle = NSMutableParagraphStyle()
                     paragraphStyle.lineHeightMultiple = 1.26
-                    let attributtedHistory = NSMutableAttributedString(string: "Опис та історія\n", attributes: [NSAttributedString.Key.font: titleFont, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+                    let attributtedHistory = NSMutableAttributedString(string: "Історія та опис\n", attributes: [NSAttributedString.Key.font: titleFont, NSAttributedString.Key.paragraphStyle: paragraphStyle])
                     attributtedHistory.append(NSAttributedString(string: history, attributes: [NSAttributedString.Key.font: textFont, NSAttributedString.Key.paragraphStyle: paragraphStyle]))
                     self.mainView.hramHistory.attributedText = attributtedHistory
                 }

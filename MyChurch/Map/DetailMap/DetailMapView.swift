@@ -113,7 +113,7 @@ class DetailMapView: UIView {
         createRouteView.layer.addSublayer(layerBlue)
         
         createRouteView.addSubview(createRouteButton)
-        createRouteButton.setTitle("Прокласти маршрут", for: .normal)
+        createRouteButton.setTitle("Дорога до храму", for: .normal)
         createRouteButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         templeHoliday.textAlignment = .left

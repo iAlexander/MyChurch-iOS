@@ -63,18 +63,18 @@ class DetailHolidayViewController: UIViewController {
         oldDate = oldDate?.dropFirst(5).description
         let dayFirst = oldDate?.strstr(needle: "-", beforeNeedle: false)
         switch  oldDate?.prefix(2) {
-        case "01": dateTextAll += " (\(dayFirst ?? "") ciчня за старим календарем)"
-        case "02": dateTextAll += " (\(dayFirst ?? "") лютого за старим календарем)"
-        case "03": dateTextAll += " (\(dayFirst ?? "") березня за старим календарем)"
-        case "04": dateTextAll += " (\(dayFirst ?? "") квiтня за старим календарем)"
-        case "05": dateTextAll += " (\(dayFirst ?? "") травня за старим календарем)"
-        case "06": dateTextAll += " (\(dayFirst ?? "") червня за старим календарем)"
-        case "07": dateTextAll += " (\(dayFirst ?? "") липня за старим календарем)"
-        case "08": dateTextAll += " (\(dayFirst ?? "") серпня за старим календарем)"
-        case "09": dateTextAll += " (\(dayFirst ?? "") вересня за старим календарем)"
-        case "10": dateTextAll += " (\(dayFirst ?? "") жовтня за старим календарем)"
-        case "11": dateTextAll += " (\(dayFirst ?? "") листопада за старим календарем)"
-        case "12": dateTextAll += " (\(dayFirst ?? "") грудня за старим календарем)"
+        case "01": dateTextAll += " (\(dayFirst ?? "") ciчня за старим стилем)"
+        case "02": dateTextAll += " (\(dayFirst ?? "") лютого за старим стилем)"
+        case "03": dateTextAll += " (\(dayFirst ?? "") березня за старим стилем)"
+        case "04": dateTextAll += " (\(dayFirst ?? "") квiтня за старим стилем)"
+        case "05": dateTextAll += " (\(dayFirst ?? "") травня за старим стилем)"
+        case "06": dateTextAll += " (\(dayFirst ?? "") червня за старим стилем)"
+        case "07": dateTextAll += " (\(dayFirst ?? "") липня за старим стилем)"
+        case "08": dateTextAll += " (\(dayFirst ?? "") серпня за старим стилем)"
+        case "09": dateTextAll += " (\(dayFirst ?? "") вересня за старим стилем)"
+        case "10": dateTextAll += " (\(dayFirst ?? "") жовтня за старим стилем)"
+        case "11": dateTextAll += " (\(dayFirst ?? "") листопада за старим стилем)"
+        case "12": dateTextAll += " (\(dayFirst ?? "") грудня за старим стилем)"
         default: break
         }
         self.mainView.holidayTopDate.text = dateTextAll

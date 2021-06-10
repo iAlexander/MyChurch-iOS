@@ -131,6 +131,14 @@ struct HramInfo: Codable {
     let name: String?
     let lt: Float?
     let lg: Float?
+    
+    var location: CLLocation {
+        return CLLocation(latitude: CLLocationDegrees(lt ?? 0), longitude: CLLocationDegrees(lg ?? 0))
+    }
+    
+    func distance(to location: CLLocation) -> CLLocationDistance {
+        return location.distance(from: self.location)
+    }
 }
 
 // MARK: работаю с объектом для взятия всех епархий

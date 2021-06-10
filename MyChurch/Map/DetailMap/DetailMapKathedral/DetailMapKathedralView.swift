@@ -66,7 +66,7 @@ class DetailMapKathedralView: UIView {
         
         scrollView.addSubview(infoSegmentControll)
         infoSegmentControll.insertSegment(withTitle: "Контакти", at: 0, animated: true)
-        infoSegmentControll.insertSegment(withTitle: "Icторiя та опис" , at: 1, animated: true)
+        infoSegmentControll.insertSegment(withTitle: "Про храм" , at: 1, animated: true)
         infoSegmentControll.layer.cornerRadius = 10
         
         scrollView.addSubview(churchTopName)
@@ -137,7 +137,7 @@ class DetailMapKathedralView: UIView {
         createRouteView.layer.addSublayer(layerBlue)
         
         createRouteView.addSubview(createRouteButton)
-        createRouteButton.setTitle("Прокласти маршрут", for: .normal)
+        createRouteButton.setTitle("Дорога до храму", for: .normal)
         createRouteButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         templeHoliday.textAlignment = .left

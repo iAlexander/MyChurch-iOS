@@ -21,9 +21,13 @@ class ChooseHramViewController: UIViewController, UITableViewDelegate , UITableV
     var allHrams = [HramInfo]()
     var filteredAllHrams = [HramInfo]()
     weak var delegate: SendDataDelegate?
-
+    var selfLocation: CLLocation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let lat = UserDefaults.standard.value(forKey: "lastLatitude") as? Float, let lon = UserDefaults.standard.value(forKey: "lastlongitude") as? Float {
+            selfLocation = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(lon))
+        }
         ConfigView()
         ANLoader.showLoading("Завантаження...", disableUI: true)
         setupSearchController()
@@ -42,12 +46,15 @@ class ChooseHramViewController: UIViewController, UITableViewDelegate , UITableV
         getAllHrams() { (result) in
             switch result {
             case .success(let data): ANLoader.hide();
-            self.allHrams = data.list ?? [HramInfo]()
-            self.filteredAllHrams = data.list ?? [HramInfo]()
-            self.mainView.hramTableView.reloadData()
+                self.allHrams = data.list ?? [HramInfo]()
+                if let location = self.selfLocation {
+                    self.allHrams.sort(by: { $0.distance(to: location) < $1.distance(to: location) })
+                }
+                self.filteredAllHrams = self.allHrams
+                self.mainView.hramTableView.reloadData()
             case .partialSuccess( _): ANLoader.hide();
             case .failure(let error): ANLoader.hide();
-            print(error)
+                print(error)
             }
         }
     }
@@ -109,7 +116,12 @@ class ChooseHramViewController: UIViewController, UITableViewDelegate , UITableV
 extension ChooseHramViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let term = searchController.searchBar.text {
-            filterRowsForSearchedText(term)
+            if term.trimmingCharacters(in: .whitespaces) != "" {
+                filterRowsForSearchedText(term)
+            } else {
+                filteredAllHrams = allHrams
+                mainView.hramTableView.reloadData()
+            }
         }
     }
 }
