@@ -16,6 +16,8 @@ class RegistrationFirstPageView: UIView {
     private let layerBlueSecond = CAGradientLayer()
     let personalAreaButton = UIButton()
     private let layerBlueThird = CAGradientLayer()
+    let technicalSupportButton = UIButton()
+    private let layerBlueFourth = CAGradientLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,8 +68,20 @@ class RegistrationFirstPageView: UIView {
         layerBlueThird.cornerRadius = 10
         layerBlueThird.position = personalAreaButton.center
         personalAreaButton.layer.addSublayer(layerBlueThird)
-        personalAreaButton.setTitle("Особистий кабiнет", for: .normal)
         addSubview(personalAreaButton)
+        
+        layerBlueFourth.colors = [
+            UIColor(red: 0.004, green: 0.475, blue: 0.898, alpha: 1).cgColor,
+            UIColor(red: 0.004, green: 0.776, blue: 0.988, alpha: 1).cgColor
+        ]
+        layerBlueFourth.locations = [0, 1]
+        layerBlueFourth.startPoint = CGPoint(x: 0.25, y: 0.5)
+        layerBlueFourth.endPoint = CGPoint(x: 0.75, y: 0.5)
+        layerBlueFourth.cornerRadius = 10
+        layerBlueFourth.position = technicalSupportButton.center
+        technicalSupportButton.layer.addSublayer(layerBlueFourth)
+        technicalSupportButton.setTitle("Зворотний зв’язок", for: .normal)
+        addSubview(technicalSupportButton)
     }
     
     override func layoutSubviews() {
@@ -78,5 +92,7 @@ class RegistrationFirstPageView: UIView {
         layerBlueSecond.pin.all()
         personalAreaButton.pin.above(of: spiritualSupportButton).horizontally(15).marginBottom(15).height(40)
         layerBlueThird.pin.all()
+        technicalSupportButton.pin.below(of: charityButton).horizontally(15).marginTop(15).height(40)
+        layerBlueFourth.pin.all()
     }
 }

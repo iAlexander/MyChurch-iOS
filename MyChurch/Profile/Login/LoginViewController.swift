@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Особистий кабінет"
+        self.title = "Мій профіль"
         self.navigationController!.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.topItem?.title = ""
     }
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
                 switch result {
                 case .success(let data):
                     if data.ok == true {
-                        let alert = UIAlertController(title: "Нагати пароль", message: "Перевiрте вашу пошту \( self.mainView.emailField.text!)", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Нагати пароль", message: "Ваш пароль відправлено на пошту \( self.mainView.emailField.text!)", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: { (action: UIAlertAction!) in
                             self.navigationController?.popViewController(animated: true)
                         }))
@@ -97,7 +97,10 @@ class LoginViewController: UIViewController {
                                     }
                                 }
                                 let vc = GeneralPageProfileViewController()
-                                self.navigationController?.show(vc, sender: nil)
+                                self.navigationController?.pushViewController(vc, animated: true)
+                                if let current = self.navigationController?.viewControllers.firstIndex(of: self) {
+                                    self.navigationController?.viewControllers.remove(at: current)
+                                }
                             }
                         case .partialSuccess( _):  ANLoader.hide(); self.errorAllert()
                         case .failure(let error):  ANLoader.hide(); self.errorAllert()

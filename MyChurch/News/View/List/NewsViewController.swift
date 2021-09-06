@@ -2,7 +2,7 @@
 
 import UIKit
 
-class NewsViewController: ViewController {
+class NewsViewController: ViewController, NewsCellDelegate {
     
     lazy var vm = NewsViewModel(delegate: self)
     
@@ -24,9 +24,6 @@ class NewsViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         super.searchBarButtonItem = UIBarButtonItem()
-        if UserDefaults.standard.string(forKey: "BarearToken") == nil {
-            super.notificationhBarButtonItem = UIBarButtonItem()
-        }
         // Do any additional setup after loading the view.
         self.view.addSubviews([self.tableView, self.activityIndicatorView])
         
@@ -37,6 +34,13 @@ class NewsViewController: ViewController {
         setupLayout()
         self.activityIndicatorView.startAnimating()
         vm.startFetchingData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if UserDefaults.standard.string(forKey: "BarearToken") == nil {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     @objc private func updateNews() {
@@ -53,12 +57,19 @@ class NewsViewController: ViewController {
         super.searchBarButtonItem.action = #selector(openSearch(_:))
         super.notificationhBarButtonItem.action = #selector(openNotification(_:))
         
-        self.navigationItem.title = "Новини"
+        self.title = "Новини"
     }
     
     private func setupLayout() {
         self.activityIndicatorView.anchor(centerY: self.view.centerYAnchor, centerX: self.view.centerXAnchor, size: CGSize(width: 75, height: 75))
         self.tableView.fillSuperview(padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+    }
+    
+    func reloadCell(indexPath: IndexPath) {
+        DispatchQueue.main.async {
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            self.tableView.layoutSubviews()
+        }
     }
     
 }
@@ -93,7 +104,6 @@ extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewData
     }
     
     @objc func openNotification(_ sender: UIButton!) {
-        print("openNotification")
         let vc = NotificationViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -111,7 +121,6 @@ extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewData
             let index = indexPath.row
             guard let data = NewsViewModel.news?[index] else { return UITableViewCell() }
             cell.configureWithData(data: data)
-            
             return cell
         } else {
             return UITableViewCell()
@@ -120,7 +129,7 @@ extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = NewsDetailsCollectionViewController(indexPath: indexPath)
-        
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

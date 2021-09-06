@@ -2,6 +2,10 @@
 
 import UIKit
 
+protocol NewsCellDelegate: AnyObject {
+    func reloadCell(indexPath: IndexPath)
+}
+
 class NewsDetailsCollectionViewController: ViewController {
     
     convenience init(indexPath: IndexPath) {
@@ -10,29 +14,30 @@ class NewsDetailsCollectionViewController: ViewController {
         self.currentIndexPath = indexPath
     }
     
-    let collectionView: UICollectionViewController = {
-        let collectionView = UICollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.collectionView.isPagingEnabled = true
-        collectionView.collectionView.isHidden = true
-        
+    let collectionView: UICollectionView = {
+       let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.isPagingEnabled = true
+        collectionView.alpha = 0
         return collectionView
     }()
     
     var currentIndexPath = IndexPath()
+    weak var delegate: NewsCellDelegate?
+    private var needScrollToSelecteditem = true
     
     override func loadView() {
         super.loadView()
         
-        self.collectionView.collectionView.delegate = self
-        self.collectionView.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
            super.notificationhBarButtonItem = UIBarButtonItem()
         // Do any additional setup after loading the view.
-        self.collectionView.collectionView.showsHorizontalScrollIndicator = false
-        self.collectionView.collectionView.register(NewsDetailsCollectionViewCell.self, forCellWithReuseIdentifier: NewsDetailsCollectionViewCell.reuseIdentifier)
+        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.register(NewsDetailsCollectionViewCell.self, forCellWithReuseIdentifier: NewsDetailsCollectionViewCell.reuseIdentifier)
         
         if let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
@@ -40,36 +45,43 @@ class NewsDetailsCollectionViewController: ViewController {
             layout.minimumInteritemSpacing = 0
         }
         
-        self.view.addSubview(self.collectionView.collectionView)
-        
+        self.view.addSubview(self.collectionView)
         setupNavBar()
         setupLayout()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // Do any additional setup before appearing the view.
-        self.collectionView.collectionView.selectItem(at: self.currentIndexPath, animated: false, scrollPosition: .centeredHorizontally)
-        self.collectionView.collectionView.isHidden = false
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.title = "Новини"
+        if UserDefaults.standard.string(forKey: "BarearToken") == nil {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        if needScrollToSelecteditem {
+            collectionView.setNeedsLayout()
+            collectionView.layoutIfNeeded()
+            self.collectionView.selectItem(at: self.currentIndexPath, animated: false, scrollPosition: .centeredHorizontally)
+            needScrollToSelecteditem = false
+            UIView.animate(withDuration: 0.2) {
+                self.collectionView.alpha = 1
+            }
+        }
     }
     
     private func setupNavBar() {
-        self.navigationItem.leftBarButtonItems = [backBarButtonItem]
-        self.navigationItem.rightBarButtonItems = [notificationhBarButtonItem]
-        
+        self.navigationController!.navigationBar.tintColor = .white
+        self.navigationItem.hidesBackButton = false
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
-        
-        super.backBarButtonItem.action = #selector(dismissViewController)
-        super.notificationhBarButtonItem.action = #selector(openNotification)
+        let icon = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
+        let barButtonItem = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(openNotification(_:)))
+        self.navigationItem.rightBarButtonItem = barButtonItem
     }
     
     private func setupLayout() {
         self.view.backgroundColor = .white
-        self.collectionView.collectionView.backgroundColor = .white
+        self.collectionView.backgroundColor = .white
         
-        self.collectionView.collectionView.fillSuperview()
+        self.collectionView.fillSuperview()
     }
     
 }
@@ -79,7 +91,7 @@ extension NewsDetailsCollectionViewController: UICollectionViewDelegate, UIColle
     // MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: view.frame.width, height: view.frame.height)
+        let size = CGSize(width: view.bounds.width, height: view.bounds.height)
         return size
     }
     
@@ -101,16 +113,34 @@ extension NewsDetailsCollectionViewController: UICollectionViewDelegate, UIColle
         if let data = NewsViewModel.news?[indexPath.item] {
             cell.configureWithData(data: data)
         }
-        
         return cell
     }
     
-    @objc func dismissViewController(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if needScrollToSelecteditem { return }
+        if let id = NewsViewModel.news?[indexPath.row].id {
+            self.markNewsAsRead(id: id)
+        }
+        self.delegate?.reloadCell(indexPath: indexPath)
+        currentIndexPath = indexPath
+        
+    }
+        
+    @objc func openNotification(_ sender: Any) {
+        let vc = NotificationViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func openNotification(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+    private func markNewsAsRead(id: Int) {
+        if var readNews = UserDefaults.standard.stringArray(forKey: "readNews") {
+            if !readNews.contains("\(id)") {
+                readNews.append("\(id)")
+                UserDefaults.standard.setValue(readNews, forKey: "readNews")
+            }
+        } else {
+            let readNews = ["\(id)"]
+            UserDefaults.standard.setValue(readNews, forKey: "readNews")
+        }
     }
     
 }

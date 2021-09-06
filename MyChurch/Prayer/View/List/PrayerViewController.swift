@@ -67,6 +67,14 @@ class PrayerViewController: ViewController {
         self.tableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.hidesBackButton = false
+        if UserDefaults.standard.string(forKey: "BarearToken") == nil {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,6 +82,8 @@ class PrayerViewController: ViewController {
         self.view.addSubviews([self.segmentedControl, self.tableView, self.activityIndicatorView, self.playerViewController.view])
         
         self.navigationItem.title = "Молитви"
+        self.navigationItem.rightBarButtonItem = notificationhBarButtonItem
+        super.notificationhBarButtonItem.action = #selector(openNotification(_:))
         
         self.activityIndicatorView.startAnimating()
         
@@ -89,6 +99,9 @@ class PrayerViewController: ViewController {
             }
         }
         setupLayout()
+        if UserDefaults.standard.string(forKey: "BarearToken") == nil {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -110,6 +123,11 @@ class PrayerViewController: ViewController {
         self.playerViewController.view.anchor(leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, size: CGSize(width: 0, height: 65))
     }
     
+    @objc func openNotification(_ sender: UIButton!) {
+        let vc = NotificationViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension PrayerViewController: PrayerDelegate, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
@@ -118,7 +136,7 @@ extension PrayerViewController: PrayerDelegate, UITableViewDelegate, UITableView
         self.activityIndicatorView.stopAnimating()
         self.segmentedControl.isUserInteractionEnabled = true
         
-        if let data = PrayerViewModel.prayers?[PrayerType.morning.rawValue.uppercased()] {
+        if let data = PrayerViewModel.prayers?["РАНКОВІ".uppercased()] {
             self.data = data
          //   UserDefaults.standard.set(try? PropertyListEncoder().encode(data), forKey:"UserPrayer") //сохранил в юзердефолтс молитвы
         }

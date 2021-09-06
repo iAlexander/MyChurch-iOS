@@ -84,7 +84,7 @@ class TabBarController: UITabBarController {
                         let vacationViewController = RegistrationFirstPageViewController() 
                         let image = createImage(UIImage(named: "account"))
                         let selectedImage = createImage(UIImage(named: "account-tint"))
-                        let data: TabBarData = (title: "Профіль", image: image, selectedImage: selectedImage)
+                        let data: TabBarData = (title: "Мій профіль", image: image, selectedImage: selectedImage)
                         let navigationController = createNavigationController(vacationViewController, data: data)
                         
                         return navigationController

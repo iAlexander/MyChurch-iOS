@@ -110,6 +110,29 @@ class APIService {
         }
     }
     
+    func getWordPressNews(completion: @escaping ([NewsWordPressModel]?) -> Void) {
+        let headers = ["Accept" : "application/json"]
+        
+        callEndPoint("https://www.pomisna.info/wp-json/wp/v2/posts/?per_page=100", headers: headers) { (response) in
+            switch response {
+                case .success(let result):
+                    let json: String = result
+                    do {
+                        let data = try self.decoder.decode([NewsWordPressModel].self, from: Data(json.utf8))
+                        completion(data)
+                    } catch {
+                        print(error.localizedDescription)
+                        completion(nil)
+                }
+                case .failure(let error):
+                    print(error)
+                    completion(nil)
+                default:
+                    break
+            }
+        }
+    }
+    
     // MARK: - Prayer
     func getPrayer(title: String?, type: String?, skip: Int, length: Int, completion: @escaping (PrayerResponse) -> Void) {
         //        let strongTitle = title ?? ""

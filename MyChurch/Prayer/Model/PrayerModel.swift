@@ -3,8 +3,8 @@
 import Foundation
 
 enum PrayerType: String {
-    case morning = "Ранкові"
-    case evening = "Вечірні"
+    case morning = "Ранкові молитви"
+    case evening = "Вечірні молитви"
 }
 
 //MARK:-- Prayer model

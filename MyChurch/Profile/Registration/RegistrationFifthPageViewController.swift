@@ -22,7 +22,7 @@ class RegistrationFifthPageViewController: UIViewController, UITextFieldDelegate
     
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
-            self.title = "Особистий кабінет"
+            self.title = "Реєстрація"
            self.navigationController!.navigationBar.tintColor = .white
            self.navigationController?.navigationBar.topItem?.title = ""
        }
@@ -69,6 +69,6 @@ class RegistrationFifthPageViewController: UIViewController, UITextFieldDelegate
     func ConfigView() {
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
-        self.title = "Особистий кабінет"
+        self.title = "Реєстрація"
     }
 }

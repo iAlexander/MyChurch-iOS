@@ -21,9 +21,14 @@ class Repository {
     //    }
     
     // MARK: - News
-    func getNews(completion: @escaping (NewsResponse?) -> Void) {
-        APIService.shared.getNews { (response) in
-            completion(response)
+//    func getNews(completion: @escaping (NewsResponse?) -> Void) {
+//        APIService.shared.getNews { (response) in
+//            completion(response)
+//        }
+//    }
+    func getNews(completion: @escaping ([NewsWordPressModel]?) -> Void) {
+        APIService.shared.getWordPressNews { (news) in
+            completion(news)
         }
     }
     

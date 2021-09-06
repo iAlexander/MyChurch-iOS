@@ -22,7 +22,7 @@ class RegistrationSecondPageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
-            self.title = "Особистий кабінет"
+            self.title = "Реєстрація"
            self.navigationController!.navigationBar.tintColor = .white
            self.navigationController?.navigationBar.topItem?.title = ""
        }
@@ -45,6 +45,6 @@ class RegistrationSecondPageViewController: UIViewController {
     func ConfigView() {
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
-        self.title = "Особистий кабінет"
+        self.title = "Мій профіль"
     }
 }

@@ -20,7 +20,7 @@ class RegistrationThirdPageViewController: UIViewController, UITextFieldDelegate
     
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
-            self.title = "Особистий кабінет"
+            self.title = "Реєстрація"
            self.navigationController!.navigationBar.tintColor = .white
            self.navigationController?.navigationBar.topItem?.title = ""
        }
@@ -96,7 +96,7 @@ class RegistrationThirdPageViewController: UIViewController, UITextFieldDelegate
     func ConfigView() {
         self.mainView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         self.view.addSubview(mainView)
-        self.title = "Особистий кабінет"
+        self.title = "Реєстрація"
         mainView.numberTextField.delegate = self
     }
 }

@@ -84,6 +84,8 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
         self.title = "Повiдомлення"
+        self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.hidesBackButton = false
         mainView.notificationTableView.register(NotificationCell.self, forCellReuseIdentifier: reuseIdentifierTableView)
     }
 }

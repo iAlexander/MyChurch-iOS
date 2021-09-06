@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GeneralPageProfileViewController: UIViewController {
+class GeneralPageProfileViewController: ViewController {
     
     let mainView = GeneralPageProfileView()
     var member = String()
@@ -24,11 +24,16 @@ class GeneralPageProfileViewController: UIViewController {
         case 1: self.mainView.startScreenButtonText.text = "Календар"
         case 2: self.mainView.startScreenButtonText.text = "Новини"
         case 3: self.mainView.startScreenButtonText.text = "Молитви"
-        case 4: self.mainView.startScreenButtonText.text = "Особистий кабiнет"
+        case 4: self.mainView.startScreenButtonText.text = "Мій профіль"
         default: break
         }
         self.mainView.layoutSubviews()
+        self.title = "Мій профіль"
+        if UserDefaults.standard.string(forKey: "BarearToken") == nil {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +69,11 @@ class GeneralPageProfileViewController: UIViewController {
         let vc = ChooseStartScreenViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func openNotification(_ sender: UIButton!) {
+        let vc = NotificationViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
      
     
     func showInfoWindows() {
@@ -85,15 +95,16 @@ class GeneralPageProfileViewController: UIViewController {
     }
     
     func ConfigView() {
-        self.view.addSubview(mainView)
-        self.mainView.frame = self.view.bounds
+        self.view = mainView
         self.navigationItem.hidesBackButton = false
-        self.title = "Особистий кабiнет"
         mainView.exitButton.addTarget(self, action: #selector(exitPressed), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = notificationhBarButtonItem
+        super.notificationhBarButtonItem.action = #selector(openNotification(_:))
     }
     
     @objc func exitPressed() {
          UserDefaults.standard.set(nil, forKey:"UserData")
+        UserDefaults.standard.setValue(nil, forKey: "BarearToken")
         navigationController?.popToRootViewController(animated: true)
     }
 }

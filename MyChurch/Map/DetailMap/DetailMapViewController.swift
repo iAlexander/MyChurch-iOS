@@ -114,8 +114,9 @@ class DetailMapViewController: UIViewController {
     
     @ objc func createRoutePressed() {
         if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)) {
-            UIApplication.shared.openURL(URL(string:
-                "comgooglemaps://" + "?daddr=\(Double(templeInfo.lt) ?? 0.0),\(Double(templeInfo.lg) ?? 0.0)&zoom=12&directionsmode=walking")!)
+            if let googleURL = URL(string: "comgooglemaps://?daddr=\(templeInfo.lt),\(templeInfo.lg)&directionsmode=walking") {
+                UIApplication.shared.open(googleURL, options: [:], completionHandler: nil)
+            }
         } else {
             let alertController = UIAlertController(title: "Повiдомлення", message: "Встановiть будь ласка додаток 'Google Map'", preferredStyle: .alert)
             let actionCancel = UIAlertAction(title: "закрити", style: .cancel) { (action:UIAlertAction) in

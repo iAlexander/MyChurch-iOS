@@ -53,7 +53,7 @@ class ArhieriyViewController: UIViewController , SendDataDelegate, SendDataEparh
     func ConfigView() {
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
-        self.title = "Особистий кабінет"
+        self.title = "Реєстрація"
         mainView.emailTextField.delegate = self
         mainView.birthdayDate.maximumDate = Date()
         mainView.tezoimenustvoDate.maximumDate = Date()
@@ -87,6 +87,9 @@ class ArhieriyViewController: UIViewController , SendDataDelegate, SendDataEparh
            let userData = UserDatas(data: UserInfo(firstName: self.mainView.nameTextField.text!, lastName: self.mainView.serNameTextField.text!, email: self.mainView.emailTextField.text!, phone: "", church: Church(name: self.mainView.eparhiyaLabel.text, locality: "")))
                 UserDefaults.standard.set(try? PropertyListEncoder().encode(userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
                 self.navigationController?.show(vc, sender: nil)
+                if let current = self.navigationController?.viewControllers.firstIndex(of: self) {
+                    self.navigationController?.viewControllers.remove(at: current)
+                }
             case .partialSuccess( _): break
             case .failure(let error):
                 print(error)

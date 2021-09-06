@@ -10,7 +10,6 @@ import UIKit
 
 class SupportView: UIView {
    
-    let topTextLabel = UILabel()
     let centreTextLabel = UILabel()
     let fbSupportButton = UIButton()
     private let fbButtonBlueLayer = CAGradientLayer()
@@ -28,14 +27,8 @@ class SupportView: UIView {
     private func commonInit() {
         self.backgroundColor = .white
         
-        addSubview(topTextLabel)
-        topTextLabel.text = "Отримати пiдтримку"
-        topTextLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        topTextLabel.textAlignment = .center
-        topTextLabel.textColor = .black
-        
         addSubview(centreTextLabel)
-        centreTextLabel.text = "Вітаємо! Це Ваш віртуальний помічник. Оберіть будь-ласка, програму, де Вам було б зручно ставити запитання."
+        centreTextLabel.text = "Вітаємо! Це Ваш віртуальний помічник. Будь-ласка, поставте нам запитання."
         centreTextLabel.font = UIFont.systemFont(ofSize: 19, weight: .regular)
         centreTextLabel.textAlignment = .center
         centreTextLabel.textColor = .black
@@ -57,8 +50,7 @@ class SupportView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        topTextLabel.pin.top(50).horizontally().height(50)
-        centreTextLabel.pin.below(of: topTextLabel).marginTop(40).horizontally(15).sizeToFit(.width)
+        centreTextLabel.pin.top(50).horizontally(15).sizeToFit(.width)
         fbSupportButton.pin.below(of: centreTextLabel).marginTop(40).horizontally(15).height(40)
         fbButtonBlueLayer.pin.all()
     }

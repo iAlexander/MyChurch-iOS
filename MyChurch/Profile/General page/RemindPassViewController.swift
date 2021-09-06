@@ -28,7 +28,7 @@ class RemindPassViewController: UIViewController {
                  switch result {
                  case .success(let data):
                      if data.ok == true {
-                         let alert = UIAlertController(title: "Нагати пароль", message: "Перевiрте вашу пошту \( self.mainView.oldPassField.text!)", preferredStyle: .alert)
+                         let alert = UIAlertController(title: "Нагати пароль", message: "Ваш пароль відправлено на пошту \( self.mainView.oldPassField.text!)", preferredStyle: .alert)
                          alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: { (action: UIAlertAction!) in
                              self.navigationController?.popViewController(animated: true)
                          }))

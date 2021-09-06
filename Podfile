@@ -16,4 +16,5 @@ use_frameworks!
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Messaging'
 	pod 'Bagel', '~>  1.3.2'
+	pod 'SDWebImage'
 end

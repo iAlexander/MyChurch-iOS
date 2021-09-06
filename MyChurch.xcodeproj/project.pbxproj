@@ -121,6 +121,10 @@
 		44FC0A2A2402796D003A7E7E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0A292402796D003A7E7E /* OnboardingViewController.swift */; };
 		7698E9792588CB80001FDD90 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698E9782588CB80001FDD90 /* ImageCollectionViewCell.swift */; };
 		76FD906325892D7F003C5262 /* NoInternetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FD906225892D7F003C5262 /* NoInternetAlert.swift */; };
+		AB3F703626AD806C008EC871 /* ChooseStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3F703526AD806C008EC871 /* ChooseStatusVC.swift */; };
+		AB3F703826AD8075008EC871 /* ChooseStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3F703726AD8075008EC871 /* ChooseStatusView.swift */; };
+		ABA4756C269F82D700A6729B /* TechnicalSupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4756B269F82D700A6729B /* TechnicalSupportVC.swift */; };
+		ABA4756E269F82E000A6729B /* TechnicalSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4756D269F82E000A6729B /* TechnicalSupportView.swift */; };
 		B85528CD814907A80667207D /* Pods_MyChurch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE83D4F5BBF1797AA230F75 /* Pods_MyChurch.framework */; };
 /* End PBXBuildFile section */
 
@@ -248,6 +252,11 @@
 		471E3B8C5286604703987697 /* Pods-PCU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCU.debug.xcconfig"; path = "Target Support Files/Pods-PCU/Pods-PCU.debug.xcconfig"; sourceTree = "<group>"; };
 		7698E9782588CB80001FDD90 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		76FD906225892D7F003C5262 /* NoInternetAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetAlert.swift; sourceTree = "<group>"; };
+		AB3F703526AD806C008EC871 /* ChooseStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStatusVC.swift; sourceTree = "<group>"; };
+		AB3F703726AD8075008EC871 /* ChooseStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStatusView.swift; sourceTree = "<group>"; };
+		ABA4756A269F805B00A6729B /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		ABA4756B269F82D700A6729B /* TechnicalSupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSupportVC.swift; sourceTree = "<group>"; };
+		ABA4756D269F82E000A6729B /* TechnicalSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSupportView.swift; sourceTree = "<group>"; };
 		CE97DA3DAEFE0D763968E1FC /* Pods-PCU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCU.release.xcconfig"; path = "Target Support Files/Pods-PCU/Pods-PCU.release.xcconfig"; sourceTree = "<group>"; };
 		ECE781CCA2CE73B231BA4F3E /* Pods-MyChurch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch.debug.xcconfig"; path = "Target Support Files/Pods-MyChurch/Pods-MyChurch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -316,6 +325,8 @@
 				166B4825242D35E6009D9945 /* ChooseEparhiesView.swift */,
 				1618253A24339B8A00CFB99A /* ChooseSanViewController.swift */,
 				1618253C24339B9B00CFB99A /* ChooseSanView.swift */,
+				AB3F703526AD806C008EC871 /* ChooseStatusVC.swift */,
+				AB3F703726AD8075008EC871 /* ChooseStatusView.swift */,
 				1618253E2433AAA600CFB99A /* Arhieriy */,
 				16182535243387F200CFB99A /* Duhovenstvo */,
 				166B4817242B7054009D9945 /* Believer */,
@@ -337,6 +348,8 @@
 				162FCF9024266E1D008F58A7 /* RegistrationFourthPageView.swift */,
 				162FCF92242690B3008F58A7 /* RegistrationFifthPageViewController.swift */,
 				162FCF94242690BF008F58A7 /* RegistrationFifthPageView.swift */,
+				ABA4756B269F82D700A6729B /* TechnicalSupportVC.swift */,
+				ABA4756D269F82E000A6729B /* TechnicalSupportView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -821,6 +834,7 @@
 			knownRegions = (
 				en,
 				Base,
+				uk,
 			);
 			mainGroup = 443155D923CF368B004B5B59;
 			productRefGroup = 443155E323CF368C004B5B59 /* Products */;
@@ -918,11 +932,13 @@
 				166B481B242B707D009D9945 /* BelieverView.swift in Sources */,
 				16EBE5112456CC760072BC82 /* NewsTableViewCell.swift in Sources */,
 				162F4DAA247FBAF300E2587A /* NotificationDetailViewController.swift in Sources */,
+				AB3F703626AD806C008EC871 /* ChooseStatusVC.swift in Sources */,
 				1655941E242E405200C918D0 /* GeneralPageProfileView.swift in Sources */,
 				16EBE5282456CDCD0072BC82 /* DetailMapKathedralView.swift in Sources */,
 				1656E39F247D57CF0072C3D8 /* NotificationViewController.swift in Sources */,
 				4431562723D0AE19004B5B59 /* String.swift in Sources */,
 				4431562423D0AE19004B5B59 /* DispatchQueueHelper.swift in Sources */,
+				ABA4756E269F82E000A6729B /* TechnicalSupportView.swift in Sources */,
 				4431562523D0AE19004B5B59 /* UIView.swift in Sources */,
 				1617BCB32418F9D500B63715 /* OnboardingModel.swift in Sources */,
 				16FFC81A2459EE3900F67D6F /* ChooseStartScreenViewController.swift in Sources */,
@@ -961,6 +977,7 @@
 				161825422433AAF000CFB99A /* ArhieriyView.swift in Sources */,
 				44D3DE6B2453694300732BBA /* PlayerViewController.swift in Sources */,
 				16EBE50E2456CC6E0072BC82 /* NewsDetailsCollectionViewController.swift in Sources */,
+				ABA4756C269F82D700A6729B /* TechnicalSupportVC.swift in Sources */,
 				162FCF93242690B3008F58A7 /* RegistrationFifthPageViewController.swift in Sources */,
 				167AC73A24058DA20044D620 /* API_Zhekon.swift in Sources */,
 				442A1A8A23DB095100645ACC /* CGFloat.swift in Sources */,
@@ -997,6 +1014,7 @@
 				1618253D24339B9B00CFB99A /* ChooseSanView.swift in Sources */,
 				444CE79B23D8B2E7004667B5 /* UIColor.swift in Sources */,
 				167483EB24E16E33005E22D2 /* RegularDonateViewController.swift in Sources */,
+				AB3F703826AD8075008EC871 /* ChooseStatusView.swift in Sources */,
 				167D66BA246EC99600330479 /* SupportPageViewController.swift in Sources */,
 				162FCF95242690BF008F58A7 /* RegistrationFifthPageView.swift in Sources */,
 				4424DF6523D99AF000E5AB65 /* ScrollView + StackView.swift in Sources */,
@@ -1030,6 +1048,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				443155F423CF368E004B5B59 /* Base */,
+				ABA4756A269F805B00A6729B /* uk */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1041,6 +1060,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1099,6 +1119,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1155,7 +1176,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 17;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VZS9386469;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -1163,7 +1184,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.021;
+				MARKETING_VERSION = 0.030;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurchD2;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1181,7 +1202,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MyChurch/Моя церква.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 17;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VZS9386469;
 				INFOPLIST_FILE = MyChurch/Info.plist;
@@ -1189,7 +1210,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.021;
+				MARKETING_VERSION = 0.030;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alogozinsky.MyChurchD2;
 				PRODUCT_NAME = "Моя церква";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -23,6 +23,8 @@ enum DateFormat: String {
     case dayMonth = "d MMMM"
     case dayMonthYear = "dd MMMM yyyy"
     case dayMonthYearShort = "dd.MM.yy"
+    case dayMonthYearLong = "dd.MM.yyyy"
+    case hoursMinutesShort = "HH:mm"
     case dayMonthYearHoursMinutesShort = "dd.MM.yy HH:mm"
 }
 

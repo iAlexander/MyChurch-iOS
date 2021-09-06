@@ -8,7 +8,12 @@
 
 import UIKit
 
-class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhiyaDelegate {
+class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhiyaDelegate, SendStatusDelegate {
+    
+    func statusType(name: String) {
+        mainView.statusLabel.text = name
+    }
+    
  
     func hramName(name: String, hramId: Int) { //делегат, который возвращает храм и его айди
         mainView.hramLabelButton.text = name
@@ -38,23 +43,24 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
     
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
+        self.title = "Реєстрація"
            self.navigationController!.navigationBar.tintColor = .white
-           self.navigationController?.navigationBar.topItem?.title = ""
+//           self.navigationController?.navigationBar.topItem?.title = ""
+        checkInfo()
        }
     
     @objc override func dismissKeyboard() {
         view.endEditing(true) //скрыть клаву по нажатию на экран
+        checkInfo()
     }
     
     func ConfigView() {
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
-        self.title = "Особистий кабінет"
         self.mainView.believerButton.isHidden = true
         self.mainView.chlenParafRaduButton.isHidden = true
         mainView.emailTextField.delegate = self
         mainView.birthdayDate.maximumDate = Date()
-        checkInfo()
     }
     
     func ConfigButtons() {
@@ -89,6 +95,9 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
                     let userData = UserDatas(data: UserInfo(firstName: self.mainView.nameTextField.text!, lastName: self.mainView.serNameTextField.text!, email: self.mainView.emailTextField.text!, phone: "", church: Church(name: self.mainView.eparhiyaLabel.text, locality: "")))
                     UserDefaults.standard.set(try? PropertyListEncoder().encode(userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
                     self.navigationController?.show(vc, sender: nil)
+                    if let current = self.navigationController?.viewControllers.firstIndex(of: self) {
+                        self.navigationController?.viewControllers.remove(at: current)
+                    }
                 } else {
                     let alert = UIAlertController(title: "Помилка", message: "Перевiрте данi реєстрацiï", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: nil))
@@ -114,9 +123,13 @@ class BelieverViewController: UIViewController, SendDataDelegate, SendDataEparhi
     }
     
     @objc func statusPressed() {
-        self.mainView.believerButton.isHidden = false
-        self.mainView.chlenParafRaduButton.isHidden = false
-        mainView.hramLabel.isHidden = true
+        let vc = ChooseStatusVC()
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+//        self.mainView.believerButton.isHidden = false
+//        self.mainView.chlenParafRaduButton.isHidden = false
+//        mainView.hramLabel.isHidden = true
+        
     }
     
     @objc func believerPressed() {

@@ -21,7 +21,7 @@ class RegistrationFourthPageViewController: UIViewController, UITextFieldDelegat
     
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
-            self.title = "Особистий кабінет"
+            self.title = "Реєстрація"
            self.navigationController!.navigationBar.tintColor = .white
            self.navigationController?.navigationBar.topItem?.title = ""
        }
@@ -66,7 +66,7 @@ class RegistrationFourthPageViewController: UIViewController, UITextFieldDelegat
     func ConfigView() {
         self.mainView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         self.view.addSubview(mainView)
-        self.title = "Особистий кабінет"
+        self.title = "Реєстрація"
         mainView.smsTextField.delegate = self
         mainView.writePhoneTopLabel.text = "Код було відправлено на\n\(phoneNumber)"
     }

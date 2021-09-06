@@ -38,13 +38,13 @@ class LoginView: UIView {
         self.backgroundColor = .white
         
         addSubview(topTextLabel)
-        topTextLabel.text = "Вхід до кабінету"
+        topTextLabel.text = "Вхід / Реєстрація"
         topTextLabel.textAlignment = .center
         topTextLabel.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         topTextLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         addSubview(emailTopText)
-        emailTopText.text = "Ел. адреса"
+        emailTopText.text = "Електронна адреса"
         emailTopText.textAlignment = .left
         emailTopText.textColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
         emailTopText.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -71,7 +71,7 @@ class LoginView: UIView {
         addSubview(remindPasswordButton)
         
         remindPasswordButton.addSubview(remindPasswordLabel)
-        remindPasswordLabel.attributedText = NSAttributedString(string: "Нагадати пароль", attributes:
+        remindPasswordLabel.attributedText = NSAttributedString(string: "Забули пароль?", attributes:
             [.underlineStyle: NSUnderlineStyle.single.rawValue])
         remindPasswordLabel.textColor = UIColor(red: 0.008, green: 0.529, blue: 0.918, alpha: 1)
         remindPasswordLabel.textAlignment = .left
@@ -93,11 +93,10 @@ class LoginView: UIView {
         addSubview(createAccount)
         
         createAccount.addSubview(createAccountLabel)
-        createAccountLabel.attributedText = NSAttributedString(string: "Створити особистий кабінет", attributes:
-            [.underlineStyle: NSUnderlineStyle.single.rawValue])
         createAccountLabel.textColor = UIColor(red: 0.008, green: 0.529, blue: 0.918, alpha: 1)
-        createAccountLabel.textAlignment = .left
+        createAccountLabel.textAlignment = .center
         createAccountLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        createAccountLabel.attributedText = NSAttributedString(string: "Зареєструватися", attributes:             [.underlineStyle: NSUnderlineStyle.single.rawValue])
     }
     
     override func layoutSubviews() {

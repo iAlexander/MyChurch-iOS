@@ -1,6 +1,7 @@
 // Sasha Loghozinsky -- alogozinsky@gmail.com \ lohozinsky.o@d2.digital -- 2020
 
 import UIKit
+import SDWebImage
 
 class NewsTableViewCell: UITableViewCell {
     
@@ -14,7 +15,7 @@ class NewsTableViewCell: UITableViewCell {
         return view
     }()
     
-    var data: Article?
+    var data: NewsWordPressModel?
     let newsImageView = ImageView(cornerRadius: .defaultRadius)
     
     let titleLabel = Label()
@@ -22,26 +23,34 @@ class NewsTableViewCell: UITableViewCell {
     let centerSubtitleLabel = Label()
     let rightSubtitleLabel = Label()
     
-    func configureWithData(data: Article) {
+    func configureWithData(data: NewsWordPressModel) {
         self.data = data
         
         self.addSubview(self.elevatedView)
         self.elevatedView.addSubviews([self.titleLabel, self.newsImageView, self.leftSubtitleLabel, self.centerSubtitleLabel, self.rightSubtitleLabel])
-        let apiUrl = API.stage.rawValue.correctPath()
-        let imageUrl: String = apiUrl + (data.image?.path ?? "") + "/" + (data.image?.name ?? "")
-        if let url = URL(string: imageUrl) {
-            self.newsImageView.load(url: url)
+        
+        if let url = URL(string: "https://www.pomisna.info/uk/wp-json/wp/v2/media/\(data.featured_media!)") {
+            self.newsImageView.loadNewsImage(url: url, size: .medium)
         }
-        if let date = data.date?.formatDate(from: .unformatted, to: .dayMonthYearHoursMinutesShort) {
-            self.leftSubtitleLabel.setValue(date, size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)
+        
+        if let isoDate = data.date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "ua_UA") // set locale to reliable US_POSIX
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            if let date = dateFormatter.date(from:isoDate) {
+                dateFormatter.dateFormat = "dd.MM.yyyy"
+                self.leftSubtitleLabel.setValue(dateFormatter.string(from: date), size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)
+                dateFormatter.dateFormat = "HH:mm"
+                self.leftSubtitleLabel.text?.append("      \(dateFormatter.string(from: date))")
+            }
         }
         
         //        if _ = data.notice {
         //            self.rightSubtitleLabel.setValue("Важливо!", size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .red, textAlignment: .right)
         //        }
         
-        if let title = data.title {
-            self.titleLabel.setValue(title, size: 16, fontWeight: .bold, numberOfLines: 3, color: .black)
+        if let title = data.title?.rendered {
+            self.titleLabel.setValue(title, size: 16, fontWeight: checkIfNewsRead(id: data.id) ? .regular : .bold, numberOfLines: 3, color: .black)
         }
         
         configureCell()
@@ -87,7 +96,20 @@ class NewsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.newsImageView.sd_cancelCurrentImageLoad()
         self.newsImageView.image = nil
+    }
+    
+    private func checkIfNewsRead(id: Int) -> Bool {
+        if let readNews = UserDefaults.standard.stringArray(forKey: "readNews") {
+            if readNews.contains("\(id)") {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
     }
     
 }

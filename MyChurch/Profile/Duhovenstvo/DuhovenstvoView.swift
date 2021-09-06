@@ -91,13 +91,16 @@ class DuhovenstvoView: UIView {
         serNameGrayLine.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
         
         scrollView.addSubview(birthdayLabel)
-        birthdayLabel.text = "День Народження"
+        birthdayLabel.text = "День народження"
         birthdayLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         birthdayLabel.textAlignment = .left
         birthdayLabel.textColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
         
         scrollView.addSubview(birthdayDate)
         birthdayDate.datePickerMode = .date
+        if #available(iOS 13.4, *) {
+            birthdayDate.preferredDatePickerStyle = .wheels
+        }
         birthdayDate.locale = Locale(identifier: "uk")
         
         scrollView.addSubview(tezoimenustvoLabel)
@@ -108,6 +111,9 @@ class DuhovenstvoView: UIView {
         
         scrollView.addSubview(tezoimenustvoDate)
         tezoimenustvoDate.datePickerMode = .date
+        if #available(iOS 13.4, *) {
+            tezoimenustvoDate.preferredDatePickerStyle = .wheels
+        }
         tezoimenustvoDate.locale = Locale(identifier: "uk")
         
         scrollView.addSubview(numberPhoneLabel)

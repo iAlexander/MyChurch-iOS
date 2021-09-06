@@ -18,8 +18,8 @@ class SupportPageViewController: UIViewController {
         mainView.fbSupportButton.addTarget(self, action: #selector(suppPressed), for: .touchUpInside)
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         self.navigationController?.navigationBar.tintColor = .white
         self.title = "Духовна пiдтримка"
     }

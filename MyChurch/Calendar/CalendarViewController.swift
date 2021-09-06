@@ -255,18 +255,18 @@ extension CalendarViewController {
     func writeDateStr(date: Date) {
         let monthString = date.month
         switch monthString {
-        case "January":    self.navigationItem.title = "Ciчень"; self.monthNumber = 1; self.chooseMonth = "Сiчня"
-        case "February":    self.navigationItem.title = "Лютий "; self.monthNumber = 2; self.chooseMonth = "Лютого"
-        case "March":    self.navigationItem.title = "Березень"; self.monthNumber = 3; self.chooseMonth = "Березня"
-        case "April":    self.navigationItem.title = "Квiтень"; self.monthNumber = 4; self.chooseMonth = "Квiтня"
-        case "May":    self.navigationItem.title = "Травень"; self.monthNumber = 5; self.chooseMonth = "Травня"
-        case "June":   self.navigationItem.title = "Червень"; self.monthNumber = 6; self.chooseMonth = "Червня"
-        case "July":   self.navigationItem.title = "Липень"; self.monthNumber = 7; self.chooseMonth = "Липня"
-        case "August":    self.navigationItem.title = "Серпень"; self.monthNumber = 8; self.chooseMonth = "Серпня"
-        case "September":    self.navigationItem.title = "Вересень"; self.monthNumber = 9; self.chooseMonth = "Вересня"
-        case "October":    self.navigationItem.title = "Жовтень"; self.monthNumber = 10; self.chooseMonth = "Жовтня"
-        case "November":    self.navigationItem.title = "Листопад"; self.monthNumber = 11; self.chooseMonth = "Листопада"
-        case "December":    self.navigationItem.title = "Грудень"; self.monthNumber = 12; self.chooseMonth = "Грудня"
+        case "січня":    self.navigationItem.title = "Ciчень"; self.monthNumber = 1; self.chooseMonth = "січня"
+        case "лютого":    self.navigationItem.title = "Лютий "; self.monthNumber = 2; self.chooseMonth = "лютого"
+        case "березня":    self.navigationItem.title = "Березень"; self.monthNumber = 3; self.chooseMonth = "березня"
+        case "квітня":    self.navigationItem.title = "Квiтень"; self.monthNumber = 4; self.chooseMonth = "квітня"
+        case "травня":    self.navigationItem.title = "Травень"; self.monthNumber = 5; self.chooseMonth = "травня"
+        case "червня":   self.navigationItem.title = "Червень"; self.monthNumber = 6; self.chooseMonth = "червня"
+        case "липня":   self.navigationItem.title = "Липень"; self.monthNumber = 7; self.chooseMonth = "липня"
+        case "серпня":    self.navigationItem.title = "Серпень"; self.monthNumber = 8; self.chooseMonth = "серпня"
+        case "вересня":    self.navigationItem.title = "Вересень"; self.monthNumber = 9; self.chooseMonth = "вересня"
+        case "жовтня":    self.navigationItem.title = "Жовтень"; self.monthNumber = 10; self.chooseMonth = "жовтня"
+        case "листопада":    self.navigationItem.title = "Листопад"; self.monthNumber = 11; self.chooseMonth = "листопада"
+        case "грудня":    self.navigationItem.title = "Грудень"; self.monthNumber = 12; self.chooseMonth = "грудня"
         default: break
         }
     }

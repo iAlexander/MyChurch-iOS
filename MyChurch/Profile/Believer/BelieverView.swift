@@ -32,6 +32,7 @@ class BelieverView: UIView {
     private let arrowImage = UIImageView()
     let believerButton = UIButton()
     let believerLabel = UILabel()
+    private let believerImage = UIImageView()
     let chlenParafRaduButton = UIButton()
     let chlenParafRaduLabel = UILabel()
     let hramLabel = UILabel()
@@ -91,13 +92,16 @@ class BelieverView: UIView {
         serNameGrayLine.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
         
         scrollView.addSubview(birthdayLabel)
-        birthdayLabel.text = "День Народження"
+        birthdayLabel.text = "День народження"
         birthdayLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         birthdayLabel.textAlignment = .left
         birthdayLabel.textColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
         
         scrollView.addSubview(birthdayDate)
         birthdayDate.datePickerMode = .date
+        if #available(iOS 13.4, *) {
+            birthdayDate.preferredDatePickerStyle = .wheels
+        }
         birthdayDate.locale = Locale(identifier: "uk")
         
         scrollView.addSubview(numberPhoneLabel)
@@ -141,6 +145,10 @@ class BelieverView: UIView {
         statusLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         statusLabel.textAlignment = .left
         statusLabel.textColor = .black
+        
+        statusBackView.addSubview(believerImage)
+        believerImage.image = UIImage(named: "searchIcon")
+        believerImage.contentMode = .scaleAspectFill
         
         statusBackView.addSubview(arrowImage)
         arrowImage.image = UIImage(named: "downArrow")
@@ -257,6 +265,7 @@ class BelieverView: UIView {
         
         believerButton.pin.below(of: statusBackView).horizontally(15).height(40).marginTop(5)
         believerLabel.pin.all()
+        believerImage.pin.right(15).vertically(15).width(20)
         chlenParafRaduButton.pin.below(of: believerButton).marginTop(5).horizontally(15).height(40)
         chlenParafRaduLabel.pin.all()
         hramLabel.pin.below(of: statusBackView).horizontally(15).height(20).marginTop(30)

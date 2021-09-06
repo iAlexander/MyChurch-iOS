@@ -156,7 +156,7 @@ class RegularDonateView: UIView {
         arrowImage.pin.right(20).vCenter().width(16).height(10)
       
         subscribeButton.pin.bottom().horizontally().height(45)
-        historyTable.pin.below(of: personInfoButton).horizontally().bottom(to:subscribeButton.edge.top).marginBottom(5)
+        historyTable.pin.below(of: personInfoButton).horizontally().bottom(to:needDonateLabel.edge.top).marginBottom(5)
         bottomGrayLine.pin.above(of: subscribeButton).horizontally(15).height(0.5).marginBottom(20)
         moneyField.pin.above(of: bottomGrayLine).horizontally(15).height(20).marginBottom(5)
         summasLabel.pin.above(of: moneyField).horizontally(15).height(15).marginBottom(5)

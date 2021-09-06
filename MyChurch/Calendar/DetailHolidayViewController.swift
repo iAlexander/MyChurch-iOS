@@ -22,7 +22,7 @@ class DetailHolidayViewController: UIViewController {
         ConfigView()
         let data = Data(self.detailHolidayInfo!.describe!.utf8)
         if let attributedString = try? NSMutableAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil), let conceived = self.detailHolidayInfo?.conceived {
-            attributedString.append(NSAttributedString(string: "\n\(conceived)"))
+            attributedString.append(NSAttributedString(string: "\n\(conceived.replacingOccurrences(of: "<br />", with: "\n"))"))
             let font = UIFont.systemFont(ofSize: 18, weight: .regular)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.26
@@ -96,11 +96,8 @@ class DetailHolidayViewController: UIViewController {
     }
     
     func ConfigView() {
-//        self.view.addSubview(mainView)
-//        self.mainView.frame = self.view.bounds
         self.view = mainView
         self.title = titleText
-       
         self.navigationController!.navigationBar.tintColor = .white
     }
 }

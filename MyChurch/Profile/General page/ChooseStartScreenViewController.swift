@@ -11,7 +11,7 @@ import UIKit
 class ChooseStartScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let mainView = ChooseStartScreenView()
-    let screensName = ["Карта", "Календар", "Новини", "Молитви", "Особистий кабiнет"]
+    let screensName = ["Карта", "Календар", "Новини", "Молитви", "Мій профіль"]
     
        override func viewDidLoad() {
            super.viewDidLoad()

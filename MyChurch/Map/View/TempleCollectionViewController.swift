@@ -45,10 +45,10 @@ class TempleCollectionViewController: UICollectionViewController, UICollectionVi
         cell.configureWithData(data: data)
         
         cell.tapAction  = { (cell) in
-         //   print(collectionView.indexPath(for: cell)!.row)
             if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)) {
-                UIApplication.shared.openURL(URL(string:
-                    "comgooglemaps://" + "?daddr=\(Double(data.lt) ?? 0.0),\(Double(data.lg) ?? 0.0)&zoom=12&directionsmode=walking")!)
+                if let googleURL = URL(string: "comgooglemaps://?daddr=\(data.lt),\(data.lg)&directionsmode=walking") {
+                    UIApplication.shared.open(googleURL, options: [:], completionHandler: nil)
+                }
             } else {
                 let alert = UIAlertView()
                 alert.title = "Повiдомлення"

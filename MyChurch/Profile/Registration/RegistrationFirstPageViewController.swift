@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistrationFirstPageViewController: UIViewController {
+class RegistrationFirstPageViewController: ViewController {
     
     let mainView = RegistrationFirstPageView()
     
@@ -18,13 +18,22 @@ class RegistrationFirstPageViewController: UIViewController {
         self.mainView.charityButton.addTarget(self, action: #selector(charityPressed), for: .touchUpInside)
         self.mainView.personalAreaButton.addTarget(self, action: #selector(personalAreaPressed), for: .touchUpInside)
         self.mainView.spiritualSupportButton.addTarget(self, action: #selector(spiritualSupportPressed), for: .touchUpInside)
+        self.mainView.technicalSupportButton.addTarget(self, action: #selector(openTechnicalSupport(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-            self.title = "Особистий кабінет"
-           self.navigationController!.navigationBar.tintColor = .white
-       }
+        super.viewWillAppear(animated)
+        self.navigationItem.hidesBackButton = false
+        self.title = "Мій профіль"
+        self.mainView.personalAreaButton.setTitle(UserDefaults.standard.string(forKey: "BarearToken") == nil ? "Вхід / Реєстрація" : "Налаштування", for: .normal)
+        self.navigationController!.navigationBar.tintColor = .white
+        if UserDefaults.standard.string(forKey: "BarearToken") == nil {
+            self.navigationItem.rightBarButtonItem = nil
+            self.mainView.personalAreaButton.setTitle("Вхід / Реєстрація", for: .normal)
+        } else {
+            self.mainView.personalAreaButton.setTitle("Налаштування", for: .normal)
+        }
+    }
     
     @objc func charityPressed() {
         sendLikPayData(value: "paydonate") { (result) in
@@ -32,6 +41,7 @@ class RegistrationFirstPageViewController: UIViewController {
             case .success(let data):
                 if data.ok ?? false {
                     let vc = WebViewController()
+                    vc.title = "Благодійність"
                     vc.liqPayUrl = data.data!.url!
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
@@ -43,7 +53,7 @@ class RegistrationFirstPageViewController: UIViewController {
                 }
             case .partialSuccess( _):  print("error")
             case .failure(let error):  print(error.localizedDescription)
-            print(error)
+                print(error)
             }
         }
     }
@@ -69,8 +79,20 @@ class RegistrationFirstPageViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func openNotification(_ sender: UIButton!) {
+        let vc = NotificationViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func openTechnicalSupport(_ sender: UIButton!) {
+        let vc = TechnicalSupportVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func ConfigView() {
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
+        self.navigationItem.rightBarButtonItem = notificationhBarButtonItem
+        super.notificationhBarButtonItem.action = #selector(openNotification(_:))
     }
 }

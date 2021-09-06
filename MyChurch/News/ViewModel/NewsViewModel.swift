@@ -14,13 +14,13 @@ class NewsViewModel: ViewModel {
     
     weak var delegate: NewsDelegate?
     
-    static var news: [Article]?
+    static var news: [NewsWordPressModel]?
     
     func startFetchingData() {
         DispatchQueue.global(qos: .background).async {
             Repository.shared.getNews() { (response) in
                 if let response = response {
-                    NewsViewModel.news = response.data.list
+                    NewsViewModel.news = response
                 }
                 DispatchQueue.main.async {
                     self.delegate?.didFinishFetchingData()
