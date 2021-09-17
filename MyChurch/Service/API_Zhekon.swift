@@ -252,6 +252,7 @@ func getUserData(completion: ((NewResult<UserDatas>) -> Void)?) {
             if let error = error {
                 completion?(.failure(error))
             } else if let jsonData = responseData {
+//                print(String(decoding: jsonData, as: UTF8.self))
                 let decoder = JSONDecoder()
                 do {
                     let playerResponse = try decoder.decode(UserDatas.self, from: jsonData)

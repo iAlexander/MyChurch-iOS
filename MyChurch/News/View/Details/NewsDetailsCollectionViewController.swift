@@ -60,6 +60,12 @@ class NewsDetailsCollectionViewController: ViewController {
             collectionView.setNeedsLayout()
             collectionView.layoutIfNeeded()
             self.collectionView.selectItem(at: self.currentIndexPath, animated: false, scrollPosition: .centeredHorizontally)
+            if currentIndexPath == IndexPath(row: 0, section: 0) {
+                if let id = NewsViewModel.news?.first?.id {
+                    self.markNewsAsRead(id: id)
+                    self.delegate?.reloadCell(indexPath: currentIndexPath)
+                }
+            }
             needScrollToSelecteditem = false
             UIView.animate(withDuration: 0.2) {
                 self.collectionView.alpha = 1
@@ -111,6 +117,7 @@ extension NewsDetailsCollectionViewController: UICollectionViewDelegate, UIColle
         
         // Configure the cell
         if let data = NewsViewModel.news?[indexPath.item] {
+            cell.postImageView.tag = indexPath.item
             cell.configureWithData(data: data)
         }
         return cell

@@ -175,6 +175,14 @@ struct UserInfo: Codable {
     var phone: String?
     var church: Church?
     var subscriptionStatus: String?
+    var member: MemberType?
+    
+    enum MemberType: String, Codable {
+        case Mpc = "Mpc"
+        case Priest = "Priest"
+        case PriestPro = "PriestPro"
+        case Parishioner = "Parishioner"
+    }
 }
 
 struct Church: Codable {

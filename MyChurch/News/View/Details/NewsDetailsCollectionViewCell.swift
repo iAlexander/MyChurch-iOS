@@ -23,10 +23,10 @@ class NewsDetailsCollectionViewCell: UICollectionViewCell, UITextViewDelegate {
         self.scrollView.addSubviews([self.postImageView, self.titleLabel, self.textView])
         
         if let url = URL(string: "https://www.pomisna.info/uk/wp-json/wp/v2/media/\(data.featured_media!)") {
-            self.postImageView.loadNewsImage(url: url, size: .full)
+            self.postImageView.loadNewsImage(url: url, size: .full, index: postImageView.tag)
         }
         
-        if let title = data.title?.rendered {
+        if let title = data.title?.rendered?.htmlToString {
             self.titleLabel.setValue(title, size: 22, fontWeight: .bold, numberOfLines: 0, color: .black)
         }
         
@@ -48,6 +48,12 @@ class NewsDetailsCollectionViewCell: UICollectionViewCell, UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         return true
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        postImageView.sd_cancelCurrentImageLoad()
+        self.postImageView.image = nil
     }
     
     private func setupLayout() {

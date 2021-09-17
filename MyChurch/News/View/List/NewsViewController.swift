@@ -50,7 +50,6 @@ class NewsViewController: ViewController, NewsCellDelegate {
     
     private func setupNavBar() {
         self.navigationItem.rightBarButtonItems = [notificationhBarButtonItem, searchBarButtonItem]
-        
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         
@@ -120,6 +119,7 @@ extension NewsViewController: NewsDelegate, UITableViewDelegate, UITableViewData
         if let cell = self.tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.reuseIdentifier, for: indexPath) as? NewsTableViewCell {
             let index = indexPath.row
             guard let data = NewsViewModel.news?[index] else { return UITableViewCell() }
+            cell.newsImageView.tag = index
             cell.configureWithData(data: data)
             return cell
         } else {

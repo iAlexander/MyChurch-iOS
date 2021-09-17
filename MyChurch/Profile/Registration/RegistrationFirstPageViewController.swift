@@ -36,26 +36,8 @@ class RegistrationFirstPageViewController: ViewController {
     }
     
     @objc func charityPressed() {
-        sendLikPayData(value: "paydonate") { (result) in
-            switch result {
-            case .success(let data):
-                if data.ok ?? false {
-                    let vc = WebViewController()
-                    vc.title = "Благодійність"
-                    vc.liqPayUrl = data.data!.url!
-                    self.navigationController?.pushViewController(vc, animated: true)
-                } else {
-                    let alertController = UIAlertController(title: "Помилка", message: "втрачений звз'язок с сервером, спробуйте пiзнiше", preferredStyle: .alert)
-                    let actionCancel = UIAlertAction(title: "закрити", style: .cancel) { (action:UIAlertAction) in
-                    }
-                    alertController.addAction(actionCancel)
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            case .partialSuccess( _):  print("error")
-            case .failure(let error):  print(error.localizedDescription)
-                print(error)
-            }
-        }
+        let vc = DonateInformationVC()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func personalAreaPressed() {

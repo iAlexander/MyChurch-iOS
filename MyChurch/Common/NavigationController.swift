@@ -50,6 +50,16 @@ class NavigationViewController: UINavigationController {
         
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationBar.titleTextAttributes = textAttributes
+        if #available(iOS 15.0, *) {
+            let navAppearance = UINavigationBarAppearance()
+            navAppearance.configureWithOpaqueBackground()
+            navAppearance.titleTextAttributes = textAttributes
+            if let image = getImageFrom(gradientLayer: gradient) {
+                navAppearance.backgroundImage = image
+            }
+            self.navigationBar.standardAppearance = navAppearance
+            self.navigationBar.scrollEdgeAppearance = navAppearance
+        }
         
         setupLayout()
     }

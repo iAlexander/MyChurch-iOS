@@ -41,6 +41,7 @@ class GeneralPageProfileViewController: ViewController {
         showInfoWindows()
         if let data = UserDefaults.standard.value(forKey:"UserData") as? Data {
             let userData = try? PropertyListDecoder().decode(UserDatas.self, from: data)
+            mainView.peopleType.text = setMemberLabel(member: userData?.data?.member)
             mainView.nameSername.text = "\(userData?.data?.firstName ?? "") \(userData?.data?.lastName ?? "")"
             print(userData as Any)
         }
@@ -48,6 +49,21 @@ class GeneralPageProfileViewController: ViewController {
         self.mainView.changeEmail.addTarget(self, action: #selector(changeEmail), for: .touchUpInside)
         self.mainView.startScreenButton.addTarget(self, action: #selector(chooseStartScreen), for: .touchUpInside)
         self.mainView.donateView.addTarget(self, action: #selector(donatePressed), for: .touchUpInside)
+    }
+    
+    private func setMemberLabel(member: UserInfo.MemberType?) -> String {
+        switch member {
+        case .Mpc:
+            return "Член парафіяльної ради"
+        case .Parishioner:
+            return "Вірянин"
+        case .Priest:
+            return "Духовенство"
+        case .PriestPro:
+            return "Архієрей"
+        case .none:
+            return ""
+        }
     }
     
     @objc func donatePressed() {

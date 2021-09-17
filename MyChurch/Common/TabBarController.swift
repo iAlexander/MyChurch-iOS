@@ -126,6 +126,12 @@ class TabBarController: UITabBarController {
     private func setupLayout() {
         self.view.backgroundColor = .white
         self.tabBar.backgroundColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
+        tabBar.backgroundColor = .white
+        if #available(iOS 15.0, *) {
+            let appearance = tabBar.standardAppearance
+            appearance.backgroundColor = .white
+//            tabBar.scrollEdgeAppearance = appearance
+        }
 //        self.tabBar.tintColor = Color.lightGrayColor
         
         // Autolayouts

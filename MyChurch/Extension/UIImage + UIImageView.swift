@@ -71,12 +71,14 @@ extension UIImageView {
         }
     }
     
-    func loadNewsImage(url: URL, size: ImageSize) {
+    func loadNewsImage(url: URL, size: ImageSize, index: Int) {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             if let image = SDImageCache.shared.imageFromCache(forKey: url.absoluteString + (size == .medium ? "medium" : "full")) {
                 DispatchQueue.main.async {
-                    self.image = image
+                    if self.tag == index {
+                        self.image = image
+                    }
                 }
                 return
             }
@@ -108,27 +110,19 @@ extension UIImageView {
                     if let imageResponse = try? JSONDecoder().decode(NewsWordPressImageModel.self, from: data) {
                         let urlString = (size == .medium ? imageResponse.media_details.sizes.medium.source_url : imageResponse.media_details.sizes.full.source_url)
                         if let imageUrl = URL(string: urlString) {
-                            self.sd_setImage(with: imageUrl) { image, _, _, _ in
-                                DispatchQueue.main.async {
-                                    if let activityIndicator = activityIndicator {
-                                        activityIndicator.stopAnimating()
+                            SDWebImageDownloader.shared.downloadImage(with: imageUrl) { image, _, _, _ in
+                                if let image = image {
+                                    DispatchQueue.main.async {
+                                        if self.tag == index {
+                                            self.image = image
+                                        }
+                                        SDImageCache.shared.store(image, forKey: url.absoluteString + (size == .medium ? "medium" : "full"), toDisk: false, completion: nil)
+                                        if let activityIndicator = activityIndicator {
+                                            activityIndicator.stopAnimating()
+                                        }
                                     }
                                 }
-                                if let image = image {
-                                    SDImageCache.shared.store(image, forKey: url.absoluteString + (size == .medium ? "medium" : "full"), toDisk: false, completion: nil)
-                                }
                             }
-//                            if let data = try? Data(contentsOf: url) {
-//                                if let image = UIImage(data: data) {
-//                                    DispatchQueue.main.async {
-//                                        if let activityIndicator = activityIndicator {
-//                                            activityIndicator.stopAnimating()
-//                                        }
-//                                        imageCache.setObject(image, forKey: NSString(string: url.absoluteString))
-//                                        self.image = image
-//                                    }
-//                                }
-//                            }
                         }
                     }
                 }

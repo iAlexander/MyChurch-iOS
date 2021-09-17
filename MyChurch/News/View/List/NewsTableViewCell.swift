@@ -30,7 +30,7 @@ class NewsTableViewCell: UITableViewCell {
         self.elevatedView.addSubviews([self.titleLabel, self.newsImageView, self.leftSubtitleLabel, self.centerSubtitleLabel, self.rightSubtitleLabel])
         
         if let url = URL(string: "https://www.pomisna.info/uk/wp-json/wp/v2/media/\(data.featured_media!)") {
-            self.newsImageView.loadNewsImage(url: url, size: .medium)
+            self.newsImageView.loadNewsImage(url: url, size: .medium, index: newsImageView.tag)
         }
         
         if let isoDate = data.date {
@@ -40,8 +40,8 @@ class NewsTableViewCell: UITableViewCell {
             if let date = dateFormatter.date(from:isoDate) {
                 dateFormatter.dateFormat = "dd.MM.yyyy"
                 self.leftSubtitleLabel.setValue(dateFormatter.string(from: date), size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)
-                dateFormatter.dateFormat = "HH:mm"
-                self.leftSubtitleLabel.text?.append("      \(dateFormatter.string(from: date))")
+//                dateFormatter.dateFormat = "HH:mm"
+//                self.leftSubtitleLabel.text?.append("      \(dateFormatter.string(from: date))")
             }
         }
         
@@ -49,7 +49,7 @@ class NewsTableViewCell: UITableViewCell {
         //            self.rightSubtitleLabel.setValue("Важливо!", size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .red, textAlignment: .right)
         //        }
         
-        if let title = data.title?.rendered {
+        if let title = data.title?.rendered?.htmlToString {
             self.titleLabel.setValue(title, size: 16, fontWeight: checkIfNewsRead(id: data.id) ? .regular : .bold, numberOfLines: 3, color: .black)
         }
         
@@ -57,24 +57,24 @@ class NewsTableViewCell: UITableViewCell {
         setupLayout()
     }
     
-    func confgireWithData(title: String, imageUrl: String = "", leftSubtitle: String = "", centerSubtitle: String = "", rightSubtitle: String = "") {
-        self.addSubview(self.elevatedView)
-        self.elevatedView.addSubviews([self.titleLabel, self.newsImageView, self.leftSubtitleLabel, self.centerSubtitleLabel, self.rightSubtitleLabel])
-        if let url = URL(string: imageUrl) {
-            self.newsImageView.load(url: url)
-        }
-        
-        if let date = leftSubtitle.formatDate(from: .unformatted, to: .dayMonthYearHoursMinutesShort) {
-            self.leftSubtitleLabel.setValue(date, size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)
-        }
-        
-        self.rightSubtitleLabel.setValue(rightSubtitle, size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .red, textAlignment: .right)
-        
-        self.titleLabel.setValue(title, size: 16, fontWeight: .bold, numberOfLines: 3, color: .black)
-        
-        configureCell()
-        setupLayout()
-    }
+//    func confgireWithData(title: String, imageUrl: String = "", leftSubtitle: String = "", centerSubtitle: String = "", rightSubtitle: String = "") {
+//        self.addSubview(self.elevatedView)
+//        self.elevatedView.addSubviews([self.titleLabel, self.newsImageView, self.leftSubtitleLabel, self.centerSubtitleLabel, self.rightSubtitleLabel])
+//        if let url = URL(string: imageUrl) {
+//            self.newsImageView.load(url: url)
+//        }
+//        
+//        if let date = leftSubtitle.formatDate(from: .unformatted, to: .dayMonthYearHoursMinutesShort) {
+//            self.leftSubtitleLabel.setValue(date, size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .lightGrayCustom)
+//        }
+//        
+//        self.rightSubtitleLabel.setValue(rightSubtitle, size: 12, lineHeight: 1.4, fontWeight: .regular, numberOfLines: 1, color: .red, textAlignment: .right)
+//        
+//        self.titleLabel.setValue(title, size: 16, fontWeight: .bold, numberOfLines: 3, color: .black)
+//        
+//        configureCell()
+//        setupLayout()
+//    }
     
     private func configureCell() {
         self.selectionStyle = .none
@@ -96,7 +96,7 @@ class NewsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.newsImageView.sd_cancelCurrentImageLoad()
+        newsImageView.sd_cancelCurrentImageLoad()
         self.newsImageView.image = nil
     }
     
