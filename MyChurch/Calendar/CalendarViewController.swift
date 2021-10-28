@@ -399,6 +399,7 @@ extension String {
 extension Date {
     var month: String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "uk_UA")
         dateFormatter.dateFormat = "MMMM"
         return dateFormatter.string(from: self)
     }

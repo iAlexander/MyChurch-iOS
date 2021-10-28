@@ -24,6 +24,8 @@ class RegistrationFirstPageViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.hidesBackButton = false
+        self.navigationItem.rightBarButtonItem = notificationhBarButtonItem
+        self.navigationItem.rightBarButtonItem?.tintColor = UserDefaults.standard.value(forKey: "hasUnreadNotifications") == nil ? .white : .yellow
         self.title = "Мій профіль"
         self.mainView.personalAreaButton.setTitle(UserDefaults.standard.string(forKey: "BarearToken") == nil ? "Вхід / Реєстрація" : "Налаштування", for: .normal)
         self.navigationController!.navigationBar.tintColor = .white
@@ -74,7 +76,6 @@ class RegistrationFirstPageViewController: ViewController {
     func ConfigView() {
         self.view.addSubview(mainView)
         self.mainView.frame = self.view.bounds
-        self.navigationItem.rightBarButtonItem = notificationhBarButtonItem
         super.notificationhBarButtonItem.action = #selector(openNotification(_:))
     }
 }

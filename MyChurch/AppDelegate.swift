@@ -23,26 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 completionHandler: {_, _ in })
         } else {
             let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
-        
-        Messaging.messaging().token { token, error in
-            if let error = error {
-                print("Error fetching remote instance ID: \(error)")
-            } else if let token = token {
-                print("Remote instance ID token: \(token)")
-                UserDefaults.standard.set(token, forKey: "firToken")
-            }
-        }
-        
         application.registerForRemoteNotifications()
         
         let BarButtonItemAppearance = UIBarButtonItem.appearance()
         let attributes = [NSAttributedString.Key.font:  UIFont(name: "Helvetica-Bold", size: 0.1)!, NSAttributedString.Key.foregroundColor: UIColor.clear]
-
-            BarButtonItemAppearance.setTitleTextAttributes(attributes, for: .normal)
-            BarButtonItemAppearance.setTitleTextAttributes(attributes, for: .highlighted)
+        
+        BarButtonItemAppearance.setTitleTextAttributes(attributes, for: .normal)
+        BarButtonItemAppearance.setTitleTextAttributes(attributes, for: .highlighted)
         
         Messaging.messaging().delegate = self
         Messaging.messaging().isAutoInitEnabled = true
@@ -58,8 +48,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        guard let token = fcmToken else { return }
+        UserDefaults.standard.set(token, forKey: "firToken")
+        sendFirToken { result in
+            switch result {
+            case .success(let data):
+                if data.data?.accessToken != nil {
+                    UserDefaults.standard.set(data.data?.accessToken, forKey: "BarearToken")
+                    sendFirToken(completion: nil)
+                }
+            case .partialSuccess(_):
+                break
+            case .failure(_):
+                break
+            }
+        }
+    }
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        Messaging.messaging().apnsToken = deviceToken as Data
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
+                                -> Void) {
+        UserDefaults.standard.setValue(true, forKey: "hasUnreadNotifications")
+        if let notificationsVC = UIApplication.getTopMostViewController() as? NotificationViewController {
+            notificationsVC.needRefresh()
+        }
+        completionHandler([[.alert, .sound]])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if let navigationController = UIApplication.getTopMostViewController()?.navigationController {
+            if let notificationsVC = UIApplication.getTopMostViewController() as? NotificationViewController {
+                notificationsVC.needRefresh()
+            } else {
+                let vc = NotificationViewController()
+                DispatchQueue.main.async {
+                    navigationController.pushViewController(vc, animated: true)
+                }
+            }
+        } else {
+            UserDefaults.standard.setValue(true, forKey: "needShowNotifications")
+        }
+        completionHandler()
+    }
+    
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult)
+                     -> Void) {
+        completionHandler(UIBackgroundFetchResult.newData)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

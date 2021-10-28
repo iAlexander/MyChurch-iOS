@@ -70,6 +70,8 @@ class PrayerViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.hidesBackButton = false
+        self.navigationItem.rightBarButtonItem = notificationhBarButtonItem
+        self.navigationItem.rightBarButtonItem?.tintColor = UserDefaults.standard.value(forKey: "hasUnreadNotifications") == nil ? .white : .yellow
         if UserDefaults.standard.string(forKey: "BarearToken") == nil {
             self.navigationItem.rightBarButtonItem = nil
         }
@@ -82,7 +84,6 @@ class PrayerViewController: ViewController {
         self.view.addSubviews([self.segmentedControl, self.tableView, self.activityIndicatorView, self.playerViewController.view])
         
         self.navigationItem.title = "Молитви"
-        self.navigationItem.rightBarButtonItem = notificationhBarButtonItem
         super.notificationhBarButtonItem.action = #selector(openNotification(_:))
         
         self.activityIndicatorView.startAnimating()

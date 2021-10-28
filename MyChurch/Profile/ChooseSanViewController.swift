@@ -23,9 +23,9 @@ class ChooseSanViewController: UIViewController, UITableViewDelegate , UITableVi
         super.viewDidLoad()
         sanArray = sanArray.sorted()
         if isPriest {
-            self.sanArray =   ["диякон","протодиякон","ієрей","протоієрей","священник","ієродиякон","ієромонах","ігумен"]
+            self.sanArray =   ["диякон","протодиякон","ієрей","протоієрей","священник","ієродиякон","ієромонах","ігумен", "архімандрит"]
         } else {
-            self.sanArray =   ["єпископ", "архiєпископ","митрополит"]
+            self.sanArray =   ["єпископ", "архієпископ","митрополит"]
         }
         ConfigView()
     }

@@ -149,7 +149,7 @@ func getAllEparhies(completion: ((NewResult<EparhiesData>) -> Void)?) {
 }
 
 //MARK: 6) Запрос на регистрацию
-func registrationUser(name: String, serName: String, birthday: String, phone: String, email: String, status: String, hram: Int, eparhiya: Int, angelday: String, completion: ((NewResult<RegistrationData>) -> Void)?) {
+func registrationUser(name: String, serName: String, birthday: String, phone: String, email: String, status: String, san: Int? = nil, hram: Int, eparhiya: Int, angelday: String, completion: ((NewResult<RegistrationData>) -> Void)?) {
 //   let url = URL(string:"http://test.cerkva.asp-win.d2.digital/register")
     let url = URL(string:"https://mobile.pomisna.info/register")
     var request = URLRequest(url: url!)
@@ -174,6 +174,10 @@ func registrationUser(name: String, serName: String, birthday: String, phone: St
         jsonDic = ["firstName": name, "lastName": serName, "email": email, "phone": phone, "member": status, "church": hram, "diocese": eparhiya, "acceptAgreement": true, "angelday":angelday, "birthday": birthday, "firebaseToken": UserDefaults.standard.value(forKey:"firToken") ?? "" ] as [String : Any]
     }
     
+    if let san = san {
+        jsonDic["san"] = san
+    }
+    
     if let theJSONData = try? JSONSerialization.data(withJSONObject: jsonDic, options: []) {
         request.httpBody = theJSONData
     }
@@ -188,6 +192,7 @@ func registrationUser(name: String, serName: String, birthday: String, phone: St
             if let error = error {
                 completion?(.failure(error))
             } else if let jsonData = responseData {
+                print(String(decoding: jsonData, as: UTF8.self))
                 let decoder = JSONDecoder()
                 do {
                     let DeviceResponse = try decoder.decode(RegistrationData.self, from: jsonData)
@@ -256,6 +261,7 @@ func getUserData(completion: ((NewResult<UserDatas>) -> Void)?) {
                 let decoder = JSONDecoder()
                 do {
                     let playerResponse = try decoder.decode(UserDatas.self, from: jsonData)
+                    UserDefaults.standard.set(try? PropertyListEncoder().encode(playerResponse), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
                     completion?(.success(playerResponse))
                 } catch {
                     completion?(.failure(error))
@@ -345,7 +351,7 @@ func rememberPassApi(email: String, completion: ((NewResult<RememberPass>) -> Vo
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "accept")
     request.httpMethod = "POST"
-    let jsonDic = ["login": email]
+    let jsonDic: [String:Any] = ["login": email, "generateLink": true]
     
     if let theJSONData = try? JSONSerialization.data(withJSONObject: jsonDic, options: []) {
         request.httpBody = theJSONData
@@ -476,8 +482,10 @@ func sendFirToken(completion: ((NewResult<FirTokenData>) -> Void)?) {
     var request = URLRequest(url: url!)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "accept")
+    request.setValue("Bearer \(UserDefaults.standard.string(forKey: "BarearToken") ?? "")", forHTTPHeaderField: "Authorization")
     request.httpMethod = "POST"
     let jsonDic = ["firebaseToken": UserDefaults.standard.value(forKey:"firToken") ?? "" ] as [String : Any]
+    print(jsonDic)
     if let theJSONData = try? JSONSerialization.data(withJSONObject: jsonDic, options: []) {
         request.httpBody = theJSONData
     }
@@ -487,6 +495,7 @@ func sendFirToken(completion: ((NewResult<FirTokenData>) -> Void)?) {
             if let error = error {
                 completion?(.failure(error))
             } else if let jsonData = responseData {
+                print(String(decoding: jsonData, as: UTF8.self))
                 let decoder = JSONDecoder()
                 do {
                     let DeviceResponse = try decoder.decode(FirTokenData.self, from: jsonData)

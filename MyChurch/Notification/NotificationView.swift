@@ -29,14 +29,6 @@ class NotificationView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        var bottomPadding: CGFloat = 0.0
-                if #available(iOS 11.0, *) {
-                    let window = UIApplication.shared.keyWindow
-                    bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
-                    if bottomPadding > 0.0 {
-                        bottomPadding = 58.0
-                    }
-                }
-        notificationTableView.pin.top().horizontally().bottom(bottomPadding)
+        notificationTableView.pin.all()
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class NotificationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RefreshData {
     func needRefresh() {
-        viewDidLoad()
+        getNotifications()
     }
     
     let mainView = NotificationView()
@@ -21,14 +21,23 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigView()
+        getNotifications()
+    }
+    
+    private func getNotifications() {
         getUserAllNotification() { (result) in
             switch result {
             case .success(let data):
                 if data.data?.accessToken != nil {
                     UserDefaults.standard.set(data.data?.accessToken, forKey: "BarearToken")
-                    self.viewDidLoad()
+                    self.getNotifications()
                 } else {
                 self.userNotification = data
+                    if data.data?.list?.filter({$0.read == false}).isEmpty == false {
+                        UserDefaults.standard.setValue(true, forKey: "hasUnreadNotifications")
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "hasUnreadNotifications")
+                    }
                 self.mainView.notificationTableView.delegate = self
                 self.mainView.notificationTableView.dataSource = self
                 self.mainView.notificationTableView.reloadData()
@@ -44,6 +53,7 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController!.navigationBar.tintColor = .white
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -59,10 +69,12 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         if !(self.userNotification.data?.list?[indexPath.row].read ?? false) {
             cell.notificationText.font =  UIFont.systemFont(ofSize: 16, weight: .bold)
+            cell.notificationImage.isHidden = false
         } else {
+            cell.notificationText.font = UIFont(name: "SFProDisplay-Regular", size: 16)
             cell.notificationImage.isHidden = true
         }
-        cell.notificationText.text = self.userNotification.data?.list?[indexPath.row].title
+        cell.notificationText.text = self.userNotification.data?.list?[indexPath.row].title?.htmlToString
         let date = self.userNotification.data?.list?[indexPath.row].createdAt?.strstr(needle: "T", beforeNeedle: true)
         let hours = self.userNotification.data?.list?[indexPath.row].createdAt?.strstr(needle: "T", beforeNeedle: false)
         let hourAndMinutes = hours?.strstr(needle: ".", beforeNeedle: true)
@@ -81,8 +93,7 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func ConfigView() {
-        self.view.addSubview(mainView)
-        self.mainView.frame = self.view.bounds
+        self.view = mainView
         self.title = "Повiдомлення"
         self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.hidesBackButton = false

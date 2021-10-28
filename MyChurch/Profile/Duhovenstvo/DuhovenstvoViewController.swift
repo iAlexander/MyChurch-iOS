@@ -66,28 +66,40 @@ class DuhovenstvoViewController: UIViewController, SendDataDelegate, SendDataEpa
         self.mainView.eparhiyaButton.addTarget(self, action: #selector(chooseEparhiyaPressed), for: .touchUpInside)
         self.mainView.saveButton.addTarget(self, action: #selector(savePressed), for: .touchUpInside)
         self.mainView.birthdayDate.addTarget(self, action: #selector(handler), for: .valueChanged)
-        self.mainView.tezoimenustvoDate.addTarget(self, action: #selector(handler), for: .valueChanged)
     }
     
     @objc func handler(sender: UIDatePicker) { //барабан даты
         var timeInterval = DateComponents()
         timeInterval.hour = 5
-        mainView.tezoimenustvoDate.minimumDate = mainView.birthdayDate.date
     }
     
     @objc func savePressed() {
      self.member = "Priest"
-        registrationUser(name: mainView.nameTextField.text!, serName: mainView.serNameTextField.text!, birthday: mainView.birthdayDate.date.description, phone: mainView.phoneTextField.text!, email: mainView.emailTextField.text! , status: self.member, hram: self.hramId, eparhiya: self.eparhiyaId, angelday: mainView.tezoimenustvoDate.date.description ) { (result) in
+        registrationUser(name: mainView.nameTextField.text!, serName: mainView.serNameTextField.text!, birthday: mainView.birthdayDate.date.description, phone: mainView.phoneTextField.text!, email: mainView.emailTextField.text! , status: self.member, san: UserInfo.UserSan.getSanId(san: mainView.statusLabel.text?.capitalizingFirstLetter() ?? ""), hram: self.hramId, eparhiya: self.eparhiyaId, angelday: mainView.tezoimenustvoDate.date.description ) { (result) in
             switch result {
             case .success(let data):
-                let vc = GeneralPageProfileViewController()
-                vc.member = self.member
-                vc.email = self.mainView.emailTextField.text ?? ""
-                     let userData = UserDatas(data: UserInfo(firstName: self.mainView.nameTextField.text!, lastName: self.mainView.serNameTextField.text!, email: self.mainView.emailTextField.text!, phone: "", church: Church(name: self.mainView.eparhiyaLabel.text, locality: "")))
-                UserDefaults.standard.set(try? PropertyListEncoder().encode(userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
-                self.navigationController?.show(vc, sender: nil)
-                if let current = self.navigationController?.viewControllers.firstIndex(of: self) {
-                    self.navigationController?.viewControllers.remove(at: current)
+                if data.ok ?? true {
+                    let vc = GeneralPageProfileViewController()
+                    vc.member = self.member
+                    vc.email = self.mainView.emailTextField.text ?? ""
+                    let userData = UserDatas(data: UserInfo(firstName: self.mainView.nameTextField.text!, lastName: self.mainView.serNameTextField.text!, email: self.mainView.emailTextField.text!, phone: "", church: Church(name: self.mainView.eparhiyaLabel.text, locality: ""), member: .Priest, san: UserInfo.UserSan(id: UserInfo.UserSan.getSanId(san: self.mainView.statusLabel.text?.capitalizingFirstLetter() ?? ""), title: self.mainView.statusLabel.text?.capitalizingFirstLetter() ?? "")))
+                    UserDefaults.standard.set(try? PropertyListEncoder().encode(userData), forKey:"UserData") //сохранил в юзердефолтс данные пользователя
+                    self.navigationController?.show(vc, sender: nil)
+                    if let current = self.navigationController?.viewControllers.firstIndex(of: self) {
+                        self.navigationController?.viewControllers.remove(at: current)
+                    }
+                } else {
+                    if let errors = data.errors {
+                        if let message = errors.first?.message {
+                            let alert = UIAlertController(title: "Помилка", message: message, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    } else {
+                        let alert = UIAlertController(title: "Помилка", message: "Перевiрте данi реєстрацiï", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Добре", style: .cancel, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             case .partialSuccess( _): break
             case .failure(let error):

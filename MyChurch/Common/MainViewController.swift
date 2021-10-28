@@ -34,7 +34,7 @@ class ViewController: UIViewController, MainViewControllerDelegate {
     }()
     
     lazy var notificationhBarButtonItem: UIBarButtonItem = {
-        let icon = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
+        let icon = #imageLiteral(resourceName: "notification")
         let barButtonItem = UIBarButtonItem(image: icon, style: .plain, target: self, action: nil)
         
         return barButtonItem

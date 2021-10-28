@@ -22,7 +22,7 @@ class ArhieriyView: UIView {
     let birthdayDate = UIDatePicker()
     
     private let tezoimenustvoLabel = UILabel()
-    let tezoimenustvoDate = UIDatePicker()
+    let tezoimenustvoDate = PMEDatePicker()
     
     private let numberPhoneLabel = UILabel()
     let phoneTextField = UITextField()
@@ -110,11 +110,12 @@ class ArhieriyView: UIView {
         tezoimenustvoLabel.textColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
         
         scrollView.addSubview(tezoimenustvoDate)
-        tezoimenustvoDate.datePickerMode = .date
-        if #available(iOS 13.4, *) {
-            tezoimenustvoDate.preferredDatePickerStyle = .wheels
-        }
-        tezoimenustvoDate.locale = Locale(identifier: "uk")
+//        tezoimenustvoDate.datePickerMode = .date
+//        if #available(iOS 13.4, *) {
+//            tezoimenustvoDate.preferredDatePickerStyle = .wheels
+//        }
+//        tezoimenustvoDate.locale = Locale(identifier: "uk")
+        tezoimenustvoDate.dateFormatTemplate = "dMMMM"
         
         scrollView.addSubview(numberPhoneLabel)
         numberPhoneLabel.text = "Номер телефону"

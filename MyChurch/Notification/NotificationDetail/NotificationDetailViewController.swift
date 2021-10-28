@@ -29,7 +29,7 @@ class NotificationDetailViewController: UIViewController {
                     UserDefaults.standard.set(data.accessToken, forKey: "BarearToken")
                     self.viewDidLoad()
                 } else {
-                    self.mainView.textNotification.text = data.data?.text
+                    self.mainView.textNotification.text = data.data?.text?.htmlToString
                 }
             case .partialSuccess( _):  print("error")
             case .failure(let error):

@@ -61,7 +61,7 @@ class GeneralPageProfileView: UIView {
         topBackView.backgroundColor = UIColor(red: 0.949, green: 0.976, blue: 0.996, alpha: 1)
         
         topBackView.addSubview(peopleType)
-        peopleType.text = "Вiрянин"
+        peopleType.text = ""
         peopleType.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         peopleType.textColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
         

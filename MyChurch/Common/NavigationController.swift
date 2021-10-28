@@ -64,6 +64,15 @@ class NavigationViewController: UINavigationController {
         setupLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserDefaults.standard.value(forKey: "needShowNotifications") != nil {
+            UserDefaults.standard.removeObject(forKey: "needShowNotifications")
+            let vc = NotificationViewController()
+            present(UINavigationController(rootViewController:vc), animated: true)
+        }
+    }
+    
     private func setupLayout() {
         self.border.backgroundColor = .white
         

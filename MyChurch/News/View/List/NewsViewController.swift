@@ -30,7 +30,6 @@ class NewsViewController: ViewController, NewsCellDelegate {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.reuseIdentifier)
-        setupNavBar()
         setupLayout()
         self.activityIndicatorView.startAnimating()
         vm.startFetchingData()
@@ -38,6 +37,7 @@ class NewsViewController: ViewController, NewsCellDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        setupNavBar()
         if UserDefaults.standard.string(forKey: "BarearToken") == nil {
             self.navigationItem.rightBarButtonItem = nil
         }
@@ -50,6 +50,7 @@ class NewsViewController: ViewController, NewsCellDelegate {
     
     private func setupNavBar() {
         self.navigationItem.rightBarButtonItems = [notificationhBarButtonItem, searchBarButtonItem]
+        self.navigationItem.rightBarButtonItem?.tintColor = UserDefaults.standard.value(forKey: "hasUnreadNotifications") == nil ? .white : .yellow
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         

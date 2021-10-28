@@ -14,9 +14,12 @@ class GeneralPageProfileViewController: ViewController {
     var member = String()
     var email = String()
     var church = String()
+    private var userData: UserDatas?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        self.navigationItem.rightBarButtonItem = notificationhBarButtonItem
+        self.navigationItem.rightBarButtonItem?.tintColor = UserDefaults.standard.value(forKey: "hasUnreadNotifications") == nil ? .white : .yellow
         self.navigationController!.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.topItem?.title = ""
         switch UserData.defaultScreenIndex  {
@@ -38,17 +41,6 @@ class GeneralPageProfileViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigView()
-        showInfoWindows()
-        if let data = UserDefaults.standard.value(forKey:"UserData") as? Data {
-            let userData = try? PropertyListDecoder().decode(UserDatas.self, from: data)
-            mainView.peopleType.text = setMemberLabel(member: userData?.data?.member)
-            mainView.nameSername.text = "\(userData?.data?.firstName ?? "") \(userData?.data?.lastName ?? "")"
-            print(userData as Any)
-        }
-        self.mainView.changePassword.addTarget(self, action: #selector(changePassword), for: .touchUpInside)
-        self.mainView.changeEmail.addTarget(self, action: #selector(changeEmail), for: .touchUpInside)
-        self.mainView.startScreenButton.addTarget(self, action: #selector(chooseStartScreen), for: .touchUpInside)
-        self.mainView.donateView.addTarget(self, action: #selector(donatePressed), for: .touchUpInside)
     }
     
     private func setMemberLabel(member: UserInfo.MemberType?) -> String {
@@ -114,8 +106,39 @@ class GeneralPageProfileViewController: ViewController {
         self.view = mainView
         self.navigationItem.hidesBackButton = false
         mainView.exitButton.addTarget(self, action: #selector(exitPressed), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = notificationhBarButtonItem
         super.notificationhBarButtonItem.action = #selector(openNotification(_:))
+        showInfoWindows()
+        self.mainView.changePassword.addTarget(self, action: #selector(changePassword), for: .touchUpInside)
+        self.mainView.changeEmail.addTarget(self, action: #selector(changeEmail), for: .touchUpInside)
+        self.mainView.startScreenButton.addTarget(self, action: #selector(chooseStartScreen), for: .touchUpInside)
+        self.mainView.donateView.addTarget(self, action: #selector(donatePressed), for: .touchUpInside)
+        setUserInfo()
+    }
+    
+    private func setUserInfo() {
+        if let data = UserDefaults.standard.value(forKey:"UserData") as? Data {
+            let userData = try? PropertyListDecoder().decode(UserDatas.self, from: data)
+            if userData?.data?.member == nil {
+                getUserData { [weak self] result in
+                    switch result {
+                    case .success(let user):
+                        DispatchQueue.main.async {
+                            self?.mainView.peopleType.text = self?.setMemberLabel(member: user.data?.member)
+                            self?.mainView.nameSername.text = "\(user.data?.firstName ?? "") \(user.data?.lastName ?? "")"
+                        }
+                    case .partialSuccess(_):
+                        break
+                    case .failure(_):
+                        break
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.mainView.peopleType.text = self.setMemberLabel(member: userData?.data?.member)
+                    self.mainView.nameSername.text = "\(userData?.data?.firstName ?? "") \(userData?.data?.lastName ?? "")"
+                }
+            }
+        }
     }
     
     @objc func exitPressed() {

@@ -157,6 +157,11 @@ struct RegistrationData: Codable {
     let ok: Bool?
     let data: AccessToken?
     let accessToken: String?
+    let errors: [ErrorModel]?
+}
+
+struct ErrorModel: Codable {
+    let message: String?
 }
 
 struct AccessToken: Codable {
@@ -176,12 +181,50 @@ struct UserInfo: Codable {
     var church: Church?
     var subscriptionStatus: String?
     var member: MemberType?
+    var san: UserSan?
     
     enum MemberType: String, Codable {
         case Mpc = "Mpc"
         case Priest = "Priest"
         case PriestPro = "PriestPro"
         case Parishioner = "Parishioner"
+    }
+    
+    struct UserSan: Codable {
+        var id: Int?
+        var title: String?
+        
+        static func getSanId(san: String) -> Int {
+            switch san {
+            case "Диякон":
+                return 214
+            case "Протодиякон":
+                return 215
+            case "Ієрей":
+                return 218
+            case "Священник":
+                return 219
+            case "Протоієрей":
+                return 220
+            case "Ієродиякон":
+                return 221
+            case "Ієромонах":
+                return 222
+            case "Ігумен":
+                return 223
+            case "Архімандрит":
+                return 224
+            case "Єпископ":
+                return 225
+            case "Архієпископ":
+                return 226
+            case "Митрополит":
+                return 227
+            default:
+                return 0
+            }
+        }
+        
     }
 }
 
@@ -258,6 +301,8 @@ struct UserDetailDataNotification: Codable {
 // MARK: работаю с объектом при отправке токена
 struct FirTokenData: Codable {
     let ok: Bool?
+    let data: AccessToken?
+    
 }
 
 // MARK: работаю с объектом при отправке данных на ликПей

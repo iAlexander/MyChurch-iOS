@@ -33,7 +33,6 @@ class TabBarController: UITabBarController {
                     let navigationController = createNavigationController(authLanguageViewController)
                     self.viewControllers = [navigationController]
                     self.tabBar.isHidden = true
-                
                 case .onboarding:
                     let onboardingViewController = OnboardingViewController()
                     self.viewControllers = [onboardingViewController]
@@ -46,7 +45,6 @@ class TabBarController: UITabBarController {
                         let selectedImage = createImage(UIImage(named: "map-tint"))
                         let data: TabBarData = (title: "Карта", image: image, selectedImage: selectedImage)
                         let navigationController = createNavigationController(vacationViewController, data: data)
-                        
                         return navigationController
                     }()
                     

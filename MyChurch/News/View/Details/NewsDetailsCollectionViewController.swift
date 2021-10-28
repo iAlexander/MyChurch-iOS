@@ -34,7 +34,6 @@ class NewsDetailsCollectionViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-           super.notificationhBarButtonItem = UIBarButtonItem()
         // Do any additional setup after loading the view.
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.register(NewsDetailsCollectionViewCell.self, forCellWithReuseIdentifier: NewsDetailsCollectionViewCell.reuseIdentifier)
@@ -46,12 +45,12 @@ class NewsDetailsCollectionViewController: ViewController {
         }
         
         self.view.addSubview(self.collectionView)
-        setupNavBar()
         setupLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        setupNavBar()
         self.title = "Новини"
         if UserDefaults.standard.string(forKey: "BarearToken") == nil {
             self.navigationItem.rightBarButtonItem = nil
@@ -78,9 +77,11 @@ class NewsDetailsCollectionViewController: ViewController {
         self.navigationItem.hidesBackButton = false
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
-        let icon = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
+        let icon = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
         let barButtonItem = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(openNotification(_:)))
+        super.notificationhBarButtonItem.action = #selector(openNotification(_:))
         self.navigationItem.rightBarButtonItem = barButtonItem
+        self.navigationItem.rightBarButtonItem?.tintColor = UserDefaults.standard.value(forKey: "hasUnreadNotifications") == nil ? .white : .yellow
     }
     
     private func setupLayout() {
